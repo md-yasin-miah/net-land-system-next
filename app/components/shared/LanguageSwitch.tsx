@@ -7,12 +7,12 @@ export default function LanguageSwitch() {
     {
       key: "2",
       label: "English",
-      extra: "⌘P",
+      icon: <span>🇺🇸</span>,
     },
     {
       key: "3",
       label: "Bangle",
-      extra: "⌘B",
+      icon: <span>🇧🇩</span>,
     },
   ];
   return (

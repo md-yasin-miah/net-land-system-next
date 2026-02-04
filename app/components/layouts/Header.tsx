@@ -22,7 +22,11 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logo.png";
-import { ThemeSwitch, LanguageSwitch } from "@/app/components/shared";
+import {
+  ThemeSwitch,
+  LanguageSwitch,
+  CartDrawer,
+} from "@/app/components/shared";
 
 const { Header: AntHeader } = Layout;
 
@@ -88,29 +92,11 @@ const Header = () => {
         }}
         className="header-top"
       >
-        {/* Logo and Address */}
+        {/* Logo*/}
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center" }}>
             <Image src={logo} alt="NetLand" width={100} height={60} />
           </Link>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-              border: "1px solid transparent",
-              padding: "5px",
-            }}
-            className="hover:border-white rounded"
-          >
-            <EnvironmentOutlined
-              style={{ fontSize: "20px", marginRight: "5px" }}
-            />
-            <div style={{ lineHeight: "1.2" }}>
-              <div style={{ fontSize: "12px", color: "#ccc" }}>Hello</div>
-              <div style={{ fontWeight: "bold" }}>Select address</div>
-            </div>
-          </div>
         </div>
 
         {/* Search Bar */}
@@ -122,20 +108,9 @@ const Header = () => {
             style={{
               width: "100%",
             }}
-            // Customizing the search button color
             onSearch={() => {}}
             allowClear
           />
-          <style jsx global>{`
-            .ant-input-search-button {
-              background-color: ${colorPrimary} !important;
-              border-color: ${colorPrimary} !important;
-            }
-            .ant-input-search-button:hover {
-              background-color: ${colorPrimary}dd !important;
-              border-color: ${colorPrimary}dd !important;
-            }
-          `}</style>
         </div>
 
         {/* Right Icons */}
@@ -152,11 +127,7 @@ const Header = () => {
           </Tooltip>
           <ThemeSwitch />
           <LanguageSwitch />
-          <Tooltip title="Cart">
-            <Badge count={0} showZero size="small">
-              <Button shape="circle" icon={<ShoppingCartOutlined />} />
-            </Badge>
-          </Tooltip>
+          <CartDrawer />
         </Flex>
       </AntHeader>
 
