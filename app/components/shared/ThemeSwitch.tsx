@@ -1,9 +1,21 @@
-import { useState } from "react";
+"use client";
+
 import { Segmented, ConfigProvider } from "antd";
 import { SunOutlined, MoonOutlined } from "@ant-design/icons";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function ThemeSwitch() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // or a placeholder/skeleton
+  }
 
   return (
     <ConfigProvider
@@ -12,7 +24,7 @@ export default function ThemeSwitch() {
           Segmented: {
             itemSelectedBg: theme === "dark" ? "#000000" : "#ffffff",
             itemSelectedColor: theme === "dark" ? "#ffffff" : "#000000",
-            trackBg: theme === "dark" ? "#333333" : "#cacacaff",
+            trackBg: theme === "dark" ? "#333333" : "rgba(0, 0, 0, 0.04)",
           },
         },
       }}
@@ -31,7 +43,8 @@ export default function ThemeSwitch() {
           },
         ]}
         style={{
-          border: "1px solid #d9d9d9",
+          border: "1px solid",
+          borderColor: theme === "dark" ? "#424242" : "#d9d9d9",
         }}
       />
     </ConfigProvider>
