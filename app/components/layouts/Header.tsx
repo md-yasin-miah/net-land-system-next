@@ -27,6 +27,7 @@ import {
   LanguageSwitch,
   CartDrawer,
 } from "@/app/components/shared";
+import MainMenu from "./MainMenu";
 
 const { Header: AntHeader } = Layout;
 
@@ -143,19 +144,7 @@ const Header = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <Dropdown menu={{ items: categoryItems }} trigger={["click"]}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-                fontWeight: "bold",
-              }}
-            >
-              <MenuOutlined style={{ marginRight: "5px" }} />
-              Menu
-            </div>
-          </Dropdown>
+          <MainMenu/>
 
           <div
             style={{ height: "20px", width: "1px", background: "#ccc" }}
