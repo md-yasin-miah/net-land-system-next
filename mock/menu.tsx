@@ -1,12 +1,12 @@
 import {
-  LinkOutlined,
   AppstoreOutlined,
-  CalendarOutlined,
   BuildOutlined,
-  SettingOutlined,
+  CalendarOutlined,
   CreditCardOutlined,
   FireOutlined,
+  HeartOutlined,
   LaptopOutlined,
+  MailOutlined,
   MobileOutlined,
   PartitionOutlined,
   ReloadOutlined,
@@ -16,77 +16,11 @@ import {
   TagOutlined,
   ToolOutlined,
   TrophyOutlined,
-  MailOutlined,
   CodeOutlined,
-  HeartOutlined,
 } from "@ant-design/icons";
-import type { GetProp, MenuProps } from "antd";
-type MenuItem = GetProp<MenuProps, "items">[number];
+import type { MenuProps } from "antd";
 
-const mainMenuItems: MenuItem[] = [
-  {
-    key: "all-products",
-    label: "All Products",
-    dashed: true,
-    disabled: true,
-    style: {
-      color: "black",
-      cursor: "text",
-      fontWeight: 500,
-      fontSize: "16px",
-      fontStyle: "italic",
-    },
-  },
-  {
-    key: "1",
-    icon: <MailOutlined />,
-    label: "Navigation One",
-  },
-  {
-    key: "2",
-    icon: <CalendarOutlined />,
-    label: "Navigation Two",
-  },
-  {
-    key: "sub1",
-    label: "Navigation Two",
-    icon: <AppstoreOutlined />,
-    children: [
-      { key: "3", label: "Option 3" },
-      { key: "4", label: "Option 4" },
-      {
-        key: "sub1-2",
-        label: "Submenu",
-        children: [
-          { key: "5", label: "Option 5" },
-          { key: "6", label: "Option 6" },
-        ],
-      },
-    ],
-  },
-  {
-    key: "sub2",
-    label: "Navigation Three",
-    icon: <SettingOutlined />,
-    children: [
-      { key: "7", label: "Option 7" },
-      { key: "8", label: "Option 8" },
-      { key: "9", label: "Option 9" },
-      { key: "10", label: "Option 10" },
-    ],
-  },
-  {
-    key: "link",
-    icon: <LinkOutlined />,
-    label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-        Ant Design
-      </a>
-    ),
-  },
-];
-
-const leftSideMainItems = [
+export const leftSideMainItems = [
   {
     key: "todays-best-deals",
     label: "Today's Best Deals",
@@ -114,14 +48,14 @@ const leftSideMainItems = [
   },
 ];
 
-const trendingItems = [
+export const trendingItems = [
   {
     key: "big-game-savings",
     label: "Big Game Savings",
   },
 ];
 
-const shoppingToolsItems = [
+export const shoppingToolsItems = [
   {
     key: "pc-builder",
     label: "PC Builder",
@@ -154,7 +88,7 @@ const shoppingToolsItems = [
   },
 ];
 
-const allProductsItems: MenuProps["items"] = [
+export const allProductsItems: MenuProps["items"] = [
   {
     key: "components-storage",
     label: "Components & Storage",
@@ -243,10 +177,3 @@ const allProductsItems: MenuProps["items"] = [
     icon: <RocketOutlined />,
   },
 ];
-export {
-  mainMenuItems,
-  leftSideMainItems,
-  trendingItems,
-  shoppingToolsItems,
-  allProductsItems,
-};

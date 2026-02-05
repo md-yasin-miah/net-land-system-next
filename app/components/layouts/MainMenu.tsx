@@ -6,9 +6,9 @@ import {
   shoppingToolsItems,
   allProductsItems,
 } from "@/mock/menu";
-import { MenuOutlined, RightOutlined } from "@ant-design/icons";
-import { Dropdown, theme, Typography, Space, Button } from "antd";
-import React, { useState } from "react";
+import { MenuOutlined } from "@ant-design/icons";
+import { Dropdown, theme, Typography, Button, Menu } from "antd";
+import React from "react";
 import { useTheme } from "next-themes";
 
 const { Text, Title } = Typography;
@@ -44,7 +44,7 @@ export default function MainMenu() {
   const rightPanelStyle: React.CSSProperties = {
     backgroundColor: token.colorBgContainer,
     flex: 1,
-    padding: "20px 0",
+    padding: "10px 0",
     maxHeight: "700px",
     overflowY: "auto",
   };
@@ -67,11 +67,6 @@ export default function MainMenu() {
     color: token.colorText,
   };
 
-  const rightItemStyle: React.CSSProperties = {
-    ...itemStyle,
-    justifyContent: "space-between",
-  };
-
   const renderItem = (item: any) => (
     <div key={item.key} className="menu-hover-item" style={itemStyle}>
       {item.icon && <span style={{ fontSize: "16px" }}>{item.icon}</span>}
@@ -79,83 +74,63 @@ export default function MainMenu() {
     </div>
   );
 
-  const renderRightItem = (item: any) => (
-    <div key={item.key} className="menu-hover-item" style={rightItemStyle}>
-      <Space>
-        {/* {item.icon} */}{" "}
-        {/* Newegg right side usually text only, but we have icons if needed */}
-        <Text>{item.label}</Text>
-      </Space>
-      <RightOutlined
-        style={{ fontSize: "10px", color: token.colorTextSecondary }}
-      />
-    </div>
-  );
-
   return (
-    <>
-      <style jsx global>{`
-        .menu-hover-item:hover {
-          background-color: ${token.colorFillTertiary};
-          color: ${token.colorPrimary};
-        }
-        .menu-hover-item:hover .ant-typography {
-          color: ${token.colorPrimary};
-          font-weight: 500;
-        }
-      `}</style>
-      <Dropdown
-        trigger={["click"]}
-        dropdownRender={() => (
-          <div style={contentStyle}>
-            {/* Left Panel */}
-            <div style={leftPanelStyle}>
-              {/* Main Items */}
-              <div>{leftSideMainItems.map(renderItem)}</div>
+    <Dropdown
+      trigger={["click"]}
+      popupRender={() => (
+        <div style={contentStyle}>
+          {/* Left Panel */}
+          <div style={leftPanelStyle}>
+            {/* Main Items */}
+            <div>{leftSideMainItems.map(renderItem)}</div>
 
-              {/* Trending */}
-              <div>
-                <Text style={sectionHeaderStyle}>Trending</Text>
-                {trendingItems.map(renderItem)}
-              </div>
-
-              {/* Shopping Tools */}
-              <div>
-                <Text style={sectionHeaderStyle}>Shopping Tools</Text>
-                {shoppingToolsItems.map(renderItem)}
-              </div>
+            {/* Trending */}
+            <div>
+              <Text style={sectionHeaderStyle}>Trending</Text>
+              {trendingItems.map(renderItem)}
             </div>
 
-            {/* Right Panel */}
-            <div style={rightPanelStyle}>
-              <Title
-                level={5}
-                style={{
-                  padding: "0 20px 10px 20px",
-                  margin: 0,
-                  fontStyle: "italic",
-                }}
-              >
-                All Products
-              </Title>
-              {allProductsItems?.map(renderRightItem)}
+            {/* Shopping Tools */}
+            <div>
+              <Text style={sectionHeaderStyle}>Shopping Tools</Text>
+              {shoppingToolsItems.map(renderItem)}
             </div>
           </div>
-        )}
+
+          {/* Right Panel */}
+          <div style={rightPanelStyle}>
+            <Title
+              level={5}
+              style={{
+                padding: "0 20px 10px 24px",
+                margin: 0,
+                fontStyle: "italic",
+              }}
+            >
+              All Products
+            </Title>
+            <Menu
+              items={allProductsItems}
+              mode="vertical"
+              className="custom-right-menu"
+              selectable={false}
+            />
+          </div>
+        </div>
+      )}
+    >
+      <Button
+        type="text"
+        style={{
+          color: "inherit",
+          fontWeight: "bold",
+          padding: "4px 8px",
+          height: "auto",
+        }}
       >
-        <Button
-          type="text"
-          style={{
-            color: "inherit",
-            fontWeight: "bold",
-            padding: "4px 8px",
-            height: "auto",
-          }}
-        >
-          <MenuOutlined style={{ marginRight: "5px" }} />
-          Menu
-        </Button>
-      </Dropdown>
-    </>
+        <MenuOutlined style={{ marginRight: "5px" }} />
+        Menu
+      </Button>
+    </Dropdown>
   );
 }
