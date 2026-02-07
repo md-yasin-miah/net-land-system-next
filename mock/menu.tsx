@@ -19,8 +19,9 @@ import {
   CodeOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
+import Link from "next/link";
 
-export const MainMenuItems = [
+export const MainMenuItems: MenuItemType[] = [
   {
     id: 1,
     items: [
@@ -28,6 +29,7 @@ export const MainMenuItems = [
         key: "todays-best-deals",
         label: "Today's Best Deals",
         icon: <FireOutlined />,
+        link: "/deals",
       },
       {
         key: "email-deals",
@@ -46,7 +48,7 @@ export const MainMenuItems = [
       },
       {
         key: "store-credit-card",
-        label: "Newegg Store Credit Card",
+        label: "Netland Store Credit Card",
         icon: <CreditCardOutlined />,
       },
     ],
@@ -109,8 +111,8 @@ export const allProductsItems: MenuProps["items"] = [
       margin: 0,
       fontStyle: "italic",
       cursor: "text",
-      fontSize:'16px',
-      color: "#FFFFFFD9",
+      fontSize: "16px",
+      color: "inherit",
       fontWeight: "600",
     },
   },
@@ -119,86 +121,86 @@ export const allProductsItems: MenuProps["items"] = [
     label: "Components & Storage",
     icon: <AppstoreOutlined />,
     children: [
-      { key: "3", label: "Option 3" },
-      { key: "4", label: "Option 4" },
+      { key: "3", label: <Link href="/products/components-storage/3">Option 3</Link> },
+      { key: "4", label: <Link href="/products/components-storage/4">Option 4</Link> },
       {
         key: "sub1-2",
         label: "Submenu",
         children: [
-          { key: "5", label: "Option 5" },
-          { key: "6", label: "Option 6" },
+          { key: "5", label: <Link href="/products/components-storage/5">Option 5</Link> },
+          { key: "6", label: <Link href="/products/components-storage/6">Option 6</Link> },
         ],
       },
     ],
   },
   {
     key: "computer-systems",
-    label: "Computer Systems",
+    label: <Link href="/products/computer-systems">Computer Systems</Link>,
     icon: <LaptopOutlined />,
   },
   {
     key: "computer-peripherals",
-    label: "Computer Peripherals",
+    label: <Link href="/products/computer-peripherals">Computer Peripherals</Link>,
     icon: <MobileOutlined />,
   },
   {
     key: "server-components",
-    label: "Server & Components",
+    label: <Link href="/products/server-components">Server & Components</Link>,
     icon: <PartitionOutlined />,
   },
   {
     key: "appliances",
-    label: "Appliances",
+    label: <Link href="/products/appliances">Appliances</Link>,
     icon: <ToolOutlined />,
   },
   {
     key: "electronics",
-    label: "Electronics",
+    label: <Link href="/products/electronics">Electronics</Link>,
     icon: <MobileOutlined />,
   },
   {
     key: "gaming-vr",
-    label: "Gaming & VR",
+    label: <Link href="/products/gaming-vr">Gaming & VR</Link>,
     icon: <TrophyOutlined />,
   },
   {
     key: "networking",
-    label: "Networking",
+    label: <Link href="/products/networking">Networking</Link>,
     icon: <PartitionOutlined />,
   },
   {
     key: "smart-home",
-    label: "Smart Home & Security",
+    label: <Link href="/products/smart-home">Smart Home & Security</Link>,
     icon: <SafetyCertificateOutlined />,
   },
   {
     key: "office-solutions",
-    label: "Office Solutions",
+    label: <Link href="/products/office-solutions">Office Solutions</Link>,
     icon: <CalendarOutlined />,
   },
   {
     key: "software-services",
-    label: "Software & Services",
+    label: <Link href="/products/software-services">Software & Services</Link>,
     icon: <CodeOutlined />,
   },
   {
     key: "automotive-tools",
-    label: "Automotive & Tools",
+    label: <Link href="/products/automotive-tools">Automotive & Tools</Link>,
     icon: <ToolOutlined />,
   },
   {
     key: "home-outdoors",
-    label: "Home & Outdoors",
+    label: <Link href="/products/home-outdoors">Home & Outdoors</Link>,
     icon: <ToolOutlined />,
   },
   {
     key: "health-sports",
-    label: "Health & Sports",
+    label: <Link href="/products/health-sports">Health & Sports</Link>,
     icon: <HeartOutlined />,
   },
   {
     key: "toys-drones",
-    label: "Toys, Drones & Maker",
+    label: <Link href="/products/toys-drones">Toys, Drones & Maker</Link>,
     icon: <RocketOutlined />,
   },
 ];

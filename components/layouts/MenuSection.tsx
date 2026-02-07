@@ -2,6 +2,7 @@ import React from "react";
 import { theme, Typography } from "antd";
 import { useTheme } from "next-themes";
 import { MenuHeader } from "../ui";
+import Link from "next/link";
 
 const MenuSection = ({ menuItems }: { menuItems: MenuItemType[] }) => {
   const { Text } = Typography;
@@ -36,11 +37,11 @@ const MenuSection = ({ menuItems }: { menuItems: MenuItemType[] }) => {
         <div key={item.id}>
           {item.titel && <MenuHeader>{item.titel}</MenuHeader>}
           <div className="p-1">
-            {item.items.map((item) => (
-              <div key={item.key} className="hover:bg-white dark:hover:bg-white/10" style={itemStyle}>
+            {item.items.map((item:leftSideMainItemType) => (
+              <Link key={item.key} href={item.link || "/"} className="hover:bg-white! dark:hover:bg-white/10" style={itemStyle}>
                 {item.icon && item.icon}
                 <Text>{item.label}</Text>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

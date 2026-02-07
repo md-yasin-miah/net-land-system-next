@@ -4,7 +4,7 @@ import { allProductsItems, MainMenuItems } from "@/mock/menu";
 import { MenuOutlined } from "@ant-design/icons";
 import { Dropdown, theme, Button, Menu } from "antd";
 import React from "react";
-import MenuSection from "./MenuSection";
+import { MenuSection } from "@/components/layouts";
 
 export default function MainMenu() {
   const { token } = theme.useToken();
@@ -13,7 +13,7 @@ export default function MainMenu() {
     borderRadius: token.borderRadiusLG,
     boxShadow: token.boxShadowSecondary,
     display: "flex",
-    width: "600px",
+    width: "540px",
     overflow: "hidden",
   };
 
@@ -21,7 +21,6 @@ export default function MainMenu() {
     backgroundColor: token.colorBgElevated,
     flex: 1,
     padding: "10px 0",
-    maxHeight: "700px",
     overflowY: "auto",
   };
 

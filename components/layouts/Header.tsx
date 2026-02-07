@@ -53,7 +53,7 @@ const Header = () => {
       label: "Best Sellers",
     },
     {
-      key: "newegg-card",
+      key: "netland-card",
       label: "Newegg Card",
     },
     {
@@ -75,7 +75,7 @@ const Header = () => {
       {/* Top Bar */}
       <AntHeader
         style={{
-          backgroundColor: "#001e60", // Deep blue background like Newegg
+          backgroundColor: "#001e60",
           height: "auto",
           padding: "10px 20px",
           display: "flex",
@@ -147,6 +147,7 @@ const Header = () => {
                 key={item.key}
                 href={`/#${item.key}`}
                 style={{ color: token.colorText, fontWeight: 500 }}
+                className="hover:"
               >
                 {item.label}
               </Link>
@@ -162,7 +163,7 @@ const Header = () => {
               color: token.colorText,
             }}
           >
-            NEWEGG BUSINESS
+            NETLAND BUSINESS
           </Text>
 
           <Divider
