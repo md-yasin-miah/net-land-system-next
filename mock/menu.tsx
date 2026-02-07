@@ -20,75 +20,100 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 
-export const leftSideMainItems = [
+export const MainMenuItems = [
   {
-    key: "todays-best-deals",
-    label: "Today's Best Deals",
-    icon: <FireOutlined />,
+    id: 1,
+    items: [
+      {
+        key: "todays-best-deals",
+        label: "Today's Best Deals",
+        icon: <FireOutlined />,
+      },
+      {
+        key: "email-deals",
+        label: "Email Deals",
+        icon: <MailOutlined />,
+      },
+      {
+        key: "clearance-deals",
+        label: "Clearance Deals",
+        icon: <TagOutlined />,
+      },
+      {
+        key: "refreshed",
+        label: "Refreshed - Like New",
+        icon: <ReloadOutlined />,
+      },
+      {
+        key: "store-credit-card",
+        label: "Newegg Store Credit Card",
+        icon: <CreditCardOutlined />,
+      },
+    ],
   },
   {
-    key: "email-deals",
-    label: "Email Deals",
-    icon: <MailOutlined />,
+    id: 2,
+    titel: "Trending",
+    items: [
+      {
+        key: "big-game-savings",
+        label: "Big Game Savings",
+      },
+    ],
   },
   {
-    key: "clearance-deals",
-    label: "Clearance Deals",
-    icon: <TagOutlined />,
-  },
-  {
-    key: "refreshed",
-    label: "Refreshed - Like New",
-    icon: <ReloadOutlined />,
-  },
-  {
-    key: "store-credit-card",
-    label: "Newegg Store Credit Card",
-    icon: <CreditCardOutlined />,
-  },
-];
-
-export const trendingItems = [
-  {
-    key: "big-game-savings",
-    label: "Big Game Savings",
-  },
-];
-
-export const shoppingToolsItems = [
-  {
-    key: "pc-builder",
-    label: "PC Builder",
-    icon: <BuildOutlined />,
-  },
-  {
-    key: "gaming-pc-finder",
-    label: "Gaming PC Finder",
-    icon: <SearchOutlined />,
-  },
-  {
-    key: "pc-upgrader",
-    label: "PC Upgrader",
-    icon: <RocketOutlined />,
-  },
-  {
-    key: "laptop-finder",
-    label: "Laptop Finder",
-    icon: <LaptopOutlined />,
-  },
-  {
-    key: "memory-finder",
-    label: "Memory Finder",
-    icon: <PartitionOutlined />,
-  },
-  {
-    key: "network-builder",
-    label: "Network Builder",
-    icon: <PartitionOutlined />,
+    id: 3,
+    titel: "Shopping Tools",
+    items: [
+      {
+        key: "pc-builder",
+        label: "PC Builder",
+        icon: <BuildOutlined />,
+      },
+      {
+        key: "gaming-pc-finder",
+        label: "Gaming PC Finder",
+        icon: <SearchOutlined />,
+      },
+      {
+        key: "pc-upgrader",
+        label: "PC Upgrader",
+        icon: <RocketOutlined />,
+      },
+      {
+        key: "laptop-finder",
+        label: "Laptop Finder",
+        icon: <LaptopOutlined />,
+      },
+      {
+        key: "memory-finder",
+        label: "Memory Finder",
+        icon: <PartitionOutlined />,
+      },
+      {
+        key: "network-builder",
+        label: "Network Builder",
+        icon: <PartitionOutlined />,
+      },
+    ],
   },
 ];
 
 export const allProductsItems: MenuProps["items"] = [
+  {
+    key: "all-products",
+    label: "All Products",
+    disabled: true,
+    style: {
+      padding: "0 20px 10px 24px",
+      margin: 0,
+      fontStyle: "italic",
+      cursor: "text",
+      fontSize:'16px',
+      color: "#FFFFFFD9",
+      fontWeight: "600",
+    },
+  },
   {
     key: "components-storage",
     label: "Components & Storage",

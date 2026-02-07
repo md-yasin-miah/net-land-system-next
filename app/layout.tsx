@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import ReduxProvider from "@/lib/redux/provider";
-import { AntdConfigProvider, ThemeProvider } from "@/app/components/shared/provider";
+import { ThemeProvider,AntdConfigProvider } from "@/components/shared/provider/index";
 
 export default function RootLayout({
   children,

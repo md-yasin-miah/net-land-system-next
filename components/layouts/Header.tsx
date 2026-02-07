@@ -5,19 +5,14 @@ import {
   Input,
   Button,
   Badge,
-  Dropdown,
   Space,
-  theme,
   Flex,
   Tooltip,
 } from "antd";
 import {
   SearchOutlined,
   BellOutlined,
-  ShoppingCartOutlined,
-  MenuOutlined,
-  QuestionCircleOutlined,
-  EnvironmentOutlined,
+  QuestionCircleOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -26,16 +21,12 @@ import {
   ThemeSwitch,
   LanguageSwitch,
   CartDrawer,
-} from "@/app/components/shared";
+} from "@/components/shared/index";
 import MainMenu from "./MainMenu";
 
 const { Header: AntHeader } = Layout;
 
 const Header = () => {
-  const {
-    token: { colorPrimary },
-  } = theme.useToken();
-
   const menuItems = [
     {
       key: "shell-shocker",
@@ -69,13 +60,6 @@ const Header = () => {
       key: "free-gift",
       label: "Free Gift w/ AMD",
     },
-  ];
-
-  const categoryItems = [
-    { key: "1", label: "Computer Systems" },
-    { key: "2", label: "Components" },
-    { key: "3", label: "Electronics" },
-    { key: "4", label: "Gaming" },
   ];
 
   return (

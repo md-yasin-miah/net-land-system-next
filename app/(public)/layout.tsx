@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Layout } from "antd";
-import Header from "../components/layouts/Header";
+import {Header} from "@/components/layouts/index";
 
 const { Content } = Layout;
 
