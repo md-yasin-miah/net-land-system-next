@@ -8,11 +8,14 @@ import {
   Space,
   Flex,
   Tooltip,
+  theme,
+  Divider,
+  Typography,
 } from "antd";
 import {
   SearchOutlined,
   BellOutlined,
-  QuestionCircleOutlined
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -23,10 +26,15 @@ import {
   CartDrawer,
 } from "@/components/shared/index";
 import MainMenu from "./MainMenu";
+import { useTheme } from "next-themes";
 
 const { Header: AntHeader } = Layout;
 
 const Header = () => {
+  const { Text } = Typography;
+  const { token } = theme.useToken();
+  const { theme: currentTheme } = useTheme();
+  console.log({ token, currentTheme });
   const menuItems = [
     {
       key: "shell-shocker",
@@ -119,8 +127,8 @@ const Header = () => {
       {/* Navigation Bar */}
       <div
         style={{
-          backgroundColor: "#f4f6fa", // Light gray background
-          borderBottom: "1px solid #ddd",
+          backgroundColor: token.colorBgElevated,
+          borderBottom: `1px solid ${token.colorSplit}`,
           padding: "5px 20px",
           display: "flex",
           alignItems: "center",
@@ -128,18 +136,17 @@ const Header = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <MainMenu/>
-
-          <div
-            style={{ height: "20px", width: "1px", background: "#ccc" }}
-          ></div>
-
+          <MainMenu />
           <Space size="middle">
+            <Divider
+              orientation="vertical"
+              style={{ height: "20px", borderColor: "#ccc" }}
+            />
             {menuItems.map((item) => (
               <Link
                 key={item.key}
                 href={`/#${item.key}`}
-                style={{ color: "#333", fontWeight: 500 }}
+                style={{ color: token.colorText, fontWeight: 500 }}
               >
                 {item.label}
               </Link>
@@ -148,19 +155,21 @@ const Header = () => {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <span
+          <Text
+            strong
             style={{
-              fontWeight: "bold",
               fontStyle: "italic",
-              color: "#003366",
+              color: token.colorText,
             }}
           >
             NEWEGG BUSINESS
-          </span>
-          <div
-            style={{ height: "20px", width: "1px", background: "#ccc" }}
-          ></div>
-          <span
+          </Text>
+
+          <Divider
+            orientation="vertical"
+            style={{ height: "20px", borderColor: "#ccc" }}
+          />
+          <Text
             style={{
               display: "flex",
               alignItems: "center",
@@ -169,11 +178,13 @@ const Header = () => {
             }}
           >
             <QuestionCircleOutlined /> Feedback
-          </span>
-          <div
-            style={{ height: "20px", width: "1px", background: "#ccc" }}
-          ></div>
-          <span
+          </Text>
+
+          <Divider
+            orientation="vertical"
+            style={{ height: "20px", borderColor: "#ccc" }}
+          />
+          <Text
             style={{
               display: "flex",
               alignItems: "center",
@@ -182,7 +193,7 @@ const Header = () => {
             }}
           >
             <QuestionCircleOutlined /> Help Center
-          </span>
+          </Text>
         </div>
       </div>
     </div>

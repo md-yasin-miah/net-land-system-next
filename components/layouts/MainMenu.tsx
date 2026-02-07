@@ -1,18 +1,13 @@
 "use client";
 
-import {
-  allProductsItems,
-  MainMenuItems,
-} from "@/mock/menu";
+import { allProductsItems, MainMenuItems } from "@/mock/menu";
 import { MenuOutlined } from "@ant-design/icons";
 import { Dropdown, theme, Button, Menu } from "antd";
 import React from "react";
-import { MenuHeader } from "@/components/ui";
 import MenuSection from "./MenuSection";
 
 export default function MainMenu() {
   const { token } = theme.useToken();
-
   const contentStyle: React.CSSProperties = {
     backgroundColor: token.colorBgElevated,
     borderRadius: token.borderRadiusLG,
@@ -22,8 +17,6 @@ export default function MainMenu() {
     overflow: "hidden",
   };
 
-
-
   const rightPanelStyle: React.CSSProperties = {
     backgroundColor: token.colorBgElevated,
     flex: 1,
@@ -31,8 +24,6 @@ export default function MainMenu() {
     maxHeight: "700px",
     overflowY: "auto",
   };
-
-
 
   return (
     <Dropdown
@@ -66,7 +57,7 @@ export default function MainMenu() {
       <Button
         type="text"
         style={{
-          color: "inherit",
+          color: token.colorText,
           fontWeight: "bold",
           padding: "4px 8px",
           height: "auto",
