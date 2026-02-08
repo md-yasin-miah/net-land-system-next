@@ -17,9 +17,58 @@ import {
   ToolOutlined,
   TrophyOutlined,
   CodeOutlined,
+  DownOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import Link from "next/link";
+import { Typography } from "antd";
+
+const { Text } = Typography;
+
+export const HeaderMenuItems: MenuProps["items"] = [
+  {
+    key: "shell-shocker",
+    label: <Link href="#shell-shocker">Shell Shocker</Link>,
+  },
+  {
+    key: "pc-builder",
+    label: (
+      <Text>
+        PC Builder <DownOutlined style={{ fontSize: "12px" }} />
+      </Text>
+    ),
+    children: [
+      {
+        key: "pc-builder-1",
+        label: <Link href="#pc-builder-1">PC Builder 1</Link>,
+      },
+      {
+        key: "pc-builder-2",
+        label: <Link href="#pc-builder-2">PC Builder 2</Link>,
+      },
+    ],
+  },
+  {
+    key: "clearance",
+    label: <Link href="#clearance">Clearance</Link>,
+  },
+  {
+    key: "best-sellers",
+    label: <Link href="#best-sellers">Best Sellers</Link>,
+  },
+  {
+    key: "netland-card",
+    label: <Link href="#netland-card">Newegg Card</Link>,
+  },
+  {
+    key: "gamer-community",
+    label: "Gamer Community",
+  },
+  {
+    key: "laptop-upgrade",
+    label: "Laptop Upgrade",
+  },
+];
 
 export const MainMenuItems: MenuItemType[] = [
   {
@@ -121,14 +170,26 @@ export const allProductsItems: MenuProps["items"] = [
     label: "Components & Storage",
     icon: <AppstoreOutlined />,
     children: [
-      { key: "3", label: <Link href="/products/components-storage/3">Option 3</Link> },
-      { key: "4", label: <Link href="/products/components-storage/4">Option 4</Link> },
+      {
+        key: "3",
+        label: <Link href="/products/components-storage/3">Option 3</Link>,
+      },
+      {
+        key: "4",
+        label: <Link href="/products/components-storage/4">Option 4</Link>,
+      },
       {
         key: "sub1-2",
         label: "Submenu",
         children: [
-          { key: "5", label: <Link href="/products/components-storage/5">Option 5</Link> },
-          { key: "6", label: <Link href="/products/components-storage/6">Option 6</Link> },
+          {
+            key: "5",
+            label: <Link href="/products/components-storage/5">Option 5</Link>,
+          },
+          {
+            key: "6",
+            label: <Link href="/products/components-storage/6">Option 6</Link>,
+          },
         ],
       },
     ],
@@ -140,7 +201,9 @@ export const allProductsItems: MenuProps["items"] = [
   },
   {
     key: "computer-peripherals",
-    label: <Link href="/products/computer-peripherals">Computer Peripherals</Link>,
+    label: (
+      <Link href="/products/computer-peripherals">Computer Peripherals</Link>
+    ),
     icon: <MobileOutlined />,
   },
   {
@@ -202,5 +265,17 @@ export const allProductsItems: MenuProps["items"] = [
     key: "toys-drones",
     label: <Link href="/products/toys-drones">Toys, Drones & Maker</Link>,
     icon: <RocketOutlined />,
+  },
+];
+
+/** Home page left sidebar: categories + More (no "All Products" header) */
+export const homeSidebarMenuItems: MenuProps["items"] = [
+  ...(allProductsItems?.filter(
+    (item) => item && typeof item === "object" && "key" in item && item.key !== "all-products"
+  ) ?? []),
+  {
+    key: "more",
+    label: "More",
+    icon: <DownOutlined style={{ transform: "rotate(-90deg)" }} />,
   },
 ];

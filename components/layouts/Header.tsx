@@ -11,6 +11,7 @@ import {
   theme,
   Divider,
   Typography,
+  Menu,
 } from "antd";
 import {
   SearchOutlined,
@@ -27,6 +28,7 @@ import {
 } from "@/components/shared/index";
 import MainMenu from "./MainMenu";
 import { useTheme } from "next-themes";
+import { HeaderMenuItems } from "@/mock/menu";
 
 const { Header: AntHeader } = Layout;
 
@@ -35,40 +37,6 @@ const Header = () => {
   const { token } = theme.useToken();
   const { theme: currentTheme } = useTheme();
   console.log({ token, currentTheme });
-  const menuItems = [
-    {
-      key: "shell-shocker",
-      label: "Shell Shocker",
-    },
-    {
-      key: "pc-builder",
-      label: "PC Builder",
-    },
-    {
-      key: "clearance",
-      label: "Clearance",
-    },
-    {
-      key: "best-sellers",
-      label: "Best Sellers",
-    },
-    {
-      key: "netland-card",
-      label: "Newegg Card",
-    },
-    {
-      key: "gamer-community",
-      label: "Gamer Community",
-    },
-    {
-      key: "laptop-upgrade",
-      label: "Laptop Upgrade",
-    },
-    {
-      key: "free-gift",
-      label: "Free Gift w/ AMD",
-    },
-  ];
 
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
@@ -129,33 +97,40 @@ const Header = () => {
         style={{
           backgroundColor: token.colorBgElevated,
           borderBottom: `1px solid ${token.colorSplit}`,
-          padding: "5px 20px",
+          padding: "5px 10px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" , flex: 1 }}>
           <MainMenu />
-          <Space size="middle">
-            <Divider
-              orientation="vertical"
-              style={{ height: "20px", borderColor: "#ccc" }}
-            />
-            {menuItems.map((item) => (
-              <Link
-                key={item.key}
-                href={`/#${item.key}`}
-                style={{ color: token.colorText, fontWeight: 500 }}
-                className="hover:"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </Space>
+          <Divider
+            orientation="vertical"
+            style={{ height: "20px", borderColor: "#ccc" }}
+          />
+          <Menu
+            items={HeaderMenuItems}
+            mode="horizontal"
+            className="header-nav-menu"
+            style={{
+              border: "none",
+              lineHeight: "32px",
+            }}
+            styles={{
+              item: {
+                color: token.colorText,
+                fontWeight: 500,
+                border: "none",
+                padding: "0 10px",
+                borderRadius: token.borderRadius,
+              },
+              
+            }}
+          />
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <Text
             strong
             style={{

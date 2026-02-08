@@ -1,3 +1,5 @@
+import { HomeSection } from "@/components/sections/home";
+
 export default function Home() {
-  return <div>Home</div>;
+  return <HomeSection />;
 }

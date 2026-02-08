@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Layout } from "antd";
-import {Header} from "@/components/layouts/index";
+import { Header } from "@/components/layouts/index";
 
 const { Content } = Layout;
 
@@ -12,11 +12,9 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout className="min-h-screen">
       <Header />
-      <Content style={{ padding: "0 24px", marginTop: "20px" }}>
-        {children}
-      </Content>
+      <Content className="mx-[30px] mt-5">{children}</Content>
     </Layout>
   );
 }
