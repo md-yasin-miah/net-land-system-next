@@ -24,6 +24,7 @@ export default function ThemeSwitch() {
           Segmented: {
             itemSelectedBg: theme === "dark" ? "#000000" : "#ffffff",
             itemSelectedColor: theme === "dark" ? "#ffffff" : "#000000",
+            itemColor: theme === "dark" ? "rgba(255, 255, 255, 0.65)" : "#ffffff",
             trackBg: theme === "dark" ? "#333333" : "rgba(0, 0, 0, 0.04)",
           },
         },
@@ -39,7 +40,7 @@ export default function ThemeSwitch() {
           },
           {
             value: "dark",
-            icon: <MoonOutlined />,
+            icon: <MoonOutlined/>,
           },
         ]}
         style={{
