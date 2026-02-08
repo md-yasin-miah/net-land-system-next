@@ -13,25 +13,23 @@ export default function HomeSection() {
       <div className="col-span-3 row-span-2">
         <div
           style={{
-            backgroundColor: token.colorBgElevated,
-            flex: 1,
-            padding: "10px 0",
             overflowY: "auto",
           }}
         >
           <Menu
             style={{
               minHeight: "100%",
+              borderRadius: token.borderRadiusLG,
             }}
             styles={{
               item: {
-                padding: "10px 15px",
+                display: "flex",
               },
               itemIcon: {
                 fontSize: "16px",
               },
             }}
-            items={allProductsItems}
+            items={allProductsItems?.filter((item) => !(item && "disabled" in item && item.disabled))}
             className="custom-right-menu"
             selectable={false}
           />
