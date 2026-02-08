@@ -33,15 +33,24 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
   return (
     <div
       className="hero-carousel"
-      style={{ borderRadius: token.borderRadiusLG, overflow: "hidden" }}
+      style={{
+        borderRadius: token.borderRadiusLG,
+        overflow: "hidden",
+        height: "100%",
+        minHeight: 400,
+      }}
     >
-      <Splide options={splideOptions}>
+      <Splide
+        options={splideOptions}
+        style={{ height: "100%" }}
+      >
         {slides.map((slide) => (
-          <SplideSlide key={slide.id}>
+          <SplideSlide key={slide.id} style={{ height: "100%" }}>
               <div
                 style={{
                   position: "relative",
-                  height: 320,
+                  height: "100%",
+                  minHeight: 400,
                   background: `linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 50%), url(${slide.image}) center/cover`,
                 }}
               >

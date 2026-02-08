@@ -20,7 +20,7 @@ const MenuSection = ({ menuItems }: { menuItems: MenuItemType[] }) => {
     flexDirection: "column",
   };
   const itemStyle: React.CSSProperties = {
-    padding: "10px 0 10px 15px",
+    padding: "8px 0 8px 12px",
     cursor: "pointer",
     display: "flex",
     alignItems: "center",
