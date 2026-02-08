@@ -1,54 +1,43 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { Button, Typography } from "antd";
+import React from "react";
+import { Button, theme, Typography } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import type { HeroSlide } from "@/mock/home";
-import Splide from "@splidejs/splide";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
 const { Title } = Typography;
+
+const splideOptions = {
+  type: "loop" as const,
+  perPage: 1,
+  autoplay: true,
+  interval: 5000,
+  pauseOnHover: true,
+  arrows: true,
+  pagination: true,
+  rewind: true,
+};
 
 interface HeroCarouselProps {
   slides: HeroSlide[];
 }
 
 export default function HeroCarousel({ slides }: HeroCarouselProps) {
-  const splideRef = useRef<HTMLDivElement>(null);
-  const splideInstance = useRef<Splide | null>(null);
-
-  useEffect(() => {
-    if (!splideRef.current || !slides.length) return;
-    splideInstance.current = new Splide(splideRef.current, {
-      type: "loop",
-      perPage: 1,
-      autoplay: true,
-      interval: 5000,
-      pauseOnHover: true,
-      arrows: true,
-      pagination: true,
-      rewind: true,
-    });
-    splideInstance.current.mount();
-    return () => {
-      splideInstance.current?.destroy();
-      splideInstance.current = null;
-    };
-  }, [slides.length]);
+  const { token } = theme.useToken();
 
   if (!slides.length) return null;
 
   return (
     <div
-      className="splide hero-carousel"
-      ref={splideRef}
-      style={{ borderRadius: 8, overflow: "hidden", marginBottom: 24 }}
+      className="hero-carousel"
+      style={{ borderRadius: token.borderRadiusLG, overflow: "hidden" }}
     >
-      <div className="splide__track">
-        <ul className="splide__list">
-          {slides.map((slide) => (
-            <li key={slide.id} className="splide__slide">
+      <Splide options={splideOptions}>
+        {slides.map((slide) => (
+          <SplideSlide key={slide.id}>
               <div
                 style={{
                   position: "relative",
@@ -111,10 +100,9 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
                   </div>
                 </div>
               </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+          </SplideSlide>
+        ))}
+      </Splide>
     </div>
   );
 }
