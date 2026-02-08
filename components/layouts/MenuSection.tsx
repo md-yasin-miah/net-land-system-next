@@ -9,7 +9,6 @@ const MenuSection = ({ menuItems }: { menuItems: MenuItemType[] }) => {
   const { token } = theme.useToken();
   const { theme: currentTheme } = useTheme();
 
-  // Checking if dark mode is active to adjust manual colors
   const isDark = currentTheme === "dark";
 
   const leftPanelStyle: React.CSSProperties = {
@@ -19,10 +18,9 @@ const MenuSection = ({ menuItems }: { menuItems: MenuItemType[] }) => {
     borderRight: `1px solid ${token.colorSplit}`,
     display: "flex",
     flexDirection: "column",
-    gap: "24px",
   };
   const itemStyle: React.CSSProperties = {
-    padding: "5px 0 5px 12px",
+    padding: "10px 0 10px 15px",
     cursor: "pointer",
     display: "flex",
     alignItems: "center",

@@ -17,54 +17,6 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-/* Home category sidebar: dark blue, active left border, right arrow */
-.home-category-sidebar.ant-menu-inline .ant-menu-item {
-  display: flex;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0 8px;
-  border-radius: 4px;
-  height: 40px;
-}
-.home-category-sidebar.ant-menu-inline .ant-menu-item::after {
-  content: "›";
-  margin-left: auto;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.5);
-}
-.home-category-sidebar.ant-menu-inline .ant-menu-item:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-}
-.home-category-sidebar.ant-menu-inline .ant-menu-item-selected {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  border-left: 3px solid #1890ff;
-  margin-left: 0;
-  padding-left: 11px;
-}
-.home-category-sidebar.ant-menu-inline .ant-menu-item-selected::after {
-  color: rgba(255, 255, 255, 0.85);
-}
-.home-category-sidebar .ant-menu-submenu-title {
-  color: rgba(255, 255, 255, 0.85);
-}
-.home-category-sidebar .ant-menu-submenu-arrow {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* Hero carousel: visible arrows and pagination on dark slides */
-.hero-carousel .splide__arrow {
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-}
-.hero-carousel .splide__arrow:hover {
-  background: #fff;
-}
-.hero-carousel .splide__pagination__page.is-active {
-  background: #fff;
-}
-.hero-carousel .splide__pagination__page {
-  background: rgba(255, 255, 255, 0.5);
+.custom-right-menu .ant-dropdown-menu-submenu-title{
+  padding: 10px 24px 10px 15px !important;
 }

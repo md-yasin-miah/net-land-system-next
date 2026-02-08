@@ -4,7 +4,6 @@ interface leftSideMainItemType {
   icon?: React.ReactNode;
   link?: string;
 }
-
 interface MenuItemType {
   id: number;
   titel?: string;

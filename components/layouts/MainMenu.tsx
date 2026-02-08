@@ -37,15 +37,18 @@ export default function MainMenu() {
             <Menu
               style={{
                 boxShadow: "none",
-                height: "100%",
+                minHeight: "100%",
               }}
               styles={{
+                item: {
+                  padding: "10px 15px",
+                },
                 itemIcon: {
                   fontSize: "16px",
                 },
+                
               }}
               items={allProductsItems}
-              mode="vertical"
               className="custom-right-menu"
               selectable={false}
             />
