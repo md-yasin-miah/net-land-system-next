@@ -130,12 +130,13 @@ const Header = () => {
           />
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
           <Text
             strong
             style={{
               fontStyle: "italic",
               color: token.colorText,
+              fontSize: "12px",
             }}
           >
             NETLAND BUSINESS
@@ -151,6 +152,7 @@ const Header = () => {
               alignItems: "center",
               gap: "5px",
               cursor: "pointer",
+              fontSize: "12px",
             }}
           >
             <QuestionCircleOutlined /> Feedback
@@ -166,6 +168,7 @@ const Header = () => {
               alignItems: "center",
               gap: "5px",
               cursor: "pointer",
+              fontSize: "12px",
             }}
           >
             <QuestionCircleOutlined /> Help Center

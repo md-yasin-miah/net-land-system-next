@@ -5,12 +5,11 @@ import { Card, Button, Typography, theme, Space } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import Image from "next/image";
-import type { DealCard as DealCardType } from "@/mock/home";
 
 const { Text } = Typography;
 
 interface DealCardProps {
-  deal: DealCardType;
+  deal: DealCard;
 }
 
 export default function DealCard({ deal }: DealCardProps) {
@@ -194,7 +193,7 @@ export default function DealCard({ deal }: DealCardProps) {
           type="primary"
           size="small"
           icon={<RightOutlined />}
-          iconPosition="end"
+          iconPlacement="end"
           style={{ borderRadius: token.borderRadius }}
         >
           {deal.primaryButtonText}

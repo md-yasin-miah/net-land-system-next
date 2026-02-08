@@ -20,3 +20,10 @@ body {
 .custom-right-menu .ant-dropdown-menu-submenu-title{
   padding: 8px 24px 8px 12px !important;
 }
+
+.poster-carousel .splide,
+.poster-carousel .splide__track,
+.poster-carousel .splide__list,
+.poster-carousel .splide__slide {
+  height: 100%;
+}

@@ -2,45 +2,13 @@
  * Mock data for home page: hero carousel slides and deal cards
  */
 
-export interface HeroSlide {
-  id: string;
-  title: string;
-  subtitle?: string;
-  image: string;
-  ctaText: string;
-  ctaHref: string;
-}
-
-export interface DealCardProduct {
-  name: string;
-  image: string;
-}
-
-export interface DealCard {
-  id: string;
-  brandLabel: string;
-  brandHref?: string;
-  savingsText: string;
-  moreLabel: string;
-  moreHref: string;
-  title: string;
-  description?: string;
-  products?: DealCardProduct[];
-  price: number;
-  originalPrice: number;
-  badge?: string;
-  badgePercent?: string;
-  primaryButtonText: string;
-  secondaryButtonText?: string;
-  promoText?: string;
-}
-
 export const heroSlides: HeroSlide[] = [
   {
     id: "big-game",
     title: "BIG GAME SAVINGS",
     subtitle: "Big Game Savings",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=400&fit=crop",
     ctaText: "Shop now",
     ctaHref: "#big-game",
   },
@@ -48,7 +16,8 @@ export const heroSlides: HeroSlide[] = [
     id: "tech-deals",
     title: "TECH DEALS",
     subtitle: "Components & More",
-    image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1200&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1200&h=400&fit=crop",
     ctaText: "Shop now",
     ctaHref: "#tech",
   },
@@ -56,11 +25,41 @@ export const heroSlides: HeroSlide[] = [
     id: "gaming",
     title: "GAMING & VR",
     subtitle: "Gaming & VR",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&h=400&fit=crop",
     ctaText: "Shop now",
     ctaHref: "#gaming",
   },
 ];
+
+export const posterCarouselSlides: Poster[] = [
+  {
+    id: 1,
+    image: "https://promotions.newegg.com/asus/26-0100/1150x320@2x.jpg",
+    href: "#corsair-chairs",
+  },
+  {
+    id: 2,
+    image: "https://promotions.newegg.com/desktop/26-0095/1150x320.jpg",
+    href: "#corsair-chairs",
+  },
+  {
+    id: 3,
+    image: "https://promotions.newegg.com/asus/26-0100/1150x320@2x.jpg",
+    href: "#corsair-chairs",
+  },
+  {
+    id: 4,
+    image: "https://promotions.newegg.com/desktop/26-0095/1150x320.jpg",
+    href: "#corsair-chairs",
+  },
+];
+
+export const staticPoster: Poster = {
+  id: 1,
+  image: "https://promotions.newegg.com/corsair/25-1261/1150x320@2x.jpg",
+  href: "#corsair-chairs",
+};
 
 export const dealCards: DealCard[] = [
   {
@@ -70,15 +69,18 @@ export const dealCards: DealCard[] = [
     savingsText: "Intel Combo up savings $277.98",
     moreLabel: "More options",
     moreHref: "#intel-more",
-    title: "Intel Core Ultra 7 265K, Arrow Lake 20-Core (8P+12E), LGA 1851, 125W",
+    title:
+      "Intel Core Ultra 7 265K, Arrow Lake 20-Core (8P+12E), LGA 1851, 125W",
     products: [
       {
         name: "ASRock Z890...",
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=120&h=120&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1518770660439-4636190af475?w=120&h=120&fit=crop",
       },
       {
         name: "CORSAIR Vengeance...",
-        image: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=120&h=120&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1562976540-1502c2145186?w=120&h=120&fit=crop",
       },
     ],
     price: 799.99,
@@ -97,7 +99,8 @@ export const dealCards: DealCard[] = [
     products: [
       {
         name: "WD Red Plus 8TB...",
-        image: "https://images.unsplash.com/photo-1597872200969-2b65d565e384?w=120&h=120&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1597872200969-2b65d565e384?w=120&h=120&fit=crop",
       },
     ],
     price: 730.97,
@@ -112,12 +115,15 @@ export const dealCards: DealCard[] = [
     savingsText: "Shell Shocker",
     moreLabel: "See all",
     moreHref: "#shell-all",
-    title: "MSI Ventus GeForce RTX 5060 Ti Graphics Card RTX 5060 Ti 8G VENTU...",
-    promoText: "Get Free MSI 650W 80+ Bronze PSU with selected purchase, limited offer",
+    title:
+      "MSI Ventus GeForce RTX 5060 Ti Graphics Card RTX 5060 Ti 8G VENTU...",
+    promoText:
+      "Get Free MSI 650W 80+ Bronze PSU with selected purchase, limited offer",
     products: [
       {
         name: "MSI RTX 5060 Ti",
-        image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop",
+        image:
+          "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop",
       },
     ],
     price: 379.99,

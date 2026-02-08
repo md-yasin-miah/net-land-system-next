@@ -4,7 +4,6 @@ import React from "react";
 import { Button, theme, Typography } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import type { HeroSlide } from "@/mock/home";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
@@ -96,7 +95,7 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
                         type="primary"
                         size="large"
                         icon={<RightOutlined />}
-                        iconPosition="end"
+                        iconPlacement="end"
                         style={{
                           background: "#f0ad4e",
                           borderColor: "#f0ad4e",

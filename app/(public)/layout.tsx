@@ -14,7 +14,7 @@ export default function PublicLayout({
   return (
     <Layout className="min-h-screen">
       <Header />
-      <Content className="mx-[30px] mt-5">{children}</Content>
+      <Content className="mx-[30px] my-5">{children}</Content>
     </Layout>
   );
 }

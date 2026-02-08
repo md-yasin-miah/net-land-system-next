@@ -1,7 +1,9 @@
 "use client";
 
 import HeroCarousel from "./HeroCarousel";
-import { heroSlides, dealCards } from "@/mock/home";
+import PosterCarousel from "./PosterCarousel";
+import StaticPosterCard from "./StaticPosterCard";
+import { heroSlides, dealCards, posterCarouselSlides, staticPoster } from "@/mock/home";
 import { allProductsItems } from "@/mock/menu";
 import DealCard from "./DealCard";
 import { Menu, theme } from "antd";
@@ -14,12 +16,13 @@ export default function HomeSection() {
         <div
           style={{
             overflowY: "auto",
+            height: "100%",
           }}
         >
           <Menu
             style={{
-              minHeight: "100%",
               borderRadius: token.borderRadiusLG,
+              height: "inherit",
             }}
             styles={{
               item: {
@@ -43,6 +46,12 @@ export default function HomeSection() {
           <DealCard deal={deal} />
         </div>
       ))}
+      <div className="col-span-6" style={{ height: 280 }}>
+        <PosterCarousel slides={posterCarouselSlides} />
+      </div>
+      <div className="col-span-6">
+        <StaticPosterCard poster={staticPoster}/>
+      </div>
     </div>
   );
 }
