@@ -268,15 +268,3 @@ export const allProductsItems: MenuProps["items"] = [
     icon: <RocketOutlined />,
   },
 ];
-
-/** Home page left sidebar: categories + More (no "All Products" header) */
-export const homeSidebarMenuItems: MenuProps["items"] = [
-  ...(allProductsItems?.filter(
-    (item) => item && typeof item === "object" && "key" in item && item.key !== "all-products"
-  ) ?? []),
-  {
-    key: "more",
-    label: "More",
-    icon: <DownOutlined style={{ transform: "rotate(-90deg)" }} />,
-  },
-];

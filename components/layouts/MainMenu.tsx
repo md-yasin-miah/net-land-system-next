@@ -46,7 +46,6 @@ export default function MainMenu() {
                 itemIcon: {
                   fontSize: "16px",
                 },
-                
               }}
               items={allProductsItems}
               className="custom-right-menu"
