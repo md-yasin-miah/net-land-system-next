@@ -57,3 +57,42 @@ interface TodayDeal {
   tags?: string[];
   href?: string;
 }
+
+/** Product card for category sections (e.g. Gaming Laptops / New Arrivals) */
+interface CategoryProduct {
+  id: string;
+  title: string;
+  image: string;
+  images?: string[];
+  /** Top banner: "Newegg Select" | "AI Ready" etc. */
+  topBadge?: string;
+  topBadgeVariant?: "primary" | "secondary";
+  /** Right-side vertical spec labels: e.g. ["AMD Ryzen 7", "RTX 5070", "16GB RAM", "1TB SSD"] */
+  specBadges: string[];
+  rating?: number;
+  reviewCount?: number;
+  savePercent?: number;
+  price: number;
+  originalPrice: number;
+  promoText?: string;
+  href?: string;
+  hasVideo?: boolean;
+}
+
+/** Product card for "More Items to Consider" grid */
+interface MoreItem {
+  id: string;
+  title: string;
+  image: string;
+  rating?: number;
+  reviewCount?: number;
+  promoText?: string;
+  savePercent?: number;
+  price: number;
+  originalPrice: number;
+  /** e.g. "Newegg Refreshed" - shown as green badge top-right */
+  topBadge?: string;
+  sponsored?: boolean;
+  hasVideo?: boolean;
+  href?: string;
+}

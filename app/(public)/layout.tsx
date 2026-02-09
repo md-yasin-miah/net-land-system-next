@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Layout } from "antd";
-import { Header } from "@/components/layouts/index";
+import { Header, Footer } from "@/components/layouts/index";
 
 const { Content } = Layout;
 
@@ -15,6 +15,7 @@ export default function PublicLayout({
     <Layout className="min-h-screen">
       <Header />
       <Content className="mx-[30px] my-5">{children}</Content>
+      <Footer />
     </Layout>
   );
 }

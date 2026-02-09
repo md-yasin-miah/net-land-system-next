@@ -17,31 +17,6 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-.custom-right-menu .ant-dropdown-menu-submenu-title{
+.custom-right-menu .ant-dropdown-menu-submenu-title {
   padding: 8px 24px 8px 12px !important;
-}
-
-.poster-carousel .splide,
-.poster-carousel .splide__track,
-.poster-carousel .splide__list,
-.poster-carousel .splide__slide {
-  height: 100%;
-}
-
-.today-deal-card-hover:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px);
-  border-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-.todays-best-deals-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-}
-.todays-best-deals-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-.todays-best-deals-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
 }

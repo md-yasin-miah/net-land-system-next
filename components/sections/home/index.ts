@@ -3,4 +3,8 @@ export { default as HeroCarousel } from "./HeroCarousel";
 export { default as PosterCarousel } from "./PosterCarousel";
 export { default as StaticPosterCard } from "./StaticPosterCard";
 export { default as TodayDealCard } from "./TodayDealCard";
+export { default as CategoryProductCard } from "./CategoryProductCard";
+export { default as NewArrivalsCarousel } from "./NewArrivalsCarousel";
+export { default as SectionTitle } from "./SectionTitle";
+export { default as MoreItemCard } from "./MoreItemCard";
 export { default as DealCard } from "./DealCard";
