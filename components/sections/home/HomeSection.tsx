@@ -3,15 +3,18 @@
 import HeroCarousel from "./HeroCarousel";
 import PosterCarousel from "./PosterCarousel";
 import StaticPosterCard from "./StaticPosterCard";
-import { heroSlides, dealCards, posterCarouselSlides, staticPoster } from "@/mock/home";
+import TodayDealCard from "./TodayDealCard";
+import { heroSlides, dealCards, posterCarouselSlides, staticPoster, todaysBestDeals } from "@/mock/home";
 import { allProductsItems } from "@/mock/menu";
 import DealCard from "./DealCard";
-import { Menu, theme } from "antd";
+import { Menu, theme, Button, Typography } from "antd";
+import { RightOutlined } from "@ant-design/icons";
 
 export default function HomeSection() {
   const { token } = theme.useToken();
   return (
-    <div className="grid gap-5 grid-cols-12">
+    <div>
+    <section className="grid gap-5 grid-cols-12">
       <div className="col-span-3 row-span-2">
         <div
           style={{
@@ -52,6 +55,44 @@ export default function HomeSection() {
       <div className="col-span-6">
         <StaticPosterCard poster={staticPoster}/>
       </div>
+    </section>
+      {/* Today's Best Deals */}
+    <section style={{ marginTop: 32 }}>
+      <Typography.Title
+        level={3}
+        style={{
+          marginBottom: 16,
+          fontWeight: 700,
+          color: token.colorTextHeading ?? "#0d47a1",
+        }}
+      >
+        Today&apos;s Best Deals
+      </Typography.Title>
+      <div
+        className="todays-best-deals-scroll grid md:grid-cols-5 grid-cols-1 gap-5"
+      >
+        {todaysBestDeals.map((deal, index) => 
+            <TodayDealCard key={index} deal={deal} />
+        )}
+      </div>
+      <div className="flex justify-center mt-10">
+        <Button
+          type="primary"
+          size="large"
+          icon={<RightOutlined />}
+          iconPlacement="end"
+          href="#all-deals"
+          style={{
+            borderRadius: token.borderRadiusLG,
+            fontWeight: 600,
+            paddingLeft: 24,
+            paddingRight: 24,
+          }}
+        >
+          See all deals
+        </Button>
+      </div>
+    </section>
     </div>
   );
 }

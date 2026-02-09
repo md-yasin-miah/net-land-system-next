@@ -36,3 +36,24 @@ interface Poster {
   image: string;
   href: string;
 }
+
+/** Single product card for "Today's Best Deals" horizontal row */
+interface TodayDeal {
+  id: string;
+  badge?: string;
+  badge_olor?:string
+  badgeVariant?: "primary" | "secondary";
+  rating: number;
+  reviewCount: number;
+  title: string;
+  promoText?: string;
+  price: number;
+  originalPrice: number;
+  discountPercent: number;
+  image: string;
+  /** Multiple images: first shown by default, others on hover (cycle or second only) */
+  images?: string[];
+  imageAlt?: string;
+  tags?: string[];
+  href?: string;
+}
