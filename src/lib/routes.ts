@@ -1,11 +1,12 @@
 export const Routes = {
-  home: '/',
+  home: "/",
   auth: {
-    login: '/login',
-    signup: '/signup',
+    login: "/login",
+    signup: "/signup",
   },
   products: {
-    list: '/products',
+    list: "/products",
     detail: (slug: string) => `/products/${slug}`,
   },
+  checkout: "/checkout",
 };

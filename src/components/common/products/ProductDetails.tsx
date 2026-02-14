@@ -15,9 +15,17 @@ import {
   ShieldCheck,
   Truck,
   ArrowRight,
+  List,
+  Cpu,
+  Download,
+  BarChart3,
+  FileText,
+  ExternalLink,
 } from "lucide-react";
 import { cn, extractTitleFromSlug } from "@/lib/utils";
 import { useParams } from "next/navigation";
+import { useAppDispatch } from "@/store/hooks";
+import { addItem, openDrawer } from "@/store/cartSlice";
 
 // Types
 export interface ProductDetailsProps {
@@ -146,10 +154,35 @@ const defaultRelated = [
 ];
 
 const TABS = [
-  { id: "specs", label: "Specifications" },
-  { id: "technical", label: "Technical Overview" },
-  { id: "support", label: "Support & Downloads" },
-  { id: "ethernet", label: "Ethernet Test Results" },
+  { id: "specs", label: "Specifications", icon: List },
+  { id: "technical", label: "Technical Overview", icon: Cpu },
+  { id: "support", label: "Support & Downloads", icon: Download },
+  { id: "ethernet", label: "Ethernet Test Results", icon: BarChart3 },
+];
+
+const defaultTechnicalOverview = {
+  summary:
+    "The hAP ax³ is built on the Qualcomm IPQ-6010 platform, featuring a quad-core ARM Cortex-A53 processor at 1.8 GHz. It delivers enterprise-grade Wi-Fi 6 performance for home and small office deployments with dual-band concurrent operation.",
+  highlights: [
+    { title: "RouterOS 7", description: "Full RouterOS 7 support with container and zero-touch provisioning capabilities." },
+    { title: "Dual-band AX", description: "2.4 GHz and 5 GHz 802.11ax with 2×2 MU-MIMO and OFDMA for efficient multi-user throughput." },
+    { title: "2.5G Uplink", description: "Single 2.5G Ethernet port for high-speed WAN or uplink to multi-gig switches." },
+    { title: "IPsec Hardware", description: "Hardware-accelerated IPsec for VPN without sacrificing routing performance." },
+  ],
+};
+
+const defaultSupportDownloads = [
+  { label: "Product Manual (PDF)", href: "#", icon: FileText },
+  { label: "Latest Firmware", href: "#", icon: Download },
+  { label: "RouterOS Documentation", href: "#", icon: ExternalLink },
+  { label: "MikroTik Wiki", href: "#", icon: ExternalLink },
+];
+
+const defaultEthernetTests = [
+  { test: "2.5G port throughput (TCP)", result: "2.37 Gbps", note: "Full line rate" },
+  { test: "Gigabit port throughput (TCP)", result: "941 Mbps", note: "Full line rate" },
+  { test: "IPsec throughput (AES-256-GCM)", result: "~800 Mbps", note: "Hardware accelerated" },
+  { test: "Latency (bridge mode)", result: "< 10 µs", note: "Store-and-forward" },
 ];
 
 const containerVariants = {
@@ -165,6 +198,11 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+function parsePrice(priceStr: string): number {
+  const cleaned = priceStr.replace(/[$,৳\s]/g, "");
+  return Number(cleaned) || 0;
+}
+
 const ProductDetails = ({
   product = defaultProduct,
   breadcrumbs = defaultBreadcrumbs,
@@ -172,10 +210,28 @@ const ProductDetails = ({
   relatedProducts = defaultRelated,
 }: ProductDetailsProps) => {
   const { slug } = useParams();
-  console.log({slug});  
+  const dispatch = useAppDispatch();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState("specs");
+
+  const productSlug = (slug as string) || product.name.toLowerCase().replace(/\s+/g, "-");
+  const priceNum = parsePrice(product.price);
+
+  const handleAddToCart = () => {
+    dispatch(
+      addItem({
+        id: product.sku,
+        name: product.name,
+        slug: productSlug,
+        image: product.images[0],
+        price: priceNum,
+        quantity,
+        subtitle: product.features[0],
+      })
+    );
+    dispatch(openDrawer());
+  };
 
   const fullStars = Math.floor(product.rating);
   const hasHalfStar = product.rating % 1 >= 0.5;
@@ -364,6 +420,7 @@ const ProductDetails = ({
                 </div>
                 <button
                   type="button"
+                  onClick={handleAddToCart}
                   className="flex-1 h-12 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
                 >
                   <ShoppingCart className="size-5" />
@@ -401,47 +458,208 @@ const ProductDetails = ({
         transition={{ duration: 0.5 }}
         className="mt-20"
       >
-        <div className="border-b border-slate-200 dark:border-slate-700 flex gap-8 overflow-x-auto pb-px">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                "pb-4 text-sm font-semibold whitespace-nowrap border-b-2 -mb-px transition-colors",
-                activeTab === tab.id
-                  ? "border-primary text-primary"
-                  : "border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white"
-              )}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Tab navigation - professional pill style */}
+        <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 mb-8">
+          {TABS.map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={cn(
+                  "flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200",
+                  activeTab === tab.id
+                    ? "bg-white dark:bg-slate-800 text-primary shadow-sm border border-slate-200 dark:border-slate-600"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
+                )}
+              >
+                <Icon className="size-4 shrink-0" />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
+
         <AnimatePresence mode="wait">
+          {/* Specifications tab - card-based layout */}
           {activeTab === "specs" && (
             <motion.div
               key="specs"
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25 }}
-              className="py-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4"
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
             >
-              {specs.map((group) => (
-                <div key={group.group} className="space-y-4">
-                  <h3 className="text-xl font-bold mb-6">{group.group}</h3>
-                  {group.items.map((row, ri) => (
-                    <div
-                      key={ri}
-                      className="flex justify-between py-3 border-b border-slate-100 dark:border-slate-800"
-                    >
-                      <span className="text-slate-500">{row.label}</span>
-                      <span className="font-medium">{row.value}</span>
-                    </div>
-                  ))}
-                </div>
+              {specs.map((group, gi) => (
+                <motion.div
+                  key={group.group}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: gi * 0.05, duration: 0.25 }}
+                  className="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+                >
+                  <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
+                      {group.group}
+                    </h3>
+                  </div>
+                  <div className="divide-y divide-slate-100 dark:divide-slate-700">
+                    {group.items.map((row, ri) => (
+                      <div
+                        key={ri}
+                        className="flex justify-between items-center gap-4 px-5 py-3.5"
+                      >
+                        <span className="text-sm text-slate-500 dark:text-slate-400">
+                          {row.label}
+                        </span>
+                        <span className="text-sm font-semibold text-slate-900 dark:text-white text-right shrink-0">
+                          {row.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
+            </motion.div>
+          )}
+
+          {/* Technical Overview tab */}
+          {activeTab === "technical" && (
+            <motion.div
+              key="technical"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-8"
+            >
+              <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30 p-6">
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {defaultTechnicalOverview.summary}
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {defaultTechnicalOverview.highlights.map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.06, duration: 0.25 }}
+                    className="flex gap-4 p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-primary/30 dark:hover:border-primary/30 transition-colors"
+                  >
+                    <div className="shrink-0 size-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                      <Cpu className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 dark:text-white mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Support & Downloads tab */}
+          {activeTab === "support" && (
+            <motion.div
+              key="support"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-4"
+            >
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                Official resources and downloads for this product.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {defaultSupportDownloads.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.a
+                      key={item.label}
+                      href={item.href}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05, duration: 0.25 }}
+                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all group"
+                    >
+                      <div className="shrink-0 size-11 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center group-hover:bg-primary/10 dark:group-hover:bg-primary/20 transition-colors">
+                        <Icon className="size-5 text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="font-semibold text-slate-900 dark:text-white block truncate">
+                          {item.label}
+                        </span>
+                        <span className="text-xs text-slate-500 dark:text-slate-400">
+                          Opens in new tab
+                        </span>
+                      </div>
+                      <ExternalLink className="size-4 text-slate-400 shrink-0 ml-auto" />
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Ethernet Test Results tab */}
+          {activeTab === "ethernet" && (
+            <motion.div
+              key="ethernet"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Laboratory test results. Actual performance may vary by environment.
+              </p>
+              <div className="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr className="bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700">
+                        <th className="px-5 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                          Test
+                        </th>
+                        <th className="px-5 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                          Result
+                        </th>
+                        <th className="px-5 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hidden sm:table-cell">
+                          Note
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+                      {defaultEthernetTests.map((row) => (
+                        <tr
+                          key={row.test}
+                          className="bg-white dark:bg-slate-800/30 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
+                        >
+                          <td className="px-5 py-4 text-sm font-medium text-slate-900 dark:text-white">
+                            {row.test}
+                          </td>
+                          <td className="px-5 py-4 text-sm font-semibold text-primary">
+                            {row.result}
+                          </td>
+                          <td className="px-5 py-4 text-sm text-slate-500 dark:text-slate-400 hidden sm:table-cell">
+                            {row.note}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

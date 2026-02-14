@@ -1,25 +1,26 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Bell, Menu, ShoppingCart, User } from 'lucide-react';
-import { Routes } from '@/lib/routes';
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { Bell, Menu, ShoppingCart, User } from "lucide-react";
+import { Routes } from "@/lib/routes";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { openDrawer } from "@/store/cartSlice";
+import { getCartCount, getCartTotal } from "@/store/cartSlice";
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector((s) => s.cart.items);
+  const cartCount = getCartCount(cartItems);
+  const cartTotal = getCartTotal(cartItems);
+
   return (
     <header className="bg-primary text-white sticky top-0 z-50 shadow-md">
       {/* Main Navigation */}
       <div className="max-w-[1440px] mx-auto px-4 h-16 flex items-center justify-between gap-6">
         {/* Logo Area */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div className="size-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpwW0cnzf8_nY9c4SCeoJW9THJfrFDYVuV5AM4vaUo3dW9lCOqezSxu2ou01FcBAr5ASOMza-nP_G35g7WBIeEOxf-mcVOvRbdZQSRquGOIxBbK7_TEgiVUpzbgVbTrwnOWaT5s1h_1z6Fx57ungxLiF35-ZGB1gteJL5ooSdH1OZlrtD1VPdg0LrMNSgZBlkQY5FKLi7G85tamFiwYapfqiHtxOK-kqjccJMBSEx-ZOxXYJuVQjCM_aM6HxVGqQVg_EPL4FtaNgE"
-              alt="Net Land System Bangladesh Logo"
-              width={40}
-              height={40}
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <h1 className="text-xl font-bold tracking-tight hidden lg:block">Net Land System</h1>
+          <Image src="/logo-white.png" alt="Logo" width={120} height={100} />
         </Link>
 
         {/* Search Bar */}
@@ -54,9 +55,19 @@ const Header = () => {
                 2
               </span>
             </Link>
-            <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded transition-colors border border-white/20">
+            <button
+              type="button"
+              onClick={() => dispatch(openDrawer())}
+              className="relative flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded transition-colors border border-white/20"
+              aria-label={`Cart: ${cartCount} items`}
+            >
               <ShoppingCart className="w-5 h-5" />
-              <span className="font-bold">৳0.00</span>
+              <span className="font-bold">৳{cartTotal.toLocaleString()}</span>
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 size-4 bg-orange-500 text-[10px] flex items-center justify-center rounded-full font-bold">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
             </button>
           </div>
         </div>

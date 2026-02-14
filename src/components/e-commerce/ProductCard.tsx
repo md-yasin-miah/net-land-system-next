@@ -1,7 +1,11 @@
+"use client";
+
 import { Routes } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "@/lib/utils";
+import { useAppDispatch } from "@/store/hooks";
+import { addItem, openDrawer } from "@/store/cartSlice";
 
 export interface ProductCardProps {
   id: string;
@@ -18,6 +22,7 @@ export interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   brand,
   name,
   image,
@@ -29,8 +34,25 @@ const ProductCard = ({
   badge,
   inStock,
 }: ProductCardProps) => {
+  const dispatch = useAppDispatch();
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 !== 0;
+
+  const handleAddToCart = () => {
+    if (!inStock) return;
+    dispatch(
+      addItem({
+        id,
+        name,
+        slug: slugify(name),
+        image,
+        price,
+        quantity: 1,
+        subtitle: specs[0] ?? `${brand} • In Stock`,
+      })
+    );
+    dispatch(openDrawer());
+  };
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 p-3 flex flex-col group hover:shadow-xl transition-shadow relative">
@@ -109,6 +131,8 @@ const ProductCard = ({
           {inStock ? "In Stock" : "Pre-Order"}
         </div>
         <button
+          type="button"
+          onClick={handleAddToCart}
           className={`w-full text-white py-2 rounded font-bold text-xs flex items-center justify-center gap-2 transition-colors ${
             inStock
               ? "bg-primary hover:bg-blue-700"
