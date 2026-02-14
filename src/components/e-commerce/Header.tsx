@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Menu } from 'lucide-react';
 
 const Header = () => {
   return (
@@ -28,7 +29,7 @@ const Header = () => {
               placeholder="Search for routers, switches, or servers..."
               className="w-full h-10 pl-4 pr-12 rounded bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-300 border-none"
             />
-            <button className="absolute right-0 h-10 w-12 bg-orange-500 hover:bg-orange-600 rounded-r flex items-center justify-center transition-colors">
+            <button className="absolute right-0 h-10 w-12 bg-orange-500 hover:bg-orange-600 rounded-r-sm flex items-center justify-center transition-colors">
               <span className="material-symbols-outlined text-white">search</span>
             </button>
           </div>
@@ -61,10 +62,10 @@ const Header = () => {
       </div>
 
       {/* Sub Nav / Categories */}
-      <div className="bg-primary-dark bg-opacity-20 border-t border-white/10">
+      <div className="bg-primary-dark/20 border-t border-white/10">
         <div className="max-w-[1440px] mx-auto px-4 h-10 flex items-center gap-8 text-sm font-medium">
           <Link href="/categories" className="flex items-center gap-1 hover:text-blue-200">
-            <span className="material-symbols-outlined text-sm">menu</span> All Categories
+            <Menu className="w-4 h-4" /> All Categories
           </Link>
           <Link href="/deals" className="hover:text-blue-200">
             Today&apos;s Deals

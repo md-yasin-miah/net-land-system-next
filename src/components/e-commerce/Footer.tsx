@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const Footer = () => {
   return (
@@ -129,20 +132,29 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="max-w-[1440px] mx-auto px-4 mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
-        <p className="text-xs opacity-60">© 2024 Net Land System Bangladesh. All Rights Reserved.</p>
-        <div className="flex items-center gap-4 opacity-70">
-          <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
-            VISA
-          </div>
-          <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
-            BKASH
-          </div>
-          <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
-            NAGAD
-          </div>
-          <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
-            COD
+      <div className="max-w-[1440px] mx-auto px-4 mt-12 pt-8 border-t border-slate-800">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-xs opacity-60">© 2024 Net Land System Bangladesh. All Rights Reserved.</p>
+          
+          <div className="flex items-center gap-6">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+            
+            {/* Payment Methods */}
+            <div className="flex items-center gap-4 opacity-70">
+              <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
+                VISA
+              </div>
+              <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
+                BKASH
+              </div>
+              <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
+                NAGAD
+              </div>
+              <div className="h-6 w-10 bg-slate-700 rounded-sm flex items-center justify-center font-bold text-[8px]">
+                COD
+              </div>
+            </div>
           </div>
         </div>
       </div>
