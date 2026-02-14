@@ -10,6 +10,7 @@ export const Routes = {
     reviews: (slug: string) => `/products/${slug}/reviews`,
   },
   checkout: "/checkout",
+  checkoutThankYou: "/checkout/thank-you",
   faq: {
     index: "/faq",
     shippingDelivery: "/faq/shipping-delivery",

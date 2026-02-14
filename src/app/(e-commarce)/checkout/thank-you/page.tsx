@@ -1,9 +1,21 @@
-import React from 'react'
+import ThankYouContent from "@/components/checkout/ThankYouContent";
+import type { Metadata } from "next";
 
-const ThankYouPage = () => {
+export const metadata: Metadata = {
+  title: "Order Confirmation | Net Land System",
+  description: "Thank you for your order. Your order has been confirmed.",
+};
+
+export default async function ThankYouPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ orderId?: string }>;
+}) {
+  const { orderId } = await searchParams;
+
   return (
-    <div>ThankYouPage</div>
-  )
+    <>
+      <ThankYouContent orderId={orderId} />
+    </>
+  );
 }
-
-export default ThankYouPage
