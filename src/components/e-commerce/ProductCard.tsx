@@ -1,0 +1,108 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+export interface ProductCardProps {
+  id: string;
+  brand: string;
+  name: string;
+  image: string;
+  price: number;
+  originalPrice?: number;
+  rating: number;
+  reviews: number;
+  specs: string[];
+  badge?: 'SAVE 15%' | 'HOT' | 'NEW';
+  inStock: boolean;
+}
+
+const ProductCard = ({
+  brand,
+  name,
+  image,
+  price,
+  originalPrice,
+  rating,
+  reviews,
+  specs,
+  badge,
+  inStock,
+}: ProductCardProps) => {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+
+  return (
+    <div className="bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 p-3 flex flex-col group hover:shadow-xl transition-shadow relative">
+      <div className="relative aspect-square overflow-hidden mb-3">
+        <Image
+          src={image}
+          alt={name}
+          width={300}
+          height={300}
+          className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal"
+        />
+        {badge && (
+          <span className={`absolute top-0 right-0 text-white text-[10px] font-bold px-2 py-0.5 rounded-sm ${
+            badge === 'SAVE 15%' ? 'bg-red-500' : 'bg-primary'
+          }`}>
+            {badge}
+          </span>
+        )}
+      </div>
+      <div className="flex-1">
+        <p className="text-[10px] text-slate-400 font-bold mb-1 uppercase">{brand}</p>
+        <h3 className="text-sm font-medium leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-2 h-10">
+          {name}
+        </h3>
+        <div className="flex items-center gap-1 mb-2">
+          <div className="flex text-orange-400 text-xs">
+            {[...Array(fullStars)].map((_, i) => (
+              <span key={i} className="material-symbols-outlined text-sm">star</span>
+            ))}
+            {hasHalfStar && (
+              <span className="material-symbols-outlined text-sm">star_half</span>
+            )}
+            {[...Array(5 - Math.ceil(rating))].map((_, i) => (
+              <span key={i} className="material-symbols-outlined text-sm">star_outline</span>
+            ))}
+          </div>
+          <span className="text-[10px] text-slate-400">({reviews})</span>
+        </div>
+        <div className="text-xs text-slate-500 mb-2">
+          {specs.map((spec, index) => (
+            <div key={index}>• {spec}</div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-2">
+        <div className="flex flex-col">
+          {originalPrice && (
+            <span className="text-xs text-slate-400 line-through">৳{originalPrice.toLocaleString()}</span>
+          )}
+          <span className="text-lg font-bold text-slate-900 dark:text-white">
+            ৳{price.toLocaleString()}
+          </span>
+        </div>
+        <div className={`flex items-center gap-1 text-[10px] font-bold mb-3 ${
+          inStock ? 'text-green-600' : 'text-orange-600'
+        }`}>
+          <span className="material-symbols-outlined text-xs">
+            {inStock ? 'check_circle' : 'schedule'}
+          </span>
+          {inStock ? 'In Stock' : 'Pre-Order'}
+        </div>
+        <button className={`w-full text-white py-2 rounded font-bold text-xs flex items-center justify-center gap-2 transition-colors ${
+          inStock
+            ? 'bg-primary hover:bg-blue-700'
+            : 'bg-slate-800 hover:bg-slate-900'
+        }`}>
+          <span className="material-symbols-outlined text-sm">
+            {inStock ? 'add_shopping_cart' : 'bookmark'}
+          </span>
+          {inStock ? 'Add to Cart' : 'Pre-Order'}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;
