@@ -13,11 +13,14 @@ import {
   Flag,
   Edit,
   ImagePlus,
+  Eye,
 } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { cn, extractTitleFromSlug } from "@/lib/utils";
 import { useAppDispatch } from "@/store/hooks";
 import { addItem, openDrawer } from "@/store/cartSlice";
+import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
 
 const STAR_DISTRIBUTION = [
   { stars: 5, percent: 85 },
@@ -44,7 +47,8 @@ const MOCK_REVIEWS = [
     verified: true,
     title: "Exceptional Throughput and PoE Stability",
     body: "We deployed 12 of these units across our satellite offices. The PoE+ management is robust—we're driving heavy VoIP and security camera traffic with zero dropouts. The L3 features are surprisingly comprehensive for a switch at this price point. Highly recommended for mid-market enterprise use.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBkOzxuULcnWEdx4lMorKiSLkpDoLi-gpCLD-Dr4OW-gaa8Cop1RFM0VSkbUgsARNm_uTx6SQbvK7OVZNVOGz4MI2ZcbVGE8kWpeGUDljFNXA0kstBQ3WU3UzSdFU2YlYDTJxrBfAiCWapC6e6o7GFFLELQr2DIvtWMZI-tjkz5sYl5fyppiHEdmHepoQO2cqgdpTEKvBfXIXYVZZA2QqF9bCKgGeAAQt4L4II7akIwgBkAiRhlbDa0bAoqJ_Piropc95oDQezq0cg",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBkOzxuULcnWEdx4lMorKiSLkpDoLi-gpCLD-Dr4OW-gaa8Cop1RFM0VSkbUgsARNm_uTx6SQbvK7OVZNVOGz4MI2ZcbVGE8kWpeGUDljFNXA0kstBQ3WU3UzSdFU2YlYDTJxrBfAiCWapC6e6o7GFFLELQr2DIvtWMZI-tjkz5sYl5fyppiHEdmHepoQO2cqgdpTEKvBfXIXYVZZA2QqF9bCKgGeAAQt4L4II7akIwgBkAiRhlbDa0bAoqJ_Piropc95oDQezq0cg",
     helpfulCount: 24,
   },
   {
@@ -98,7 +102,7 @@ export default function ProductReviewsContent({
         price: 45000,
         quantity: 1,
         subtitle: productSubtitle,
-      })
+      }),
     );
     dispatch(openDrawer());
   };
@@ -131,32 +135,36 @@ export default function ProductReviewsContent({
               />
             </div>
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+              <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
                 {productName}
               </h2>
-              <p className="text-slate-500 dark:text-slate-400">{productSubtitle}</p>
+              <p className="text-slate-500 dark:text-slate-400 text-sm">
+                {productSubtitle}
+              </p>
               <div className="flex items-center gap-2 mt-2">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                <Badge variant="success">
                   In Stock
-                </span>
-                <span className="text-sm text-slate-400">SKU: {sku}</span>
+                </Badge>
+                <Badge variant="outline" className="text-slate-500 dark:text-slate-400">
+                  SKU: {sku}
+                </Badge>
               </div>
             </div>
           </div>
           <div className="flex gap-3">
-            <Link
-              href={Routes.products.detail(slug)}
-              className="flex-1 md:flex-none inline-flex items-center justify-center px-6 py-2.5 border border-primary text-primary font-bold rounded-lg hover:bg-primary/5 transition-colors"
-            >
-              View Product Details
+            <Link href={Routes.products.detail(slug)}>
+              <Button variant="outline">
+                <Eye className="size-4" />
+                View Product Details
+              </Button>
             </Link>
-            <button
+            <Button
               type="button"
               onClick={handleAddToCart}
               className="flex-1 md:flex-none inline-flex items-center justify-center px-6 py-2.5 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors"
             >
               Add to Cart
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -169,7 +177,9 @@ export default function ProductReviewsContent({
               Customer Rating
             </h3>
             <div className="flex items-end gap-3 mb-6">
-              <span className="text-5xl font-black text-slate-900 dark:text-white">{rating}</span>
+              <span className="text-5xl font-black text-slate-900 dark:text-white">
+                {rating}
+              </span>
               <div className="pb-1">
                 <div className="flex text-amber-500 gap-0.5">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -177,7 +187,9 @@ export default function ProductReviewsContent({
                       key={i}
                       className={cn(
                         "size-5",
-                        i <= Math.floor(rating) ? "fill-current" : "text-slate-200 dark:text-slate-600"
+                        i <= Math.floor(rating)
+                          ? "fill-current"
+                          : "text-slate-200 dark:text-slate-600",
                       )}
                     />
                   ))}
@@ -202,7 +214,9 @@ export default function ProductReviewsContent({
                       style={{ width: `${row.percent}%` }}
                     />
                   </div>
-                  <span className="text-sm text-slate-500 text-right">{row.percent}%</span>
+                  <span className="text-sm text-slate-500 text-right">
+                    {row.percent}%
+                  </span>
                 </div>
               ))}
             </div>
@@ -270,7 +284,7 @@ export default function ProductReviewsContent({
                           "size-8 transition-colors",
                           i <= reviewRating
                             ? "fill-amber-500 text-amber-500"
-                            : "text-slate-300 dark:text-slate-600"
+                            : "text-slate-300 dark:text-slate-600",
                         )}
                       />
                     </button>
@@ -317,7 +331,9 @@ export default function ProductReviewsContent({
                 </label>
                 <div className="border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-lg p-8 flex flex-col items-center justify-center text-slate-500 hover:border-primary hover:bg-primary/5 cursor-pointer transition-all">
                   <ImagePlus className="size-10 mb-2 text-slate-400" />
-                  <p className="text-sm font-medium">Drag and drop setup photos or click to browse</p>
+                  <p className="text-sm font-medium">
+                    Drag and drop setup photos or click to browse
+                  </p>
                   <p className="text-xs mt-1">PNG, JPG up to 10MB</p>
                 </div>
               </div>
@@ -341,7 +357,9 @@ export default function ProductReviewsContent({
           {/* Filter Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-4">
-              <span className="text-sm font-bold text-slate-900 dark:text-white">Sort by:</span>
+              <span className="text-sm font-bold text-slate-900 dark:text-white">
+                Sort by:
+              </span>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -350,7 +368,7 @@ export default function ProductReviewsContent({
                     "px-3 py-1.5 text-xs font-bold rounded-full transition-colors",
                     sortBy === "relevant"
                       ? "bg-primary text-white"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700",
                   )}
                 >
                   Most Relevant
@@ -362,7 +380,7 @@ export default function ProductReviewsContent({
                     "px-3 py-1.5 text-xs font-bold rounded-full transition-colors",
                     sortBy === "newest"
                       ? "bg-primary text-white"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700",
                   )}
                 >
                   Newest First
@@ -421,7 +439,9 @@ export default function ProductReviewsContent({
                         key={i}
                         className={cn(
                           "size-4",
-                          i <= review.rating ? "fill-current" : "text-slate-200 dark:text-slate-600"
+                          i <= review.rating
+                            ? "fill-current"
+                            : "text-slate-200 dark:text-slate-600",
                         )}
                       />
                     ))}
@@ -447,7 +467,9 @@ export default function ProductReviewsContent({
                 )}
                 <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
                   <div className="flex items-center gap-4">
-                    <span className="text-xs text-slate-500">Was this review helpful?</span>
+                    <span className="text-xs text-slate-500">
+                      Was this review helpful?
+                    </span>
                     <div className="flex gap-2">
                       <button
                         type="button"
