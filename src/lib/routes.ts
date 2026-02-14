@@ -7,6 +7,7 @@ export const Routes = {
   products: {
     list: "/products",
     detail: (slug: string) => `/products/${slug}`,
+    reviews: (slug: string) => `/products/${slug}/reviews`,
   },
   checkout: "/checkout",
   faq: {

@@ -21,7 +21,9 @@ import {
   BarChart3,
   FileText,
   ExternalLink,
+  MessageSquare,
 } from "lucide-react";
+import { Routes } from "@/lib/routes";
 import { cn, extractTitleFromSlug } from "@/lib/utils";
 import { useParams } from "next/navigation";
 import { useAppDispatch } from "@/store/hooks";
@@ -156,6 +158,7 @@ const defaultRelated = [
 const TABS = [
   { id: "specs", label: "Specifications", icon: List },
   { id: "technical", label: "Technical Overview", icon: Cpu },
+  { id: "reviews", label: "Reviews", icon: MessageSquare },
   { id: "support", label: "Support & Downloads", icon: Download },
   { id: "ethernet", label: "Ethernet Test Results", icon: BarChart3 },
 ];
@@ -342,15 +345,20 @@ const ProductDetails = ({
             </h1>
             <p className="text-lg text-slate-500 dark:text-slate-400 mt-2">{product.sku}</p>
             <div className="flex items-center gap-4 mt-4">
-              <div className="flex text-amber-400">
-                {[...Array(fullStars)].map((_, i) => (
-                  <Star key={i} className="size-5 fill-current" />
-                ))}
-                {hasHalfStar && <StarHalf className="size-5 fill-current" />}
-              </div>
-              <span className="text-sm font-medium text-slate-400">
-                {product.rating} ({product.reviewCount} reviews)
-              </span>
+              <Link
+                href={Routes.products.reviews(productSlug)}
+                className="flex items-center gap-2 group"
+              >
+                <div className="flex text-amber-400">
+                  {[...Array(fullStars)].map((_, i) => (
+                    <Star key={i} className="size-5 fill-current" />
+                  ))}
+                  {hasHalfStar && <StarHalf className="size-5 fill-current" />}
+                </div>
+                <span className="text-sm font-medium text-slate-400 group-hover:text-primary transition-colors">
+                  {product.rating} ({product.reviewCount} reviews)
+                </span>
+              </Link>
             </div>
           </motion.div>
 
@@ -563,6 +571,57 @@ const ProductDetails = ({
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
+          )}
+
+          {/* Reviews tab - preview + link to full page */}
+          {activeTab === "reviews" && (
+            <motion.div
+              key="reviews"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl font-black text-slate-900 dark:text-white">
+                    {product.rating}
+                  </span>
+                  <div>
+                    <div className="flex text-amber-400 gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={cn(
+                            "size-5",
+                            i < Math.floor(product.rating)
+                              ? "fill-current"
+                              : i < product.rating
+                                ? "fill-amber-400/50"
+                                : "text-slate-200 dark:text-slate-600"
+                          )}
+                        />
+                      ))}
+                    </div>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+                      {product.reviewCount} reviews
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href={Routes.products.reviews(productSlug)}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+                >
+                  <MessageSquare className="size-5" />
+                  View all reviews
+                </Link>
+              </div>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Read customer reviews, see community photos, and write your own review on the
+                dedicated reviews page.
+              </p>
             </motion.div>
           )}
 
