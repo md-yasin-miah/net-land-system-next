@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu } from 'lucide-react';
+import { Bell, Menu, ShoppingCart, User } from 'lucide-react';
+import { Routes } from '@/lib/routes';
 
 const Header = () => {
   return (
@@ -39,22 +40,22 @@ const Header = () => {
         <div className="flex items-center gap-6 shrink-0">
           <div className="hidden xl:flex flex-col text-xs">
             <span className="opacity-80">Welcome,</span>
-            <Link href="/login" className="font-semibold hover:underline">
+            <Link href={Routes.auth.login} className="font-semibold hover:underline">
               Sign In / Register
             </Link>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/profile" className="relative p-2 hover:bg-white/10 rounded-full transition-colors">
-              <span className="material-symbols-outlined">person</span>
+              <User className="w-5 h-5" />
             </Link>
             <Link href="/notifications" className="relative p-2 hover:bg-white/10 rounded-full transition-colors">
-              <span className="material-symbols-outlined">notifications</span>
-              <span className="absolute top-1 right-1 size-4 bg-orange-500 text-[10px] flex items-center justify-center rounded-full font-bold">
+              <Bell className="w-5 h-5" />
+              <span className="absolute top-0 right-0 size-4 bg-orange-500 text-[10px] flex items-center justify-center rounded-full font-bold">
                 2
               </span>
             </Link>
             <button className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded transition-colors border border-white/20">
-              <span className="material-symbols-outlined">shopping_cart</span>
+              <ShoppingCart className="w-5 h-5" />
               <span className="font-bold">৳0.00</span>
             </button>
           </div>

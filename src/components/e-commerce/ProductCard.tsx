@@ -1,5 +1,7 @@
+import { Routes } from '@/lib/routes';
 import Image from 'next/image';
 import Link from 'next/link';
+import { slugify } from '@/lib/utils';
 
 export interface ProductCardProps {
   id: string;
@@ -50,9 +52,11 @@ const ProductCard = ({
       </div>
       <div className="flex-1">
         <p className="text-[10px] text-slate-400 font-bold mb-1 uppercase">{brand}</p>
-        <h3 className="text-sm font-medium leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-2 h-10">
+        <Link href={Routes.products.detail(slugify(name))}>
+        <h3 className="text-sm font-medium leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-2 h-10 hover:underline">
           {name}
         </h3>
+        </Link>
         <div className="flex items-center gap-1 mb-2">
           <div className="flex text-orange-400 text-xs">
             {[...Array(fullStars)].map((_, i) => (

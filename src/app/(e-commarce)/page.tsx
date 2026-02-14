@@ -3,6 +3,9 @@ import HeroSlider from '@/components/e-commerce/home/HeroSlider';
 import SideAdBanner from '@/components/e-commerce/home/SideAdBanner';
 import FeatureStrip from '@/components/e-commerce/home/FeatureStrip';
 import WeeklyDeals from '@/components/e-commerce/home/WeeklyDeals';
+import FeaturedProduct from '@/components/e-commerce/home/FeaturedProduct';
+import SoftwareServices from '@/components/e-commerce/home/SoftwareServices';
+import InfrastructureSolutions from '@/components/e-commerce/home/InfrastructureSolutions';
 import Newsletter from '@/components/e-commerce/home/Newsletter';
 
 const ECommerceHomePage = () => {
@@ -20,6 +23,15 @@ const ECommerceHomePage = () => {
 
       {/* Weekly Networking Deals Section */}
       <WeeklyDeals />
+
+      {/* Featured Product - Cisco Nexus 9300 */}
+      <FeaturedProduct />
+
+      {/* Software & Managed Services */}
+      <SoftwareServices />
+
+      {/* Infrastructure Solutions */}
+      <InfrastructureSolutions />
 
       {/* Newsletter & Footer Banner */}
       <Newsletter />
