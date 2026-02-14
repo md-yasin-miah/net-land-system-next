@@ -8,3 +8,6 @@ export function cn(...inputs: ClassValue[]) {
 export function slugify(text: string) {
   return text.toLowerCase().replace(/ /g, '-');
 }
+export function extractTitleFromSlug(slug: string) {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+}

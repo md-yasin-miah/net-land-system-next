@@ -1,7 +1,7 @@
-import { Routes } from '@/lib/routes';
-import Image from 'next/image';
-import Link from 'next/link';
-import { slugify } from '@/lib/utils';
+import { Routes } from "@/lib/routes";
+import Image from "next/image";
+import Link from "next/link";
+import { slugify } from "@/lib/utils";
 
 export interface ProductCardProps {
   id: string;
@@ -13,7 +13,7 @@ export interface ProductCardProps {
   rating: number;
   reviews: number;
   specs: string[];
-  badge?: 'SAVE 15%' | 'HOT' | 'NEW';
+  badge?: "SAVE 15%" | "HOT" | "NEW";
   inStock: boolean;
 }
 
@@ -43,30 +43,40 @@ const ProductCard = ({
           className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal"
         />
         {badge && (
-          <span className={`absolute top-0 right-0 text-white text-[10px] font-bold px-2 py-0.5 rounded-sm ${
-            badge === 'SAVE 15%' ? 'bg-red-500' : 'bg-primary'
-          }`}>
+          <span
+            className={`absolute top-0 right-0 text-white text-[10px] font-bold px-2 py-0.5 rounded-sm ${
+              badge === "SAVE 15%" ? "bg-red-500" : "bg-primary"
+            }`}
+          >
             {badge}
           </span>
         )}
       </div>
       <div className="flex-1">
-        <p className="text-[10px] text-slate-400 font-bold mb-1 uppercase">{brand}</p>
+        <p className="text-[10px] text-slate-400 font-bold mb-1 uppercase">
+          {brand}
+        </p>
         <Link href={Routes.products.detail(slugify(name))}>
-        <h3 className="text-sm font-medium leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-2 h-10 hover:underline">
-          {name}
-        </h3>
+          <h3 className="text-sm font-medium leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-2 h-10 hover:underline">
+            {name}
+          </h3>
         </Link>
         <div className="flex items-center gap-1 mb-2">
           <div className="flex text-orange-400 text-xs">
             {[...Array(fullStars)].map((_, i) => (
-              <span key={i} className="material-symbols-outlined text-sm">star</span>
+              <span key={i} className="material-symbols-outlined text-sm">
+                star
+              </span>
             ))}
             {hasHalfStar && (
-              <span className="material-symbols-outlined text-sm">star_half</span>
+              <span className="material-symbols-outlined text-sm">
+                star_half
+              </span>
             )}
             {[...Array(5 - Math.ceil(rating))].map((_, i) => (
-              <span key={i} className="material-symbols-outlined text-sm">star_outline</span>
+              <span key={i} className="material-symbols-outlined text-sm">
+                star_outline
+              </span>
             ))}
           </div>
           <span className="text-[10px] text-slate-400">({reviews})</span>
@@ -80,29 +90,35 @@ const ProductCard = ({
       <div className="mt-2">
         <div className="flex flex-col">
           {originalPrice && (
-            <span className="text-xs text-slate-400 line-through">৳{originalPrice.toLocaleString()}</span>
+            <span className="text-xs text-slate-400 line-through">
+              ৳{originalPrice.toLocaleString()}
+            </span>
           )}
           <span className="text-lg font-bold text-slate-900 dark:text-white">
             ৳{price.toLocaleString()}
           </span>
         </div>
-        <div className={`flex items-center gap-1 text-[10px] font-bold mb-3 ${
-          inStock ? 'text-green-600' : 'text-orange-600'
-        }`}>
+        <div
+          className={`flex items-center gap-1 text-[10px] font-bold mb-3 ${
+            inStock ? "text-green-600" : "text-orange-600"
+          }`}
+        >
           <span className="material-symbols-outlined text-xs">
-            {inStock ? 'check_circle' : 'schedule'}
+            {inStock ? "check_circle" : "schedule"}
           </span>
-          {inStock ? 'In Stock' : 'Pre-Order'}
+          {inStock ? "In Stock" : "Pre-Order"}
         </div>
-        <button className={`w-full text-white py-2 rounded font-bold text-xs flex items-center justify-center gap-2 transition-colors ${
-          inStock
-            ? 'bg-primary hover:bg-blue-700'
-            : 'bg-slate-800 hover:bg-slate-900'
-        }`}>
+        <button
+          className={`w-full text-white py-2 rounded font-bold text-xs flex items-center justify-center gap-2 transition-colors ${
+            inStock
+              ? "bg-primary hover:bg-blue-700"
+              : "bg-slate-800 hover:bg-slate-900"
+          }`}
+        >
           <span className="material-symbols-outlined text-sm">
-            {inStock ? 'add_shopping_cart' : 'bookmark'}
+            {inStock ? "add_shopping_cart" : "bookmark"}
           </span>
-          {inStock ? 'Add to Cart' : 'Pre-Order'}
+          {inStock ? "Add to Cart" : "Pre-Order"}
         </button>
       </div>
     </div>
