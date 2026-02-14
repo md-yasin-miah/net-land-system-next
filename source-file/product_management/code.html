@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Net Land Admin - Products Management</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Main Container -->
+<div class="relative flex flex-col min-h-screen">
+<!-- Header / Navigation -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Logo and Search -->
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<div class="bg-primary text-white p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Net Land</h1>
+</div>
+<div class="hidden md:flex items-center">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-80 bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-500" placeholder="Search products, SKU, or orders..." type="text"/>
+</div>
+</div>
+</div>
+<!-- User Profile & Notifications -->
+<div class="flex items-center gap-4">
+<nav class="hidden lg:flex items-center gap-6 mr-6">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-semibold text-primary" href="#">Products</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Orders</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Customers</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border-2 border-transparent group-hover:border-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="User avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3XeAtz4odo9mW34vB1ILyKk2jYMc5xA5XFk4kbLgd9G2tJOpUQ7J1wF5G3HhzYz83n7u3YLAWN6Awso_emYClb04tfAEd2UvwGoa2_1Zks1leTH_uQQRJOF_TZrr5_hUiqCsGbECRikRXF5VvUQtJyHVXge6UEh66hu-xb-54qhQLLblpvnc-264z69lXz6J3XMU9Y9GuLaon3bcBZkOhZe1ZpJs13JuTBBefWM712LOmluJwZYmoWYUmXGWgyupxs3mcfP7axvI"/>
+</div>
+<div class="hidden sm:block">
+<p class="text-xs font-semibold">Alex Rivers</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Administrator</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 max-w-[1440px] mx-auto w-full px-6 py-8">
+<!-- Hero Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Products Inventory</h2>
+<p class="text-slate-500 text-sm mt-1">Manage, track, and update your global inventory across all channels.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">file_download</span>
+                        Export
+                    </button>
+<button class="px-5 py-2.5 bg-primary text-white font-bold text-sm rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+                        Add Product
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats Overview (Subtle ERP Style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-1">Total Products</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">1,284</span>
+<span class="text-xs text-green-600 font-medium">+12%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-1">Out of Stock</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">18</span>
+<span class="text-xs text-red-500 font-medium">Critical</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-1">Stock Value</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">$142.5k</span>
+<span class="text-xs text-slate-400 font-medium">USD</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-1">Avg. Margin</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">34.2%</span>
+<span class="material-symbols-outlined text-green-500 text-sm">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-6">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm text-slate-600 dark:text-slate-400 border border-transparent">
+<span class="material-symbols-outlined text-base">filter_list</span>
+<span class="font-medium">Filters:</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg pl-4 pr-10 py-2 text-sm focus:ring-primary focus:border-primary min-w-[160px]">
+<option>Category: All</option>
+<option>Electronics</option>
+<option>Furniture</option>
+<option>Home &amp; Kitchen</option>
+<option>Fashion</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xl">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg pl-4 pr-10 py-2 text-sm focus:ring-primary focus:border-primary min-w-[160px]">
+<option>Status: All</option>
+<option>Active</option>
+<option>Draft</option>
+<option>Out of Stock</option>
+<option>Archived</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xl">expand_more</span>
+</div>
+<button class="px-4 py-2 text-sm text-primary font-medium hover:bg-primary/5 rounded-lg transition-colors">Clear Filters</button>
+</div>
+<div class="flex items-center gap-2">
+<p class="text-xs text-slate-500 font-medium whitespace-nowrap">Sort by:</p>
+<select class="bg-transparent border-none text-sm font-semibold text-slate-700 dark:text-slate-300 focus:ring-0 cursor-pointer">
+<option>Latest Created</option>
+<option>Stock: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden @container">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest w-16 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest min-w-[280px]">Product Information</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest hidden lg:table-cell">SKU</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Category</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Financials</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Stock</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="iPhone 15 Pro thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6RuUyMLSCh5GGxXoo1bMW1jvP2aK_nkWxE9KSmOA1ojqrykBhc39CHnn-ZdBNiqimoQnLX65q9Q0XiaZ1DJb7FqLSzxuZU_dPhOs-Vt1La37KSXj08AulZbIoQz64f6slScDfaUd3RVQ3Ik318hLeFCACF4pvZ1CJTvn5eDd2OavznUDe6Rwz8U3wzHzFAMXGJ_7D7qbTfQIAeUqKG1HZ47ze3KnrNKZ7yNRuTcTZktqxkVXB9hW3llCyXIhGEhhcuW1lpuoxIq8"/>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">iPhone 15 Pro Max</p>
+<p class="text-xs text-slate-500 mt-0.5 italic">Natural Titanium, 256GB</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 hidden lg:table-cell">
+<span class="font-mono text-xs text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">SKU-9901-T</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Electronics</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-semibold text-slate-900 dark:text-white">$1,199.00</p>
+<p class="text-[10px] text-slate-400 mt-0.5">Cost: $899.00</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-bold">45 units</span>
+<div class="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[60%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-500 border border-green-200 dark:border-green-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5 animate-pulse"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-all" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all" title="Delete">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Low Stock Warning -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="ErgoComfort chair thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrFSVZeoaXnI3vHcT6XqpFDF__7H2fiecfavhZ_1hg7gxnj9U4VaLS45OW1vZx3M3Y5zjEHvfY7a_F2k-S9Uw3lRMp3R-B9tzGaznhdnqfpK7tw_cmlKliDWnUbTTGjdkxASok__HxE2Aj7EQIbwTTq_-V55f5L0qLw5oxufcO4cbBfsodAN2gsjKJKEVwjNzTb4Y_qaPZw_VHJ_flgboKsHu0Dk6-B1063MUEzQKtZaixhqj2gpTXSG7bY2M0dZjzGwrgFlcBOec"/>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">ErgoComfort Pro Chair</p>
+<p class="text-xs text-slate-500 mt-0.5 italic">Mesh Office, Onyx Black</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 hidden lg:table-cell">
+<span class="font-mono text-xs text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">SKU-4421-E</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Furniture</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-semibold text-slate-900 dark:text-white">$349.99</p>
+<p class="text-[10px] text-slate-400 mt-0.5">Cost: $120.00</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-amber-600">8 units</span>
+<span class="px-1.5 py-0.5 rounded bg-amber-100 text-[10px] font-black text-amber-700 uppercase tracking-tighter">Low Stock</span>
+</div>
+<div class="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 w-[20%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-500 border border-green-200 dark:border-green-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Out of Stock -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="RapidClick Mouse thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyAiJAJlgIHXAnZYqSw5-S0JxmdFhvJ82ntB0l2X3_defGLez1GN-Y5o1IM3YWzp-ho55-FH-kgsmiAgoJHl0PEY7-igYg7j70NCaoxTR7odaZH7fio_LoPwN7YFAd91cDbr0Gv1ZwEs3eLUgdvkm7lA7jV6j5g5xYgkp9v8LW-NSwKyWtAAAriB7CE1OJpLJ0fuiaZmk8wjXuO49LtthTpd7WSLD4Ad6Oag2hHfY6zGrWCQzoI9h2zMa_ASFXTxe9wygSmsEL0HM"/>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">RapidClick Wireless</p>
+<p class="text-xs text-slate-500 mt-0.5 italic">Ergonomic Mouse</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 hidden lg:table-cell">
+<span class="font-mono text-xs text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">SKU-8832-M</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Electronics</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-semibold text-slate-900 dark:text-white">$65.00</p>
+<p class="text-[10px] text-slate-400 mt-0.5">Cost: $35.00</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-bold text-red-600">0 units</span>
+<div class="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-slate-300 w-0"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-500 border border-red-200 dark:border-red-500/20">
+                                        Out of Stock
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Draft -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Ceramic Vase thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB_MfVZL6zJ8xJNLSL47PI9DtYFgVv6-OUKu8jL1biMp0DSOm-fPN-tqqmpSzymY20FdnuN1FWjM4DyagdJH5SjHDIZJrzTAMJCRveRjgytL41h81Fv1IrPvw7yZGGLaBei8RGnWeLYCRDoeokRHzBiUhlceUM7csVbMFYvB-Vxo7tIKgyxOIy4o8QXVZWhe1iDBuPA0uYedVQDMQaBHYqFqfWNIbyOUI6ItojZz03eRsy97Zc9PyoKJeIRQeKufX0eGFmyi4gWOM"/>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Ceramic White Minimalist Vase</p>
+<p class="text-xs text-slate-500 mt-0.5 italic">Handcrafted 12" Decorative</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 hidden lg:table-cell">
+<span class="font-mono text-xs text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">SKU-1102-V</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Home &amp; Kitchen</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-semibold text-slate-900 dark:text-white">$12.00</p>
+<p class="text-[10px] text-slate-400 mt-0.5">Cost: $2.50</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-bold text-slate-500">3 units</span>
+<div class="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 w-[15%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
+                                        Draft
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="bg-white dark:bg-slate-900 px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="font-semibold">1 - 4</span> of <span class="font-semibold">1,284</span> results</p>
+<div class="flex items-center gap-1">
+<button class="p-2 text-slate-400 hover:text-primary disabled:opacity-30 disabled:pointer-events-none" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white text-sm font-bold">1</button>
+<button class="w-8 h-8 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 text-sm font-medium transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 text-sm font-medium transition-colors">3</button>
+<span class="mx-1 text-slate-400">...</span>
+<button class="w-8 h-8 rounded-lg text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 text-sm font-medium transition-colors">321</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-6 bg-white dark:bg-slate-900">
+<div class="max-w-[1440px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-slate-500">© 2024 Net Land ERP System. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-xs font-semibold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest" href="#">Support</a>
+<a class="text-xs font-semibold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest" href="#">Documentation</a>
+<a class="text-xs font-semibold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest" href="#">API Status</a>
+</div>
+</div>
+</footer>
+</div>
+<!-- Background Pattern Decoration (Abstract Gradient) -->
+<div class="fixed top-0 right-0 -z-10 w-1/3 h-1/3 bg-gradient-to-bl from-primary/5 to-transparent blur-3xl rounded-full" data-alt="Subtle abstract primary colored gradient"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-1/4 h-1/4 bg-gradient-to-tr from-primary/5 to-transparent blur-3xl rounded-full" data-alt="Subtle abstract primary colored gradient bottom"></div>
+</body></html>

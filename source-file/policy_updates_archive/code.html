@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Policy Updates | Net Land</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .main-content { width: 100% !important; margin: 0 !important; padding: 0 !important; }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 no-print">
+<div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">public</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Net Land</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#">Policies</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#">Warranty</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#">Returns</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#">Shipping</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search policies..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBjQ8WuxJWgHXMvl_ojkvL0EPpPEm7y8SYnC4RhOf854tva7eBYJTUBFV1oMXaZhWpNeWQYllUX8_JgXn0WiKS_motwXlwf8xv6GzOpdWZQttinnTksbOlB8HFZacU7wzSzxPlYJZGguNlBySgogNZNVsD2WS2fC1pSkSUITrOabBSSyPiapHE0QlAWPUnQm-bsZDwtDQ1kL5A6Ey9TI3NSKOD6XitdwpzF1bHHM2LxYxNoHjRlDaZ3bI4vAAI-rPbdWLDSSxrCgU"/>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[calc(100vh-64px)]">
+<!-- Version Sidebar -->
+<aside class="w-full lg:w-80 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-6 no-print overflow-y-auto">
+<div class="mb-8">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Update Timeline</h3>
+<div class="space-y-1">
+<button class="w-full text-left px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-semibold flex items-center justify-between group">
+<div class="flex flex-col">
+<span class="text-sm">Version 4.2.0 (Current)</span>
+<span class="text-[11px] font-normal opacity-70">Oct 24, 2023</span>
+</div>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+<button class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium flex items-center justify-between group transition-all">
+<div class="flex flex-col">
+<span class="text-sm">Version 4.1.5</span>
+<span class="text-[11px] font-normal opacity-70">Aug 12, 2023</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">history</span>
+</button>
+<button class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium flex items-center justify-between group transition-all">
+<div class="flex flex-col">
+<span class="text-sm">Version 4.0.0</span>
+<span class="text-[11px] font-normal opacity-70">Jan 05, 2023</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">history</span>
+</button>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Policy Types</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">verified_user</span> Warranty Updates
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">assignment_return</span> Return Policies
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">local_shipping</span> Shipping Terms
+                    </a>
+</nav>
+</div>
+<div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Archives</h3>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl">
+<p class="text-[12px] text-slate-500 mb-3">Access full document history from 2018-2022.</p>
+<button class="w-full py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 hover:border-primary hover:text-primary transition-all shadow-sm">
+<span class="material-symbols-outlined text-base">folder_zip</span>
+                        Browse Archives
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 bg-white dark:bg-background-dark overflow-y-auto">
+<div class="max-w-4xl mx-auto px-6 py-10 lg:px-12">
+<!-- Content Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 pb-8 border-b border-slate-100 dark:border-slate-800">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold uppercase rounded tracking-wide">Official Release</span>
+<span class="text-sm text-slate-400">• Version 4.2.0</span>
+</div>
+<h2 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-2">Policy Updates &amp; Change Log</h2>
+<div class="flex items-center gap-4 text-sm text-slate-500">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Last Updated: Oct 24, 2023</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">person</span> Revised by Legal Dept.</span>
+</div>
+</div>
+<div class="flex gap-3 no-print">
+<button class="px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-base">print</span> Print
+                        </button>
+<button class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span> Download PDF
+                        </button>
+</div>
+</div>
+<!-- Introduction -->
+<section class="mb-12">
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                        Net Land is committed to maintaining transparency with our partners and customers. This document outlines the recent modifications made to our global Warranty, Return, and Shipping terms. All changes listed below are effective as of <strong class="text-slate-900 dark:text-white">November 1, 2023</strong>.
+                    </p>
+<div class="bg-primary/5 border-l-4 border-primary p-5 rounded-r-xl">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<div>
+<h4 class="font-semibold text-primary mb-1">Summary of Key Changes</h4>
+<ul class="text-sm text-slate-700 dark:text-slate-300 space-y-1 list-disc ml-4">
+<li>Extended standard warranty from 12 to 24 months for Premium Series.</li>
+<li>Updated return shipping window to 30 days (previously 14).</li>
+<li>Revised international customs declaration procedures for APAC region.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Changes: Warranty -->
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">verified_user</span>
+</div>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">1. Warranty Policy Updates</h3>
+</div>
+<div class="space-y-8">
+<div>
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Section 1.4: Coverage Duration</h4>
+<div class="relative overflow-hidden border border-slate-200 dark:border-slate-800 rounded-xl">
+<div class="bg-red-50 dark:bg-red-900/10 p-4 border-b border-slate-200 dark:border-slate-800 line-through text-slate-500 text-sm">
+                                    "All hardware components are covered for a period of twelve (12) months from the date of original purchase under normal operating conditions."
+                                </div>
+<div class="bg-green-50 dark:bg-green-900/10 p-4 text-slate-800 dark:text-slate-200 text-sm flex gap-3">
+<span class="material-symbols-outlined text-green-600 text-sm mt-0.5">add_circle</span>
+<span>"Net Land Premium Series hardware components are now covered for a period of <strong>twenty-four (24) months</strong>. Standard series remains at twelve (12) months."</span>
+</div>
+</div>
+<p class="mt-3 text-xs text-slate-500 italic">Reason for change: Alignment with new industry standards and increased hardware reliability metrics.</p>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Section 2.1: Exclusions</h4>
+<div class="p-6 bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
+<h5 class="text-sm font-semibold mb-2">Addition to Exclusions List:</h5>
+<p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    "Damage resulting from unauthorized third-party firmware modifications or 'rooting' of Net Land networking interfaces is strictly excluded from warranty coverage."
+                                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Changes: Returns -->
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">assignment_return</span>
+</div>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">2. Return &amp; Refund Policy Updates</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 font-medium">
+<tr>
+<th class="px-6 py-4">Provision</th>
+<th class="px-6 py-4">Previous State</th>
+<th class="px-6 py-4">New State (v4.2)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 font-semibold">Return Window</td>
+<td class="px-6 py-4 text-slate-500">14 Days</td>
+<td class="px-6 py-4 text-primary font-bold">30 Days</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-semibold">Restocking Fee</td>
+<td class="px-6 py-4 text-slate-500">15% on open items</td>
+<td class="px-6 py-4 text-primary font-bold">Removed for all items</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-semibold">RMA Response Time</td>
+<td class="px-6 py-4 text-slate-500">3-5 Business Days</td>
+<td class="px-6 py-4 text-primary font-bold">24-48 Hours</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Footer Sign-off -->
+<div class="pt-10 border-t border-slate-100 dark:border-slate-800 text-center">
+<p class="text-sm text-slate-500 mb-4">
+                        Questions regarding these changes? Contact our compliance team at <a class="text-primary hover:underline" href="mailto:legal@netland.com">legal@netland.com</a>
+</p>
+<div class="flex justify-center gap-8 text-xs text-slate-400 font-medium">
+<span>NET LAND CORP</span>
+<span>DOCUMENT ID: NL-POL-2023-42</span>
+<span>CONFIDENTIALITY: PUBLIC</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

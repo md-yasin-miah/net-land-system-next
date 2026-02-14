@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Inventory - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-size: 24px; vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">StockManager <span class="text-primary">Pro</span></h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Admin Terminal</p>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-semibold text-primary border-b-2 border-primary pb-1" href="#">Inventory</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Orders</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Suppliers</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="h-10 w-[1px] bg-slate-200 dark:bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3 pl-2 cursor-pointer group">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold leading-none">Alex Rivera</p>
+<p class="text-[10px] text-slate-500 font-medium">Head of Warehouse</p>
+</div>
+<img alt="" class="size-10 rounded-full border-2 border-primary/20 group-hover:border-primary transition-all" data-alt="Profile photo of the admin user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2HXZFXhLhK_zKkHUmSg6jTlWN75PvF5C5UUDcczHqcPQ2eSp4GertDm_VztQF9Z1Uv7M5kOaN5iVbda2krEOYdTviKedL17ASp-yliZ4PzNpAvHV8kbQhdWMj5JDw3rIVbh3cIvhRRU0OrWTtjoKtzpnGs-r7oQTayxfTbigmEZlCpmi-tV6WheH_qe3ewuTq7xfwpdzbmZYVT2mgjXOaxYQRjvmfQs6EMzRVrwTPyAI9PhC7oFuKTLPPsKdrG8JOO8I_RRnAf8w"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+<!-- Breadcrumbs & Header -->
+<div class="mb-8">
+<div class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+<span>Inventory</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-medium">Stock In</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black tracking-tight mb-1">Add New Inventory</h2>
+<p class="text-slate-500 dark:text-slate-400">Record incoming shipments and update warehouse stock levels across regions.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-xl border border-slate-300 dark:border-white/10 font-bold text-sm hover:bg-slate-50 dark:hover:bg-white/5 transition-all">
+                            Cancel
+                        </button>
+<button class="px-8 py-2.5 rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/30 hover:shadow-primary/40 hover:scale-[1.02] active:scale-95 transition-all">
+                            Confirm Stock In
+                        </button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Main Form Area -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Section 1: Item & Warehouse -->
+<div class="bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">inventory</span>
+<h3 class="font-bold">1. Item &amp; Destination</h3>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2">
+<label class="block text-sm font-bold mb-2">Search Product</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm font-medium" placeholder="SKU, Product Name or Barcode..." type="text"/>
+</div>
+<p class="mt-2 text-xs text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">info</span>
+                                    Product not found? <a class="text-primary font-bold hover:underline" href="#">Create new item</a>
+</p>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Destination Warehouse</label>
+<select class="w-full px-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm font-medium appearance-none">
+<option>Main Warehouse (Chicago)</option>
+<option>West Coast Hub (LA)</option>
+<option>East Coast Fulfillment (NY)</option>
+<option>Northern Logistics (Toronto)</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Batch / Lot ID</label>
+<input class="w-full px-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm font-medium" placeholder="e.g. BATCH-2024-001" type="text"/>
+</div>
+</div>
+</div>
+<!-- Section 2: Financials & Suppliers -->
+<div class="bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<h3 class="font-bold">2. Logistics &amp; Financials</h3>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-bold mb-2">Supplier / Vendor</label>
+<select class="w-full px-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm font-medium">
+<option>Global Electronics Corp</option>
+<option>Swift Supply Chain Co.</option>
+<option>Prime Hardware Ltd.</option>
+<option>Add New Supplier...</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Reference / PO Number</label>
+<input class="w-full px-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm font-medium" placeholder="PO-98432" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-bold mb-2">Serial Numbers (Optional)</label>
+<textarea class="w-full px-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm font-medium" placeholder="Enter serial numbers separated by commas or new lines..." rows="3"></textarea>
+<div class="mt-2 flex items-center justify-between">
+<p class="text-xs text-slate-500 italic">Serial tracking helps in warranty management.</p>
+<button class="text-xs font-bold text-primary flex items-center gap-1 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-xs">file_upload</span>
+                                        Import from CSV
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Notes -->
+<div class="bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+<h3 class="font-bold">3. Additional Remarks</h3>
+</div>
+<div class="p-6">
+<textarea class="w-full px-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm font-medium" placeholder="Internal notes about shipment quality, delivery delay etc..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Summary & Calculator Sidebar -->
+<div class="space-y-6">
+<div class="bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-lg shadow-slate-200/50 dark:shadow-black/20 sticky top-24">
+<div class="p-6 border-b border-slate-100 dark:border-white/10">
+<h3 class="font-bold text-lg mb-4">Stock In Summary</h3>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Received Quantity</label>
+<div class="flex items-center gap-3">
+<input class="w-full px-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-lg font-bold" type="number" value="150"/>
+<span class="text-sm font-bold text-slate-400">units</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Unit Cost (Purchased)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-primary">$</span>
+<input class="w-full pl-8 pr-4 py-3 bg-slate-100 dark:bg-white/5 border-none rounded-xl focus:ring-2 focus:ring-primary text-lg font-bold" step="0.01" type="number" value="45.50"/>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-primary/5 dark:bg-primary/10">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium opacity-70">Total Stock Value</span>
+<span class="text-sm font-bold text-primary">Calculation</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-3xl font-black tracking-tight">$6,825.00</span>
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<div class="mt-4 pt-4 border-t border-primary/10 space-y-2">
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Current Warehouse Stock</span>
+<span class="font-bold">412 Units</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Post-Arrival Stock</span>
+<span class="font-bold text-green-600 dark:text-green-400">562 Units</span>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-3">
+<div class="flex items-center gap-2 p-3 rounded-lg bg-orange-50 dark:bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-sm">notifications_active</span>
+<p class="text-[10px] leading-tight font-medium">Arrival will trigger "Back in Stock" notifications for 48 waitlisted customers.</p>
+</div>
+<button class="w-full py-4 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">check_circle</span>
+                                Finalize Inventory Entry
+                            </button>
+<button class="w-full py-3 rounded-xl border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 font-bold text-sm hover:bg-slate-50 dark:hover:bg-white/5 transition-all">
+                                Reset Form
+                            </button>
+</div>
+</div>
+<!-- Quick Help/Status Card -->
+<div class="p-5 rounded-xl bg-slate-900 text-white shadow-xl shadow-slate-900/10">
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">help_outline</span>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-1">Stocking Tip</h4>
+<p class="text-xs text-slate-400 leading-relaxed">Always verify batch numbers with physical labels to prevent inventory drift. For high-value items, scan serial numbers individually.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-white/5 py-8 mt-12 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">shield_person</span>
+<p class="text-xs text-slate-500 font-medium">Logged in as Administrator | Security Protocol Active</p>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-xs text-slate-500 hover:text-primary font-medium" href="#">User Guide</a>
+<a class="text-xs text-slate-500 hover:text-primary font-medium" href="#">Compliance Log</a>
+<a class="text-xs text-slate-500 hover:text-primary font-medium" href="#">Report Issue</a>
+</div>
+<p class="text-[10px] text-slate-400 uppercase tracking-widest">© 2024 InventoryOS. System Version 4.8.2</p>
+</div>
+</footer>
+</div>
+</body></html>

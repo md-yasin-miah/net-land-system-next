@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Net Land | My Tickets Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 transition-colors duration-200">
+<!-- Main Container -->
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header / Navbar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-primary">confirmation_number</span>
+</div>
+<h2 class="text-slate-900 text-xl font-bold leading-tight tracking-[-0.015em]">Net Land</h2>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<nav class="flex items-center gap-4">
+<a class="text-slate-600 hover:text-primary font-medium text-sm transition-colors" href="#">Dashboard</a>
+<a class="text-primary font-bold text-sm border-b-2 border-primary pb-1" href="#">My Tickets</a>
+<a class="text-slate-600 hover:text-primary font-medium text-sm transition-colors" href="#">Knowledge Base</a>
+</nav>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex min-w-[140px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="truncate">Create Ticket</span>
+</button>
+<div class="flex items-center gap-2 pl-4 border-l border-slate-200">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-slate-200" data-alt="User profile avatar portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCmjIJLHuIkKz12j-hROHUCngaEVtmJwBKYVmf7jKJ9nUjEQANhobASsCr9HpWZ1XcJ1nyK3Q3dgw-wNWWyIBHBI7Fr51lDxRBQ7dNSU-qK2bYIYWQJHk8zbd8kvYToEjAbLVDjjfpKq61-Ny9rSli-SMdqapTGQluVtkjycGR2TOCJa5H0_UXGrGaaiXpqEKObvFdTF0u5JUTr9pwaKSiMTWhOB20T3qf6DHJnedLGu4toz8xJdLcXlosy5vwRJrci1XGO1740_rA");'></div>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 md:px-10 py-8">
+<!-- Page Title & Stats Area -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-slate-500 text-sm mb-1">
+<span>Support</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-slate-900 font-medium">My Tickets</span>
+</div>
+<h1 class="text-slate-900 text-3xl font-black leading-tight tracking-[-0.033em]">Support Tickets</h1>
+<p class="text-slate-500 text-base font-normal leading-normal">Monitor and manage your support requests in real-time.</p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="flex flex-1 md:flex-none items-center gap-4 bg-white p-2 rounded-xl border border-slate-200 shadow-sm">
+<div class="px-4 py-1 border-r border-slate-100 text-center">
+<p class="text-[10px] uppercase tracking-wider font-bold text-slate-400">Total</p>
+<p class="text-lg font-bold text-slate-900">24</p>
+</div>
+<div class="px-4 py-1 border-r border-slate-100 text-center">
+<p class="text-[10px] uppercase tracking-wider font-bold text-emerald-500">Open</p>
+<p class="text-lg font-bold text-slate-900">5</p>
+</div>
+<div class="px-4 py-1 text-center">
+<p class="text-[10px] uppercase tracking-wider font-bold text-primary">Resolved</p>
+<p class="text-lg font-bold text-slate-900">19</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Filters & Search -->
+<div class="flex flex-col md:flex-row gap-4 mb-6">
+<div class="flex-1 relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-slate-200 rounded-lg leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary sm:text-sm" placeholder="Search by Ticket ID or Subject..." type="text"/>
+</div>
+<div class="flex gap-2">
+<select class="block w-full md:w-40 pl-3 pr-10 py-2.5 text-base border-slate-200 focus:outline-none focus:ring-primary/20 focus:border-primary sm:text-sm rounded-lg">
+<option>All Status</option>
+<option>Open</option>
+<option>Pending</option>
+<option>Resolved</option>
+</select>
+<select class="block w-full md:w-40 pl-3 pr-10 py-2.5 text-base border-slate-200 focus:outline-none focus:ring-primary/20 focus:border-primary sm:text-sm rounded-lg">
+<option>All Priority</option>
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+</select>
+<button class="flex items-center justify-center p-2.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 border-b border-slate-200">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Ticket ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Subject</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Category</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">Priority</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Last Updated</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-primary font-mono font-semibold text-sm">#TK-1024</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-slate-900 font-bold text-sm">VPN Connection Issue in London Office</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-sm">Software</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-700">
+                                            High
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700">
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-xs">Oct 24, 2023, 14:20</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-primary font-mono font-semibold text-sm">#TK-1022</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-slate-900 font-bold text-sm">Request for New Laptop Docking Station</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-sm">Hardware</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+                                            Low
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">
+                                            Open
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-xs">Oct 23, 2023, 09:15</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-primary font-mono font-semibold text-sm">#TK-0985</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-slate-900 font-bold text-sm">Email Account Password Reset</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-sm">Security</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-orange-700">
+                                            Medium
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
+                                            Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-xs">Oct 20, 2023, 16:45</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-primary font-mono font-semibold text-sm">#TK-0972</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-slate-900 font-bold text-sm">ERP System Lag during Report Generation</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-sm">Software</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-700">
+                                            High
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
+                                            Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-xs">Oct 18, 2023, 11:30</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-primary font-mono font-semibold text-sm">#TK-0960</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-slate-900 font-bold text-sm">Printer Maintenance - Floor 3</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-sm">Hardware</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+                                            Low
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
+                                            Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-slate-500 text-xs">Oct 15, 2023, 13:05</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+<p class="text-sm text-slate-500 font-medium">Showing <span class="text-slate-900">1</span> to <span class="text-slate-900">5</span> of <span class="text-slate-900">24</span> tickets</p>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded-lg border border-slate-200 bg-white text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg bg-primary text-white font-bold text-xs">1</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-transparent text-slate-600 font-medium text-xs hover:border-slate-200 hover:bg-white">2</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-transparent text-slate-600 font-medium text-xs hover:border-slate-200 hover:bg-white">3</button>
+<span class="text-slate-400 px-1">...</span>
+<button class="flex items-center justify-center size-8 rounded-lg border border-transparent text-slate-600 font-medium text-xs hover:border-slate-200 hover:bg-white">5</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Featured Card / Promo -->
+<div class="mt-8 bg-primary rounded-xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="text-xl font-bold mb-2">Need immediate assistance?</h3>
+<p class="text-white/80 max-w-md">Our live support agents are available Monday through Friday from 9 AM to 6 PM GMT. Average response time is under 15 minutes.</p>
+<button class="mt-4 px-6 py-2 bg-white text-primary rounded-lg font-bold text-sm shadow-lg hover:bg-slate-50 transition-all">Start Live Chat</button>
+</div>
+<div class="flex gap-4 relative z-10">
+<div class="flex flex-col items-center">
+<div class="size-12 rounded-full border-2 border-white/20 bg-white/10 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-white/70">Guides</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="size-12 rounded-full border-2 border-white/20 bg-white/10 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-white/70">Community</span>
+</div>
+</div>
+<!-- Abstract Background Pattern -->
+<div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 pointer-events-none">
+<svg class="h-full w-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 0 L100 0 L100 100 Z" fill="white"></path>
+</svg>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 bg-white py-10 px-10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3 grayscale opacity-60">
+<div class="size-6 bg-slate-400 rounded-sm"></div>
+<span class="text-slate-900 font-bold">Net Land Support</span>
+</div>
+<div class="flex gap-8">
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+<p class="text-sm text-slate-400">© 2023 Net Land. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

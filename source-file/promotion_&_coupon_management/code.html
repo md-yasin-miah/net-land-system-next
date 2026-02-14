@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Promotion Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#ec5b13",
+                "background-light": "#f8f6f6",
+                "background-dark": "#221610",
+              },
+              fontFamily: {
+                "display": ["Public Sans"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 bg-white dark:bg-black/20 border-r border-slate-200 dark:border-white/10 hidden lg:flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<img alt="Company Logo" class="h-8 w-auto" data-alt="Corporate logo branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ6KxBLS4s43SZPwGLSmRIGPx3vUqS_AXlswtG_68VWFw3p15k3CBgyuSpAiP3Q8BVFouErpdBsmodUO2D0H6jlN06z4mUzW9WjIMIv11UOp6SMNT91dW7hfW3vcJkRdq_5fN-KWIo_a2aUzPWpRbXq2pL5-mmJnloQLuEbL2g_nc4Mnb5RLFpuk8DavWGSwlxSoFYgWt1UIMhya-qXsh5Xulsh-W_WtiML5Mq58Fzbpb_gINL2rnMyGd-beIySD0KcuAnPHzldVk"/>
+<span class="text-xl font-bold tracking-tight text-primary">PromoEngine</span>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined filled">confirmation_number</span>
+<span class="font-medium text-sm">Coupons</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-medium text-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-medium text-sm">Campaigns</span>
+</a>
+<div class="pt-4 pb-2 px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Management</div>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-white/10">
+<div class="flex items-center gap-3 p-2 bg-slate-50 dark:bg-white/5 rounded-xl">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">JD</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Jane Doe</p>
+<p class="text-xs text-slate-500 truncate">Marketing Lead</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-black/20 border-b border-slate-200 dark:border-white/10 flex-shrink-0">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary rounded-xl pl-10 pr-4 py-2 text-sm transition-all" placeholder="Search promotion codes..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition-colors relative">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-white dark:border-[#221610]"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                        Create Coupon
+                    </button>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- Welcome Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-bold tracking-tight">Promotion Management</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Monitor and optimize your store's active marketing campaigns.</p>
+</div>
+<div class="flex items-center gap-2 bg-white dark:bg-white/5 p-1 rounded-xl border border-slate-200 dark:border-white/10 self-start">
+<button class="px-4 py-1.5 text-sm font-medium bg-primary text-white rounded-lg shadow-sm">Active</button>
+<button class="px-4 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Scheduled</button>
+<button class="px-4 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Expired</button>
+</div>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined filled">confirmation_number</span>
+</div>
+<span class="text-xs font-bold text-emerald-500 flex items-center gap-1 bg-emerald-500/10 px-2 py-0.5 rounded-full">+12%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Active Coupons</p>
+<h3 class="text-2xl font-bold mt-1">24</h3>
+</div>
+<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-xs font-bold text-emerald-500 flex items-center gap-1 bg-emerald-500/10 px-2 py-0.5 rounded-full">+8.4%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Revenue</p>
+<h3 class="text-2xl font-bold mt-1">$45,280.50</h3>
+</div>
+<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<span class="text-xs font-bold text-slate-400 bg-slate-400/10 px-2 py-0.5 rounded-full">Top Perform</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Best Code</p>
+<h3 class="text-2xl font-bold mt-1">SUMMER24</h3>
+</div>
+<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="text-xs font-bold text-red-500 flex items-center gap-1 bg-red-500/10 px-2 py-0.5 rounded-full">-2.1%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Redemption Rate</p>
+<h3 class="text-2xl font-bold mt-1">14.8%</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Coupons Table -->
+<div class="xl:col-span-2 space-y-4">
+<div class="bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
+<h2 class="text-lg font-bold">Active Discount Codes</h2>
+<button class="text-sm text-primary font-bold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">
+<th class="px-6 py-4">Coupon Code</th>
+<th class="px-6 py-4">Usage Status</th>
+<th class="px-6 py-4">Expiry Date</th>
+<th class="px-6 py-4">Revenue</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-white/10">
+<tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">SUMMER24</span>
+<span class="text-xs text-slate-500">20% Storewide</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-32 space-y-1.5">
+<div class="flex justify-between text-[10px] font-bold">
+<span>75/100</span>
+<span>75%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm">Aug 15, 2024</span>
+<span class="text-[10px] font-bold text-amber-500 uppercase">12 Days Left</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold">$12,450.00</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-red-500 transition-colors ml-2">delete</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">WELCOME10</span>
+<span class="text-xs text-slate-500">10% First Order</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-32 space-y-1.5">
+<div class="flex justify-between text-[10px] font-bold">
+<span>450/500</span>
+<span>90%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm">Dec 31, 2024</span>
+<span class="text-[10px] font-bold text-emerald-500 uppercase">Perpetual</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold">$8,120.00</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-red-500 transition-colors ml-2">delete</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">FLASH50</span>
+<span class="text-xs text-slate-500">50% Clearance</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-32 space-y-1.5">
+<div class="flex justify-between text-[10px] font-bold">
+<span>12/50</span>
+<span>24%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 24%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm">Aug 05, 2024</span>
+<span class="text-[10px] font-bold text-red-500 uppercase">Expires Today</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold">$2,710.25</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary transition-colors">edit</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-red-500 transition-colors ml-2">delete</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Create New Coupon Form -->
+<div class="space-y-4">
+<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm sticky top-8">
+<h2 class="text-lg font-bold mb-6">Create New Coupon</h2>
+<form class="space-y-5">
+<div>
+<label class="block text-sm font-semibold mb-1.5">Coupon Code</label>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-100 dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary" placeholder="e.g. FLASH25" type="text"/>
+<button class="px-3 bg-slate-200 dark:bg-white/10 rounded-xl hover:bg-slate-300 dark:hover:bg-white/20 transition-colors" type="button">
+<span class="material-symbols-outlined text-sm pt-1">auto_awesome</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-semibold mb-1.5">Discount Type</label>
+<select class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary">
+<option>Percentage</option>
+<option>Fixed Amount</option>
+<option>Free Shipping</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-semibold mb-1.5">Value</label>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary" placeholder="25%" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold mb-1.5">Minimum Spend ($)</label>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary" placeholder="50.00" type="number"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-semibold mb-1.5">Total Limit</label>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary" placeholder="1000" type="number"/>
+</div>
+<div>
+<label class="block text-sm font-semibold mb-1.5">Per Customer</label>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary" placeholder="1" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold mb-1.5">Expiry Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">calendar_month</span>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary pl-10" type="date"/>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/30 hover:shadow-primary/40 active:scale-[0.98] transition-all" type="submit">
+                                    Generate Promotion
+                                </button>
+<p class="text-center text-[11px] text-slate-500 uppercase font-bold tracking-widest">or</p>
+<button class="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white py-3 rounded-xl font-bold hover:bg-slate-50 dark:hover:bg-white/10 transition-colors" type="button">
+                                    Import Bulk CSV
+                                </button>
+</form>
+</div>
+</div>
+</div>
+<!-- Footer / Secondary Stats -->
+<div class="bg-primary/5 rounded-3xl p-8 border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-white shadow-xl shadow-primary/20">
+<span class="material-symbols-outlined text-3xl">insights</span>
+</div>
+<div>
+<h4 class="text-xl font-bold">Campaign Performance Boost</h4>
+<p class="text-slate-600 dark:text-slate-400">Personalized coupons are generating 35% more engagement this month.</p>
+</div>
+</div>
+<button class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3 rounded-xl font-bold text-sm whitespace-nowrap hover:opacity-90 transition-opacity">
+                        Download Full Report
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

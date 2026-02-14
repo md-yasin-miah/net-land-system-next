@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Net Land | Inventory Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-4 lg:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<img alt="Net Land Enterprise Logo" class="h-10 w-10 rounded-lg bg-primary" data-alt="Net Land Enterprise networking logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfqncWB3vlThDKbCTJkp7eQzweXeGPC0FEbvMBJwJUv1gwFptT-STKv4XJabr6iqVGnELj9uhUA10JRDJMJmnFanXfULQF8esiwUzU7h6sm36glc9zr7pnOZE-_O6j1NpXBs2cZa31ag9QfW4720F-pxmFansWs7I4P1S3z2IkDprNa8zMjJRN3QSRguxI9qSp7SuSC9W9h-6Te6r9aXAOBixG0sNVlC0Ycy0p2Y8jJyry-lbHK6PBMlJtA19iw250cgN1e83mzrg"/>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold tracking-tight">Net Land Admin</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-gray-600 dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Inventory</a>
+<a class="text-gray-600 dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Orders</a>
+<a class="text-gray-600 dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Warehouses</a>
+<a class="text-gray-600 dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl px-3 py-1.5 w-64 border border-transparent focus-within:border-primary">
+<span class="material-symbols-outlined text-gray-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-gray-500" placeholder="Search SKU, Product..." type="text"/>
+</div>
+<button class="p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+</div>
+</header>
+<main class="max-w-[1400px] mx-auto p-4 lg:p-10">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<h1 class="text-gray-900 dark:text-white text-3xl font-black tracking-tight mb-1">Inventory Management</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Real-time enterprise networking hardware stock tracking.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-gray-50 transition-all shadow-sm">
+<span class="material-symbols-outlined text-xl">file_download</span>
+                    Export CSV
+                </button>
+<button class="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+                    Manual Adjustment
+                </button>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Total Stock Value</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-black text-gray-900 dark:text-white">$1,245,000</h3>
+<span class="text-green-500 text-xs font-bold flex items-center">+2.4% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Total Units</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-black text-gray-900 dark:text-white">14,200</h3>
+<span class="text-red-500 text-xs font-bold flex items-center">-1.2% <span class="material-symbols-outlined text-sm">trending_down</span></span>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Low Stock Alerts</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-black text-primary">42</h3>
+<div class="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-base">warning</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Out of Stock Items</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-black text-red-600">12</h3>
+<div class="h-8 w-8 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-600 text-base">error</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<div class="flex border-b border-gray-200 dark:border-gray-800 mb-6 overflow-x-auto no-scrollbar">
+<button class="px-6 py-4 text-sm font-bold border-b-2 border-primary text-primary whitespace-nowrap">Stock Levels</button>
+<button class="px-6 py-4 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white border-b-2 border-transparent whitespace-nowrap">Movement History</button>
+<button class="px-6 py-4 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white border-b-2 border-transparent whitespace-nowrap">Warehouses</button>
+</div>
+<!-- Filters & Search Bar -->
+<div class="flex flex-col lg:flex-row gap-4 mb-6">
+<div class="flex-1 flex flex-col sm:flex-row gap-3">
+<div class="min-w-[180px]">
+<select class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:ring-primary focus:border-primary">
+<option>All Categories</option>
+<option>Switches</option>
+<option>Routers</option>
+<option>Access Points</option>
+<option>Cabling</option>
+</select>
+</div>
+<div class="min-w-[180px]">
+<select class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:ring-primary focus:border-primary">
+<option>All Warehouses</option>
+<option>US - East (A-4)</option>
+<option>EU - West (B-2)</option>
+<option>APAC (C-1)</option>
+</select>
+</div>
+<div class="min-w-[180px]">
+<select class="w-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:ring-primary focus:border-primary">
+<option>All Statuses</option>
+<option>In Stock</option>
+<option>Low Stock</option>
+<option>Out of Stock</option>
+</select>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 text-gray-500 dark:text-gray-400 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+                More Filters
+            </button>
+</div>
+<!-- Inventory Table -->
+<div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Product</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">SKU</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Warehouse</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Current Stock</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-700/50">
+<!-- Row 1: Low Stock -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400">router</span>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Enterprise WiFi 6E Access Point</p>
+<p class="text-xs text-gray-500">Dual-Band 2.5G PoE+</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-xs font-mono font-bold bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">NL-WIFI-6E</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">US-East (A-4)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">24 Units</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                    Low Stock
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: In Stock -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400">dns</span>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Core Switch 48-Port 10G</p>
+<p class="text-xs text-gray-500">Layer 3 Managed Switch</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-xs font-mono font-bold bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">NL-SW-48-10G</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">EU-West (B-2)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">142 Units</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-600 border border-green-200 dark:border-green-800">
+<span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
+                                    In Stock
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Out of Stock -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400">hub</span>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Fiber Optic Transceiver</p>
+<p class="text-xs text-gray-500">SFP+ 10km Single Mode</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-xs font-mono font-bold bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">NL-FIB-SFP-10</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">US-East (A-4)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">0 Units</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 dark:bg-red-900/30 text-red-600 border border-red-200 dark:border-red-800">
+<span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+                                    Out of Stock
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: In Stock -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400">lan</span>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Edge Router X Series</p>
+<p class="text-xs text-gray-500">5-Port Gigabit Router</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-xs font-mono font-bold bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-600 dark:text-gray-300">NL-RT-X-5</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">APAC (C-1)</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">56 Units</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-600 border border-green-200 dark:border-green-800">
+<span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
+                                    In Stock
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
+<p class="text-xs text-gray-500 font-medium">Showing 1 to 4 of 245 products</p>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="h-8 w-8 text-xs font-bold bg-primary text-white rounded-lg">1</button>
+<button class="h-8 w-8 text-xs font-medium text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">2</button>
+<button class="h-8 w-8 text-xs font-medium text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">3</button>
+<button class="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple footer -->
+<footer class="max-w-[1400px] mx-auto p-10 border-t border-gray-200 dark:border-gray-800 mt-10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded bg-primary"></div>
+<span class="text-sm font-bold text-gray-900 dark:text-white">Net Land Enterprise</span>
+</div>
+<p class="text-xs text-gray-500">© 2024 Net Land Systems Inc. All rights reserved. Version 4.2.1-stable</p>
+<div class="flex gap-6">
+<a class="text-xs font-medium text-gray-500 hover:text-primary" href="#">Help Center</a>
+<a class="text-xs font-medium text-gray-500 hover:text-primary" href="#">API Docs</a>
+<a class="text-xs font-medium text-gray-500 hover:text-primary" href="#">Terms</a>
+</div>
+</div>
+</footer>
+</body></html>

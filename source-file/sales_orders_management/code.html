@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sales Order Management | Enterprise Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 font-display">
+<div class="flex min-h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-white border-r border-primary/10 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="h-10 w-10 bg-primary/10 rounded-lg flex items-center justify-center">
+<img alt="Enterprise Logo" class="h-8 w-8 object-contain" data-alt="Corporate enterprise logo design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA92Etl7K4MP4d1QTCgYV0Ideoo1A0D83w7wxJEFOO31kfihvXWddavqMbN0BBSRWDKFdf62O9BzehuAdCPIjVZnhz20zvpwiANYqGVmqz2DFGpn_f3FkgT6ClSDRHOrPxLCRH19k2edBRi0_9ltIaY02BYg60oc4qWR0BmjZYToI7yUMDulCTWYftucC2epLcORY1yrqc4Rw1mClYJGChn8MXEqNEjNck2rkLkV2_AEQuyBQuygGqkRBUGA50zaCvybmjlnQDI-es"/>
+</div>
+<div>
+<h1 class="text-primary font-bold text-lg leading-tight">Admin</h1>
+<p class="text-slate-400 text-xs font-medium">Enterprise Edition</p>
+</div>
+</div>
+<nav class="flex-1 px-4 mt-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary text-white rounded-lg shadow-md shadow-primary/20" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-sm font-medium">Sales Reps</span>
+</a>
+</nav>
+<div class="p-4 border-t border-primary/10 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="flex items-center gap-3 px-3 py-4 mt-2">
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="User Avatar" class="h-full w-full object-cover" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPwifWfi4s3xi3XusJC7KO1eiDcjQzLCLddPFvO5tTpuv8FLDuPGJDdGuSYsNwicRW96Nr9YmRT4-K6LdR534QAZRODiBn4sMS9NM7Q-uJyiwKXB7Qd15HFjUvLj13oXdVZi-5OsAUiclS3hkugUD2cFiVj-1ko2qmGnESxLrPQc5103cMO7m8459kMh8h2A2266uDETwPnhoNn1wtfYOj8slcZz4t5kpNMpQQOIaH-7SplSPmIolECiCmr_-6A7BAXNYj38-tMgg"/>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-xs font-semibold truncate">Alex Henderson</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-wider">Administrator</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden bg-background-light">
+<!-- Header Bar -->
+<header class="h-16 bg-white border-b border-primary/10 flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold text-slate-800">Sales Order Management</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center h-10 w-10 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Create New Order
+                    </button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="flex items-center text-emerald-600 text-xs font-bold bg-emerald-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                                +12.5%
+                            </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Total Sales Value</p>
+<h3 class="text-2xl font-black text-slate-900 mt-1">$432,500.00</h3>
+</div>
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-amber-500/10 rounded-lg text-amber-600">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="text-slate-400 text-xs font-medium">Needs Attention</span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Orders Awaiting Approval</p>
+<h3 class="text-2xl font-black text-slate-900 mt-1">14</h3>
+</div>
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined">today</span>
+</div>
+<span class="flex items-center text-emerald-600 text-xs font-bold bg-emerald-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                                +5.4%
+                            </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Today's Sales</p>
+<h3 class="text-2xl font-black text-slate-900 mt-1">$12,450.00</h3>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-white rounded-xl border border-primary/10 shadow-sm overflow-hidden flex flex-col">
+<!-- Table Actions -->
+<div class="p-4 border-b border-primary/5 flex flex-wrap gap-4 items-center justify-between">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Search Order ID, Customer, or Sales Rep..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-400">filter_list</span>
+                                Filter Status
+                            </button>
+<button class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-400">download</span>
+                                Export
+                            </button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 border-b border-slate-100">
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Order ID</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Customer</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Total</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Sales Rep</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Order 1 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-sm font-semibold text-primary">ORD-89241</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">TechLogistics Corp</span>
+<span class="text-xs text-slate-400">Enterprise</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 24, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">$12,450.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="text-sm text-slate-600">Jane Doe</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-emerald-100 text-emerald-700">Shipped</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Order 2 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-sm font-semibold text-primary">ORD-89242</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">Global Retail Systems</span>
+<span class="text-xs text-slate-400">Standard</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 24, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">$8,200.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[10px] font-bold">MS</div>
+<span class="text-sm text-slate-600">Mark Smith</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-blue-100 text-blue-700">Processing</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Order 3 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-sm font-semibold text-primary">ORD-89243</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">Nexus Data Solutions</span>
+<span class="text-xs text-slate-400">Partner</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 23, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">$21,000.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold">AL</div>
+<span class="text-sm text-slate-600">Anita Lee</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-amber-100 text-amber-700">Pending Approval</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Order 4 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-sm font-semibold text-primary">ORD-89244</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">Bright Horizon Ltd</span>
+<span class="text-xs text-slate-400">New Client</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 23, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">$5,400.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-[10px] font-bold">RK</div>
+<span class="text-sm text-slate-600">Robert King</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-primary/10 text-primary">Approved</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Order 5 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-sm font-semibold text-primary">ORD-89245</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900">Apex Software</span>
+<span class="text-xs text-slate-400">Enterprise</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 23, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">$1,200.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="text-sm text-slate-600">Jane Doe</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-slate-100 text-slate-500">Draft</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
+<p class="text-sm text-slate-500 font-medium">Showing 1 to 5 of 24 orders</p>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1 text-sm font-bold text-slate-400 bg-white border border-slate-200 rounded-lg cursor-not-allowed">Previous</button>
+<button class="px-3 py-1 text-sm font-bold text-white bg-primary rounded-lg">1</button>
+<button class="px-3 py-1 text-sm font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-primary hover:text-primary">2</button>
+<button class="px-3 py-1 text-sm font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-primary hover:text-primary">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="px-3 py-1 text-sm font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-primary hover:text-primary">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

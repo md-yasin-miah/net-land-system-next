@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warranty Management Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="w-64 bg-white dark:bg-zinc-900 border-r border-primary/10 flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<img alt="Logo" class="w-10 h-10 rounded-lg" data-alt="Corporate logo for warranty management system" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjmH6dTTHeKDipF0HCHJPngPfG7uVs7Cr1xYcko2tfnYnmaMJL00fWN0LHjhB9YrE86n5GKIMvvFlZPwLIA9VcdFd-vS8GYH0zkc-Xlr_EOGR8U2Tq3jBWPbT2AesPkf9Wy7M_t_T3SYq1TvnUpxh1ULambk6vU1qSslHqGRvbYIGZ298sZ6iytki3hpxNgNzfT0BjTwnHZ_KB0IPn9CzyPaM4XKRLbhQmD2cv28C2NivXtXMLU-MS2_bV_BwOYRREB8nlT2xNLiI"/>
+<div class="flex flex-col">
+<h1 class="text-primary font-bold text-lg leading-tight">Warranty</h1>
+<p class="text-[10px] uppercase tracking-widest font-semibold text-slate-400">Admin Panel</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">assignment</span>
+                    Active Claims
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">inventory_2</span>
+                    Products
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">group</span>
+                    Customers
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">analytics</span>
+                    Reports
+                </a>
+</nav>
+<div class="p-4 border-t border-primary/10">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-xl hover:bg-primary/10 transition-colors text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+<div class="mt-4 flex items-center gap-3 p-2 bg-slate-100 dark:bg-zinc-800 rounded-xl">
+<img alt="Avatar" class="w-8 h-8 rounded-full border border-primary/20" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD64tp3y78l0gKTBm7H1-qMi1-yCYa6z2n5hjFhcmnEdsUCeE9ps1h5PBsd9dBWQyTcxRkFZb84CqgVRIun1qO3e8KEur5AtYFSDEy5MilbjuKDtfNzw1L1v5VpgWdsXt354IT3pG4s-NjWQEaWCnh5FG4FpgLpCEYY-MCTjBiYJPXlNpuz52h9hlATFo1D_G1B-ScoeWPbxT60TrIaB35sfdX-edTwQ6deGJQRMG304fz3WCh28_-nC3deA6A70UVwbAlbTd4Qf8U"/>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Alex Morgan</p>
+<p class="text-[10px] text-slate-400">Claims Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-zinc-900 border-b border-primary/10 z-10">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-100 dark:bg-zinc-800 border-none rounded-xl pl-10 text-sm focus:ring-2 focus:ring-primary/50" placeholder="Search claims, products or SN..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full border-2 border-white dark:border-zinc-900"></span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-4 py-2 rounded-xl flex items-center gap-2 shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-base">add_circle</span>
+                        New Claim
+                    </button>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- Welcome Section -->
+<div>
+<h2 class="text-2xl font-black text-slate-900 dark:text-white">Warranty Claims Management</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Monitor and process active product warranty requests.</p>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 transition-opacity group-hover:opacity-20">
+<span class="material-symbols-outlined text-6xl text-primary">assignment_turned_in</span>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Claims</p>
+<h3 class="text-3xl font-black text-slate-900 dark:text-white mt-1">1,284</h3>
+<div class="mt-4 flex items-center gap-1 text-emerald-500 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +12% from last month
+                        </div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 transition-opacity group-hover:opacity-20">
+<span class="material-symbols-outlined text-6xl text-primary">schedule</span>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Avg. Turnaround</p>
+<h3 class="text-3xl font-black text-slate-900 dark:text-white mt-1">4.2 <span class="text-sm font-normal text-slate-400">Days</span></h3>
+<div class="mt-4 flex items-center gap-1 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                            -0.5% optimization
+                        </div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 transition-opacity group-hover:opacity-20">
+<span class="material-symbols-outlined text-6xl text-primary">check_circle</span>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Approval Rate</p>
+<h3 class="text-3xl font-black text-slate-900 dark:text-white mt-1">92%</h3>
+<div class="mt-4 flex items-center gap-1 text-emerald-500 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">add</span>
+                            2% increase
+                        </div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 transition-opacity group-hover:opacity-20">
+<span class="material-symbols-outlined text-6xl text-primary">build</span>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Under Repair</p>
+<h3 class="text-3xl font-black text-slate-900 dark:text-white mt-1">45</h3>
+<div class="mt-4 flex items-center gap-1 text-amber-500 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">priority_high</span>
+                            5 near deadline
+                        </div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-white dark:bg-zinc-900 rounded-xl border border-primary/10 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between bg-slate-50/50 dark:bg-zinc-800/50">
+<h3 class="font-bold text-lg">Active Claims List</h3>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 text-xs font-bold bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-lg flex items-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                                Filter
+                            </button>
+<button class="px-3 py-1.5 text-xs font-bold bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-lg flex items-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Export CSV
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[10px] uppercase tracking-widest text-slate-400 bg-slate-50/50 dark:bg-zinc-800/50">
+<th class="px-6 py-4 font-bold">Claim ID</th>
+<th class="px-6 py-4 font-bold">Customer</th>
+<th class="px-6 py-4 font-bold">Product</th>
+<th class="px-6 py-4 font-bold">Status</th>
+<th class="px-6 py-4 font-bold">Turnaround</th>
+<th class="px-6 py-4 font-bold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#CLM-84291</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Sarah Jenkins</span>
+<span class="text-[10px] text-slate-400">sarah.j@example.com</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Ultima Headphones Gen 2</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                            Pending Inspection
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="w-24 bg-slate-100 dark:bg-zinc-800 rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-primary h-full" style="width: 25%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">Day 1 of 5</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-primary/10 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#CLM-84288</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">David Chen</span>
+<span class="text-[10px] text-slate-400">d.chen@workplace.com</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Smart Watch SE Plus</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                            Repair in Progress
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="w-24 bg-slate-100 dark:bg-zinc-800 rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-primary h-full" style="width: 65%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">Day 3 of 5</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-primary/10 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#CLM-84285</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Michael Torres</span>
+<span class="text-[10px] text-slate-400">m.torres@mail.net</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Mechanical Keyboard K8</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Shipped back
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="w-24 bg-slate-100 dark:bg-zinc-800 rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-emerald-500 h-full" style="width: 100%"></div>
+</div>
+<span class="text-[10px] font-bold text-emerald-500">Completed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-primary/10 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#CLM-84272</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Elena Gilbert</span>
+<span class="text-[10px] text-slate-400">elena@mystic.io</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">4K Mirrorless Camera</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-primary/20 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                            Approved
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<div class="w-24 bg-slate-100 dark:bg-zinc-800 rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-primary h-full" style="width: 45%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">Day 2 of 5</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-primary/10 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t border-primary/10 flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest bg-slate-50/50 dark:bg-zinc-800/50">
+<span>Showing 4 of 1,284 results</span>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg border border-slate-200 dark:border-zinc-700 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg border border-slate-200 dark:border-zinc-700 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors text-slate-600 dark:text-slate-400">2</button>
+<button class="w-8 h-8 rounded-lg border border-slate-200 dark:border-zinc-700 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors text-slate-600 dark:text-slate-400">3</button>
+<button class="w-8 h-8 rounded-lg border border-slate-200 dark:border-zinc-700 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secondary Info Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pb-8">
+<div class="lg:col-span-2 bg-white dark:bg-zinc-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold text-slate-900 dark:text-white">Recent Policy Updates</h4>
+<a class="text-xs font-bold text-primary uppercase tracking-widest" href="#">View All</a>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-primary/5 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">New Audio Warranty Standard v2.1</p>
+<p class="text-[10px] text-slate-400">Effective from Oct 1st, 2023 for all Gen 2 products.</p>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-zinc-800 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Return Shipping Reimbursement Policy</p>
+<p class="text-[10px] text-slate-400">Updated guidelines for international customer returns.</p>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="bg-primary rounded-xl p-6 shadow-xl shadow-primary/20 text-white relative overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-6 -bottom-6 opacity-20 transform -rotate-12">
+<span class="material-symbols-outlined text-[160px]">support_agent</span>
+</div>
+<div>
+<h4 class="text-lg font-black leading-tight mb-2">Need assistance with a complex claim?</h4>
+<p class="text-white/80 text-xs font-medium leading-relaxed mb-6">Our technical support specialists are available for consultation on high-value equipment inspections.</p>
+</div>
+<button class="bg-white text-primary text-xs font-black uppercase tracking-widest px-6 py-3 rounded-xl w-full hover:bg-slate-50 transition-colors">
+                            Contact Specialist
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

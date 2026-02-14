@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory Management - Net Land Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .high-density-table td { padding: 0.75rem 1rem; }
+        .high-density-table th { padding: 0.5rem 1rem; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Placeholder (Left-side Nav) -->
+<aside class="w-64 bg-white dark:bg-background-dark border-r border-slate-200 dark:border-slate-800 flex flex-col hidden lg:flex">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-white">grid_view</span>
+</div>
+<h1 class="text-xl font-extrabold tracking-tight">Net Land</h1>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<span class="font-medium text-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg">shopping_cart</span>
+<span class="font-medium text-sm">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="font-medium text-sm">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<span class="font-medium text-sm">Reports</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full" data-alt="Profile photo of a professional male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtHgv8UkoA0t6HmzpwkeJz0I7uJv0Mapy-nBW88x5PLKIowAJAuyBsfqch29FK_8Q2kdR-jQh5rhp0Q-OF_yUXm44ylIpJJc8QyQXXWEE3_a1k6YSQoCzFAJ6awGOaAs_0vinxnF_LsXmJ_FF6NE2cELGpsLSgf1AdLWOw-A0IVi0B54Y7ACtEYMcnXxZ_kfv3jzcRLvszZsaumfXMWEgzKl7LEPCdZpJAJu2mfH-S4NzrvNAX0KL_czbhdfICOLgMw8t7GGQM7Vo"/>
+<div>
+<p class="text-xs font-bold">Alex Rivers</p>
+<p class="text-[10px] text-slate-500">Inventory Mgr</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Header Nav -->
+<header class="h-16 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg leading-none">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-lg pl-10 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search SKU, product or batch..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-6 w-[1px] bg-slate-200 dark:border-slate-800 mx-2"></div>
+<button class="bg-primary text-white text-sm font-bold px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary/90">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Stock Adjustment
+                    </button>
+</div>
+</header>
+<!-- Page Body -->
+<div class="p-8">
+<!-- Page Title -->
+<div class="mb-8">
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Inventory Management</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Real-time stock monitoring and movement history across all warehouses.</p>
+</div>
+<!-- Valuation Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Total Stock Value</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tracking-tight">$452,190.00</span>
+<span class="text-xs font-bold text-emerald-500">+2.4%</span>
+</div>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[65%]" data-alt="Green progress bar showing stock value trend"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Total Units</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tracking-tight">12,403</span>
+<span class="text-xs font-bold text-slate-400">0.0%</span>
+</div>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[80%]" data-alt="Blue progress bar showing total unit capacity"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Low Stock Alerts</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tracking-tight text-orange-500">14 items</span>
+<span class="text-xs font-bold text-red-500">+5</span>
+</div>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-orange-500 h-full w-[30%]" data-alt="Orange progress bar indicating low stock warning level"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Out of Stock</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black tracking-tight text-red-600">3 items</span>
+<span class="text-xs font-bold text-emerald-500">-2</span>
+</div>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-red-600 h-full w-[10%]" data-alt="Red progress bar indicating critical out of stock items"></div>
+</div>
+</div>
+</div>
+<!-- Table Controls & Table -->
+<div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<!-- Tabs and Filters -->
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-900 p-1 rounded-lg">
+<button class="px-4 py-1.5 text-sm font-bold rounded-md bg-white dark:bg-background-dark shadow-sm text-primary">Movement History</button>
+<button class="px-4 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Stock Levels</button>
+<button class="px-4 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Warehouses</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 text-sm font-bold bg-primary/10 text-primary px-4 py-2 rounded-lg border border-primary/20 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">warning</span>
+                                Low Stock Filter
+                            </button>
+<button class="p-2 text-slate-400 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+<button class="p-2 text-slate-400 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+<!-- History Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left high-density-table border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
+<th class="text-[11px] font-black uppercase tracking-wider text-slate-400">Date &amp; Time</th>
+<th class="text-[11px] font-black uppercase tracking-wider text-slate-400">SKU</th>
+<th class="text-[11px] font-black uppercase tracking-wider text-slate-400">Product</th>
+<th class="text-[11px] font-black uppercase tracking-wider text-slate-400">Change Type</th>
+<th class="text-[11px] font-black uppercase tracking-wider text-slate-400">Quantity</th>
+<th class="text-[11px] font-black uppercase tracking-wider text-slate-400">Staff</th>
+<th class="text-[11px] font-black uppercase tracking-wider text-slate-400"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
+<td class="text-sm">
+<div class="font-bold">Oct 24, 2023</div>
+<div class="text-[10px] text-slate-500 uppercase">10:45 AM</div>
+</td>
+<td class="text-sm font-mono text-primary font-semibold">NL-WIFI-6E</td>
+<td class="text-sm">
+<div class="font-bold">NetLand Pro Router V3</div>
+<div class="text-[10px] text-slate-500">Networking Hardware / Router</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                            Inbound
+                                        </span>
+</td>
+<td class="text-sm">
+<span class="text-emerald-600 font-bold">+150</span>
+<span class="text-[10px] text-slate-400 ml-1">pcs</span>
+</td>
+<td>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary border border-primary/10">JD</div>
+<span class="text-sm font-medium">Jane Doe</span>
+</div>
+</td>
+<td class="text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors bg-red-50/30 dark:bg-red-900/10">
+<td class="text-sm">
+<div class="font-bold">Oct 24, 2023</div>
+<div class="text-[10px] text-slate-500 uppercase">09:12 AM</div>
+</td>
+<td class="text-sm font-mono text-primary font-semibold">NL-ETH-CAT6</td>
+<td class="text-sm">
+<div class="font-bold">Industrial Cat6 Cable (50m)</div>
+<div class="text-[10px] text-slate-500">Accessories / Cabling</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                                            Outbound
+                                        </span>
+</td>
+<td class="text-sm">
+<span class="text-red-600 font-bold">-12</span>
+<span class="text-[10px] text-slate-400 ml-1">pcs</span>
+</td>
+<td>
+<div class="flex items-center gap-2">
+<img alt="Staff Member" class="w-6 h-6 rounded-full" data-alt="Profile photo of a warehouse associate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Asl2L9Wj_hIxoH6RFufTRlvpn-39tg63LYVrx27DMjGHnBSrbLp65VIClXNp850IrDBlso4Q22Q_ArbW72ppou8EvEgLz1V9vOqrbrZ5WseXc8aCU1B3iz8L00TB7KwJ7B__xHxAKArlpf_4JiHcHwRKbxydeZs3jD0WreeA_kd8S6XHyv6lJWkmS15PGT_4f3Ikqx7pSIiMC34iSe6GSCbihD7dl_6kynQCIshnogmxUEZmQywBsED0X5T-fBnk48Qpq19_M2w"/>
+<span class="text-sm font-medium">Mike Smith</span>
+</div>
+</td>
+<td class="text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
+<td class="text-sm">
+<div class="font-bold">Oct 23, 2023</div>
+<div class="text-[10px] text-slate-500 uppercase">04:30 PM</div>
+</td>
+<td class="text-sm font-mono text-primary font-semibold">NL-SWITCH-24</td>
+<td class="text-sm">
+<div class="font-bold">NetLand L3 Switch 24P</div>
+<div class="text-[10px] text-slate-500">Networking Hardware / Switches</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                                            Adjustment
+                                        </span>
+</td>
+<td class="text-sm">
+<span class="text-slate-600 dark:text-slate-300 font-bold">-2</span>
+<span class="text-[10px] text-slate-400 ml-1">pcs</span>
+</td>
+<td>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-500">AR</div>
+<span class="text-sm font-medium">Alex Rivers</span>
+</div>
+</td>
+<td class="text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
+<td class="text-sm">
+<div class="font-bold">Oct 23, 2023</div>
+<div class="text-[10px] text-slate-500 uppercase">01:15 PM</div>
+</td>
+<td class="text-sm font-mono text-primary font-semibold">NL-ADAP-DC</td>
+<td class="text-sm">
+<div class="font-bold">Universal DC Power Adapter</div>
+<div class="text-[10px] text-slate-500">Power Supplies / Parts</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                            Inbound
+                                        </span>
+</td>
+<td class="text-sm">
+<span class="text-emerald-600 font-bold">+500</span>
+<span class="text-[10px] text-slate-400 ml-1">pcs</span>
+</td>
+<td>
+<div class="flex items-center gap-2">
+<img alt="Staff Member" class="w-6 h-6 rounded-full" data-alt="Profile photo of a female logistics coordinator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9u5tlRrCs9LjK-VbVkzzyGVURI_-OC5IsBNC5Uo64-Yi1vJeOxHy8KSaOOXTxM7hlea2V3dhI9yks9BG6Hbx2rdRwav9WhwZ0ahtGycHCOBUdbc-2ZU3GjH-m_QJY-97lhEOsqJI2idxKsKnLhieJ5qo7gRbPCFSOUIob_BGXytE46TjqQh-oh9k7sy_K03vdpim-zGGzzNQraygyJtjs8oDJJDVkoCgNWPlbKe3kPrM5OR04WQ6oYU5QY28XTCIDtPMMVIFn5d4"/>
+<span class="text-sm font-medium">Sarah Chen</span>
+</div>
+</td>
+<td class="text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
+<td class="text-sm">
+<div class="font-bold">Oct 22, 2023</div>
+<div class="text-[10px] text-slate-500 uppercase">11:02 AM</div>
+</td>
+<td class="text-sm font-mono text-primary font-semibold">NL-WIFI-6E</td>
+<td class="text-sm">
+<div class="font-bold">NetLand Pro Router V3</div>
+<div class="text-[10px] text-slate-500">Networking Hardware / Router</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-black uppercase bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                                            Outbound
+                                        </span>
+</td>
+<td class="text-sm">
+<span class="text-red-600 font-bold">-45</span>
+<span class="text-[10px] text-slate-400 ml-1">pcs</span>
+</td>
+<td>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">JD</div>
+<span class="text-sm font-medium">Jane Doe</span>
+</div>
+</td>
+<td class="text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<span class="text-sm text-slate-500">Showing 1 to 5 of 2,403 entries</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-sm font-bold bg-slate-100 dark:bg-slate-900 rounded-md border border-slate-200 dark:border-slate-800 disabled:opacity-50">Previous</button>
+<button class="px-3 py-1 text-sm font-bold bg-primary text-white rounded-md">1</button>
+<button class="px-3 py-1 text-sm font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md">2</button>
+<button class="px-3 py-1 text-sm font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md">3</button>
+<button class="px-3 py-1 text-sm font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

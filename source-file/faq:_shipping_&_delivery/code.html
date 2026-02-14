@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Help Center - Shipping &amp; Delivery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7ebf3] dark:border-[#2d3748] bg-white dark:bg-[#1a202c] px-6 md:px-10 py-3">
+<div class="flex items-center gap-4 text-[#0d121b] dark:text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">help_center</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Help Center</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden">
+<div class="text-[#4c669a] flex border-none bg-[#e7ebf3] dark:bg-[#2d3748] items-center justify-center pl-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#e7ebf3] dark:bg-[#2d3748] dark:text-white focus:ring-0 h-full placeholder:text-[#4c669a] px-4 pl-2 text-sm font-normal" placeholder="Search for answers..." value=""/>
+</div>
+</label>
+<button class="flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-wide hover:bg-primary/90 transition-colors">
+<span>Submit Request</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[#e7ebf3] dark:border-[#2d3748]" data-alt="User profile avatar circular" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUTMJLiF7VzdvuiU31Bwp__66T_bOva0wOV3XWHErezPNOWTUtetxcxXLcg7UQg3DljOsLifeSzNQZXFVwRq7le8CyDpMF3r6yHcuJThFymWRQjCG7Uo7gcGG9W3mtn4j8sm5RicsIqvnavCvhhOP7pUOhu3MGgFpiDi8EMs6A7hTVEp_M3WG67eNq4CeagVYxr4Re3ZvLnLMEPn8YXIIMBJ7_zclwU7rU2goiVXXy8Y41FnxCpAhFPp5fseuUhue70GSnB7Jatgk");'></div>
+</div>
+</header>
+<div class="flex flex-1 w-full max-w-[1280px] mx-auto">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex w-72 flex-col gap-6 p-6 border-r border-[#e7ebf3] dark:border-[#2d3748] bg-white dark:bg-[#1a202c]">
+<div>
+<h3 class="text-xs font-bold text-[#4c669a] uppercase tracking-widest mb-4">Categories</h3>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#4c669a] hover:bg-[#f0f2f5] dark:hover:bg-[#2d3748] transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">info</span>
+<span class="text-sm font-medium">General</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[22px] fill-current">local_shipping</span>
+<span class="text-sm font-bold">Shipping &amp; Delivery</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#4c669a] hover:bg-[#f0f2f5] dark:hover:bg-[#2d3748] transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#4c669a] hover:bg-[#f0f2f5] dark:hover:bg-[#2d3748] transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">support_agent</span>
+<span class="text-sm font-medium">Technical Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#4c669a] hover:bg-[#f0f2f5] dark:hover:bg-[#2d3748] transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">assignment_return</span>
+<span class="text-sm font-medium">Returns &amp; Refunds</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-4 rounded-xl bg-primary/5 border border-primary/10">
+<p class="text-sm font-bold text-primary mb-1">New Policy Update</p>
+<p class="text-xs text-[#4c669a] leading-relaxed">We've expanded our weekend delivery zones. Check the updated regions here.</p>
+<button class="mt-3 text-xs font-bold text-primary underline">Read more</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-white dark:bg-[#1a202c]">
+<!-- Breadcrumbs -->
+<div class="px-6 md:px-12 py-6 border-b border-[#e7ebf3] dark:border-[#2d3748]">
+<nav class="flex items-center gap-2 text-sm font-medium">
+<a class="text-primary hover:underline" href="#">Help Center</a>
+<span class="text-[#4c669a] material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-[#4c669a]">Shipping &amp; Delivery</span>
+</nav>
+<h1 class="mt-4 text-3xl md:text-4xl font-black text-[#0d121b] dark:text-white tracking-tight">Shipping &amp; Delivery</h1>
+<p class="mt-2 text-[#4c669a] dark:text-[#a0aec0] max-w-2xl">Find answers to common questions about our shipping processes, delivery timelines, and international logistics for enterprise gear.</p>
+</div>
+<!-- FAQ Section -->
+<div class="px-6 md:px-12 py-8 flex flex-col gap-4">
+<!-- Question 1 -->
+<div class="group border border-[#e7ebf3] dark:border-[#2d3748] rounded-xl overflow-hidden bg-white dark:bg-[#1f2733] hover:border-primary/30 transition-all">
+<button class="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-primary/5">
+<span class="text-base font-bold text-[#0d121b] dark:text-white">How to track my order?</span>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<div class="px-5 pb-6">
+<p class="text-sm leading-relaxed text-[#4c669a] dark:text-[#a0aec0]">
+                            Once your order has shipped, you will receive an email with your tracking number and a link to the carrier's website. You can also track your order directly from your <a class="text-primary font-bold hover:underline" href="#">Account Dashboard</a> under 'Order History'. Simply click the 'Track Order' button next to your most recent purchase to see real-time updates.
+                        </p>
+</div>
+</div>
+<!-- Question 2 -->
+<div class="group border border-[#e7ebf3] dark:border-[#2d3748] rounded-xl overflow-hidden bg-white dark:bg-[#1f2733] hover:border-primary/30 transition-all">
+<button class="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-primary/5">
+<span class="text-base font-bold text-[#0d121b] dark:text-white">Do you deliver on weekends?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<div class="px-5 pb-6">
+<p class="text-sm leading-relaxed text-[#4c669a] dark:text-[#a0aec0]">
+                            Yes, we offer weekend delivery for most metropolitan areas. Standard Shipping typically delivers Monday through Friday, but our <strong>Expedited</strong> and <strong>Priority</strong> shipping methods include Saturday delivery at no extra cost in eligible ZIP codes. Sunday delivery is currently restricted to specific regions serviced by our local courier partners.
+                        </p>
+</div>
+</div>
+<!-- Question 3 -->
+<div class="group border border-[#e7ebf3] dark:border-[#2d3748] rounded-xl overflow-hidden bg-white dark:bg-[#1f2733] hover:border-primary/30 transition-all">
+<button class="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-primary/5">
+<span class="text-base font-bold text-[#0d121b] dark:text-white">What are the shipping costs for enterprise gear?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<div class="px-5 pb-6">
+<p class="text-sm leading-relaxed text-[#4c669a] dark:text-[#a0aec0]">
+                            Shipping costs for enterprise-grade hardware are calculated based on weight, volume, and destination. 
+                            </p><ul class="list-disc ml-5 mt-2 space-y-1">
+<li><strong>Domestic Freight:</strong> Starting at $149 per pallet.</li>
+<li><strong>International Logistics:</strong> Custom quotes provided at checkout.</li>
+<li><strong>White Glove Service:</strong> Includes inside delivery and debris removal for an additional $99 fee.</li>
+</ul>
+                            Orders over $10,000 qualify for complimentary standard freight shipping.
+                        <p></p>
+</div>
+</div>
+<!-- Question 4 -->
+<div class="group border border-[#e7ebf3] dark:border-[#2d3748] rounded-xl overflow-hidden bg-white dark:bg-[#1f2733] hover:border-primary/30 transition-all">
+<button class="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-primary/5">
+<span class="text-base font-bold text-[#0d121b] dark:text-white">How do I change my shipping address after an order is placed?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<div class="px-5 pb-6">
+<p class="text-sm leading-relaxed text-[#4c669a] dark:text-[#a0aec0]">
+                            If your order has not yet been processed (usually within 2 hours of placement), you can update the address via the <a class="text-primary font-bold hover:underline" href="#">Self-Service Portal</a>. If the order has already moved to 'Processing' or 'Shipped', please contact our 24/7 support team immediately. While we cannot guarantee changes once the item is with the carrier, we can often initiate a package redirect for a small carrier-imposed fee.
+                        </p>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-auto px-6 md:px-12 py-10 bg-background-light dark:bg-[#101622] border-t border-[#e7ebf3] dark:border-[#2d3748]">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-2xl bg-white dark:bg-[#1a202c] shadow-sm border border-[#e7ebf3] dark:border-[#2d3748]">
+<div class="flex items-center gap-5">
+<div class="size-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">contact_support</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-[#0d121b] dark:text-white">Still need help?</h4>
+<p class="text-[#4c669a] dark:text-[#a0aec0] text-sm">Can't find the answer you're looking for? Our support team is here for you.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-lg border border-[#e7ebf3] dark:border-[#2d3748] text-[#0d121b] dark:text-white font-bold text-sm hover:bg-[#f8f9fc] dark:hover:bg-[#2d3748] transition-all">
+                            Chat Now
+                        </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-all">
+                            Contact Us
+                        </button>
+</div>
+</div>
+</div>
+<!-- Simple Footer -->
+<footer class="px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#4c669a] border-t border-[#e7ebf3] dark:border-[#2d3748]">
+<p>© 2024 Help Center. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</main>
+</div>
+</div>
+</body></html>

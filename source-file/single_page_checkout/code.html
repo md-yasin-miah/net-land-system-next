@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | Net Land System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input:focus {
+            border-color: #1152d4;
+            ring: 0;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">lan</span>
+</div>
+<span class="text-xl font-bold tracking-tight">Net Land <span class="text-primary">System</span></span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Hardware</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="mb-8">
+<h1 class="text-3xl font-black tracking-tight mb-2">Checkout</h1>
+<p class="text-slate-500 dark:text-slate-400 font-light">Securely complete your purchase of enterprise networking gear.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Checkout Form -->
+<div class="lg:col-span-8 space-y-6">
+<!-- 1. Customer Information -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm">1</span>
+<h2 class="text-lg font-bold">Customer Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Email Address</label>
+<input class="w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-0 transition-all font-light" placeholder="admin@netland.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Phone Number</label>
+<input class="w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-0 transition-all font-light" placeholder="+880 1XXX-XXXXXX" type="tel"/>
+</div>
+</div>
+</section>
+<!-- 2. Shipping Address -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm">2</span>
+<h2 class="text-lg font-bold">Shipping Address (Bangladesh)</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Division</label>
+<select class="w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-0 font-light">
+<option>Dhaka</option>
+<option>Chattogram</option>
+<option>Sylhet</option>
+<option>Rajshahi</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">District</label>
+<select class="w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-0 font-light">
+<option>Dhaka City</option>
+<option>Gazipur</option>
+<option>Narayanganj</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Area / Upazila</label>
+<select class="w-full h-12 px-4 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-0 font-light">
+<option>Uttara</option>
+<option>Gulshan</option>
+<option>Banani</option>
+<option>Dhanmondi</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Detailed Address</label>
+<textarea class="w-full px-4 py-3 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-0 font-light" placeholder="House no, Flat, Street address..." rows="3"></textarea>
+</div>
+</section>
+<!-- 3. Delivery Method -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm">3</span>
+<h2 class="text-lg font-bold">Delivery Method</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative flex cursor-pointer rounded-lg border border-primary bg-primary/5 p-4 focus:outline-none">
+<input checked="" class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer border-slate-300 text-primary focus:ring-primary" name="delivery" type="radio" value="standard"/>
+<span class="ml-3 flex flex-col">
+<span class="block text-sm font-bold text-slate-900 dark:text-white">Standard Delivery</span>
+<span class="mt-1 flex items-center text-xs text-slate-500 font-light">3-5 Business Days</span>
+<span class="mt-2 text-sm font-bold text-primary">৳60.00</span>
+</span>
+</label>
+<label class="relative flex cursor-pointer rounded-lg border border-slate-200 dark:border-slate-700 p-4 focus:outline-none hover:border-primary/50 transition-colors">
+<input class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer border-slate-300 text-primary focus:ring-primary" name="delivery" type="radio" value="express"/>
+<span class="ml-3 flex flex-col">
+<span class="block text-sm font-bold text-slate-900 dark:text-white">Express Delivery</span>
+<span class="mt-1 flex items-center text-xs text-slate-500 font-light">Next Day Delivery</span>
+<span class="mt-2 text-sm font-bold text-slate-900 dark:text-white">৳150.00</span>
+</span>
+</label>
+</div>
+</section>
+<!-- 4. Payment Method -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm">4</span>
+<h2 class="text-lg font-bold">Payment Method</h2>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex items-center p-4 border border-slate-200 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<input class="w-4 h-4 text-primary focus:ring-primary" name="payment" type="radio"/>
+<div class="ml-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">payments</span>
+<div>
+<p class="text-sm font-bold">Cash on Delivery</p>
+<p class="text-xs text-slate-500 font-light">Pay when you receive the order</p>
+</div>
+</div>
+</label>
+<label class="flex items-center p-4 border border-primary bg-primary/5 rounded-lg cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary focus:ring-primary" name="payment" type="radio"/>
+<div class="ml-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<div>
+<p class="text-sm font-bold">SSLCommerz / Online</p>
+<p class="text-xs text-slate-500 font-light">Cards, bKash, Rocket, Nogod</p>
+</div>
+</div>
+</label>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg flex items-center gap-4 border border-dashed border-slate-300 dark:border-slate-700">
+<span class="material-symbols-outlined text-primary">security</span>
+<p class="text-xs text-slate-500 font-light">Your transaction is secured by SSL encryption. We do not store your card details.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary (Sticky) -->
+<div class="lg:col-span-4">
+<div class="sticky top-24 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800">
+<h2 class="text-lg font-bold">Order Summary</h2>
+</div>
+<!-- Product List -->
+<div class="p-6 space-y-4 max-h-[400px] overflow-y-auto">
+<div class="flex gap-4">
+<div class="h-16 w-16 bg-slate-100 dark:bg-slate-800 rounded-lg flex-shrink-0 bg-cover bg-center" data-alt="High-end network router for enterprise use" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAaaMPWtWDP1Qhsqei_70hDpSTiZ8YaOEkSxhtU-nfwSIXsCHrF5xoMIC9RfytUJkqi6Mf1vBMf-zCZZHOphgv_3cBszTrB9JDaLJOt0mVJR7x6Gr570Hu3TtQy5QAmpd7NLKTUe8mctkuq6CnuHnvVO6s1Fq0VHv2fR9bXReLdmVp39ILLi5Uo67MiZravUM1h3LZWNARc5JbfQVeckdh58CUaGWgHJfqV7BBAePXB3bDrW7ntz1__hwTQwViWvJ1qAkC_XnzbmzA')"></div>
+<div class="flex-1">
+<p class="text-sm font-bold line-clamp-1">NetCore X-2000 Pro Router</p>
+<p class="text-xs text-slate-500 font-light">Enterprise Grade • 2 units</p>
+<p class="text-sm font-bold text-primary mt-1">৳18,500.00</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="h-16 w-16 bg-slate-100 dark:bg-slate-800 rounded-lg flex-shrink-0 bg-cover bg-center" data-alt="Rack mounted network switch server" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAnDxJjsguhYqfrbugJIoFQ_ha8fPmAFGjY4H2qJ7xJIp3fSs7QB4ZHj6pqP4tK_qmUurWFr3oLU7KIwakROueQekD4brOvEGFVT_3AgbxQI_QXBZ036MTWnaOn0gUpME0aJoMmRFw-Rc4Q9XIBg_sVL4ITogSEBh0fiMnkEsLD53hRqNNBiC1K43K5ho726TtHG2lzuAI78EyvEEAN-3zmGnm6lSc8RM4zDTyoquxnEzRb121cQ1MEPyS_UOqC-ljqC17rO8DCYME')"></div>
+<div class="flex-1">
+<p class="text-sm font-bold line-clamp-1">Gigabit Managed Switch 24P</p>
+<p class="text-xs text-slate-500 font-light">Rackmount • 1 unit</p>
+<p class="text-sm font-bold text-primary mt-1">৳12,200.00</p>
+</div>
+</div>
+</div>
+<!-- Pricing Breakdown -->
+<div class="p-6 bg-slate-50 dark:bg-slate-800/50 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 font-light">Subtotal</span>
+<span class="font-medium">৳30,700.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 font-light">Shipping Fee</span>
+<span class="font-medium">৳60.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 font-light">Tax (VAT 5%)</span>
+<span class="font-medium">৳1,538.00</span>
+</div>
+<div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex justify-between items-end">
+<span class="text-base font-bold">Total Amount</span>
+<span class="text-2xl font-black text-primary">৳32,298.00</span>
+</div>
+</div>
+<!-- Action Button -->
+<div class="p-6">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg shadow-xl shadow-primary/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl">lock</span>
+                                Place Order Now
+                            </button>
+<p class="text-[10px] text-center text-slate-400 mt-4 uppercase tracking-widest font-bold">SSL Secured Transaction</p>
+</div>
+</div>
+<!-- Promo Code -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-2">
+<input class="flex-1 h-10 px-3 rounded border-slate-200 dark:border-slate-700 dark:bg-slate-800 text-sm font-light" placeholder="Promo code" type="text"/>
+<button class="bg-slate-200 dark:bg-slate-700 px-4 rounded text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">Apply</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-200 dark:border-slate-800 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 opacity-50">
+<span class="material-symbols-outlined text-sm">copyright</span>
+<span class="text-sm font-light">2024 Net Land System. All rights reserved.</span>
+</div>
+<div class="flex gap-8">
+<a class="text-sm text-slate-500 hover:text-primary transition-colors font-light" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors font-light" href="#">Terms of Service</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors font-light" href="#">Refund Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

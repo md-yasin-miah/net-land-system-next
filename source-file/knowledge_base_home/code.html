@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Net Land | Technical Knowledge Base</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white antialiased">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-background-dark border-b border-[#e7ebf3] dark:border-white/10 px-6 lg:px-20 py-3">
+<div class="max-w-[1280px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary text-3xl">
+<span class="material-symbols-outlined text-4xl">hub</span>
+</div>
+<h2 class="text-[#0d121b] dark:text-white text-xl font-bold tracking-tight">Net Land</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Support</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all">
+                        Submit a Ticket
+                    </button>
+<button class="flex items-center justify-center rounded-lg h-10 px-5 bg-[#e7ebf3] dark:bg-white/10 text-[#0d121b] dark:text-white text-sm font-bold hover:bg-opacity-80 transition-all">
+                        Login
+                    </button>
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/20">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<!-- Hero Search Section -->
+<section class="bg-white dark:bg-[#151b29] border-b border-[#e7ebf3] dark:border-white/5 py-16 lg:py-24 px-6">
+<div class="max-w-[800px] mx-auto text-center">
+<h1 class="text-4xl lg:text-5xl font-bold text-[#0d121b] dark:text-white mb-6 tracking-tight">How can we help you connect?</h1>
+<p class="text-lg text-[#4c669a] dark:text-gray-400 mb-10">Search our technical documentation, community forums, and hardware manuals.</p>
+<div class="relative max-w-2xl mx-auto">
+<div class="flex items-center bg-background-light dark:bg-white/5 rounded-xl border-2 border-transparent focus-within:border-primary transition-all p-1 shadow-sm">
+<span class="material-symbols-outlined text-[#4c669a] ml-4">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-4 px-4 text-lg placeholder:text-[#4c669a]" placeholder="Search for routers, switches, configurations..." type="text"/>
+<button class="bg-primary text-white px-6 py-3 rounded-lg font-bold mr-1">Search</button>
+</div>
+<div class="mt-4 flex flex-wrap justify-center gap-3 text-sm">
+<span class="text-[#4c669a]">Popular:</span>
+<a class="text-primary hover:underline" href="#">VLAN Setup</a>
+<a class="text-primary hover:underline" href="#">Firmware 2.4</a>
+<a class="text-primary hover:underline" href="#">VPN Config</a>
+<a class="text-primary hover:underline" href="#">PoE Limits</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories Grid -->
+<section class="max-w-[1280px] mx-auto py-16 px-6">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold">Hardware Categories</h2>
+<a class="text-primary font-semibold flex items-center gap-1 hover:gap-2 transition-all" href="#">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Routers -->
+<div class="group bg-white dark:bg-white/5 p-8 rounded-xl border border-[#e7ebf3] dark:border-white/10 hover:shadow-xl transition-all cursor-pointer">
+<div class="size-16 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">router</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Routers</h3>
+<p class="text-[#4c669a] dark:text-gray-400 mb-6">Edge, Core, and Branch models optimized for high-performance throughput.</p>
+<ul class="space-y-2 text-sm text-[#0d121b] dark:text-gray-300">
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>Edge Connectivity</li>
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>BGP &amp; OSPF Config</li>
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>Branch Series</li>
+</ul>
+</div>
+<!-- Switches -->
+<div class="group bg-white dark:bg-white/5 p-8 rounded-xl border border-[#e7ebf3] dark:border-white/10 hover:shadow-xl transition-all cursor-pointer">
+<div class="size-16 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">settings_input_component</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Switches</h3>
+<p class="text-[#4c669a] dark:text-gray-400 mb-6">Managed, Unmanaged, and PoE solutions for enterprise-grade networking.</p>
+<ul class="space-y-2 text-sm text-[#0d121b] dark:text-gray-300">
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>Layer 3 Switching</li>
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>PoE+ Power Budget</li>
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>Stacking Guide</li>
+</ul>
+</div>
+<!-- Firewalls -->
+<div class="group bg-white dark:bg-white/5 p-8 rounded-xl border border-[#e7ebf3] dark:border-white/10 hover:shadow-xl transition-all cursor-pointer">
+<div class="size-16 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">shield_lock</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Firewalls</h3>
+<p class="text-[#4c669a] dark:text-gray-400 mb-6">Next-Gen security, VPN configurations, and intrusion prevention systems.</p>
+<ul class="space-y-2 text-sm text-[#0d121b] dark:text-gray-300">
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>IPsec Tunneling</li>
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>Security Policies</li>
+<li class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">chevron_right</span>Threat Analytics</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Trending & Updates Section -->
+<section class="bg-[#f0f2f7] dark:bg-[#1a2133] py-20 px-6">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Trending Articles -->
+<div>
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+<h2 class="text-2xl font-bold">Trending Articles</h2>
+</div>
+<div class="space-y-4">
+<article class="bg-white dark:bg-white/5 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Configuration</span>
+<span class="text-xs text-[#4c669a] flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 5 min read</span>
+</div>
+<h4 class="text-lg font-bold mb-2 hover:text-primary cursor-pointer">Configuring VLANs on L3 Managed Switches</h4>
+<p class="text-sm text-[#4c669a] dark:text-gray-400">Learn how to segment your network efficiently using Layer 3 routing capabilities...</p>
+</article>
+<article class="bg-white dark:bg-white/5 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Troubleshooting</span>
+<span class="text-xs text-[#4c669a] flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 8 min read</span>
+</div>
+<h4 class="text-lg font-bold mb-2 hover:text-primary cursor-pointer">Optimizing OSPF for Large Enterprise Networks</h4>
+<p class="text-sm text-[#4c669a] dark:text-gray-400">A deep dive into area types, route summarization, and stability metrics...</p>
+</article>
+<article class="bg-white dark:bg-white/5 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Security</span>
+<span class="text-xs text-[#4c669a] flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 4 min read</span>
+</div>
+<h4 class="text-lg font-bold mb-2 hover:text-primary cursor-pointer">Setting up Clientless VPN Access</h4>
+<p class="text-sm text-[#4c669a] dark:text-gray-400">Secure remote access for your employees without installing third-party software...</p>
+</article>
+</div>
+</div>
+<!-- Latest Updates -->
+<div>
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">new_releases</span>
+<h2 class="text-2xl font-bold">Latest Updates</h2>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4 border-l-2 border-primary pl-6 py-1">
+<div>
+<div class="text-xs font-bold text-[#4c669a] mb-1">MARCH 24, 2024</div>
+<h4 class="text-md font-bold hover:text-primary cursor-pointer">NetOS Firmware 2.4 Security Patch Released</h4>
+<p class="text-sm text-[#4c669a] mt-1">This update addresses critical vulnerabilities in the SSH module for core routers.</p>
+</div>
+</div>
+<div class="flex gap-4 border-l-2 border-[#e7ebf3] dark:border-white/10 pl-6 py-1">
+<div>
+<div class="text-xs font-bold text-[#4c669a] mb-1">MARCH 18, 2024</div>
+<h4 class="text-md font-bold hover:text-primary cursor-pointer">Hardware Compatibility List (HCL) Updated</h4>
+<p class="text-sm text-[#4c669a] mt-1">New SFP+ modules from approved vendors added for the NL-Switch-48X series.</p>
+</div>
+</div>
+<div class="flex gap-4 border-l-2 border-[#e7ebf3] dark:border-white/10 pl-6 py-1">
+<div>
+<div class="text-xs font-bold text-[#4c669a] mb-1">MARCH 12, 2024</div>
+<h4 class="text-md font-bold hover:text-primary cursor-pointer">New Core Router CLI Guide Available</h4>
+<p class="text-sm text-[#4c669a] mt-1">Download the comprehensive 2024 command line interface documentation.</p>
+</div>
+</div>
+<button class="w-full py-3 rounded-lg border border-[#e7ebf3] dark:border-white/10 font-bold hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+                                View Release Archives
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="max-w-[1280px] mx-auto py-16 px-6">
+<div class="bg-primary rounded-2xl p-8 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+<div class="text-white max-w-[500px]">
+<h2 class="text-3xl font-bold mb-4">Stay updated on firmware alerts</h2>
+<p class="text-white/80">Get critical security patches and technical updates delivered directly to your inbox as they are released.</p>
+</div>
+<div class="w-full lg:w-auto">
+<form class="flex flex-col sm:flex-row gap-3 w-full">
+<input class="px-5 py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:ring-2 focus:ring-white outline-none min-w-[300px]" placeholder="it-admin@company.com" type="email"/>
+<button class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-opacity-90 transition-all" type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-[#e7ebf3] dark:border-white/10 py-12 px-6">
+<div class="max-w-[1280px] mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+<div class="col-span-2 lg:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<h2 class="font-bold text-xl">Net Land</h2>
+</div>
+<p class="text-sm text-[#4c669a] dark:text-gray-400 mb-6">Building the foundation of modern connectivity with enterprise-grade networking solutions.</p>
+</div>
+<div>
+<h4 class="font-bold mb-4">Resources</h4>
+<ul class="space-y-2 text-sm text-[#4c669a] dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Firmware Downloads</a></li>
+<li><a class="hover:text-primary" href="#">User Manuals</a></li>
+<li><a class="hover:text-primary" href="#">API Documentation</a></li>
+<li><a class="hover:text-primary" href="#">Product Datasheets</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">Support</h4>
+<ul class="space-y-2 text-sm text-[#4c669a] dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary" href="#">Knowledge Base</a></li>
+<li><a class="hover:text-primary" href="#">RMA Portal</a></li>
+<li><a class="hover:text-primary" href="#">Community Forum</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4">Legal</h4>
+<ul class="space-y-2 text-sm text-[#4c669a] dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Security Policy</a></li>
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary" href="#">Warranty Information</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-4 lg:col-span-1">
+<h4 class="font-bold mb-4">Social</h4>
+<div class="flex gap-4">
+<a class="size-10 rounded-full bg-background-light dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="size-10 rounded-full bg-background-light dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">share</span>
+</a>
+<a class="size-10 rounded-full bg-background-light dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">feed</span>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto mt-12 pt-8 border-t border-[#e7ebf3] dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#4c669a]">
+<p>© 2024 Net Land Networking Systems. All rights reserved.</p>
+<div class="flex gap-6">
+<span>Region: Global (English)</span>
+<span>System Status: <span class="text-green-500 font-bold">Operational</span></span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RMA Status Tracking - Net Land</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Net Land</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="hidden md:flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3UnNee2U8ydQsgPWF9PkWxKfhwqspoBRGITQE4WM_bXsHR2kZgx0TQfQKJrmFyF5VWaPk__vvYNQZlN02px618Z1I4d9p0r6QoSjtQJ-qYOaD3IrG6mYBR_TN7qqTWFei4Ds7WiDOf0lKQq-6h5N3eWWASKdSFmRPOVJeN16w1Ba0E_fcETQAv-s-bi4x1ABsNOGu4YCM3TZVPOntgPdbz2PNbpsIeaAqDC2oNwllG510EJxsuO8Wk8amn6JBwWnlIHSsCClIMNo");'></div>
+</div>
+</header>
+<main class="flex flex-1 flex-col max-w-6xl mx-auto w-full px-4 md:px-10 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 mb-6">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-white">RMA Status</span>
+</nav>
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Warranty &amp; Return Status</h1>
+<p class="text-slate-500 dark:text-slate-400 max-w-xl">Track the progress of your RMA request in real-time. Our technicians are currently processing your hardware.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 rounded-lg h-11 px-5 bg-white border border-slate-200 dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Download Shipping Label</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg h-11 px-5 bg-primary text-white font-semibold text-sm hover:bg-blue-700 hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+<span>Contact Support</span>
+</button>
+</div>
+</div>
+<!-- Main Tracking Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Timeline and Updates -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- RMA Status Summary Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<div class="flex flex-wrap justify-between items-start gap-4 mb-8">
+<div>
+<p class="text-xs font-bold text-primary uppercase tracking-wider mb-1">RMA Identification</p>
+<div class="flex items-center gap-3">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">RMA-99283-NL</h2>
+<button class="p-1 text-slate-400 hover:text-primary transition-colors" title="Copy ID">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+</div>
+</div>
+<div class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                                    Inspection in Progress
+                                </div>
+</div>
+<!-- Horizontal Timeline (Visible on Desktop) -->
+<div class="hidden md:flex justify-between items-start relative mb-4">
+<div class="absolute top-5 left-0 w-full h-0.5 bg-slate-100 dark:bg-slate-800 -z-0"></div>
+<div class="absolute top-5 left-0 w-1/4 h-0.5 bg-primary -z-0"></div>
+<!-- Step 1: Claim Received -->
+<div class="flex flex-col items-center text-center gap-3 relative z-10 w-1/5">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined">check</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Claim Received</span>
+<span class="text-[10px] text-slate-400">Oct 12, 2023</span>
+</div>
+</div>
+<!-- Step 2: Inspection -->
+<div class="flex flex-col items-center text-center gap-3 relative z-10 w-1/5">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 border-4 border-white dark:border-slate-900">
+<span class="material-symbols-outlined">magnification_small</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-primary">Inspection</span>
+<span class="text-[10px] text-slate-400">In Progress</span>
+</div>
+</div>
+<!-- Step 3: Approval -->
+<div class="flex flex-col items-center text-center gap-3 relative z-10 w-1/5">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 dark:text-slate-600">Approval</span>
+<span class="text-[10px] text-slate-400">Pending</span>
+</div>
+</div>
+<!-- Step 4: Repair/Replacement -->
+<div class="flex flex-col items-center text-center gap-3 relative z-10 w-1/5">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 dark:text-slate-600">Dispatched</span>
+<span class="text-[10px] text-slate-400">Pending</span>
+</div>
+</div>
+<!-- Step 5: Delivered -->
+<div class="flex flex-col items-center text-center gap-3 relative z-10 w-1/5">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 dark:text-slate-600">Delivered</span>
+<span class="text-[10px] text-slate-400">Pending</span>
+</div>
+</div>
+</div>
+<!-- Vertical Timeline (Mobile only) -->
+<div class="flex md:hidden flex-col gap-6 ml-4">
+<div class="flex gap-4 border-l-2 border-primary pl-6 pb-6 relative">
+<div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-primary border-4 border-white dark:border-slate-900"></div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Claim Received</p>
+<p class="text-xs text-slate-400">Oct 12, 2023 - 09:45 AM</p>
+</div>
+</div>
+<div class="flex gap-4 border-l-2 border-primary pl-6 pb-6 relative">
+<div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-primary border-4 border-white dark:border-slate-900"></div>
+<div>
+<p class="text-sm font-bold text-primary">Inspection in Progress</p>
+<p class="text-xs text-slate-400">Oct 14, 2023 - 02:12 PM</p>
+</div>
+</div>
+<div class="flex gap-4 border-l-2 border-slate-200 dark:border-slate-800 pl-6 pb-6 relative">
+<div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<div>
+<p class="text-sm font-bold text-slate-400 dark:text-slate-500">Approval</p>
+<p class="text-xs text-slate-400">Awaiting technician report</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Technician Updates Log -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                                    Technician Notes &amp; Updates
+                                </h3>
+<span class="text-xs font-medium text-slate-400">Last updated: 2 hours ago</span>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Update Entry -->
+<div class="p-6 flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Hardware Inspection</span>
+<span class="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full font-bold">COMPLETED</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Technical diagnostic performed. Internal hardware fault confirmed in the power supply module. System board appears unaffected. Moving to approval stage for parts replacement.</p>
+<span class="text-xs text-slate-400 mt-1">Oct 15, 2023 • 11:30 AM • Lead Technician: Sarah W.</span>
+</div>
+</div>
+<!-- Update Entry -->
+<div class="p-6 flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">package_2</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Item Received</span>
+<span class="text-[10px] px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 rounded-full font-bold">LOGISTIC</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Package arrived at central service facility. Initial visual inspection complete. Item recorded in system and assigned to Technician Sarah W.</p>
+<span class="text-xs text-slate-400 mt-1">Oct 14, 2023 • 02:15 PM • Facility: North Hub</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Item Summary & Details -->
+<div class="flex flex-col gap-6">
+<!-- Item Details Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm overflow-hidden sticky top-24">
+<h3 class="font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                                Serviced Item
+                            </h3>
+<div class="relative w-full aspect-square rounded-lg bg-slate-100 dark:bg-slate-800 mb-6 overflow-hidden border border-slate-100 dark:border-slate-800">
+<div class="absolute inset-0 bg-center bg-no-repeat bg-cover" data-alt="High-end server workstation image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB786baKzC00Ee5wW6UBv5gDkdrw_3AJkDLb3hUh67nRq2qmdCHhtVGr1MCkbLPxgrcOoTb81IazY6VYawSyqgPK7EbswEirqu9CCdHXs1FIa6ewWvGJmI_Ga2OQyC2esyM0lBOs7twfjjtJ0b-vXXIKXogRIajvldT744p_p16TFQyTiZAfKhVsmw2s0DvsIWXO9j10TPklygVzTRFov7AzZ7iKS6NJzabWY3DcyZd2LHDbvPLr3K6e0uf-74D2R0f6PIiSq2FHCo");'></div>
+</div>
+<div class="flex flex-col gap-4">
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white">NetCore X-500 Server</h4>
+<p class="text-xs text-slate-400">Order #NL-884221-OP</p>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Serial Number</p>
+<p class="text-sm font-mono font-medium text-slate-700 dark:text-slate-300">SN: 884-22X-99P-Z</p>
+</div>
+<div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Warranty Period</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">3 Year Enterprise Core</p>
+</div>
+<div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Est. Completion</p>
+<p class="text-sm font-medium text-primary">Oct 22, 2023</p>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center mb-4">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Shipping Address</p>
+<button class="text-primary text-xs font-bold hover:underline">Edit</button>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+                                        122 Tech Valley Parkway, Suite 400<br/>
+                                        San Francisco, CA 94103<br/>
+                                        United States
+                                    </p>
+</div>
+</div>
+<button class="w-full mt-6 flex items-center justify-center gap-2 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-slate-200 transition-all">
+<span class="material-symbols-outlined text-lg">print</span>
+                                Print Summary
+                            </button>
+</div>
+</div>
+</div>
+<!-- Bottom Help Banner -->
+<div class="mt-12 p-8 rounded-2xl bg-primary/5 dark:bg-primary/10 border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+<div class="flex flex-col gap-1">
+<h4 class="text-lg font-bold text-primary">Need more help?</h4>
+<p class="text-slate-600 dark:text-slate-400">Our enterprise support team is available 24/7 for high-priority RMA inquiries.</p>
+</div>
+<div class="flex gap-4">
+<a class="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm font-bold text-slate-900 dark:text-white hover:shadow-md transition-all" href="tel:18005550199">
+<span class="material-symbols-outlined text-primary">call</span>
+                            1-800-NET-LAND
+                        </a>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 font-bold hover:bg-blue-700 transition-all">
+<span class="material-symbols-outlined">chat_bubble</span>
+                            Live Chat
+                        </button>
+</div>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-10 px-6 md:px-10 bg-white dark:bg-slate-900">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 text-slate-400">
+<div class="size-6 opacity-50">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<span class="text-sm font-medium">© 2023 Net Land Infrastructure Inc. All rights reserved.</span>
+</div>
+<div class="flex gap-8 text-sm font-medium text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Global Support</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

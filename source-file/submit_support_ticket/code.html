@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Submit a Support Ticket | Net Land</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="relative flex flex-col w-full min-h-screen overflow-x-hidden">
+<!-- Header / Nav -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center w-8 h-8 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">lan</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">Net Land</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border border-slate-300 dark:border-slate-600">
+<img class="w-full h-full object-cover" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6wTJpKBoaN5wzzAF-4zxgLneQjh9WztEoxKa6nhERUMFbALY9r7o573dJ4j5_zN6Gi1n3PbciSVpNoYSdYhttIAmpGYEJlu_lZs9HWyQYCS6QKtsa3TbWPRG8fQaeICaENccAgtKbafdQ8ZIKZACZawirMR0p90PSK0Kb1SDBkJdxnBspRXcmK83hmN9GhDanq9BzTtIu46y92SEyz63Lg0-B0lJHivM-R5z0-Jf4LGM7ewy-xJqf6hoEBu-vqFx2gjNt52ulxTs"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Breadcrumbs -->
+<nav class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4">
+<ol class="flex items-center space-x-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+<li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
+<li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+<li class="font-medium text-slate-900 dark:text-white">New Ticket</li>
+</ol>
+</nav>
+<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-12">
+<div class="mb-8">
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Submit a Support Ticket</h1>
+<p class="mt-2 text-slate-600 dark:text-slate-400">Please fill out the form below and our team will get back to you within 24 hours.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Form -->
+<div class="lg:col-span-2">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<form class="p-6 sm:p-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Full Name</label>
+<input class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
+<input class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Inquiry Subject</label>
+<select class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all appearance-none">
+<option>Technical Issue</option>
+<option>Billing</option>
+<option>Account Access</option>
+<option>Other</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Priority Level</label>
+<div class="flex flex-wrap gap-4">
+<label class="relative flex-1 min-w-[100px] cursor-pointer">
+<input checked="" class="peer sr-only" name="priority" type="radio"/>
+<div class="w-full px-4 py-3 text-center rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 peer-checked:border-green-500 peer-checked:bg-green-50 peer-checked:text-green-700 dark:peer-checked:bg-green-900/20 dark:peer-checked:text-green-400 transition-all">
+                                            Low
+                                        </div>
+</label>
+<label class="relative flex-1 min-w-[100px] cursor-pointer">
+<input class="peer sr-only" name="priority" type="radio"/>
+<div class="w-full px-4 py-3 text-center rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-700 dark:peer-checked:bg-orange-900/20 dark:peer-checked:text-orange-400 transition-all">
+                                            Medium
+                                        </div>
+</label>
+<label class="relative flex-1 min-w-[100px] cursor-pointer">
+<input class="peer sr-only" name="priority" type="radio"/>
+<div class="w-full px-4 py-3 text-center rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 peer-checked:border-red-500 peer-checked:bg-red-50 peer-checked:text-red-700 dark:peer-checked:bg-red-900/20 dark:peer-checked:text-red-400 transition-all">
+                                            High
+                                        </div>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Problem Description</label>
+<textarea class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none" placeholder="Please describe your issue in detail..." rows="6"></textarea>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Attachments (Optional)</label>
+<div class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-8 text-center hover:border-primary dark:hover:border-primary transition-colors bg-slate-50 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-4xl text-slate-400 mb-2">cloud_upload</span>
+<p class="text-sm text-slate-600 dark:text-slate-400">
+<span class="text-primary font-semibold">Click to upload</span> or drag and drop
+                                    </p>
+<p class="text-xs text-slate-500 dark:text-slate-500 mt-1">PNG, JPG, PDF up to 10MB</p>
+<input class="hidden" type="file"/>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full sm:w-auto px-8 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg shadow-lg shadow-primary/20 transition-all active:scale-95" type="submit">
+                                    Submit Ticket
+                                </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<div class="space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Support Line</p>
+<p class="text-slate-900 dark:text-white font-medium">+1 (800) NET-LAND</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Email Us</p>
+<p class="text-slate-900 dark:text-white font-medium">support@netland.com</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Business Hours</p>
+<p class="text-slate-900 dark:text-white font-medium">Mon-Fri, 9:00 AM - 6:00 PM EST</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 rounded-xl border border-primary/10 p-6">
+<h4 class="text-primary font-bold mb-2">Help Center</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Have you checked our FAQ? Most common questions are answered there.</p>
+<a class="inline-flex items-center text-sm font-bold text-primary hover:underline" href="#">
+                            Browse Knowledge Base
+                            <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Decorative Map Mockup -->
+<div class="rounded-xl overflow-hidden h-48 border border-slate-200 dark:border-slate-800 relative group">
+<img class="w-full h-full object-cover" data-alt="Stylized map showing business location" data-location="New York City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQlFsDqCj1HWMw3Th8_Jh-wdefswTkLjFpxM3I8HnzG0WNqERGMofGs5tHE2yhVB61cwOxJlhMIopf2ENVVAoVW_yHoA1L-wO5SGxW5lGmh5Yk9bPLWYiHEWVXykRFgjhtkUFrrimmsMpcGoYA0QF-itD0iLAUdt_nMDQs0mHxCVQGs2d7RorG_cEYIrTm5bL3J4IVeyX2LyX-FiZoa0ipvnTeHHGUCcfjurWxIKBu6jXAxCYUoUQUdsYm1pZl_FxcToyp2VbBA0c"/>
+<div class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
+<div class="absolute bottom-3 left-3 bg-white dark:bg-slate-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                            Headquarters: NYC
+                        </div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-slate-500 dark:text-slate-500 text-sm">© 2024 Net Land. All rights reserved.</p>
+</footer>
+</div>
+</body></html>

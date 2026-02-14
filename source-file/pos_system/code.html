@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Net Land System POS</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1152d4",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101622",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-6 sticky top-0 z-50">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">hub</span>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Net Land <span class="text-primary">POS</span></h1>
+</div>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider leading-none">Invoice Number</span>
+<span class="text-sm font-semibold text-primary">#INV-2023-0892</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex flex-col items-end mr-2">
+<span class="text-sm font-medium">Alex Thompson</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-tighter">Terminal 04 • Head Office</span>
+</div>
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-700">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Professional headshot of a store manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-dOSj92wjcoAbbLIa9UdZQSiEBmURMagoytC84ErB6aJ3TaK2K1Vo7RSr_lfHxXtIcxSplpCmCG8MGPKfHG0he6BeE7TdxC2k3zpL3UvXGorwKtDJimcBfZV6cRCBOAjFasjf6uu0O59Qz_x0M3TxYhvI4ReO35VGfXPwAVEUsK_XfavopJSWpUsMNEgOKyOdTnhJidiPTqTf0gk1hwcYvY6Q_SWcPnhB_aT-CgZw7XK5DuMEqLfPaS1pzwaH2cTHA8WijdwZKDA"/>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 hover:bg-red-50 text-red-500 rounded-lg transition-colors">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Panel: Product Browsing -->
+<section class="flex-1 flex flex-col overflow-hidden bg-slate-50 dark:bg-background-dark border-r border-slate-200 dark:border-slate-800">
+<!-- Search & Filter Controls -->
+<div class="p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+<div class="flex gap-3">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="Search product name, SKU or scan barcode..." type="text"/>
+</div>
+<button class="px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg flex items-center gap-2 hover:bg-slate-50 text-sm font-medium">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+<span>Filters</span>
+</button>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-primary text-white text-xs font-semibold">All Products</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:border-primary">Electronics</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:border-primary">Hardware</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:border-primary">Networking</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:border-primary">Cables</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:border-primary">Services</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:border-primary">Software</button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="flex-1 overflow-y-auto p-4">
+<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+<!-- Product Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden group cursor-pointer hover:shadow-lg hover:border-primary/50 transition-all flex flex-col">
+<div class="aspect-square bg-slate-100 relative overflow-hidden">
+<img alt="iPad Pro" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Tablet computer on a clean surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhSGV8zhco_72SY1zDxUSBAdXWsUnPfZWsTFgMBuXEUd_GTn-1f0NVJpG9-GQIZ2v3MInXYboyP4XLs5o-7bDn0bKnPrrLMq9eHGHl7hShTajS7-B5HPKtjeZucDznaLPcaIBUSoB-d_MKpUet3qCpXlRxPbLEC1ByshyNaov0KAOomwnYtN-QlVUGg0L8PkuSp5pA2lD_eaSCiUtI0zxD-Ris2fSxTHaVtLca5-xZ9JNhc_nbKzWNTzi_JwibjeHqhlRltoynkRI"/>
+<span class="absolute top-2 right-2 px-2 py-1 bg-green-500 text-white text-[10px] font-bold rounded uppercase">In Stock: 14</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">Network Router AX6000</h3>
+<p class="text-xs text-slate-500 mb-2">SKU: NET-AX-001</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-primary">$120.00</span>
+<button class="size-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden group cursor-pointer hover:shadow-lg hover:border-primary/50 transition-all flex flex-col">
+<div class="aspect-square bg-slate-100 relative overflow-hidden">
+<img alt="Fiber Cable" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="High quality network cable coiled" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBI6cejtFymEQK8TTo0qNFkbvgYJpGKzjZcsX0Hw3zRVFWGxtRZRx7pcGIvp2iRwXe6uzRMM7t2wGySPRkfu7wzJqDhPF1qxDABnFwMVBJGJ7daBA8MXCJ-tT8jSM_Mv0RUTMHNxQN_BBq1gGQrZY9WaHkwK-a1hpEhsXoMFbvOZOz8mjvZfNjMF_ptdU-4VouI2yqVPuVdDKINTUzMhrt_Zdm7pwzR71vK_C62mitA-HmIZYYOeH1i-6K2tuWbtZA3ZEwbFXyMPg"/>
+<span class="absolute top-2 right-2 px-2 py-1 bg-green-500 text-white text-[10px] font-bold rounded uppercase">In Stock: 50</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">Fiber Cable 10m Cat6</h3>
+<p class="text-xs text-slate-500 mb-2">SKU: CAB-FIB-10</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-primary">$15.00</span>
+<button class="size-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 (Low Stock) -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden group cursor-pointer hover:shadow-lg transition-all flex flex-col">
+<div class="aspect-square bg-slate-100 relative overflow-hidden">
+<img alt="Server Rack" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Modern server rack unit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAna0055WzK_gw3G4OlSiG4BRjwtLlZUI_n_PIrlVinAhc61wvXFiWMsA-Uc3mhuv4KMaKffjd1m2WhyQ1rsbbuxYIKfn8TwPEW5WpD7P8Gjk3kNUp6kjjgSgS_2-rPpDxA9jLQS1lbZqjl9qhF9xHCx6gyqJOr3xoNhfleky53PanFafE9gRsQWe7e2guf0WeN2XYOrpD9sFX3Gcif_jCuKHykCyiQEyDFFtBcdSeVaOMSoNTD4S1lq7b5cwlxhdsVg721pIQNBZc"/>
+<span class="absolute top-2 right-2 px-2 py-1 bg-amber-500 text-white text-[10px] font-bold rounded uppercase">Low Stock: 2</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">Enterprise Server Rack 42U</h3>
+<p class="text-xs text-slate-500 mb-2">SKU: SRV-RCK-42</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-primary">$450.00</span>
+<button class="size-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden group cursor-pointer hover:shadow-lg transition-all flex flex-col">
+<div class="aspect-square bg-slate-100 relative overflow-hidden">
+<img alt="Switch" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Ethernet network switch device" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnlTu2PlAZD4IgZXdz8nD3ma0YuI2KSzOnmXGtOpxnIXQgAaEe2JdjmKfn43Q4B5Vsjx9Jds9rSmp4_0ekY_CPqRLxC1t5OndkqTPxoLzruXuopEK9KuSrj-q1cUiK059pNV-_tapNBTgYEoy2dfseqZD7yBbsxm6_1HjirMZ9FVuxndBQ5pGrImf7pXdnhtQCz4tJzyklKnWldO8ZKAYXNXkASz51OPW-t7gtzomkZopKw66kIDQo2WcNr-af6xZT7SOIjkzUXcM"/>
+<span class="absolute top-2 right-2 px-2 py-1 bg-green-500 text-white text-[10px] font-bold rounded uppercase">In Stock: 8</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">Managed Switch 24 Port</h3>
+<p class="text-xs text-slate-500 mb-2">SKU: NET-SW-24M</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-primary">$210.00</span>
+<button class="size-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden group cursor-pointer hover:shadow-lg transition-all flex flex-col">
+<div class="aspect-square bg-slate-100 relative overflow-hidden">
+<img alt="Patch Panel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Network patch panel hardware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHDWovJ4ccvUSdmVRcczFMASGkALtzpGzhyyys0zHzm3zRZ9O-T6wio5IdVRBPDPbm835Pg1xK8RUHyhyuZeakgfWLWnMZTuJHYg-MoOFMDdfjn2S4O5r21Qetydtyl6EUm2ym3kAffnEo6GNlXAkUb8SZwJkAlwUt6X1PBMGEUkDCN758Hcs4gVFbihIYOi0NIWFaSekz1ze6sYyo5L6549QCvYK7idWLk3fFy_WPsr2xVD5rNM2QJDa2s0DaQfCoYKNjCYb4y7E"/>
+<span class="absolute top-2 right-2 px-2 py-1 bg-green-500 text-white text-[10px] font-bold rounded uppercase">In Stock: 22</span>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">RJ45 Patch Panel 48P</h3>
+<p class="text-xs text-slate-500 mb-2">SKU: NET-PP-48</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-primary">$85.00</span>
+<button class="size-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6 (Out of stock) -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden opacity-75 grayscale flex flex-col">
+<div class="aspect-square bg-slate-100 relative overflow-hidden">
+<img alt="Tools" class="w-full h-full object-cover" data-alt="Crimping tool for network cables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDppXesyQywD8w2t0nsmIyZvHNObH8vzFvsdln0WNfE8TvP-gYet_Tk7jLVi8ZjC7Sc5_YetQzrorlqXRmzPa_hn0_DnCfzO5SBmvuEJ0iF3A5nA3xP_XmqsFzDRrSxqDYr7Tf_l01cgVSQKM0oMgC4zNp2yE6HnwHrF3u-iSuXObvIAPyByJD_Bxn-SWId2gtbc6YBvN7DvmQtWOPovpUoxE603AgyIyXh70yUosMqQLI2FCHZlThzEWt2Wzkg7Z6IO558wGvuCbA"/>
+<div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
+<span class="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded uppercase">Out of Stock</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">Crimping Tool Set</h3>
+<p class="text-xs text-slate-500 mb-2">SKU: TOL-CRM-01</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-lg font-bold text-slate-400">$12.00</span>
+<button class="size-8 bg-slate-200 text-slate-400 rounded-lg flex items-center justify-center cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Cart & Transaction -->
+<aside class="w-[420px] bg-white dark:bg-slate-900 flex flex-col shadow-2xl z-40">
+<!-- Customer Selector -->
+<div class="p-4 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500">Current Sale</h2>
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                        New Customer
+                    </button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">group</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm" placeholder="Select customer or walk-in..." type="text" value="Guest Customer"/>
+</div>
+</div>
+<!-- Cart Items -->
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+<!-- Cart Item 1 -->
+<div class="flex gap-3">
+<div class="size-14 rounded-lg bg-slate-100 overflow-hidden shrink-0 border border-slate-200 dark:border-slate-800">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Thumbnail of a router" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI4ct-oHUq5LUyUGNpIp5chMYpL9YwRWV4je0zuBp_OROXQQ7eaCCXCAAV2KHyOBndkSiSR9OuhLfK5aEu0Rgs7XSgyZFtJ0K7M1HEjTEiu8-r04gG0q8V6Khtt37MCW_kxef9Vh5-mA_Fcld2P0FcVS1hp6ZjU1IgAbVuPZv_Ggf0JoJKg5UWLsTIDg_Y4GfC1qtJixOni_xbRLY_5v5w3iq4g3JRPo75SeHVewK5OvZhqHKC_CpXIJoztgKgTefEkPINbrlO4Q8"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-sm font-medium text-slate-900 dark:text-white truncate">Network Router AX6000</h4>
+<button class="text-slate-400 hover:text-red-500">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1">
+<button class="size-6 rounded border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-50">-</button>
+<span class="w-8 text-center text-sm font-semibold">1</span>
+<button class="size-6 rounded border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-50">+</button>
+</div>
+<span class="text-sm font-bold">$120.00</span>
+</div>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="flex gap-3">
+<div class="size-14 rounded-lg bg-slate-100 overflow-hidden shrink-0 border border-slate-200 dark:border-slate-800">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Thumbnail of fiber cable" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAFQ6f8AkDX8b9P5aeaR8LIDHUPJomCd-p02kgTGowachjSSptGE374lwMq3h8AVd-hgj5Gc7FeJt2U7GhiWCSnM6zMuu8GXQhftvp2eWpuLHOr0yRQBsv-dnwFDMXhprKHV-L89bNVSNrfR2Ygz4L2YLZcS8rWExIAqvkogTyYvIG9XeRfbaSudt4fr1PggE7tAp_PHyUrrCjW8x3gdvL-prC9r2hp_qyVWvicAgnq2M8R7MUewMfl32sV3kZnSjmBkPhK4ptcnk"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-sm font-medium text-slate-900 dark:text-white truncate">Fiber Cable 10m Cat6</h4>
+<button class="text-slate-400 hover:text-red-500">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1">
+<button class="size-6 rounded border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-50">-</button>
+<span class="w-8 text-center text-sm font-semibold">3</span>
+<button class="size-6 rounded border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-50">+</button>
+</div>
+<span class="text-sm font-bold">$45.00</span>
+</div>
+</div>
+</div>
+<!-- Empty State Suggestion (Optional) -->
+<div class="mt-4 p-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl flex flex-col items-center justify-center text-slate-400 py-8">
+<span class="material-symbols-outlined text-3xl mb-2">add_circle</span>
+<p class="text-xs font-medium uppercase tracking-widest">Add more items</p>
+</div>
+</div>
+<!-- Calculation & Footer -->
+<div class="p-6 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Subtotal</span>
+<span class="font-medium">$165.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="text-slate-500">Tax (8%)</span>
+<span class="material-symbols-outlined text-sm text-slate-400">edit</span>
+</div>
+<input class="w-20 text-right bg-transparent border-none p-0 text-sm font-medium focus:ring-0" type="text" value="$13.20"/>
+</div>
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2 text-primary">
+<span class="font-medium">Discount</span>
+<span class="material-symbols-outlined text-sm">add_circle</span>
+</div>
+<span class="font-medium text-primary">-$0.00</span>
+</div>
+<div class="h-[1px] bg-slate-200 dark:bg-slate-700 my-2"></div>
+<div class="flex justify-between items-end">
+<span class="text-base font-bold text-slate-900 dark:text-white">Total Amount</span>
+<span class="text-3xl font-black text-primary">$178.20</span>
+</div>
+</div>
+<!-- Payment Method Selector -->
+<div class="flex flex-col gap-2 mt-2">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Select Payment Method</p>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center py-3 border-2 border-primary bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-[10px] font-bold mt-1 uppercase">Cash</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-500 hover:border-primary transition-colors">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="text-[10px] font-bold mt-1 uppercase">Card</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-500 hover:border-primary transition-colors">
+<span class="material-symbols-outlined">smartphone</span>
+<span class="text-[10px] font-bold mt-1 uppercase">Mobile</span>
+</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-2 mt-2">
+<button class="size-14 shrink-0 rounded-lg border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-colors" title="Print Receipt">
+<span class="material-symbols-outlined">print</span>
+</button>
+<button class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold text-lg rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">task_alt</span>
+                        Complete Sale
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Bottom Status Bar -->
+<footer class="h-8 bg-slate-900 text-slate-400 px-6 flex items-center justify-between text-[11px] uppercase tracking-widest font-medium">
+<div class="flex items-center gap-6">
+<span class="flex items-center gap-1"><span class="size-2 bg-green-500 rounded-full"></span> System Online</span>
+<span>Database: master_v2.04</span>
+</div>
+<div class="flex items-center gap-6">
+<span>Last Sync: 2 mins ago</span>
+<span id="current-time">Tuesday, Oct 24, 2023 | 14:42:05</span>
+</div>
+</footer>
+</body></html>

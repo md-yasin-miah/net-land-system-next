@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Networking Hub | All Products</title>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#0d121b]">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Global Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7ebf3] bg-white px-6 md:px-10 lg:px-40 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<img alt="Networking Hub Corporate Logo" class="w-full h-full object-contain" data-alt="Networking Hub professional blue logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf1-EFMSOyDo9a0Bc3sUD0DKZHSqdPJZt4g4tp1w5gP1by_aSodlhFyoUnmafV_miBG7Pf3qTCa0S3rd5loElFOB7bTWQE0YokP8msyVPAfTNYzwhOlkIbxvD3wzTF3Uvidy46d2Evgiv4JsASjazFWHOGNVfFfdWlpNTBIM9Q4nSC3FarZoD07wvuiMYlgypLY-SOVHuh5gaiAR87ZTvpSQsNs48439gA5Znil4lHRUNBSwBk9h_cih07Zerin1_0wUxeRxaqYYk"/>
+</div>
+<h2 class="text-[#0d121b] text-xl font-bold leading-tight tracking-[-0.015em]">Networking Hub</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-[#4c669a] hover:text-primary text-sm font-medium transition-colors" href="#">Solutions</a>
+<a class="text-[#4c669a] hover:text-primary text-sm font-medium transition-colors" href="#">Services</a>
+<a class="text-[#4c669a] hover:text-primary text-sm font-medium transition-colors" href="#">Support</a>
+<a class="text-[#4c669a] hover:text-primary text-sm font-medium transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="hidden md:flex items-center gap-4">
+<a class="text-[#4c669a] text-sm font-medium" href="#">Account</a>
+<button class="flex items-center justify-center rounded-lg h-10 bg-primary/10 text-primary px-4 gap-2 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+                            Cart (0)
+                        </button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[#e7ebf3]" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAudC70luRH8S9D9Fwzueb6tX797M_3P5RzjFpOIQ97kR4YgKJC0v7pkPLCjNn14WmnGhwwcD1u1kU6prnAMr_mAU3cJ2WYP-AQ-1qAnv24qYqc1W5VtnEamY1bMfE_CQMDJecc-0ZFAcAXIeJ0KTHOmN1jzbFYmSA_xisZqmmRnop9EJCVHPlLUCrlw08Fg0LYi_u8mF4h331w5PSoIRQxHI6ycZ05cEwEoaHfSbSoG2HiyXEC04DJrlE5iSeI3mqrcTD1Edv9coU");'></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-6 md:px-10 lg:px-40 py-8">
+<!-- Breadcrumbs & Title -->
+<div class="flex flex-col gap-2 mb-6">
+<div class="flex items-center gap-2 text-[#4c669a] text-sm">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-[#0d121b] font-medium">All Products</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-[#0d121b] text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Network Inventory</h1>
+<p class="text-[#4c669a] text-base font-normal">Showing 1,240 enterprise-grade networking units</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm text-[#4c669a]">Sort by:</span>
+<select class="form-select bg-white border-[#e7ebf3] rounded-lg text-sm font-medium focus:ring-primary focus:border-primary">
+<option>Popularity</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Newest Arrivals</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Prominent Search Bar -->
+<div class="mb-8">
+<label class="flex flex-col w-full h-14">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-[#4c669a] flex border border-r-0 border-[#e7ebf3] bg-white items-center justify-center pl-5 rounded-l-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border border-x-0 border-[#e7ebf3] bg-white focus:outline-0 focus:ring-0 focus:border-[#e7ebf3] h-full placeholder:text-[#4c669a] px-4 text-base font-normal" placeholder="Search by model, SKU, or technical specification (e.g. PoE+, 10GbE)..." value=""/>
+<button class="bg-primary text-white px-8 rounded-r-xl font-bold text-sm hover:bg-primary/90 transition-colors">Search</button>
+</div>
+</label>
+</div>
+<!-- Category Navigation Tabs -->
+<div class="mb-8 border-b border-[#cfd7e7]">
+<div class="flex overflow-x-auto gap-8 no-scrollbar">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-3 pt-2 whitespace-nowrap" href="#">
+<span class="text-sm font-bold tracking-[0.015em]">All Equipment</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#4c669a] hover:text-primary pb-3 pt-2 whitespace-nowrap transition-all" href="#">
+<span class="text-sm font-bold tracking-[0.015em]">Switches</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#4c669a] hover:text-primary pb-3 pt-2 whitespace-nowrap transition-all" href="#">
+<span class="text-sm font-bold tracking-[0.015em]">Routers</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#4c669a] hover:text-primary pb-3 pt-2 whitespace-nowrap transition-all" href="#">
+<span class="text-sm font-bold tracking-[0.015em]">Access Points</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#4c669a] hover:text-primary pb-3 pt-2 whitespace-nowrap transition-all" href="#">
+<span class="text-sm font-bold tracking-[0.015em]">Security &amp; Firewalls</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Filter Sidebar -->
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-6">
+<div>
+<h3 class="text-sm font-bold text-[#0d121b] mb-4 uppercase tracking-wider">Manufacturer</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">Cisco Systems</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">Ubiquiti UniFi</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">Aruba Networks</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">Juniper Networks</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold text-[#0d121b] mb-4 uppercase tracking-wider">Port Configuration</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">8-Port</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">24-Port</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">48-Port</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold text-[#0d121b] mb-4 uppercase tracking-wider">Features</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">PoE / PoE+ Support</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">Layer 3 Managed</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">10GbE SFP+</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-[#cfd7e7]" type="checkbox"/>
+<span class="text-sm text-[#4c669a] group-hover:text-[#0d121b]">Wi-Fi 6 / 6E</span>
+</label>
+</div>
+</div>
+<div class="pt-4 border-t border-[#e7ebf3]">
+<button class="w-full py-2 text-sm font-bold text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
+                                Clear All Filters
+                            </button>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Product Card 1 -->
+<div class="bg-white border border-[#e7ebf3] rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] bg-[#f8f9fc] flex items-center justify-center p-8 relative">
+<img alt="Professional Network Switch" class="object-contain h-full w-full" data-alt="Black rack-mount 24-port network switch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYpcRAPPvuihQnQC_VV5Y-oHBjPy9tCMHsm8D5PfB9V4VTMAPw6Hvyri9vLd2-lxB0L0Tp9anfmKj9j7S9Q0n92R1GvrqiYggegFunSh_0WSomKHeGJCkuiRi_aZkTdA-UFKHuERFMYoR-2Bb0F2n4Qz33q_-tcFkgB91mdu9-vaf790h4cPVgyct7zkNQhb4qnmNPt7aVzrh0zR9Ml3j8K9DdXMMOgBXW7o509lBxyRY60N8Rf3nSpH6hSvYtD0oic3AerFjWCyw"/>
+<span class="absolute top-3 left-3 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">In Stock</span>
+</div>
+<div class="p-5">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Cisco Systems</div>
+<h3 class="text-[#0d121b] font-bold text-lg mb-2 leading-tight group-hover:text-primary transition-colors">Catalyst 9200L 24-port PoE+ Switch</h3>
+<p class="text-[#4c669a] text-sm line-clamp-2 mb-4">Enterprise-grade layer 3 switch with 4x1G fixed uplinks and network essentials license.</p>
+<div class="flex items-center gap-4 mb-4 text-xs text-[#4c669a]">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">settings_ethernet</span> 24 Ports</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bolt</span> PoE+</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black text-[#0d121b]">$2,499.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white border border-[#e7ebf3] rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] bg-[#f8f9fc] flex items-center justify-center p-8 relative">
+<img alt="Wireless Access Point" class="object-contain h-full w-full" data-alt="Sleek white circular Wi-Fi 6 access point" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc0ealeWsWb0wWUsdjDDutRInTe_6-UaOI841OwKbR1kNJn4b7drUqeH6zSuiseoikz-gnACme_5kPlip1ydc0AIzWhQqK_JyZel-wWGWFjMZoCjAe1PTsNSz4tUc8rkV1ThgorRsM2J9-dm1FSXkNvYjteRiExp92dvU5wHf_kKvi-nOFm3NXyLmuwi93MZmUA55JXHtDphfsi5GsAdeqmMeGu-nyLdOZ40Qtk6NRAeLZQ1Tg10mKN_Qhys7mL_InfOpILi5dm_Q"/>
+<span class="absolute top-3 left-3 bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded uppercase">New Arrival</span>
+</div>
+<div class="p-5">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Ubiquiti UniFi</div>
+<h3 class="text-[#0d121b] font-bold text-lg mb-2 leading-tight group-hover:text-primary transition-colors">UniFi 6 Enterprise AP</h3>
+<p class="text-[#4c669a] text-sm line-clamp-2 mb-4">High-performance, ceiling-mounted WiFi 6E access point designed for massive device density.</p>
+<div class="flex items-center gap-4 mb-4 text-xs text-[#4c669a]">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">wifi</span> Wi-Fi 6E</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">speed</span> 10.2 Gbps</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black text-[#0d121b]">$299.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white border border-[#e7ebf3] rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] bg-[#f8f9fc] flex items-center justify-center p-8 relative">
+<img alt="Core Router" class="object-contain h-full w-full" data-alt="Industrial gray rack-mount core router" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHjCmKRLMUoISoj-6DGvWadElW9D5Db5uneyE8ph5ILVA1VJ_GpgIU39Q4ts2l076PFa3D5dtqIhs8pD-rc5hzYLhP-6cyRoy4JnbRf_0J0o-ZyiO4NJYbddazBNMfPrEqYGLxaRObebTDcv9TCUk3bZtFj_cnbmYpIw_0enmxFIVyFbskO4LfttbqlCz7YD5ZD2tipf_H-aHLuLYpySwEMnpKh2hZks2CAd5NQQzqbXYSPvAI7ZG-xkvBfhllmIUjwmhgomAnsXc"/>
+<span class="absolute top-3 left-3 bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Low Stock</span>
+</div>
+<div class="p-5">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Juniper Networks</div>
+<h3 class="text-[#0d121b] font-bold text-lg mb-2 leading-tight group-hover:text-primary transition-colors">MX204 Universal Routing Platform</h3>
+<p class="text-[#4c669a] text-sm line-clamp-2 mb-4">Cloud-grade routing platform for enterprise and service provider networks.</p>
+<div class="flex items-center gap-4 mb-4 text-xs text-[#4c669a]">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">router</span> Edge Core</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">memory</span> 400 Gbps</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black text-[#0d121b]">$18,750.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- More cards for the catalog effect -->
+<div class="bg-white border border-[#e7ebf3] rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] bg-[#f8f9fc] flex items-center justify-center p-8">
+<img alt="Rack Accessories" class="object-contain h-full w-full" data-alt="Server rack patch panel close-up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVU897haykmJlIOBb8EzJ0YfQa3XkyzAOVBreF9qVN7Xbbu-meMZyrBEYiD75g-zb_SIuQjX64ofqM3mU2ViKNVHTH5fYxEZzRKlkEkXTiaWxPJlulpEbKS-wAxR00jFGWJteKbCZVzAOhhC9WfFMFi2ng57hPt7JHn7668fAM35uQWJqumym8a2vhQCBGBu9JB2mB7QKgJdd1ND76jqqnuEcahsd4QkD5vZ_059cX8jtQn_q3dnRD0XtAaDRNDsuz6CJsJfo1Nxc"/>
+</div>
+<div class="p-5">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Generic Pro</div>
+<h3 class="text-[#0d121b] font-bold text-lg mb-2 leading-tight group-hover:text-primary transition-colors">24-Port Blank Keystone Patch Panel</h3>
+<p class="text-[#4c669a] text-sm line-clamp-2 mb-4">1U high-density unloaded patch panel for keystone jacks, heavy-duty steel.</p>
+<div class="flex items-center gap-4 mb-4 text-xs text-[#4c669a]">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">grid_view</span> 1U Rack</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black text-[#0d121b]">$45.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white border border-[#e7ebf3] rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] bg-[#f8f9fc] flex items-center justify-center p-8">
+<img alt="Small Office Router" class="object-contain h-full w-full" data-alt="Compact white desktop security router" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQk5dwuRfTxrOckjZl6TfbqGIwXM2oephUk5YIMhLmx1ml2cEcwvQ8vpNF0YKTdArlwwyjywTgrr_GH08nU5kzzDVCO64XGj9SWnm_AujZzG3vCJRn2tyxmh-pAWgLap2i7na60pqbJeTi2T8eI43z5CcGDMpDiEHpvpDu4uh7vADX-yyyWYMDiXjbDVAU7aB3UewE-keYJBW8IXN2tGlbmNuLM3PwLKOnfa0-DaXmxqP6oc8mVXmIhwzPWtpkFjV92iGqLVOYzKg"/>
+</div>
+<div class="p-5">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Aruba Networks</div>
+<h3 class="text-[#0d121b] font-bold text-lg mb-2 leading-tight group-hover:text-primary transition-colors">Aruba Instant On 1930 8G</h3>
+<p class="text-[#4c669a] text-sm line-clamp-2 mb-4">Smart managed cloud-ready switch for small business with 2 SFP slots.</p>
+<div class="flex items-center gap-4 mb-4 text-xs text-[#4c669a]">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">cloud</span> Cloud Managed</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black text-[#0d121b]">$189.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white border border-[#e7ebf3] rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] bg-[#f8f9fc] flex items-center justify-center p-8">
+<img alt="SFP Module" class="object-contain h-full w-full" data-alt="Small SFP fiber optic transceiver module" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8ZCk1S3Q7mCGqa6OwdHaY3WgfwhapXrCUVci3yMJtgxHfLYUsYKHiYBNDGMSu8oKtE7QAjYEq0j7RDNwizQVuDZSu1ZedwArlOposq82rTytYAnb7K-zS0U0uS2qUfIjp-Y5hWcUS4ecz_-B8VzIG16zMTdQKvHfWU-24GiogilfF8zBbDn4Kzf3X_SpvHFNvakhXn3tynLfK9KeNXc7Q3W4-Y5FU9fs_Q1ZkRlatXRY5cG9E6200TfJqwoGErq8B3htBl73El9o"/>
+</div>
+<div class="p-5">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Networking Hub</div>
+<h3 class="text-[#0d121b] font-bold text-lg mb-2 leading-tight group-hover:text-primary transition-colors">10G SFP+ SR Transceiver</h3>
+<p class="text-[#4c669a] text-sm line-clamp-2 mb-4">Multimode fiber transceiver, 850nm, up to 300m reach, Cisco compatible.</p>
+<div class="flex items-center gap-4 mb-4 text-xs text-[#4c669a]">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">cable</span> Fiber Optic</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black text-[#0d121b]">$22.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[#e7ebf3] pt-8">
+<div class="flex items-center gap-4">
+<span class="text-sm text-[#4c669a]">Items per page:</span>
+<select class="form-select bg-white border-[#e7ebf3] rounded-lg text-sm font-medium h-9 focus:ring-primary">
+<option>24</option>
+<option>48</option>
+<option>96</option>
+</select>
+</div>
+<nav class="flex items-center gap-1">
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e7ebf3] hover:bg-[#e7ebf3] text-[#4c669a] transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold">1</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e7ebf3] hover:bg-[#e7ebf3] text-[#4c669a] font-medium transition-colors">2</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e7ebf3] hover:bg-[#e7ebf3] text-[#4c669a] font-medium transition-colors">3</button>
+<span class="px-2 text-[#4c669a]">...</span>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e7ebf3] hover:bg-[#e7ebf3] text-[#4c669a] font-medium transition-colors">52</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e7ebf3] hover:bg-[#e7ebf3] text-[#4c669a] transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+<p class="text-sm text-[#4c669a]">Showing 1-24 of 1,240 results</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-[#e7ebf3] px-6 md:px-10 lg:px-40 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 text-primary mb-6">
+<img alt="Logo" class="size-6 object-contain" data-alt="Small networking hub logo footer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_SdvqnjvRS_VBnFGsSnpH3Ho1xyNn2Q5M7xYAHIMnrnjKc7NdGy6GcIL4eEWtp7TE7k5DzeZ_xcOn3cIW95JALzYDrPM0k1Rb0rxFWiIg-MRVXBillhhE--h15veVZSYaZv9qpuPI23MThaBieOTRCIAHe6_oeXZgjbG5VC23rBQygNIvBbYREA8t2tQLlwsTKICZC5ElVmFjDd1RC1Yfi45ZRXe4jzUG0bBwRlaTFX9BSlR7EQDpkoW4Op8qrffO4vsgrRLzPJ4"/>
+<span class="text-[#0d121b] font-bold">Networking Hub</span>
+</div>
+<p class="text-[#4c669a] text-sm leading-relaxed">The world's leading marketplace for enterprise networking equipment, parts, and hardware procurement.</p>
+</div>
+<div>
+<h4 class="text-[#0d121b] font-bold text-sm mb-6 uppercase tracking-widest">Products</h4>
+<ul class="space-y-4 text-sm text-[#4c669a]">
+<li><a class="hover:text-primary transition-colors" href="#">Network Switches</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security Gateways</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Access Points</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Fiber Optics</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[#0d121b] font-bold text-sm mb-6 uppercase tracking-widest">Support</h4>
+<ul class="space-y-4 text-sm text-[#4c669a]">
+<li><a class="hover:text-primary transition-colors" href="#">Knowledge Base</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Product Returns</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Shipping Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[#0d121b] font-bold text-sm mb-6 uppercase tracking-widest">Company</h4>
+<ul class="space-y-4 text-sm text-[#4c669a]">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Global Logistics</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Partners</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-[#e7ebf3] flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[#4c669a] text-xs">© 2024 Networking Hub Global. All rights reserved.</p>
+<div class="flex gap-6 text-xs text-[#4c669a]">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Sitemap</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

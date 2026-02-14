@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart - Net Land System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen overflow-hidden">
+<!-- Background Content (Dimmed) -->
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-10"></div>
+<!-- Main Page Content (Simulated Background) -->
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<header class="flex items-center justify-between border-b border-slate-200 bg-white px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-lg">router</span>
+</div>
+<h2 class="text-slate-900 text-lg font-bold">Net Land System</h2>
+</div>
+<nav class="flex items-center gap-8 text-sm font-medium text-slate-600">
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">Solutions</a>
+<a href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-primary text-white text-[10px] size-4 flex items-center justify-center rounded-full">3</span>
+</button>
+<div class="size-8 rounded-full bg-slate-200" data-alt="User profile placeholder"></div>
+</div>
+</header>
+<main class="p-10 grid grid-cols-3 gap-6 opacity-50 pointer-events-none">
+<!-- Simulated grid of products behind the drawer -->
+<div class="h-64 bg-white rounded-xl border border-slate-200 p-4"></div>
+<div class="h-64 bg-white rounded-xl border border-slate-200 p-4"></div>
+<div class="h-64 bg-white rounded-xl border border-slate-200 p-4"></div>
+<div class="h-64 bg-white rounded-xl border border-slate-200 p-4"></div>
+<div class="h-64 bg-white rounded-xl border border-slate-200 p-4"></div>
+<div class="h-64 bg-white rounded-xl border border-slate-200 p-4"></div>
+</main>
+</div>
+<!-- Shopping Cart Drawer -->
+<aside class="fixed right-0 top-0 h-screen w-full max-w-md bg-white dark:bg-background-dark shadow-2xl z-20 flex flex-col transform transition-transform duration-300">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Shopping Cart</h2>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-500">close</span>
+</button>
+</div>
+<!-- Product List -->
+<div class="flex-1 overflow-y-auto py-4 px-6 space-y-6">
+<!-- Item 1: Mikrotik -->
+<div class="flex gap-4 group">
+<div class="size-24 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden flex-shrink-0 border border-slate-200 dark:border-slate-700">
+<img alt="Mikrotik hAP ax3" class="w-full h-full object-cover" data-alt="Modern Mikrotik wireless router on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf_GtAeAmq-3Vn2Id0M86eofelJITTfqpXednAcTibUpgnl1dE6f9WjFYe4DnkR1FgawWg_SP4HI8PfKiPG58Q9Drswc4rPYPxv8C9UgDJFapTHjPeOeaBo3hDAKkc9UlTtABaOTBzVvk8rqrQAKbVi8GKqtjPIFYuL8yQR1vbti1ihD2cD8D1SsyDovst3JG5uVa-6rnFiKu_gPFChgy0DtpS0bEcIkuwKf1cnKbYawHTcgkI9IYstR5y6YkLmS2OE5R_Mxjxcho"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white leading-tight">Mikrotik hAP ax3</h3>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">High-speed Wi-Fi 6 router for home/office</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">remove</span>
+</button>
+<span class="px-3 text-sm font-medium">1</span>
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+<span class="text-base font-bold text-primary">৳14,500</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Ubiquiti -->
+<div class="flex gap-4 group">
+<div class="size-24 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden flex-shrink-0 border border-slate-200 dark:border-slate-700">
+<img alt="Ubiquiti UniFi 6 Lite" class="w-full h-full object-cover" data-alt="Round white Ubiquiti access point mounted on wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc6-mFewWRV0B6BKbuCHk8OPxiLKtNXCK74_nIbkhq6OcOIq-UqkQe2PiksEOrJ65kL1NvmbtAPdDHcN-zYZ7tW8CsQeE3p8akZ9KGjv4svOWvcS-GtePtNuZOuEZL1_G69u32jF9YPmEcYRYSgdhcFLbwOiJ5b2Cu2VzJumHCsN2ockp8QYsgxFfdK2DYZjTv0P9QjZO8ya7rrhEvNQqqNY-YOmk1ZmyjbFT1GayroImNu76lqc9_SxuvDczJe7YQyqNfGwLRpvA"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white leading-tight">Ubiquiti UniFi 6 Lite</h3>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Compact enterprise-grade AP</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">remove</span>
+</button>
+<span class="px-3 text-sm font-medium">2</span>
+<button class="px-2 py-1 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+<div class="text-right">
+<span class="block text-base font-bold text-primary">৳26,000</span>
+<span class="block text-[10px] text-slate-400 uppercase">৳13,000 Each</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary & CTA -->
+<div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+<div class="space-y-3 mb-6">
+<div class="flex justify-between text-sm text-slate-600 dark:text-slate-400">
+<span>Subtotal</span>
+<span>৳40,500</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600 dark:text-slate-400">
+<span>Estimated Shipping</span>
+<span>৳250</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600 dark:text-slate-400">
+<span>Tax (Estimated)</span>
+<span class="italic">Calculated at checkout</span>
+</div>
+<div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center">
+<span class="text-lg font-bold text-slate-900 dark:text-white">Total</span>
+<span class="text-xl font-bold text-primary">৳40,750</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-blue-700 text-white py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 mb-4">
+<span>Proceed to Checkout</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-slate-500 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">lock</span>
+                Secure checkout with end-to-end encryption
+            </p>
+</div>
+</aside>
+</body></html>

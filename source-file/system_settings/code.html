@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Settings | Enterprise Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-tab { background-color: #1152d4; color: white !important; }
+        .active-tab span { color: white !important; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col sticky top-0 h-screen">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<div>
+<h1 class="font-bold text-slate-900 dark:text-white leading-tight">Store Admin</h1>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Enterprise Suite</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto p-4 space-y-1">
+<p class="px-3 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Configuration</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg active-tab transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">storefront</span>
+<span class="text-sm font-semibold">General Store Info</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl text-slate-400 group-hover:text-primary transition-colors">language</span>
+<span class="text-sm font-semibold">Currency &amp; Localization</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl text-slate-400 group-hover:text-primary transition-colors">percent</span>
+<span class="text-sm font-semibold">Tax Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl text-slate-400 group-hover:text-primary transition-colors">credit_card</span>
+<span class="text-sm font-semibold">Payment Methods</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl text-slate-400 group-hover:text-primary transition-colors">receipt_long</span>
+<span class="text-sm font-semibold">Invoice Customization</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl text-slate-400 group-hover:text-primary transition-colors">barcode_scanner</span>
+<span class="text-sm font-semibold">Barcode Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl text-slate-400 group-hover:text-primary transition-colors">notifications</span>
+<span class="text-sm font-semibold">Notifications</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-lg shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+<span class="material-symbols-outlined text-lg">save</span>
+                    Save All Changes
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<!-- Header Section -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 py-6 sticky top-0 z-10 flex justify-between items-center">
+<div>
+<h2 class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">System Settings</h2>
+<p class="text-slate-500 text-sm mt-1">Configure your global store preferences and enterprise configurations.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        View Live Store
+                    </button>
+</div>
+</header>
+<div class="p-8 max-w-5xl mx-auto space-y-8">
+<!-- Section: Store Information -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                            Store Information
+                        </h3>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Logo Upload -->
+<div class="space-y-4">
+<label class="block text-sm font-bold text-slate-700 dark:text-slate-300">Store Logo</label>
+<div class="relative group">
+<div class="w-full aspect-square rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center overflow-hidden transition-all group-hover:border-primary/50">
+<img class="w-32 h-32 object-contain opacity-80 group-hover:scale-105 transition-transform" data-alt="Corporate minimalist logo design for enterprise store" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXFEhi8jeVihAOYYc0dPmCrllhgWh-om0-b2-7DObdstuSchcxwgkl7fbtOWsB5AKdPP02NtJFEst3OLoqIxTLrzkNowIAkAaEMtFJVJyCsG_cgs7bJ0bXkw3q0i5crtplNyhzsM6zUjIhTOYyZH11G8UlJLGVJLufiadzAV9muv9OjPelfoXmeDGHKy0yy-hs1xGP7LPtTWZ1l1BHv-3KGgQ7Q_7iNbDvqiOmbE8jvXfghDowAJFfG28Zs12bYCwT0BaUfjknYAg"/>
+<div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-white text-slate-900 px-4 py-2 rounded-lg text-xs font-bold shadow-xl">Replace Logo</button>
+</div>
+</div>
+<p class="text-[11px] text-slate-400 mt-2 text-center">Recommended: 512x512px SVG or Transparent PNG</p>
+</div>
+</div>
+<!-- Info Fields -->
+<div class="md:col-span-2 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Store Name</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium" type="text" value="Lumina Global Enterprise"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Support Email</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium" type="email" value="support@lumina-global.com"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Phone Number</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium" type="tel" value="+1 (555) 000-1234"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Website URL</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium" type="text" value="https://store.lumina-global.com"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Business Address</label>
+<textarea class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium" rows="3">1200 Innovation Way, Suite 400, Silicon Valley, CA 94025, USA</textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Currency & Localization -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+                                Localization
+                            </h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Default Currency</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium">
+<option>USD ($) - United States Dollar</option>
+<option>EUR (€) - Euro</option>
+<option>GBP (£) - British Pound</option>
+<option>BDT (৳) - Bangladeshi Taka</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Time Zone</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium">
+<option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option>(GMT+00:00) London</option>
+<option>(GMT+06:00) Dhaka</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section: Tax Settings -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 flex justify-between items-center">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+                                Tax Settings
+                            </h3>
+<button class="text-primary text-xs font-bold hover:underline">Add Rate</button>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
+<div>
+<p class="text-sm font-bold">Standard VAT</p>
+<p class="text-xs text-slate-500">Applicable to all products</p>
+</div>
+<span class="px-2 py-1 bg-primary/10 text-primary text-xs font-bold rounded">15.00%</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
+<div>
+<p class="text-sm font-bold">Reduced GST</p>
+<p class="text-xs text-slate-500">Service categories</p>
+</div>
+<span class="px-2 py-1 bg-primary/10 text-primary text-xs font-bold rounded">5.00%</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Section: Payment Methods -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 flex justify-between items-center">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">security</span>
+                            Payment Methods &amp; Gateways
+                        </h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-xs font-bold text-slate-500 uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4">Gateway Name</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Mode</th>
+<th class="px-6 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-blue-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-lg">credit_card</span>
+</div>
+<div>
+<p class="text-sm font-bold">SSLCommerz</p>
+<p class="text-[10px] text-slate-400">Local Payment Gateway</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+<span class="text-xs font-semibold text-emerald-600">Active</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Live</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-bold">Configure</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-indigo-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-indigo-600 text-lg">account_balance</span>
+</div>
+<div>
+<p class="text-sm font-bold">Bank Transfer</p>
+<p class="text-[10px] text-slate-400">Manual Verification</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+<span class="text-xs font-semibold text-emerald-600">Active</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Production</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-bold">Configure</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 text-lg">payments</span>
+</div>
+<div>
+<p class="text-sm font-bold">Cash on Delivery</p>
+<p class="text-[10px] text-slate-400">Offline Payment</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-10 h-5 bg-slate-200 dark:bg-slate-700 rounded-full relative">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+<span class="text-xs font-semibold text-slate-400">Disabled</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-medium text-slate-400 px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">N/A</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-bold">Configure</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section: Invoice Customization -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                            Invoice &amp; Documents
+                        </h3>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Invoice Prefix</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium" type="text" value="INV-"/>
+<p class="text-[10px] text-slate-400">Appears before order ID (e.g., INV-2024-001)</p>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Starting Number</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium" type="number" value="1000"/>
+</div>
+<div class="space-y-4 pt-4 md:pt-6">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">Display Tax on Invoice</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">Show Store Logo</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Barcode Settings -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden mb-12">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<h3 class="font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">barcode</span>
+                            Barcode Configuration
+                        </h3>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Barcode Type</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium">
+<option>Code 128 (Standard)</option>
+<option>EAN-13 (Retail)</option>
+<option>QR Code (Digital)</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-500 uppercase">Default Label Size</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-2.5 text-sm font-medium">
+<option>Standard (38mm x 25mm)</option>
+<option>Small (25mm x 15mm)</option>
+<option>Large (50mm x 30mm)</option>
+</select>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center space-y-3">
+<div class="w-48 h-20 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg flex flex-col items-center justify-center p-2">
+<div class="w-full h-8 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,#000_2px,#000_4px)] dark:bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,#fff_2px,#fff_4px)]"></div>
+<p class="text-[10px] font-mono mt-1 text-slate-600 dark:text-slate-400">1000-A923-0045</p>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">print</span>
+                                Print Test Label
+                            </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

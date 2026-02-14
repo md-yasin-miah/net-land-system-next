@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Profile Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hidden lg:flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<img alt="Company Logo" class="h-8 w-8 object-contain" data-alt="Modern geometric corporate logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqDBc0KelNe0H06BQed3EImn93Fvp9ovoCyfbSOrX-YPzyU94Y1T9Lk-d_kkVoJQtRP2yQnutd-txKliBYhmtB0ISLjG6m9rwxCfkDej43k5J6gDB23XTFoPdl8VAJbR-lndQlYvcCDyM5GizfcDnxMu1TBR0Jv8uOfLUphvtx4MwzcCPpyKRy1Cj_QSiikcfVrcN6ykdF0S2DNlDycwaqMKFNjyFJ7Q-pw4gbob4W_hLanmDytjrcwloJTzBoS4F3DFfFsgI52-0"/>
+<span class="font-bold text-xl tracking-tight text-slate-800 dark:text-white">NexusCorp</span>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Billing</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">AJ</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-sm font-semibold truncate">Alex Johnson</span>
+<span class="text-xs text-slate-500 truncate">Premium Member</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-10 px-8 flex items-center justify-between">
+<nav class="flex text-sm text-slate-500 dark:text-slate-400 gap-2 items-center">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">My Profile</span>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 h-2 w-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+</div>
+</header>
+<div class="max-w-5xl mx-auto p-8 space-y-8">
+<!-- Profile Header Card -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 md:p-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="relative group">
+<div class="h-24 w-24 rounded-full bg-slate-100 dark:bg-slate-800 border-4 border-white dark:border-slate-900 shadow-lg overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 text-5xl">person</span>
+<img alt="User Avatar" class="absolute inset-0 h-full w-full object-cover" data-alt="Professional headshot of a smiling male executive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiSfn5dHQuq8Z6u0L9mOedlpMwNlp1-dXBQs__7PmUmszwR4DftRDR0JNERUbVAuTj3UDVqSaHaszO1y_Z9XNHmPe6FLENK-KT90sLvNbqLKdIxU5xj953Qrx7ly9KwV4z0BOYugffSQyOxR-WXyOuzaRG5kwx0u2pigMQ5ren053pMtPYnDNAhlxcsd5FlvmjkG_UA7ODJNF4zMJPPyBGXGfauTePktBOLCqu0XpEq8XgWdouQE4zE-BfxUQ3-gA7hVn6648Z-_U"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full shadow-md border-2 border-white dark:border-slate-900 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-xs">edit</span>
+</button>
+</div>
+<div class="space-y-1">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Alex Johnson</h1>
+<p class="text-primary font-medium">Senior Project Manager</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                    Member since January 2023
+                                </p>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all shadow-md active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+                            Edit Profile
+                        </button>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Personal Information -->
+<div class="lg:col-span-2 space-y-6">
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/50">
+<h2 class="font-bold text-lg">Personal Information</h2>
+<span class="material-symbols-outlined text-slate-400">info</span>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div class="space-y-1">
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Full Name</p>
+<p class="text-slate-900 dark:text-white font-medium">Alex Johnson</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Job Title</p>
+<p class="text-slate-900 dark:text-white font-medium">Senior Project Manager</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Email Address</p>
+<p class="text-slate-900 dark:text-white font-medium">alex.johnson@globalcorp.com</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Phone Number</p>
+<p class="text-slate-900 dark:text-white font-medium">+1 (555) 123-4567</p>
+</div>
+<div class="space-y-1 md:col-span-2">
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Company Name</p>
+<p class="text-slate-900 dark:text-white font-medium">Global Solutions Inc.</p>
+</div>
+</div>
+</section>
+<!-- Secondary Links -->
+<div class="flex items-center gap-6 px-4">
+<a class="text-sm font-medium text-primary hover:underline flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">lock</span>
+                                Account Security
+                            </a>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+<!-- Notification Preferences -->
+<div class="space-y-6">
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
+<h2 class="font-bold text-lg">Notifications</h2>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="text-sm font-semibold">Order Updates</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Receive alerts about order status</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="text-sm font-semibold">Marketing Emails</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Product news and weekly digests</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="text-sm font-semibold">Security Alerts</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Login attempts and account changes</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="pt-4">
+<button class="w-full py-2 text-sm font-semibold text-primary bg-primary/5 hover:bg-primary/10 rounded-lg transition-colors border border-primary/20">
+                                        Save Preferences
+                                    </button>
+</div>
+</div>
+</section>
+<!-- Account Status Mini Card -->
+<div class="bg-gradient-to-br from-primary/10 to-transparent p-6 rounded-xl border border-primary/20">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<h3 class="font-bold text-sm">Account Status</h3>
+</div>
+<p class="text-xs text-slate-600 dark:text-slate-400 mb-4">Your account is in good standing. 2FA is currently enabled for extra security.</p>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<p class="text-[10px] mt-2 text-slate-500 uppercase font-bold tracking-tight">Security Score: 85%</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

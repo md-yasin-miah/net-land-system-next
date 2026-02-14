@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Accounts &amp; Addresses - Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            background-color: rgba(17, 82, 212, 0.1);
+            color: #1152d4;
+            border-right: 3px solid #1152d4;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed h-full">
+<div class="p-6 flex items-center gap-3">
+<div class="h-10 w-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<div>
+<h1 class="font-bold text-lg leading-none">SecureKey</h1>
+<p class="text-xs text-slate-500 mt-1">Manage Account</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 active-nav rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="text-sm font-medium">Addresses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-200 dark:border-slate-800">
+<button class="flex items-center gap-3 px-3 py-2 w-full text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 p-8">
+<div class="max-w-5xl mx-auto">
+<!-- Header -->
+<header class="mb-8">
+<h1 class="text-3xl font-extrabold tracking-tight">Accounts &amp; Addresses</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2">Update your personal details and manage where your items are delivered.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Address Book -->
+<div class="lg:col-span-2 space-y-6">
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<div>
+<h2 class="text-lg font-bold">Address Book</h2>
+<p class="text-sm text-slate-500">Manage your shipping and billing locations</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 hover:bg-blue-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span>
+                                    Add New Address
+                                </button>
+</div>
+<div class="p-6 space-y-4">
+<!-- Address Card 1 -->
+<div class="border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col md:flex-row gap-5 items-start bg-slate-50/50 dark:bg-slate-800/30">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Default Shipping</span>
+<span class="text-slate-400 text-xs font-medium">Home</span>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white">Alex Johnson</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1 leading-relaxed">
+                                            123 Maple Street, Apartment 4B<br/>
+                                            Springfield, IL 62704<br/>
+                                            United States
+                                        </p>
+</div>
+<div class="w-full md:w-32 h-24 rounded-lg bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-60" data-alt="Abstract map showing street layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJOSXJi-xKpf5dwZh2ofpnc79dI6F9dVJvCW75s7b83zkYj-yT3OYd9evNSHGasYF4Mnl7i53P7esAP6kehQQze8ROcQEnQIknG65nAyE0_37MZsL85BMjqLXeV_Nd70lABlcOZB41ojT0mW-bPAnd-J1nmkhCf9CJOX-v7Bcv6Tv7M5GqLTfKNrAg3so1rN28dVZ-y_ghlgFpdeESVKI4NEor0KxMCMFlLL8Sh61wF-yLXdEGKSVuMCdmAduy-ffNP_x3fowyIVw"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">map</span>
+</div>
+</div>
+<div class="flex md:flex-col gap-2 w-full md:w-auto">
+<button class="flex-1 md:w-full border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                                        </button>
+<button class="flex-1 md:w-full border border-red-100 text-red-600 hover:bg-red-50 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span> Delete
+                                        </button>
+</div>
+</div>
+<!-- Address Card 2 -->
+<div class="border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col md:flex-row gap-5 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Billing Only</span>
+<span class="text-slate-400 text-xs font-medium">Work</span>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white">Alex Johnson</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1 leading-relaxed">
+                                            900 North Michigan Avenue<br/>
+                                            Chicago, IL 60611<br/>
+                                            United States
+                                        </p>
+</div>
+<div class="w-full md:w-32 h-24 rounded-lg bg-slate-200 dark:bg-slate-700 overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-60" data-alt="Abstract city grid top view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfG1VlgtWnsF51-g5Npksm_Gf3QZXjffzXicp8L17CpuUdEndOezf7STtMzd9lR03ahe2Ax8yW5kA21tMoYNfGiD5VKFBsEIYzPA1d5RrVPsgjgb-N4LfqTnsqVFGw8cUev63niFaBHpMubYw1Ak6zquEydslXbl790RkKebD0AFAbJyRqTfGIr7u5-oC3IS53E4FpQvaf01HBBPECwg9LQsLdqfyQbYq7u4DgtKSnWm_POFHkvyctDozzRIiDD-n_wHpc5pEOVnA"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">map</span>
+</div>
+</div>
+<div class="flex md:flex-col gap-2 w-full md:w-auto">
+<button class="flex-1 md:w-full border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                                        </button>
+<button class="flex-1 md:w-full border border-red-100 text-red-600 hover:bg-red-50 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span> Delete
+                                        </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Account Security -->
+<div class="space-y-6">
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800">
+<h2 class="text-lg font-bold">Account Security</h2>
+<p class="text-sm text-slate-500">Manage your credentials</p>
+</div>
+<div class="p-6 space-y-5">
+<!-- Email Section -->
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Email Address</label>
+<div class="flex items-center gap-2">
+<div class="flex-1 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 truncate">
+                                            alex.johnson@example.com
+                                        </div>
+<button class="text-primary text-sm font-bold hover:underline px-2">Change</button>
+</div>
+</div>
+<!-- Password Section -->
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+<h3 class="text-sm font-bold mb-4">Update Password</h3>
+<div class="space-y-3">
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Current Password</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="••••••••" type="password"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">New Password</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Min. 8 characters" type="password"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Confirm New Password</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Repeat new password" type="password"/>
+</div>
+</div>
+<button class="w-full mt-6 bg-primary/10 text-primary hover:bg-primary hover:text-white px-4 py-2.5 rounded-lg text-sm font-bold transition-all">
+                                        Update Password
+                                    </button>
+</div>
+</div>
+</section>
+<!-- Extra Info Card -->
+<div class="bg-blue-600 rounded-xl p-6 text-white shadow-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="font-bold text-lg mb-2">Two-Factor Auth</h3>
+<p class="text-blue-100 text-sm mb-4 leading-relaxed">Add an extra layer of security to your account by enabling 2FA.</p>
+<button class="bg-white text-blue-600 px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-50 transition-colors">Setup Now</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl text-blue-500/30 rotate-12 group-hover:rotate-0 transition-transform duration-500">verified_user</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

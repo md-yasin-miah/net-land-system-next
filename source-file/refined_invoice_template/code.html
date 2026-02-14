@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Invoice - NetCore Systems</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @media print {
+            .no-print { display: none; }
+            .print-shadow-none { box-shadow: none !important; }
+            body { background-color: white !important; }
+        }
+    </style></head>
+<body class="bg-background-light dark:bg-background-dark font-body text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar (No-Print) -->
+<header class="no-print border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">hub</span>
+<span class="text-xl font-display font-bold tracking-tight text-slate-900 dark:text-white">NetCore Systems</span>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="#">Invoices</a>
+<a class="hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="hover:text-primary transition-colors" href="#">Clients</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile picture of a male executive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWfb78s6jj1MACDYh9zzgmASkdwAzR0GHuSgaVrgabtsrtnLS9SAMaTaEQm4thMI_4pNGPhkgsk10d6DYrf1Sg1KsPCQ81GCXD2QXkbF4kmJ8deMoAEjc9w5SPb_CmU-fw6j44JOWlos45dlvseRq3Duy5zia-XBKWO4FufXacU-OIvhhcCfmfTAOreJ3UthVtUcYWuKPs6ho_zl5m8uSV_p9Ki0vkiJH6nlBWby3Zktsje-pq9YYJGr-ory-xMBXFjk-5Rde7DFk"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-5xl mx-auto p-6 md:py-10">
+<!-- Breadcrumbs & Actions -->
+<div class="no-print flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-sm text-slate-500">
+<a class="hover:underline" href="#">Invoices</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">INV-2023-0842</span>
+</div>
+<h1 class="text-2xl font-display font-bold text-slate-900 dark:text-white">Invoice INV-2023-0842</h1>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all shadow-sm" onclick="window.print()">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Download PDF
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">print</span>
+                    Print
+                </button>
+<button class="flex items-center gap-2 px-5 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-all shadow-md">
+<span class="material-symbols-outlined text-lg">send</span>
+                    Send Invoice
+                </button>
+</div>
+</div>
+<!-- Invoice Document Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden print-shadow-none">
+<!-- Header Section -->
+<div class="p-8 md:p-12 border-b border-slate-100 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between gap-8">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<img class="h-12 w-auto" data-alt="NetCore Systems logo showing networking nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbtwUGsOzp_lySh1i1Hw0ZJQvWKMFj3k3fMc3ndOoSpBLF9WligWhUmYSepqhVmAgyM4B1MxgaDylui64IJd6RFZomoh8YNHNidGJaBhcLd_wT7Qb30lT-NXh-SsQW6SLJ1wunFULSx1O_8BHQVL5fVQ_2ktN12hSLewaIzaXRxQFa1ln3HL368zRYV_ttmDqO44TJJO9P0HmSiJUZ6UQieWY8JKKaxCJkvORvBx3cO-3XvbOZrz8RKHLJty9pTgNmPInmPrEY8T4"/>
+<div>
+<h2 class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">NetCore Systems</h2>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest">Networking Hardware &amp; Services</p>
+</div>
+</div>
+<div class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+<p>1284 Tech Boulevard, Suite 500</p>
+<p>San Francisco, CA 94107</p>
+<p>United States</p>
+<p class="mt-2 flex items-center gap-2"><span class="material-symbols-outlined text-xs">mail</span> billing@netcore.systems</p>
+</div>
+</div>
+<div class="text-left md:text-right space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                            Payment Pending
+                        </div>
+<div class="grid grid-cols-2 md:block gap-x-8">
+<div class="mb-4">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Invoice Number</p>
+<p class="text-xl font-bold text-slate-900 dark:text-white">INV-2023-0842</p>
+</div>
+<div class="mb-4">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Issue Date</p>
+<p class="text-slate-900 dark:text-white font-medium">October 24, 2023</p>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Due Date</p>
+<p class="text-slate-900 dark:text-white font-medium">November 23, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Billing Info -->
+<div class="px-8 md:px-12 py-8 bg-slate-50 dark:bg-slate-800/50 grid grid-cols-1 md:grid-cols-2 gap-8"><div class="relative">
+<h3 class="text-[10px] font-display font-bold text-slate-400 uppercase tracking-[0.15em] mb-4">Bill To</h3>
+<div class="text-sm text-slate-900 dark:text-slate-200 space-y-1">
+<p class="font-display font-bold text-base text-slate-900 dark:text-white mb-1">Global Data Dynamics Inc.</p>
+<p>Attn: Procurement Department</p>
+<p>892 Innovation Way</p>
+<p>Austin, TX 78701</p>
+<p>United States</p>
+<p class="pt-2 text-slate-500 text-xs">VAT ID: US892100451</p>
+</div>
+</div>
+<div class="md:border-l border-slate-200 dark:border-slate-700 md:pl-8">
+<h3 class="text-[10px] font-display font-bold text-slate-400 uppercase tracking-[0.15em] mb-4">Ship To</h3>
+<div class="text-sm text-slate-900 dark:text-slate-200 space-y-1">
+<p class="font-display font-bold text-base text-slate-900 dark:text-white mb-1">GDD Logistics Hub</p>
+<p>444 Distribution Cir</p>
+<p>Pflugerville, TX 78660</p>
+<p>United States</p>
+<p class="pt-2 text-slate-500 text-xs">Contact: +1 (512) 555-0198</p>
+</div>
+</div></div>
+<!-- Itemized Table -->
+<div class="p-0 overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<th class="px-8 md:px-12 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Description</th>
+<th class="px-4 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">SKU</th>
+<th class="px-4 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Qty</th>
+<th class="px-4 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Unit Price</th>
+<th class="px-8 md:px-12 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Hardware Item -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-8 md:px-12 py-6">
+<div class="font-bold text-slate-900 dark:text-white">NetCore L3 Managed Switch</div>
+<div class="text-sm text-slate-500 mt-1">48-Port Gigabit Ethernet, 4x 10G SFP+ Uplinks, PoE+ Support</div>
+</td>
+<td class="px-4 py-6 text-right font-mono text-sm text-slate-600 dark:text-slate-400">NC-SW-48P-L3</td>
+<td class="px-4 py-6 text-right font-medium">12</td>
+<td class="px-4 py-6 text-right text-slate-600 dark:text-slate-400">$1,250.00</td>
+<td class="px-8 md:px-12 py-6 text-right font-bold text-slate-900 dark:text-white">$15,000.00</td>
+</tr>
+<!-- Hardware Item -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-8 md:px-12 py-6">
+<div class="font-bold text-slate-900 dark:text-white">Enterprise Wi-Fi 6E Access Point</div>
+<div class="text-sm text-slate-500 mt-1">Tri-Band Internal Antennas, Ceiling Mount Kit Included</div>
+</td>
+<td class="px-4 py-6 text-right font-mono text-sm text-slate-600 dark:text-slate-400">NC-AP-6E-INT</td>
+<td class="px-4 py-6 text-right font-medium">25</td>
+<td class="px-4 py-6 text-right text-slate-600 dark:text-slate-400">$450.00</td>
+<td class="px-8 md:px-12 py-6 text-right font-bold text-slate-900 dark:text-white">$11,250.00</td>
+</tr>
+<!-- Service Item -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-8 md:px-12 py-6">
+<div class="font-bold text-slate-900 dark:text-white">Network Audit &amp; Optimization</div>
+<div class="text-sm text-slate-500 mt-1">Professional Service - On-site physical audit and configuration check</div>
+</td>
+<td class="px-4 py-6 text-right font-mono text-sm text-slate-600 dark:text-slate-400">SVC-AUD-PRO</td>
+<td class="px-4 py-6 text-right font-medium">1</td>
+<td class="px-4 py-6 text-right text-slate-600 dark:text-slate-400">$2,800.00</td>
+<td class="px-8 md:px-12 py-6 text-right font-bold text-slate-900 dark:text-white">$2,800.00</td>
+</tr>
+<!-- Service Item -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-8 md:px-12 py-6">
+<div class="font-bold text-slate-900 dark:text-white">Remote Configuration Deployment</div>
+<div class="text-sm text-slate-500 mt-1">Firmware updates and VLAN provisioning (8 Hours)</div>
+</td>
+<td class="px-4 py-6 text-right font-mono text-sm text-slate-600 dark:text-slate-400">SVC-REM-CFG</td>
+<td class="px-4 py-6 text-right font-medium">8</td>
+<td class="px-4 py-6 text-right text-slate-600 dark:text-slate-400">$175.00</td>
+<td class="px-8 md:px-12 py-6 text-right font-bold text-slate-900 dark:text-white">$1,400.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Calculations -->
+<div class="p-8 md:p-12 flex flex-col md:flex-row justify-between gap-10">
+<div class="flex-1 space-y-6">
+<div>
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Payment Terms</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Payment is due within 30 days of the invoice date (Net 30). Late payments are subject to a 1.5% monthly finance charge. Hardware remains property of NetCore Systems until full payment is received.
+                        </p>
+</div>
+<div class="p-4 bg-primary/5 rounded-lg border border-primary/10">
+<h4 class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Wire Transfer Instructions</h4>
+<div class="text-sm text-slate-900 dark:text-slate-200 grid grid-cols-2 gap-2">
+<span class="text-slate-500">Bank:</span> <span class="font-medium">Global First Bank</span>
+<span class="text-slate-500">Account No:</span> <span class="font-medium">9877 1223 0041</span>
+<span class="text-slate-500">SWIFT/BIC:</span> <span class="font-medium">GFBAUS33X</span>
+<span class="text-slate-500">Reference:</span> <span class="font-bold text-primary">INV-2023-0842</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-80 space-y-3"><div class="space-y-2">
+<div class="flex justify-between text-sm text-slate-600 dark:text-slate-400">
+<span>Subtotal</span>
+<span class="font-medium">$30,450.00</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600 dark:text-slate-400">
+<span>Shipping &amp; Handling</span>
+<span class="font-medium">$125.00</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600 dark:text-slate-400 pb-2 border-b border-slate-100 dark:border-slate-800">
+<span>Tax (VAT 8.25%)</span>
+<span class="font-medium">$2,512.12</span>
+</div>
+</div>
+<div class="bg-primary/5 dark:bg-primary/10 -mx-4 px-4 py-4 rounded-xl border border-primary/10">
+<div class="flex justify-between items-baseline text-slate-900 dark:text-white">
+<span class="text-sm font-display font-bold uppercase tracking-wider">Total Due</span>
+<span class="text-3xl font-display font-black text-primary tracking-tight">$33,087.12</span>
+</div>
+</div>
+<div class="no-print pt-4">
+<button class="w-full py-3.5 bg-primary text-white font-display font-bold rounded-xl hover:bg-blue-700 shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl">credit_card</span>
+                            Pay Online Now
+                        </button>
+</div></div>
+</div>
+<!-- Bottom Note -->
+<div class="px-8 md:px-12 py-4 border-t border-slate-100 dark:border-slate-800 text-center">
+<p class="text-xs text-slate-400 font-medium">Thank you for choosing NetCore Systems for your infrastructure needs.</p>
+</div>
+</div>
+<!-- System Logs / History (No-Print) -->
+<div class="no-print mt-10 p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800"><h3 class="font-display font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">history</span>
+                Invoice Activity
+            </h3>
+<div class="relative space-y-6 before:absolute before:inset-0 before:ml-1 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-slate-200 before:via-slate-200 before:to-transparent dark:before:from-slate-800 dark:before:via-slate-800">
+<div class="relative flex items-start gap-4">
+<div class="absolute left-0 mt-1.5 h-2 w-2 rounded-full bg-primary ring-4 ring-white dark:ring-slate-900"></div>
+<div class="pl-6">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Invoice created</p>
+<p class="text-xs text-slate-500 mt-0.5">Oct 24, 2023 · 09:12 AM by Sarah Jenkins</p>
+</div>
+</div>
+<div class="relative flex items-start gap-4">
+<div class="absolute left-0 mt-1.5 h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></div>
+<div class="pl-6">
+<p class="text-sm font-semibold text-slate-600 dark:text-slate-400">Sent to client</p>
+<p class="text-xs text-slate-500 mt-0.5">Oct 24, 2023 · 10:45 AM via Automated Dispatch</p>
+</div>
+</div>
+<div class="relative flex items-start gap-4">
+<div class="absolute left-0 mt-1.5 h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-white dark:ring-slate-900"></div>
+<div class="pl-6">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Viewed by client</p>
+<p class="text-xs text-slate-500 mt-0.5">Oct 25, 2023 · 02:22 PM from Austin, TX</p>
+</div>
+</div>
+</div></div>
+</main>
+<footer class="no-print mt-auto py-8 text-center text-slate-400 text-sm">
+<p>© 2023 NetCore Systems Inc. All rights reserved.</p>
+<div class="mt-2 flex justify-center gap-4">
+<a class="hover:text-primary underline underline-offset-4" href="#">Terms of Service</a>
+<a class="hover:text-primary underline underline-offset-4" href="#">Privacy Policy</a>
+<a class="hover:text-primary underline underline-offset-4" href="#">Support Center</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technician Knowledge Base - Contributor Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .status-badge-draft { @apply bg-slate-200 text-slate-700; }
+        .status-badge-review { @apply bg-amber-100 text-amber-700; }
+        .status-badge-published { @apply bg-green-100 text-green-700; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 font-display min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-solid border-primary/10 bg-white px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<img alt="Technical Knowledge Base Logo" class="h-8 w-8" data-alt="Corporate logo for technical knowledge base system" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbmYAGlY2mtXLPj2HOY7f4FGmNgEckqSbBV-DfYIQ5dxTYKkt9AdcWEopgXuyDtdldJ5X7XCk2-8ciQtBmRZZA7WpdujwMNK2fBFS56gm5URWZy-akyDQP_xgtg5ycSI19YodLC5-77FiYJK61hHjSUbd9ATFT79fSuwL-qQYvITC9UQgVBZg9IWwUwqyl9rNMnkiP7ioJ8-tN3k6sNyJpDjHQ32M8Ma-cFC-sY_gPLTROh578MJkr2NYP_m5uIKWldltCWwZt578"/>
+<h2 class="text-slate-900 text-lg font-bold leading-tight tracking-tight">TechKB</h2>
+</div>
+<label class="flex flex-col min-w-64 h-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg bg-slate-100">
+<div class="flex items-center justify-center pl-4 text-slate-500">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input w-full border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-500" placeholder="Search documentation..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold text-slate-900">Alex Rivers</p>
+<p class="text-xs text-slate-500">Senior Technician</p>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold border border-primary/20 bg-cover bg-center" data-alt="User profile photo of Alex Rivers" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGOYDeOmC6IZSXInjqqze_ZqcB8Ss9xnNCKvFaarlr52sYfspo8tnv3PFeQTHF-t0VGpmxNnPLAGPMLdwFEEh6EbgjOYERIdc11l-CNE9LWO4g00RTzkNCYdoejWI3s6Idukn4C6X5M1sdOK-bFK9IVB_35JGUZpfmMzN_s0uosWWZYdiPQDrLrzfggn9jRUPLxttspieBErJxy3aVdCe4mDRCnLSuobNuwWzsMH5p6pHA6_wEXmajAJHXLTat7jhCNclevdsLVRQ')">
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-primary/10 bg-white hidden lg:flex flex-col p-4 gap-6 sticky top-[65px] h-[calc(100vh-65px)]">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span>My Drafts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<span>Published</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>My Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-slate-100 pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-red-600 hover:bg-red-50 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-6xl mx-auto flex flex-col gap-8">
+<!-- Welcome & Hero Action -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Contributor Dashboard</h1>
+<p class="text-slate-500">Welcome back, Alex. You have 2 articles under review.</p>
+</div>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-white font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Submit New Article</span>
+</button>
+</div>
+<!-- Impact Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm flex flex-col gap-2">
+<p class="text-slate-500 text-sm font-medium">Total Published</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-slate-900">12</span>
+<span class="text-green-600 text-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                    +2
+                                </span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm flex flex-col gap-2">
+<p class="text-slate-500 text-sm font-medium">Views This Month</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-slate-900">1,248</span>
+<span class="text-green-600 text-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                    15%
+                                </span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm flex flex-col gap-2">
+<p class="text-slate-500 text-sm font-medium">Avg. Reader Rating</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold text-slate-900">4.8</span>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star_half</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left: My Articles List -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-slate-900">My Articles</h2>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="bg-white rounded-xl border border-primary/10 shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 border-b border-slate-100">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Article Title</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Last Modified</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900">Troubleshooting XYZ-400 Calibration</p>
+<p class="text-xs text-slate-500">Hardware, Maintenance</p>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold status-badge-published uppercase tracking-tight">Published</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">2h ago</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900">Firmware Update Protocol v2.4</p>
+<p class="text-xs text-slate-500">Software, Update</p>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold status-badge-review uppercase tracking-tight">Under Review</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 24, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900">Safety Precautions for High-Voltage Rails</p>
+<p class="text-xs text-slate-500">Safety, Essential</p>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold status-badge-draft uppercase tracking-tight">Draft</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 22, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<p class="text-sm font-semibold text-slate-900">Legacy Component Replacement Guide</p>
+<p class="text-xs text-slate-500">Hardware, Lifecycle</p>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold status-badge-published uppercase tracking-tight">Published</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 15, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right: Guidelines & Leaderboard -->
+<div class="flex flex-col gap-8">
+<!-- Contribution Guidelines -->
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+<h3 class="font-bold text-slate-900 uppercase tracking-tight text-sm">Contribution Guidelines</h3>
+</div>
+<ul class="flex flex-col gap-3">
+<li class="flex gap-3 text-sm">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+<span class="text-slate-600">Be concise and use simple technical language.</span>
+</li>
+<li class="flex gap-3 text-sm">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+<span class="text-slate-600">Include clear screenshots of diagnostic errors.</span>
+</li>
+<li class="flex gap-3 text-sm">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+<span class="text-slate-600">Always tag the correct equipment serial ranges.</span>
+</li>
+<li class="flex gap-3 text-sm">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+<span class="text-slate-600">Reference existing SOPs where applicable.</span>
+</li>
+</ul>
+<button class="mt-2 text-primary font-bold text-xs uppercase tracking-widest hover:text-primary/80">Full Documentation →</button>
+</div>
+<!-- Top Contributors Leaderboard -->
+<div class="bg-white p-6 rounded-xl border border-primary/10 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-slate-900 uppercase tracking-tight text-sm">Top Contributors</h3>
+<span class="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-slate-500 uppercase">This Month</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Contributor 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-cover bg-center border border-primary/20" data-alt="Avatar for Mark Spencer" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJvOuoOyXrunNxvkvk2tlsHU5d4-DJZzUyOoUxWRAP1916CFjd3zyA_bQloXclOu6mz38kmLXtJay65Lg_BLHbsreGt3r1ejOGk8WhpxolU5ivNs98ju_1U_wS8iikEoGzLsWztARWI4RijnItgfAMhioK6H-kZ7ZwDgh6o5o0YywqEZTmtT5Arsr12bnaoqYJZIBFRJJBso5CthlJHX-skMPgd8uTf4xv0Esi3j-1maRJ6DG6cwXJShKkdC-ByQMUdyp48bt_5Tw')"></div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900">Mark Spencer</span>
+<span class="text-[10px] text-slate-500">42 Articles</span>
+</div>
+</div>
+<div class="text-primary font-black italic">#1</div>
+</div>
+<!-- Contributor 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-cover bg-center border border-slate-200" data-alt="Avatar for Sarah Jenkins" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3rmNbqP7zKdqmn-pVe60482W-1eKr9BW0HIFdjv9IbMbbkozO08As3vt5lX-DGGN6J2Td_D5yuI7luebv6UMPucfwwPqZpVgHzLhQXdVBZQOmKSu5wVHjtbZgagh_Ginj09FALwVAKjsKRtZbobyvLNlejL1GaGowxf5sqoLsUcwCW6qSdDoqPPCCfdZW4B3FUrs40310WMfJbU-iTtr98L4tviEXD4DKVkR2_67zAD9XG5FscOaMQFD6hAGxyzPQ_M_LWtOWgc4')"></div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900">Sarah Jenkins</span>
+<span class="text-[10px] text-slate-500">38 Articles</span>
+</div>
+</div>
+<div class="text-slate-400 font-black italic">#2</div>
+</div>
+<!-- Contributor 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-cover bg-center border border-slate-200" data-alt="Avatar for David Wu" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBDcq0Ftmjyo8ecPtSexGwUHhH_yrIVNhrHv5s8c0rXF-wajcwAuHa7xJDDXSPW4KIZ5K27Fs2_43gdDg9vPmdZ8NyRmbfVQPLaE2bfP2szpaIplIdpzrCvHYIstQGi5ll_bikMlohMYBphzGaBgSWMs1lXHLbYHxfdJ-VmYCypVFhBMUsygjha-lYByywxdpgS5jQJ-YKMfKY75rhosb9qNFWGwMvbxjZAPOrgQ3u5UUJHk_DLl0eJ0BheX13cKhrlmzzGW4Fx-qg')"></div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900">David Wu</span>
+<span class="text-[10px] text-slate-500">35 Articles</span>
+</div>
+</div>
+<div class="text-slate-400 font-black italic">#3</div>
+</div>
+<!-- Your Rank -->
+<div class="mt-2 pt-4 border-t border-dashed border-slate-200 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold ring-2 ring-primary ring-offset-2">12</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-primary">Your Monthly Rank</span>
+<span class="text-[10px] text-slate-500">Top 5% overall</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POS Management - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .chart-bar-glow { box-shadow: 0 0 15px rgba(236, 91, 19, 0.3); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-background-dark/50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 lg:px-10 py-3">
+<div class="max-w-[1600px] mx-auto flex items-center justify-between gap-4">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-4">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="POS Management Logo" class="size-full object-cover" data-alt="Abstract geometric logo in primary orange" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM-Wed300F_9-2YgKbhZZpRF1fRu2G4uAiEB4L3OG83I8NrYY461IgAXIV3oAnAC9ixlW2KBBGnwj3Fnun2CJto7kaPZnrcvPNGh74lDuQn5AdY0yCD1LujBKALbSD3BAZQ3X6ZNhHLFtx1UT5zuB1uxBHVN3_08BxOo3obekKT32USdzlblBPJl8zSKKzCrfS3NuLQN4eEL2vlfoX8YFCCdqRqSxAURFVdmISPzLbLESCPpBQBStqe21_QuaajrAPSoCtlCKiRfs"/>
+</div>
+<div class="hidden md:block">
+<h2 class="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">POS Terminal Hub</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400">Enterprise Admin</p>
+</div>
+</div>
+<!-- Global Search -->
+<div class="flex-1 max-w-md hidden sm:block">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full bg-slate-100 dark:bg-slate-800/50 border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/50 placeholder:text-slate-400 dark:placeholder:text-slate-500" placeholder="Search terminals, cashiers, or receipts..." type="text"/>
+</div>
+</div>
+<!-- Profile & Actions -->
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="hidden md:block text-right">
+<p class="text-sm font-bold leading-none">Alex Rivera</p>
+<p class="text-xs text-slate-500 mt-1">Operations Lead</p>
+</div>
+<div class="size-10 rounded-full border-2 border-primary/20 p-0.5">
+<img alt="User Profile" class="rounded-full bg-slate-200" data-alt="Avatar image of the admin user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtrUm7N5PMLyj0IfTn_0wJpK01mtFmxji0POjU4yRF6Q-ape-sf1NrDoT20hfIpSavlsNETSIs0ixCMpbf_O6stNiWlzeSCAVXMsKmWQ1PrCYkgOvJzGLVUyOW4G7soyjb7gpK4D4Id3r74PSkQbUozAux8WyqKo6bEjEPDZYBqRSYWCby-eGeKvhuJCD5UlttDdQ_70yZsO7DGk41QmJbDeYtox5Bv7UnwUQZEkZV8cd-__IjCuvlbf48fXy4ENvFIZoEKYOUuN4"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1600px] mx-auto w-full p-4 lg:p-8 flex flex-col gap-8">
+<!-- Header Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Performance Overview</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Real-time monitoring across 24 active terminals</p>
+</div>
+<div class="flex items-center gap-2 bg-white dark:bg-slate-800 p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<button class="px-4 py-2 text-sm font-bold rounded-lg bg-primary text-white">Today</button>
+<button class="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg">Last 7 Days</button>
+<button class="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg">Month</button>
+<div class="w-[1px] h-6 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg flex items-center">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-xs font-bold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">+12.4%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Sales</p>
+<h3 class="text-2xl font-black mt-1">$48,295.50</h3>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-500/10 rounded-lg text-blue-500">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<span class="text-xs font-bold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">+3.1%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg Transaction Value</p>
+<h3 class="text-2xl font-black mt-1">$62.30</h3>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-500/10 rounded-lg text-orange-500">
+<span class="material-symbols-outlined">sensors</span>
+</div>
+<span class="text-xs font-bold text-slate-500 bg-slate-500/10 px-2 py-1 rounded-full">94% Active</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Live Terminals</p>
+<h3 class="text-2xl font-black mt-1">24 / 26</h3>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm group hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-500/10 rounded-lg text-purple-500">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="text-xs font-bold text-red-500 bg-red-500/10 px-2 py-1 rounded-full">-2.4%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Active Cashiers</p>
+<h3 class="text-2xl font-black mt-1">18 Online</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Sales by Terminal (Visual Chart Representation) -->
+<div class="xl:col-span-2 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm h-full">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold">Sales by Terminal</h3>
+<p class="text-sm text-slate-500">Revenue performance per location</p>
+</div>
+<button class="text-sm font-bold text-primary flex items-center gap-1 hover:underline">
+                            View Full Report <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-6">
+<!-- Terminal Bar 1 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-bold">Downtown Flagship (T-01)</span>
+<span class="text-slate-500 font-medium">$12,450.00</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary chart-bar-glow rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Terminal Bar 2 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-bold">Westside Mall (T-04)</span>
+<span class="text-slate-500 font-medium">$9,820.50</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary/80 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<!-- Terminal Bar 3 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-bold">Harbor Kiosk (T-12)</span>
+<span class="text-slate-500 font-medium">$7,210.00</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary/60 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<!-- Terminal Bar 4 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-bold">Suburban Outpost (T-09)</span>
+<span class="text-slate-500 font-medium">$5,400.00</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary/40 rounded-full" style="width: 35%"></div>
+</div>
+</div>
+<!-- Terminal Bar 5 -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-bold">Airport Terminal (T-15)</span>
+<span class="text-slate-500 font-medium">$4,105.00</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary/20 rounded-full" style="width: 28%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Transaction Feed -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<h3 class="text-lg font-bold">Live Transaction Feed</h3>
+<span class="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-slate-50 dark:bg-slate-700 rounded-lg hover:bg-slate-100">
+<span class="material-symbols-outlined text-sm">filter_alt</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50 dark:bg-slate-900/50 text-slate-500 uppercase text-[10px] tracking-widest font-bold">
+<tr>
+<th class="px-6 py-4">Time</th>
+<th class="px-6 py-4">Terminal</th>
+<th class="px-6 py-4">Items</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Method</th>
+<th class="px-6 py-4 text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group">
+<td class="px-6 py-4 font-medium whitespace-nowrap">14:32:05</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-300">T-01 (Flagship)</td>
+<td class="px-6 py-4">4 items</td>
+<td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$142.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-lg">credit_card</span>
+<span>Visa</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400 px-2.5 py-1 rounded-full text-xs font-bold">Success</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors bg-primary/5">
+<td class="px-6 py-4 font-medium whitespace-nowrap">14:31:44</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-300">T-12 (Kiosk)</td>
+<td class="px-6 py-4">1 item</td>
+<td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$12.50</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-lg">payments</span>
+<span>Cash</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400 px-2.5 py-1 rounded-full text-xs font-bold">Success</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 font-medium whitespace-nowrap">14:30:12</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-300">T-04 (Mall)</td>
+<td class="px-6 py-4">12 items</td>
+<td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$248.15</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+<span>Apple Pay</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold">Processing</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 font-medium whitespace-nowrap">14:29:55</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-300">T-15 (Airport)</td>
+<td class="px-6 py-4">2 items</td>
+<td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$65.00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-lg">credit_card</span>
+<span>Visa</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400 px-2.5 py-1 rounded-full text-xs font-bold">Declined</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Side Panels -->
+<div class="flex flex-col gap-8">
+<!-- Top Cashiers Leaderboard -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<h3 class="text-lg font-bold mb-6">Top Performers Today</h3>
+<div class="space-y-6">
+<!-- Cashier 1 -->
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Sarah J." class="size-12 rounded-full bg-slate-100" data-alt="Profile photo of cashier Sarah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhK0qWVuHjTCFcqEWiJ8UniWI9deP4fDzNt95tgoipOHHA-yxoJY-07okbkkNh15pRI_QH9_4F5tzYhVPmc_zQhf6L3bnX9KVfA3CZ8owtlsvl4aZlX5R2_SFI9BwY0pcD12qD1IP1Un90JQPowoZaA00LLNp0ciPckV8IA5jpe4jWPphvkF1VxXAOPfSUutguKmtc4xNfXgbwGFDxbB22LikCLDvVcqTKWuWuXeqdBrhLy9IUBZ6UiLtaqxMDWW72-90BFaqT8o8"/>
+<div class="absolute -bottom-1 -right-1 size-5 bg-yellow-400 border-2 border-white dark:border-slate-800 rounded-full flex items-center justify-center text-[10px] font-bold text-black">1</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Sarah Johnson</p>
+<p class="text-xs text-slate-500">42 Transactions</p>
+<div class="mt-2 h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-black">$4,210</p>
+</div>
+</div>
+<!-- Cashier 2 -->
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Marcus T." class="size-12 rounded-full bg-slate-100" data-alt="Profile photo of cashier Marcus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiNA0ZrlZe7y38pLmoonK5qjO_cN40jDrFEMufWoHEWX32TvRKek3IFiZaM1f6nodTE87s6t-c0JS0I8Bshc0zUfJMWQbSo1fRnYyqiDkt5tmJsSzCcesQ8vvjkzJlOD3YZw7-m0vTPiCAmjVg3JdGACouylLc-sp2Pph1qWLH4a0MvMgr_gJ-YX0aSoYbPoApSKWBGeaChTKgvRAqlmtXp2IdmghdoTef2AX5RbfNC2gHcTklWskrBH4I6SAZdeL5-TsxrCgz1CM"/>
+<div class="absolute -bottom-1 -right-1 size-5 bg-slate-300 border-2 border-white dark:border-slate-800 rounded-full flex items-center justify-center text-[10px] font-bold text-black">2</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Marcus Thorne</p>
+<p class="text-xs text-slate-500">38 Transactions</p>
+<div class="mt-2 h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-black">$3,845</p>
+</div>
+</div>
+<!-- Cashier 3 -->
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Elena V." class="size-12 rounded-full bg-slate-100" data-alt="Profile photo of cashier Elena" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB55wOUisX7tVyN4XSttBjYyAIE0tmFJ0BxM6cVESSawSZ4-GNnmebLsFhD1yhR_oIIVXYED4kwwxcd15v6FTMBFTbllLY-Lt7CapmrNK3a4nIqHHXvCBZN2KOY1HjpjVtv9x2JRgPpQNzq20dlBZPAt0YSWRSRCzutFHKAFotPSCkh5agzFtBXqvilIuGZEqGLpMAZUbFBxeTulQt6myJR5LApuzW7uB7729nSGHmfoLCNFHuTvoZGMGpaaEr28OQq8hDg4900oPI"/>
+<div class="absolute -bottom-1 -right-1 size-5 bg-orange-300 border-2 border-white dark:border-slate-800 rounded-full flex items-center justify-center text-[10px] font-bold text-black">3</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Elena Vargas</p>
+<p class="text-xs text-slate-500">31 Transactions</p>
+<div class="mt-2 h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-black">$2,910</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Terminal Status Quick View -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex-1">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold">Terminal Status</h3>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">
+<span class="material-symbols-outlined text-sm">refresh</span>
+</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-500/10 rounded-lg border border-green-200 dark:border-green-500/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+<span class="text-sm font-bold text-green-700 dark:text-green-400">24 Online</span>
+</div>
+<span class="text-xs font-medium text-green-600 dark:text-green-400">All optimal</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-500/10 rounded-lg border border-red-200 dark:border-red-500/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-500">warning</span>
+<span class="text-sm font-bold text-red-700 dark:text-red-400">1 Error</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-red-500 text-white rounded-md font-bold">T-14</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-slate-600">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">offline_bolt</span>
+<span class="text-sm font-bold text-slate-500">1 Offline</span>
+</div>
+<span class="text-xs font-medium text-slate-400">Scheduled Maint.</span>
+</div>
+</div>
+<div class="mt-8 border-t border-slate-100 dark:border-slate-700 pt-6">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Location Health</h4>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
+<p class="text-[10px] font-bold text-slate-500 mb-1">DOWNTOWN</p>
+<p class="text-sm font-black text-green-500">ACTIVE</p>
+</div>
+<div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-lg text-center">
+<p class="text-[10px] font-bold text-slate-500 mb-1">UPTOWN</p>
+<p class="text-sm font-black text-primary">BUSY</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Status Bar -->
+<footer class="mt-auto w-full py-4 border-t border-slate-200 dark:border-slate-700 px-4 lg:px-10 bg-white dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="max-w-[1600px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-6 text-xs font-medium text-slate-500">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-green-500"></span>
+<span>System Status: Healthy</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Last updated: 14:32:05</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-xs font-bold text-primary hover:underline">Download API Logs</button>
+<div class="w-[1px] h-3 bg-slate-300 dark:bg-slate-600"></div>
+<button class="text-xs font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">Contact Support</button>
+</div>
+</div>
+</footer>
+</body></html>

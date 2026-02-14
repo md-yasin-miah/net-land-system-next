@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Security Audit Logs | Net Land Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .severity-critical { border-left: 4px solid #dc2626; }
+        .severity-warning { border-left: 4px solid #d97706; }
+        .severity-info { border-left: 4px solid #1152d4; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-row overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-solid border-[#e7ebf3] bg-white flex flex-col h-screen sticky top-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">shield_lock</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Net Land</h2>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="py-2">
+<p class="px-3 text-xs font-semibold text-[#4c669a] uppercase tracking-wider mb-2">Main Menu</p>
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:bg-[#e7ebf3] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1">security_update_good</span>
+<span class="text-sm font-semibold">Security Audit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:bg-[#e7ebf3] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">group</span>
+<span class="text-sm font-medium">User Management</span>
+</a>
+</div>
+<div class="py-2 border-t border-[#e7ebf3] mt-4 pt-4">
+<p class="px-3 text-xs font-semibold text-[#4c669a] uppercase tracking-wider mb-2">Inventory</p>
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:bg-[#e7ebf3] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+<span class="text-sm font-medium">Stock Control</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:bg-[#e7ebf3] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-[#e7ebf3]">
+<div class="flex items-center gap-3 px-2">
+<div class="size-9 rounded-full bg-primary/20 flex items-center justify-center text-primary overflow-hidden">
+<img class="object-cover size-full" data-alt="Headshot of administrative user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCkgNQBAmbI2m5H-Ge_wiHhihDx8DcTT4wbJdTnb8el6Pf3seqpXl2uRKP6vEHy64k9QCgHoi092fGpKT_4MmbMA5j2cc0Ot7sm6Cf4ufscGkZgUyKB5kBb49JREnITfT4jAKVYB0VAMg-xd57v1rg5D-SBAhJbtAY5nm4_oj5uyh_NhoVcLd850WWat3xU2v5aO4mAQYI0aYepjVJi-p8eCQiGKd4Q8aSufrRq1eERUfTt3MNVPNPMHxejOnxxd4NlYkUIh5XZAM"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Alex Morgan</p>
+<p class="text-[10px] text-[#4c669a] truncate">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Top Header -->
+<header class="flex h-16 items-center justify-between border-b border-solid border-[#e7ebf3] bg-white px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-sm text-[#4c669a]">
+<span>Admin</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-[#0d121b] font-medium">Security Auditing</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#4c669a] text-lg">search</span>
+<input class="w-full bg-[#f8f9fc] border-none rounded-lg pl-10 text-sm focus:ring-1 focus:ring-primary h-9" placeholder="Search logs..." type="text"/>
+</div>
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e7ebf3] text-[#4c669a]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export CSV
+                    </button>
+</div>
+</header>
+<!-- Content -->
+<div class="p-8">
+<div class="mb-8">
+<h1 class="text-3xl font-black text-[#0d121b] tracking-tight">Security Audit Logs</h1>
+<p class="text-[#4c669a] mt-1">Monitor enterprise-wide activity, login events, and sensitive data modifications.</p>
+</div>
+<!-- Filters Toolbar -->
+<div class="bg-white p-4 rounded-xl border border-[#e7ebf3] mb-6 flex flex-wrap items-center gap-4">
+<div class="flex flex-col gap-1.5 min-w-[180px]">
+<label class="text-[11px] font-bold text-[#4c669a] uppercase tracking-wider">Date Range</label>
+<div class="relative">
+<select class="w-full text-sm bg-[#f8f9fc] border-[#e7ebf3] rounded-lg h-10 pl-3 pr-10 appearance-none focus:ring-primary">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+<option>Custom Range</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-[#4c669a] pointer-events-none">calendar_month</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5 min-w-[150px]">
+<label class="text-[11px] font-bold text-[#4c669a] uppercase tracking-wider">User Role</label>
+<select class="w-full text-sm bg-[#f8f9fc] border-[#e7ebf3] rounded-lg h-10 focus:ring-primary">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Editor</option>
+<option>Viewer</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5 flex-1">
+<label class="text-[11px] font-bold text-[#4c669a] uppercase tracking-wider">Severity Level</label>
+<div class="flex items-center h-10 bg-[#f8f9fc] rounded-lg border border-[#e7ebf3] p-1 w-fit">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-white shadow-sm border border-[#e7ebf3]">All</button>
+<button class="px-4 py-1.5 text-xs font-semibold text-[#4c669a] hover:text-[#0d121b]">Info</button>
+<button class="px-4 py-1.5 text-xs font-semibold text-[#4c669a] hover:text-[#0d121b]">Warning</button>
+<button class="px-4 py-1.5 text-xs font-semibold text-[#4c669a] hover:text-[#0d121b]">Critical</button>
+</div>
+</div>
+<div class="flex items-end h-full pt-5">
+<button class="flex items-center gap-2 text-sm font-bold text-primary px-4 py-2 hover:bg-primary/5 rounded-lg">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                            Advanced Filters
+                        </button>
+</div>
+</div>
+<!-- Dense Table -->
+<div class="bg-white rounded-xl border border-[#e7ebf3] overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-[#f8f9fc] border-b border-[#e7ebf3]">
+<tr>
+<th class="px-4 py-3 text-xs font-bold text-[#4c669a] uppercase tracking-wider w-48">Timestamp</th>
+<th class="px-4 py-3 text-xs font-bold text-[#4c669a] uppercase tracking-wider">User</th>
+<th class="px-4 py-3 text-xs font-bold text-[#4c669a] uppercase tracking-wider">Action</th>
+<th class="px-4 py-3 text-xs font-bold text-[#4c669a] uppercase tracking-wider">Severity</th>
+<th class="px-4 py-3 text-xs font-bold text-[#4c669a] uppercase tracking-wider">IP Address</th>
+<th class="px-4 py-3 text-xs font-bold text-[#4c669a] uppercase tracking-wider">Device</th>
+<th class="px-4 py-3 text-xs font-bold text-[#4c669a] uppercase tracking-wider text-right">Details</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e7ebf3]">
+<!-- Entry 1: Critical -->
+<tr class="hover:bg-[#f8f9fc] transition-colors severity-critical">
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">2023-11-24 14:22:10</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+<img class="object-cover size-full" data-alt="Avatar of user John Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6qhnoCAZGNJw30ZAQgGyDEcvdfAN8k5g8kdXkVfDQJIO8bBl2D7JNLjkr8UfNW8iAm99m4SQbSO45olOxcxWNMezdhONDWyNQIwmTfmEfbR_70StUMTXPw_nNhMr1PQUr8PJTyVdOdXbrllDBsSo47VSu0sm9xGojL0UD6JWAInar6eTw1Bd-OTkKpKeDcgu03HgWO-hRPmVZM9t8rufRjpk3khA3kiXK0sqmVjsWPXNL2QU_MVaW-9iQ7X6dnksHzpFYuNEaZ8s"/>
+</div>
+<div class="min-w-0">
+<p class="text-sm font-semibold truncate">John Doe</p>
+<p class="text-[11px] text-[#4c669a]">j.doe@netland.com</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-3.5">
+<span class="text-sm font-medium text-[#0d121b]">Bulk SKU Deletion</span>
+<p class="text-[11px] text-[#4c669a]">Deleted 420 entries in Inventory</p>
+</td>
+<td class="px-4 py-3.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-700 uppercase">Critical</span>
+</td>
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">192.168.1.105</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-2 text-[#4c669a]">
+<span class="material-symbols-outlined text-base">laptop_mac</span>
+<span class="text-[11px]">macOS (Chrome)</span>
+</div>
+</td>
+<td class="px-4 py-3.5 text-right">
+<button class="text-[#4c669a] hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<!-- Entry 2: Warning -->
+<tr class="hover:bg-[#f8f9fc] transition-colors severity-warning">
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">2023-11-24 13:45:02</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+<img class="object-cover size-full" data-alt="Avatar of user Sarah Chen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTNNJ8XyT4B4wbkHcOH3dH2JHAL8JUlUqXrHa_CZp72mh3hp4PZQ2Tp86pBInGCfdmoLtqd-vgUBUoQF02HH5FmPiNquK6rze6jGqRL4WJopy_KFafcBT03fqgyETls_8_Y9gshvgT6an3bWY48hV2REEvgUQGa9dg8awKT_slWnM84zBvpP7m1yB-hVVmRfhj8UWbu9E7aX2QZ_IMntGn3adWB1BGvviVVKw1JzGPcK4IcxJP6nYXA_bPFwa9rdPbG0EwaNNKdsc"/>
+</div>
+<div class="min-w-0">
+<p class="text-sm font-semibold truncate">Sarah Chen</p>
+<p class="text-[11px] text-[#4c669a]">s.chen@netland.com</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-3.5">
+<span class="text-sm font-medium text-[#0d121b]">MFA Challenge Failed</span>
+<p class="text-[11px] text-[#4c669a]">2 consecutive failures</p>
+</td>
+<td class="px-4 py-3.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 uppercase">Warning</span>
+</td>
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">45.22.190.12</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-2 text-[#4c669a]">
+<span class="material-symbols-outlined text-base">smartphone</span>
+<span class="text-[11px]">iPhone 14 (App)</span>
+</div>
+</td>
+<td class="px-4 py-3.5 text-right">
+<button class="text-[#4c669a] hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<!-- Entry 3: Info -->
+<tr class="hover:bg-[#f8f9fc] transition-colors severity-info">
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">2023-11-24 12:10:55</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+<img class="object-cover size-full" data-alt="Avatar of user Mike Ross" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB83n8FwEdRQGUUUMxNVVazx7zUlTn1nMb8l-Tka3SgcDo-zPWnyyP5NlZkROLriyPJwxE5yUl7nWdcZZ_1B9M6i8P53cuM1StD2wyyNx0k2600f_pnIWbYzu2Ynqf2-cLfGsPTH0zp-AV30yyz5z1BozMiEi17O02ptHmI5Ssm-z-GVNFWD8gXNB3Ln-RQZnQ8Ts8sVMOnkdu5_iERQUjDjxuEhknhGu53IAKvmAkNVzI3j3-0wOdOAmHrvlMrDHK8a33_eXYbP0"/>
+</div>
+<div class="min-w-0">
+<p class="text-sm font-semibold truncate">Mike Ross</p>
+<p class="text-[11px] text-[#4c669a]">m.ross@netland.com</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-3.5">
+<span class="text-sm font-medium text-[#0d121b]">Record Updated</span>
+<p class="text-[11px] text-[#4c669a]">Changed pricing for SKU-90210</p>
+</td>
+<td class="px-4 py-3.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 uppercase">Info</span>
+</td>
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">88.10.4.244</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-2 text-[#4c669a]">
+<span class="material-symbols-outlined text-base">desktop_windows</span>
+<span class="text-[11px]">Windows 11 (Firefox)</span>
+</div>
+</td>
+<td class="px-4 py-3.5 text-right">
+<button class="text-[#4c669a] hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<!-- Entry 4: Info -->
+<tr class="hover:bg-[#f8f9fc] transition-colors severity-info">
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">2023-11-24 11:58:32</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+<img class="object-cover size-full" data-alt="Avatar of user Emma Wilson" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfGNRQCK5-dV0JUX1ebU7HHJUFm7AXf6R_3u4mjxQ0GGtxaD6IcWRwyIE5sdms8bmKpqVNgIWP3JnlmqxHX_4iSi9nD2_YZ56nmtN82vCHhhHe3B1BSeiGtvOLrXLdPqutb62iSATc4rJF7_aXQA-MaO_hyccX138dhqv1HrZ8hNg7pwcBZr-m0GVLHLTwVNTmKCnJrvUEe3bW404PPG0uLGbJ4_vO0E-xpBsPosEJ8MgxJh3GnwDTR_FmW6VvFm2W7UEmohUBWaE"/>
+</div>
+<div class="min-w-0">
+<p class="text-sm font-semibold truncate">Emma Wilson</p>
+<p class="text-[11px] text-[#4c669a]">e.wilson@netland.com</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-3.5">
+<span class="text-sm font-medium text-[#0d121b]">Login Successful</span>
+<p class="text-[11px] text-[#4c669a]">Standard session start</p>
+</td>
+<td class="px-4 py-3.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 uppercase">Info</span>
+</td>
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">102.34.11.9</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-2 text-[#4c669a]">
+<span class="material-symbols-outlined text-base">laptop_mac</span>
+<span class="text-[11px]">macOS (Safari)</span>
+</div>
+</td>
+<td class="px-4 py-3.5 text-right">
+<button class="text-[#4c669a] hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<!-- Entry 5: Warning -->
+<tr class="hover:bg-[#f8f9fc] transition-colors severity-warning">
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">2023-11-24 10:42:12</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
+<span class="text-[10px] font-bold text-[#4c669a]">SYS</span>
+</div>
+<div class="min-w-0">
+<p class="text-sm font-semibold truncate">System Service</p>
+<p class="text-[11px] text-[#4c669a]">internal@netland.cloud</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-3.5">
+<span class="text-sm font-medium text-[#0d121b]">Unauthorized API Access</span>
+<p class="text-[11px] text-[#4c669a]">Blocked attempt on /api/v2/finance</p>
+</td>
+<td class="px-4 py-3.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 uppercase">Warning</span>
+</td>
+<td class="px-4 py-3.5 text-sm font-mono text-[#4c669a]">203.0.113.44</td>
+<td class="px-4 py-3.5">
+<div class="flex items-center gap-2 text-[#4c669a]">
+<span class="material-symbols-outlined text-base">cloud_done</span>
+<span class="text-[11px]">API Worker (Linux)</span>
+</div>
+</td>
+<td class="px-4 py-3.5 text-right">
+<button class="text-[#4c669a] hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between px-6 py-4 bg-[#f8f9fc] border-t border-[#e7ebf3]">
+<div class="flex items-center gap-2 text-xs text-[#4c669a]">
+<span>Showing</span>
+<span class="font-bold text-[#0d121b]">1-5</span>
+<span>of</span>
+<span class="font-bold text-[#0d121b]">2,481</span>
+<span>results</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="size-8 flex items-center justify-center rounded border border-[#e7ebf3] bg-white text-[#4c669a] hover:bg-gray-50 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded border border-primary bg-primary text-white text-xs font-bold">1</button>
+<button class="size-8 flex items-center justify-center rounded border border-[#e7ebf3] bg-white text-xs font-bold text-[#4c669a] hover:bg-gray-50">2</button>
+<button class="size-8 flex items-center justify-center rounded border border-[#e7ebf3] bg-white text-xs font-bold text-[#4c669a] hover:bg-gray-50">3</button>
+<span class="px-2 text-[#4c669a]">...</span>
+<button class="size-8 flex items-center justify-center rounded border border-[#e7ebf3] bg-white text-xs font-bold text-[#4c669a] hover:bg-gray-50">496</button>
+<button class="size-8 flex items-center justify-center rounded border border-[#e7ebf3] bg-white text-[#4c669a] hover:bg-gray-50">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Summary Cards (Optional addition to match enterprise context) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+<div class="bg-white p-5 rounded-xl border border-[#e7ebf3] flex items-center gap-4">
+<div class="size-12 rounded-lg bg-red-100 flex items-center justify-center text-red-600">
+<span class="material-symbols-outlined">error</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[#4c669a] uppercase">Critical Events (24h)</p>
+<p class="text-2xl font-black text-[#0d121b]">12</p>
+</div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-[#e7ebf3] flex items-center gap-4">
+<div class="size-12 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[#4c669a] uppercase">Warnings (24h)</p>
+<p class="text-2xl font-black text-[#0d121b]">148</p>
+</div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-[#e7ebf3] flex items-center gap-4">
+<div class="size-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">history</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[#4c669a] uppercase">Total Logs (24h)</p>
+<p class="text-2xl font-black text-[#0d121b]">1,204</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

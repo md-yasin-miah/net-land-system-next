@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warehouse Management | Logistics Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Main Container -->
+<div class="flex flex-col min-h-screen">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-primary/20 px-4 md:px-10 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">warehouse</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-extrabold leading-tight tracking-tight hidden sm:block">Logistics Pro</h2>
+</div>
+<!-- Search Bar -->
+<div class="relative hidden md:flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-primary/10 border-none rounded-xl focus:ring-2 focus:ring-primary w-64 lg:w-80 text-sm" placeholder="Search warehouses..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+<span class="hidden sm:inline">Add New Warehouse</span>
+</button>
+<div class="flex items-center gap-1 border-l border-slate-200 dark:border-primary/20 ml-2 pl-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold ml-2">
+                            AD
+                        </div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-4 md:p-10 space-y-8">
+<!-- Hero / Title Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Warehouse Overview</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Manage global inventory locations and monitoring status.</p>
+</div>
+<div class="flex bg-white dark:bg-primary/5 p-1 rounded-xl border border-slate-200 dark:border-primary/20 shadow-sm">
+<button class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold">Grid View</button>
+<button class="px-4 py-2 rounded-lg text-slate-500 text-sm font-medium hover:bg-slate-50 dark:hover:bg-primary/10 transition-colors">List View</button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-primary/5 p-6 rounded-xl border border-slate-200 dark:border-primary/20 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 text-sm font-medium uppercase tracking-wider">Total Facilities</span>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">hub</span>
+</div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white">14</p>
+<div class="mt-2 text-xs text-green-600 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +2 this quarter
+                    </div>
+</div>
+<div class="bg-white dark:bg-primary/5 p-6 rounded-xl border border-slate-200 dark:border-primary/20 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 text-sm font-medium uppercase tracking-wider">Global Stock Value</span>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">payments</span>
+</div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white">$8.4M</p>
+<div class="mt-2 text-xs text-slate-500 font-medium">Updated 5m ago</div>
+</div>
+<div class="bg-white dark:bg-primary/5 p-6 rounded-xl border border-slate-200 dark:border-primary/20 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 text-sm font-medium uppercase tracking-wider">Avg. Capacity</span>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">pie_chart</span>
+</div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white">72%</p>
+<div class="mt-2 w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full">
+<div class="bg-primary h-1.5 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-primary/5 p-6 rounded-xl border border-slate-200 dark:border-primary/20 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 text-sm font-medium uppercase tracking-wider">Pending Orders</span>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">local_shipping</span>
+</div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white">128</p>
+<div class="mt-2 text-xs text-primary font-medium">12 high priority</div>
+</div>
+</div>
+<!-- Filters & Sorting -->
+<div class="flex flex-wrap items-center gap-4 py-2 border-b border-slate-200 dark:border-primary/20">
+<button class="text-sm font-bold text-primary border-b-2 border-primary pb-3 px-2">All Warehouses</button>
+<button class="text-sm font-medium text-slate-500 hover:text-primary pb-3 px-2 transition-colors">Near Full (80%+)</button>
+<button class="text-sm font-medium text-slate-500 hover:text-primary pb-3 px-2 transition-colors">Low Inventory</button>
+<button class="text-sm font-medium text-slate-500 hover:text-primary pb-3 px-2 transition-colors">Recently Added</button>
+<div class="ml-auto flex items-center gap-2 pb-3">
+<span class="text-xs font-bold text-slate-400 uppercase">Sort by:</span>
+<select class="text-sm border-none bg-transparent font-semibold focus:ring-0 cursor-pointer text-slate-900 dark:text-white">
+<option>Total Value</option>
+<option>Capacity</option>
+<option>Name (A-Z)</option>
+</select>
+</div>
+</div>
+<!-- Warehouse Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Warehouse Card 1 -->
+<div class="bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/20 overflow-hidden group hover:shadow-lg transition-all">
+<div class="h-32 bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="Modern logistics warehouse interior with high shelves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiivxutezZNZ-kdkla3BFtzc46_yPDbQtLHsmUiEvHeCUfYwsepceKkShLTzhk83ZIP9CmUqwR1K7FdjC5z9yH7pF64c3FoYPNTP5azt4VZbBvwo93dcc2Nnjh8T8Dbzk4GuY8-poAnuw4nO48HAU9ym-swMMxpQJHob6HiZCMFiSssOQAYklV_X16vppaVHLC68Ht4-RbvQNtI709Cw37YDO2f2_Fo41RuBcdtpvouPYSMKoA46RHf4Lqyt5YgKOhSDfKgQxqTBc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-xs font-bold text-primary bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full w-fit mb-1">Central Hub</span>
+<h3 class="text-white font-bold text-lg">Dhaka Main Hub</h3>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Total SKUs</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">12,450</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Stock Value</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">$3.2M</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 font-medium">Capacity Status</span>
+<span class="text-primary font-bold">85%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+</div>
+<p class="text-xs text-primary font-medium">Near capacity - Optimization recommended</p>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-primary/10 flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-primary/20 hover:bg-slate-200 dark:hover:bg-primary/30 text-slate-900 dark:text-white py-2 rounded-lg text-sm font-bold transition-colors">Details</button>
+<button class="flex-1 bg-primary/10 hover:bg-primary/20 text-primary py-2 rounded-lg text-sm font-bold transition-colors">Inventory</button>
+</div>
+</div>
+</div>
+<!-- Warehouse Card 2 -->
+<div class="bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/20 overflow-hidden group hover:shadow-lg transition-all">
+<div class="h-32 bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="Port shipping containers area during sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1X1gebR69ZNqzPtLrIgWNwSoVcItKMQ9DrJ1w-771MOrgd7pl-fchpdu-hMac4LTagKlf3RGDWWffUNotNKkwaIQpgCNXCH2hQn0uZO0p70YuZz1BYsefQ9UZOX9QWKNLRD6lOhuh05A1Uh23WXrDSftLjIbiO4AW25FS74OT9DxbP51ahWL-AZlbvA7YuIgGYNPe7S8MdQQhMNxO1sLKJBxFdbfqJK_8NRPyPQu8f-mz7fmS8Qujt7It-w411oDO263mu2beQNU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-xs font-bold text-white bg-blue-500/50 backdrop-blur-md px-2 py-0.5 rounded-full w-fit mb-1">Coastal Hub</span>
+<h3 class="text-white font-bold text-lg">Chittagong Port Depot</h3>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Total SKUs</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">8,120</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Stock Value</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">$1.8M</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 font-medium">Capacity Status</span>
+<span class="text-slate-900 dark:text-white font-bold">42%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 42%"></div>
+</div>
+<p class="text-xs text-slate-500 font-medium">Healthy - 58% storage available</p>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-primary/10 flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-primary/20 hover:bg-slate-200 dark:hover:bg-primary/30 text-slate-900 dark:text-white py-2 rounded-lg text-sm font-bold transition-colors">Details</button>
+<button class="flex-1 bg-primary/10 hover:bg-primary/20 text-primary py-2 rounded-lg text-sm font-bold transition-colors">Inventory</button>
+</div>
+</div>
+</div>
+<!-- Warehouse Card 3 -->
+<div class="bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/20 overflow-hidden group hover:shadow-lg transition-all">
+<div class="h-32 bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="Large industrial building exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8aqP1aBgjPoiVKHcUkLl_0mjh5yzv7nTcetwabOj9kMy95d-bieO4YBO4XEXIcg7Mik3h2hR4oEgB54vUGmN78ERcJ8lY-D2B2EGCthiYcvR4C79lnoudcPva0Jav44DVQi93zaSC52N_TyF7lYbx0jtX9kZwwrpO749g-NFdG5-zIKLs2b1JlSJASiD45Nu4EpyHNmam5CQ2F37JvBYIC-t0AXjWNSGMmSDchdTOd3_q3vT7qPXkWkx98zm66RcSCSC1nCpZZ84"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-xs font-bold text-white bg-green-500/50 backdrop-blur-md px-2 py-0.5 rounded-full w-fit mb-1">Industrial Zone</span>
+<h3 class="text-white font-bold text-lg">Gazipur Logistics Center</h3>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Total SKUs</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">15,900</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Stock Value</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">$2.4M</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 font-medium">Capacity Status</span>
+<span class="text-slate-900 dark:text-white font-bold">65%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 65%"></div>
+</div>
+<p class="text-xs text-slate-500 font-medium">Operating within optimal range</p>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-primary/10 flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-primary/20 hover:bg-slate-200 dark:hover:bg-primary/30 text-slate-900 dark:text-white py-2 rounded-lg text-sm font-bold transition-colors">Details</button>
+<button class="flex-1 bg-primary/10 hover:bg-primary/20 text-primary py-2 rounded-lg text-sm font-bold transition-colors">Inventory</button>
+</div>
+</div>
+</div>
+<!-- Warehouse Card 4 -->
+<div class="bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/20 overflow-hidden group hover:shadow-lg transition-all">
+<div class="h-32 bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" data-alt="Warehouse shelves with boxes and packages" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsQGagifcZqSCbpB2ntXnViqSPqa4EvKNWNplb8BZ4Ai561yf1iplTZoFJm3Y9q5J6cYyKiSLiO6YjR6yZsue2i3tCB38SCtR4dlJfM1YVa3m4g5hvZ0H-d5qsj2pe59bz9BgYY9Z8osULAiPY4f8S78uheo5fUfPYst7nk_WHZnwCBRg_3ILYikgLGlSC5HVguAEkiVeCef5_WJyoUjJI2-r5X5FE3LB8gjW91H5bfn9w4vO4xtm8U93jBo8HDpemPVmXE1a02lE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-xs font-bold text-white bg-amber-500/50 backdrop-blur-md px-2 py-0.5 rounded-full w-fit mb-1">Regional Branch</span>
+<h3 class="text-white font-bold text-lg">Sylhet Regional Depot</h3>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Total SKUs</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">4,300</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-semibold uppercase">Stock Value</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">$0.9M</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500 font-medium">Capacity Status</span>
+<span class="text-slate-900 dark:text-white font-bold">28%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 28%"></div>
+</div>
+<p class="text-xs text-slate-500 font-medium">High vacancy available</p>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-primary/10 flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-primary/20 hover:bg-slate-200 dark:hover:bg-primary/30 text-slate-900 dark:text-white py-2 rounded-lg text-sm font-bold transition-colors">Details</button>
+<button class="flex-1 bg-primary/10 hover:bg-primary/20 text-primary py-2 rounded-lg text-sm font-bold transition-colors">Inventory</button>
+</div>
+</div>
+</div>
+<!-- Add New Warehouse CTA Placeholder Card -->
+<div class="bg-slate-100/50 dark:bg-primary/5 rounded-xl border-2 border-dashed border-slate-300 dark:border-primary/30 flex flex-col items-center justify-center p-8 group cursor-pointer hover:bg-slate-100 dark:hover:bg-primary/10 transition-all">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">add_business</span>
+</div>
+<h3 class="mt-4 font-bold text-slate-900 dark:text-white">Register New Facility</h3>
+<p class="text-sm text-slate-500 text-center mt-2 px-4">Easily add a new physical location to your logistics network.</p>
+</div>
+</div>
+<!-- Bottom Pagination/Footer Info -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-slate-200 dark:border-primary/20">
+<p class="text-sm text-slate-500">Showing 4 of 14 warehouses</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-lg border border-slate-200 dark:border-primary/20 text-sm font-bold disabled:opacity-50">Previous</button>
+<button class="px-4 py-2 rounded-lg border border-slate-200 dark:border-primary/20 text-sm font-bold bg-primary text-white">1</button>
+<button class="px-4 py-2 rounded-lg border border-slate-200 dark:border-primary/20 text-sm font-bold hover:bg-slate-50 dark:hover:bg-primary/10">2</button>
+<button class="px-4 py-2 rounded-lg border border-slate-200 dark:border-primary/20 text-sm font-bold hover:bg-slate-50 dark:hover:bg-primary/10">Next</button>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-6 px-10 text-center border-t border-slate-200 dark:border-primary/10 bg-white dark:bg-background-dark">
+<p class="text-xs text-slate-400">© 2024 Logistics Pro Management System. All rights reserved.</p>
+</footer>
+</div>
+</body></html>
