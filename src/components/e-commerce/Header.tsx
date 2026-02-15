@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bell, Menu, ShoppingCart, User } from "lucide-react";
 import { Routes } from "@/lib/routes";
+import { headerSubNav } from "@/lib/menu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { openDrawer } from "@/store/cartSlice";
 import { getCartCount, getCartTotal } from "@/store/cartSlice";
@@ -76,24 +77,16 @@ const Header = () => {
       {/* Sub Nav / Categories */}
       <div className="bg-primary-dark/20 border-t border-white/10">
         <div className="max-w-[1440px] mx-auto px-4 h-10 flex items-center gap-8 text-sm font-medium">
-          <Link href="/categories" className="flex items-center gap-1 hover:text-blue-200">
-            <Menu className="w-4 h-4" /> All Categories
-          </Link>
-          <Link href="/deals" className="hover:text-blue-200">
-            Today&apos;s Deals
-          </Link>
-          <Link href="/new-arrivals" className="hover:text-blue-200">
-            New Arrivals
-          </Link>
-          <Link href="/corporate" className="hover:text-blue-200">
-            Corporate Sales
-          </Link>
-          <Link href="/best-sellers" className="hover:text-blue-200">
-            Best Sellers
-          </Link>
-          <Link href="/support" className="hover:text-blue-200">
-            Customer Service
-          </Link>
+          {headerSubNav.map((item) => (
+            <Link
+              key={item.href + item.label}
+              href={item.href}
+              className="flex items-center gap-1 hover:text-blue-200"
+            >
+              {item.label === "All Categories" && <Menu className="w-4 h-4" />}
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </header>

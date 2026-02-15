@@ -2,31 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  ShoppingCart,
-  ShieldCheck,
-  MessageSquare,
-  Settings,
-  MapPin,
-  Search,
-  Bell,
-  HelpCircle,
-} from "lucide-react";
+import { Search, Bell, HelpCircle } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
-
-const NAV_ITEMS = [
-  { href: Routes.me.dashboard, label: "Dashboard", icon: LayoutDashboard },
-  { href: Routes.me.orders, label: "My Orders", icon: ShoppingCart },
-  { href: Routes.me.warranty, label: "Warranty & RMA", icon: ShieldCheck },
-  { href: Routes.me.tickets, label: "Support Tickets", icon: MessageSquare },
-] as const;
-
-const SETTINGS_ITEMS = [
-  { href: Routes.me.settings, label: "Account Settings", icon: Settings },
-  { href: Routes.me.addresses, label: "Addresses", icon: MapPin },
-] as const;
+import { userSidebarNav, userSidebarSettings } from "@/lib/menu";
 
 export default function UserPanelLayout({
   children,
@@ -51,7 +30,7 @@ export default function UserPanelLayout({
           </h2>
         </div>
         <nav className="flex-1 space-y-1 px-4 py-2">
-          {NAV_ITEMS.map((item) => {
+          {userSidebarNav.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
             return (
@@ -75,7 +54,7 @@ export default function UserPanelLayout({
               Settings
             </p>
           </div>
-          {SETTINGS_ITEMS.map((item) => {
+          {userSidebarSettings.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
             return (

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { Routes } from '@/lib/routes';
+import { footerSections, footerSocialLinks } from '@/lib/menu';
 
 const Footer = () => {
   return (
@@ -27,86 +27,29 @@ const Footer = () => {
             Your premier destination for networking excellence in Bangladesh. We supply enterprise-grade hardware to IT professionals and corporate firms.
           </p>
           <div className="flex gap-4">
-            <Link href="#" className="hover:text-white transition-colors">
-              <span className="material-symbols-outlined">social_leaderboard</span>
-            </Link>
-            <Link href="#" className="hover:text-white transition-colors">
-              <span className="material-symbols-outlined">alternate_email</span>
-            </Link>
-            <Link href="#" className="hover:text-white transition-colors">
-              <span className="material-symbols-outlined">public</span>
-            </Link>
+            {footerSocialLinks.map((social) => (
+              <Link key={social.icon} href={social.href} className="hover:text-white transition-colors">
+                <span className="material-symbols-outlined">{social.icon}</span>
+              </Link>
+            ))}
           </div>
         </div>
 
-        {/* Links Column 1 */}
-        <div>
-          <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Information</h4>
-          <ul className="flex flex-col gap-3 text-sm">
-            <li>
-              <Link href="/about" className="hover:text-primary transition-colors">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/faq" className="hover:text-primary transition-colors">
-                FAQ / Help Center
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-primary transition-colors">
-                Contact Support
-              </Link>
-            </li>
-            <li>
-              <Link href="/returns" className="hover:text-primary transition-colors">
-                Return &amp; Refund Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy" className="hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-primary transition-colors">
-                Terms &amp; Conditions
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Links Column 2 */}
-        <div>
-          <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Customer Service</h4>
-          <ul className="flex flex-col gap-3 text-sm">
-            <li>
-              <Link href="/tracking" className="hover:text-primary transition-colors">
-                Order Tracking
-              </Link>
-            </li>
-            <li>
-              <Link href="/corporate-sales" className="hover:text-primary transition-colors">
-                Corporate Sales
-              </Link>
-            </li>
-            <li>
-              <Link href={Routes.support.warrantyReturns} className="hover:text-primary transition-colors">
-                Warranty & Returns
-              </Link>
-            </li>
-            <li>
-              <Link href={Routes.support.tickets} className="hover:text-primary transition-colors">
-                Support Ticket
-              </Link>
-            </li>
-            <li>
-              <Link href="/sitemap" className="hover:text-primary transition-colors">
-                Sitemap
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {/* Links Columns from menu */}
+        {footerSections.map((section) => (
+          <div key={section.title}>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">{section.title}</h4>
+            <ul className="flex flex-col gap-3 text-sm">
+              {section.links.map((link) => (
+                <li key={link.href + link.label}>
+                  <Link href={link.href} className="hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
         {/* Contact Column */}
         <div>

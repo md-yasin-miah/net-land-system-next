@@ -32,6 +32,7 @@ export const Routes = {
     root: "/me",
     dashboard: "/me/dashboard",
     orders: "/me/orders",
+    orderDetail: (id: string) => `/me/orders/${id}`,
     warranty: "/me/warranty",
     tickets: "/me/tickets",
     settings: "/me/settings",

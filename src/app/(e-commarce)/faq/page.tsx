@@ -1,16 +1,9 @@
 import Link from "next/link";
-import { ChevronRight, Search, Truck, CreditCard, Cpu, RotateCcw, HelpCircle } from "lucide-react";
-import { Routes } from "@/lib/routes";
+import { ChevronRight, Search, HelpCircle } from "lucide-react";
 import FaqAccordionItem from "@/components/faq/FaqAccordionItem";
 import FaqSidebar, { FaqSupportCard } from "@/components/faq/FaqSidebar";
 import FaqSearchForm from "@/components/faq/FaqSearchForm";
-
-const CATEGORY_CARDS = [
-  { href: Routes.faq.shippingDelivery, icon: Truck, label: "Shipping & Delivery" },
-  { href: "#", icon: CreditCard, label: "Payment Methods" },
-  { href: Routes.faq.productCompatibility, icon: Cpu, label: "Product Compatibility" },
-  { href: "#", icon: RotateCcw, label: "Returns & RMA" },
-];
+import { faqCategoryCards } from "@/lib/menu";
 
 export default function FaqPage() {
   return (
@@ -47,11 +40,11 @@ export default function FaqPage() {
 
         {/* Category Quick Access */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          {CATEGORY_CARDS.map((card, i) => {
+          {faqCategoryCards.map((card, i) => {
             const Icon = card.icon;
             return (
               <Link
-                key={card.href}
+                key={card.label}
                 href={card.href}
                 className={`flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900 rounded-xl border-b-4 shadow-sm hover:shadow-md transition-all group ${
                   i === 0 ? "border-primary" : "border-transparent hover:border-primary/50"

@@ -1,27 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import {
-  HelpCircle,
-  Truck,
-  CreditCard,
-  Cpu,
-  RotateCcw,
-  Mail,
-  Phone,
-  ArrowRight,
-  BookOpen,
-} from "lucide-react";
+import { Mail, Phone, ArrowRight, BookOpen } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
-
-const CATEGORIES = [
-  { href: Routes.faq.index, icon: HelpCircle, label: "General" },
-  { href: Routes.faq.shippingDelivery, icon: Truck, label: "Shipping & Delivery" },
-  { href: "#", icon: CreditCard, label: "Payments" },
-  { href: "#", icon: Cpu, label: "Technical Support" },
-  { href: "#", icon: RotateCcw, label: "Returns & Refunds" },
-] as const;
+import { faqSidebarCategories } from "@/lib/menu";
 
 interface FaqSidebarProps {
   activeSlug?: "general" | "shipping" | "payments" | "support" | "returns";
@@ -50,7 +33,7 @@ export default function FaqSidebar({
           Categories
         </h3>
         <nav className="flex flex-col gap-1">
-          {CATEGORIES.map((item, i) => {
+          {faqSidebarCategories.map((item, i) => {
             const Icon = item.icon;
             const isActive = activeIndex === i;
             return (

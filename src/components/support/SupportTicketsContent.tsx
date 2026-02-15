@@ -13,12 +13,12 @@ import {
   Clock,
   MessageCircle,
   MapPin,
-  Upload,
   ArrowRight,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Routes } from "@/lib/routes";
 import { toast } from "sonner";
+import SupportTicketForm from "./SupportTicketForm";
 
 const QUICK_LINKS = [
   {
@@ -50,28 +50,8 @@ const QUICK_LINKS = [
   },
 ];
 
-const INQUIRY_OPTIONS = [
-  "Technical Issue",
-  "Billing Question",
-  "Feature Request",
-  "Account Access",
-];
-
-const PRIORITY_OPTIONS = [
-  { value: "normal", label: "Normal" },
-  { value: "high", label: "High" },
-  { value: "urgent", label: "Urgent" },
-] as const;
-
 export default function SupportTicketsContent() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState(INQUIRY_OPTIONS[0]);
-  const [priority, setPriority] =
-    useState<(typeof PRIORITY_OPTIONS)[number]["value"]>("normal");
-  const [description, setDescription] = useState("");
-  const [files, setFiles] = useState<FileList | null>(null);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,23 +64,16 @@ export default function SupportTicketsContent() {
     }
   };
 
-  const handleSubmitTicket = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!fullName.trim() || !email.trim() || !description.trim()) {
+  const handleSubmitTicket = (values: { fullName: string; email: string; description: string }) => {
+    if (!values.fullName.trim() || !values.email.trim() || !values.description.trim()) {
       toast.error("Missing fields", {
         description: "Please fill in name, email, and problem description.",
       });
-      return;
+      return false;
     }
     toast.success("Ticket submitted", {
       description: "We'll get back to you shortly.",
     });
-    setFullName("");
-    setEmail("");
-    setSubject(INQUIRY_OPTIONS[0]);
-    setPriority("normal");
-    setDescription("");
-    setFiles(null);
   };
 
   return (
@@ -178,130 +151,9 @@ export default function SupportTicketsContent() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             {/* Form Column */}
             <div className="lg:col-span-7">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
-                  Submit a Support Ticket
-                </h2>
-                <p className="mt-2 text-slate-600 dark:text-slate-400">
-                  Can&apos;t find what you&apos;re looking for? Our team is here
-                  to help.
-                </p>
-              </div>
-              <form onSubmit={handleSubmitTicket} className="space-y-6">
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      placeholder="John Doe"
-                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="john@example.com"
-                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                      Inquiry Subject
-                    </label>
-                    <select
-                      value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
-                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-                    >
-                      {INQUIRY_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                      Priority Level
-                    </label>
-                    <div className="flex flex-wrap gap-4 pt-2">
-                      {PRIORITY_OPTIONS.map((opt) => (
-                        <label
-                          key={opt.value}
-                          className="flex cursor-pointer items-center gap-2"
-                        >
-                          <input
-                            type="radio"
-                            name="priority"
-                            value={opt.value}
-                            checked={priority === opt.value}
-                            onChange={() => setPriority(opt.value)}
-                            className="border-slate-300 text-primary focus:ring-primary dark:border-slate-600"
-                          />
-                          <span className="text-sm text-slate-700 dark:text-slate-300">
-                            {opt.label}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                    Problem Description
-                  </label>
-                  <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Describe your issue in detail..."
-                    rows={5}
-                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                    Attachments (optional)
-                  </label>
-                  <label className="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-200 bg-slate-50 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800/50 dark:hover:bg-slate-800">
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                      <Upload className="mb-2 size-8 text-slate-400" />
-                      <p className="mb-2 text-sm text-slate-500 dark:text-slate-400">
-                        <span className="font-semibold">Click to upload</span>{" "}
-                        or drag and drop
-                      </p>
-                      <p className="text-xs text-slate-400">
-                        PNG, JPG or PDF (MAX. 10MB)
-                      </p>
-                    </div>
-                    <input
-                      type="file"
-                      className="hidden"
-                      multiple
-                      accept=".png,.jpg,.jpeg,.pdf"
-                      onChange={(e) => setFiles(e.target.files)}
-                    />
-                  </label>
-                </div>
-                <Button
-                  type="submit"
-                  variant="default"
-                  size="lg"
-                  className="w-full py-6 text-base font-bold shadow-lg shadow-primary/30"
-                >
-                  Submit Ticket
-                </Button>
-              </form>
+              <SupportTicketForm
+                onSubmit={(values) => handleSubmitTicket(values)}
+              />
             </div>
 
             {/* Sidebar */}

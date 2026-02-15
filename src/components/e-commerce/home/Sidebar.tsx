@@ -1,14 +1,5 @@
 import Link from 'next/link';
-
-const categories = [
-  { icon: 'router', name: 'Routers', href: '/categories/routers' },
-  { icon: 'switch', name: 'Switches', href: '/categories/switches' },
-  { icon: 'wifi', name: 'Access Points', href: '/categories/access-points' },
-  { icon: 'business_center', name: 'Enterprise Solutions', href: '/categories/enterprise' },
-  { icon: 'dns', name: 'Servers', href: '/categories/servers' },
-  { icon: 'cable', name: 'Cables & Wiring', href: '/categories/cables' },
-  { icon: 'shelves', name: 'Racks & Cabinets', href: '/categories/racks' },
-];
+import { ecommerceSidebarCategories } from '@/lib/menu';
 
 const Sidebar = () => {
   return (
@@ -19,7 +10,7 @@ const Sidebar = () => {
         </h3>
       </div>
       <nav className="flex flex-col">
-        {categories.map((category) => (
+        {ecommerceSidebarCategories.map((category) => (
           <Link
             key={category.name}
             href={category.href}
