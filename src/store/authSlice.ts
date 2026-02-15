@@ -16,6 +16,8 @@ interface AuthState {
   user: AuthUser | null;
   token: string | null;
   isAuthenticated: boolean;
+  /** Set true after initial hydrateFromStorage has run (client-side). */
+  isHydrated: boolean;
 }
 
 function loadAuthFromStorage(): Pick<AuthState, "user" | "token"> {
@@ -48,6 +50,7 @@ const initialState: AuthState = {
   user: null,
   token: null,
   isAuthenticated: false,
+  isHydrated: false,
 };
 
 const authSlice = createSlice({
@@ -74,6 +77,7 @@ const authSlice = createSlice({
       state.user = user;
       state.token = token;
       state.isAuthenticated = Boolean(user && token);
+      state.isHydrated = true;
     },
   },
 });
