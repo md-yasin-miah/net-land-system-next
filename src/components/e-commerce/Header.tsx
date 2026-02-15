@@ -2,22 +2,33 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Bell, Menu, Search, ShoppingCart, User } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Bell, Menu, Search, ShoppingCart } from "lucide-react";
 import { Routes } from "@/lib/routes";
-import { headerSubNav } from "@/lib/menu";
+import { headerSubNav, RoleBaseProfileMenu } from "@/lib/menu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { openDrawer } from "@/store/cartSlice";
 import { getCartCount, getCartTotal } from "@/store/cartSlice";
+import { logout } from "@/store/authSlice";
 import { ThemeToggle } from "../theme-toggle";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
+import CustomDropdownMenu from "../common/CustomDropdownMenu";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 
 const Header = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((s) => s.cart.items);
   const cartCount = getCartCount(cartItems);
   const cartTotal = getCartTotal(cartItems);
   const user = useAppSelector((s) => s.auth.user);
+
+  const handleMenuAction = (id: string) => {
+    if (id === "logout") {
+      dispatch(logout());
+      router.push(Routes.home);
+    }
+  };
   return (
     <header className="bg-primary text-white sticky top-0 z-50 shadow-md">
       {/* Main Navigation */}
@@ -56,14 +67,18 @@ const Header = () => {
           )}
           <div className="flex items-center gap-4">
             <Link href="/notifications" className="relative">
-              <Button variant="outline" size="icon" className="bg-transparent hover:bg-transparent hover:text-white border-white/20">
+              <Button
+                variant="outline"
+                size="icon"
+                className="bg-transparent hover:bg-transparent hover:text-white border-white/20"
+              >
                 <Bell className="w-5 h-5" />
               </Button>
               <span className="absolute -top-2 -right-2 size-4 bg-orange-500 text-[10px] flex items-center justify-center rounded-full font-bold">
                 2
               </span>
             </Link>
-            <ThemeToggle className="border-white/20"/>
+            <ThemeToggle className="border-white/20" />
             <button
               type="button"
               onClick={() => dispatch(openDrawer())}
@@ -79,12 +94,17 @@ const Header = () => {
               )}
             </button>
             {user && (
-              <Link href="/profile">
-                <Avatar>
-                  <AvatarImage src={user.avatar} />
-                  <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+              <CustomDropdownMenu
+                menu={RoleBaseProfileMenu}
+                onAction={handleMenuAction}
+              >
+                <Avatar className="cursor-pointer border border-white/20">
+                  <AvatarImage src={user.avatar} alt="" />
+                  <AvatarFallback className="bg-transparent border border-white/20 text-white">
+                    {user.name.charAt(0)}
+                  </AvatarFallback>
                 </Avatar>
-              </Link>
+              </CustomDropdownMenu>
             )}
           </div>
         </div>

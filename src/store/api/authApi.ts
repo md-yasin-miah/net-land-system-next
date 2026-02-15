@@ -29,7 +29,10 @@ export const authApi = createApi({
         const user = findUserByCredentials(arg.email, arg.password);
         if (!user) {
           return {
-            error: { status: 401, data: { message: "Invalid email or password" } },
+            error: {
+              status: 401,
+              data: { message: "Invalid email or password" },
+            },
           };
         }
         const token = `mock-jwt-${user.id}-${Date.now()}`;

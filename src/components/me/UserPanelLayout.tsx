@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Search, Bell, HelpCircle } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Search, Bell, HelpCircle, LogOut } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import { userSidebarNav, userSidebarSettings } from "@/lib/menu";
@@ -10,6 +11,10 @@ import Image from "next/image";
 import { useTheme } from "../theme-provider";
 import { ThemeToggle } from "../theme-toggle";
 import { Button } from "../ui/button";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
+import { logout } from "@/store/authSlice";
+import { toast } from "sonner";
 
 export default function UserPanelLayout({
   children,
@@ -18,7 +23,22 @@ export default function UserPanelLayout({
 }) {
   const pathname = usePathname();
   const { theme } = useTheme();
-
+  const router = useRouter();
+  const user = useAppSelector((s) => s.auth.user);
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push(Routes.home);
+  };
+  useEffect(() => {
+    if (!user) {
+      router.push(Routes.home);
+    }
+    if (user?.role !== "customer") {
+      toast.error("You are not authorized to access this page.");
+      router.back();
+    }
+  }, [user, router]);
   return (
     <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Sidebar */}
@@ -79,19 +99,41 @@ export default function UserPanelLayout({
               </Link>
             );
           })}
+          <div className="pb-2 pt-4">
+            <p className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+              Auth
+            </p>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-800 w-full cursor-pointer"
+          >
+            <LogOut className="size-5 shrink-0" />
+            Logout
+          </button>
         </nav>
         <div className="border-t border-slate-200 p-4 dark:border-slate-800">
-          <div className="flex items-center gap-3 rounded-xl bg-slate-50 p-2 dark:bg-slate-800/50">
+          <Link
+            href={Routes.me.profile}
+            className="flex items-center gap-3 rounded-xl bg-slate-50 p-2 dark:bg-slate-800/50"
+          >
             <div className="flex size-9 items-center justify-center overflow-hidden rounded-full bg-primary/20 font-bold text-primary">
-              <span className="text-sm">AJ</span>
+              <Avatar>
+                <AvatarImage src={user?.avatar} />
+                <AvatarFallback className="bg-transparent border border-white/20 text-primary">
+                  {user?.name?.charAt(0)}
+                </AvatarFallback>
+              </Avatar>
             </div>
             <div className="min-w-0 flex-1">
               <p className="truncate text-xs font-bold text-slate-900 dark:text-white">
-                Alex Johnson
+                {user?.name}
               </p>
-              <p className="truncate text-[10px] text-slate-500">Pro Account</p>
+              <p className="truncate text-[10px] text-slate-500">
+                {user?.email}
+              </p>
             </div>
-          </div>
+          </Link>
         </div>
       </aside>
 

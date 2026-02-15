@@ -1,3 +1,4 @@
+import { Truck } from 'lucide-react';
 import Link from 'next/link';
 
 const SideAdBanner = () => {
@@ -18,9 +19,10 @@ const SideAdBanner = () => {
           <h4 className="text-blue-800 font-bold">Free Shipping</h4>
           <p className="text-xs text-blue-700">On all orders above ৳50,000</p>
         </div>
-        <span className=" text-blue-300 text-4xl self-end">
+        {/* <span className=" text-blue-300 text-4xl self-end">
           local_shipping
-        </span>
+        </span> */}
+        <Truck className="text-blue-300 w-24 h-24 self-end"/>
       </div>
     </div>
   );

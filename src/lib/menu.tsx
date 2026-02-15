@@ -27,7 +27,11 @@ import {
   BarChart3,
   ArrowLeftRight,
   Wallet,
+  User,
+  LogOut,
 } from "lucide-react";
+import type { Role } from "@/lib/mockData";
+import type { Permission } from "@/lib/mockData";
 import { Routes } from "@/lib/routes";
 
 // ----- Header (E-commerce) -----
@@ -204,5 +208,85 @@ export const roleSidebarNav:RoleSidebarNav[] = [
       { href: "expenses", label: "Expenses", icon: Wallet },
       { href: "settings", label: "Settings", icon: Settings },
     ],
+  },
+];
+
+// ----- Role-based profile dropdown menu (Header) -----
+export type RoleBaseMenuItemLink = {
+  type: "link";
+  label: string;
+  href: string;
+  icon?: LucideIcon;
+  shortcut?: string;
+  /** Show only if user.role is in this array; omit to show to all */
+  roles?: Role[];
+  /** Show only if user has any of these permissions; omit to show to all */
+  permissions?: Permission[];
+};
+
+export type RoleBaseMenuItemButton = {
+  type: "button";
+  id?: string;
+  label: string;
+  /** Optional: if not set, use onAction(id) from component when id is provided */
+  onClick?: () => void;
+  icon?: LucideIcon;
+  shortcut?: string;
+  roles?: Role[];
+  permissions?: Permission[];
+};
+
+export type RoleBaseMenuItemSeparator = { type: "separator" };
+
+export type RoleBaseMenuItemLabel = {
+  type: "label";
+  label: string;
+};
+
+export type RoleBaseProfileMenuItem =
+  | RoleBaseMenuItemLink
+  | RoleBaseMenuItemButton
+  | RoleBaseMenuItemSeparator
+  | RoleBaseMenuItemLabel;
+
+export const RoleBaseProfileMenu: RoleBaseProfileMenuItem[] = [
+  { type: "label", label: "My Account" },
+  {
+    type: "link",
+    label: "Profile",
+    href: Routes.me.dashboard,
+    icon: User,
+    shortcut: "⇧⌘P",
+    permissions: ["me:read"],
+  },
+  {
+    type: "link",
+    label: "My Orders",
+    href: Routes.me.orders,
+    icon: ShoppingCart,
+    permissions: ["orders:read"],
+  },
+  {
+    type: "link",
+    label: "Support Tickets",
+    href: Routes.me.tickets,
+    icon: MessageSquare,
+    permissions: ["tickets:read"],
+  },
+  {
+    type: "link",
+    label: "Settings",
+    href: Routes.me.settings,
+    icon: Settings,
+    shortcut: "⌘S",
+    permissions: ["settings:read"],
+  },
+  { type: "separator" },
+  {
+    type: "button",
+    id: "logout",
+    label: "Log out",
+    icon: LogOut,
+    shortcut: "⇧⌘Q",
   },
 ];
