@@ -2,20 +2,22 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Bell, Menu, ShoppingCart, User } from "lucide-react";
+import { Bell, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { headerSubNav } from "@/lib/menu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { openDrawer } from "@/store/cartSlice";
 import { getCartCount, getCartTotal } from "@/store/cartSlice";
 import { ThemeToggle } from "../theme-toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((s) => s.cart.items);
   const cartCount = getCartCount(cartItems);
   const cartTotal = getCartTotal(cartItems);
-
+  const user = useAppSelector((s) => s.auth.user);
   return (
     <header className="bg-primary text-white sticky top-0 z-50 shadow-md">
       {/* Main Navigation */}
@@ -34,30 +36,34 @@ const Header = () => {
               className="w-full h-10 pl-4 pr-12 rounded bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-300 border-none"
             />
             <button className="absolute right-0 h-10 w-12 bg-orange-500 hover:bg-orange-600 rounded-r-sm flex items-center justify-center transition-colors">
-              <span className="material-symbols-outlined text-white">search</span>
+              <Search className="size-5 text-white" />
             </button>
           </div>
         </div>
 
         {/* User Actions */}
-        <div className="flex items-center gap-6 shrink-0">
-          <div className="hidden xl:flex flex-col text-xs">
-            <span className="opacity-80">Welcome,</span>
-            <Link href={Routes.auth.login} className="font-semibold hover:underline">
-              Sign In / Register
-            </Link>
-          </div>
+        <div className="flex items-center gap-4 shrink-0">
+          {!user && (
+            <div className="hidden xl:flex flex-col text-xs">
+              <span className="opacity-80">Welcome,</span>
+              <Link
+                href={Routes.auth.login}
+                className="font-semibold hover:underline"
+              >
+                Sign In / Register
+              </Link>
+            </div>
+          )}
           <div className="flex items-center gap-4">
-            <Link href="/profile" className="relative p-2 hover:bg-white/10 rounded-full transition-colors">
-              <User className="w-5 h-5" />
-            </Link>
-            <Link href="/notifications" className="relative p-2 hover:bg-white/10 rounded-full transition-colors">
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-0 right-0 size-4 bg-orange-500 text-[10px] flex items-center justify-center rounded-full font-bold">
+            <Link href="/notifications" className="relative">
+              <Button variant="outline" size="icon" className="bg-transparent hover:bg-transparent hover:text-white border-white/20">
+                <Bell className="w-5 h-5" />
+              </Button>
+              <span className="absolute -top-2 -right-2 size-4 bg-orange-500 text-[10px] flex items-center justify-center rounded-full font-bold">
                 2
               </span>
             </Link>
-            <ThemeToggle />
+            <ThemeToggle className="border-white/20"/>
             <button
               type="button"
               onClick={() => dispatch(openDrawer())}
@@ -72,6 +78,14 @@ const Header = () => {
                 </span>
               )}
             </button>
+            {user && (
+              <Link href="/profile">
+                <Avatar>
+                  <AvatarImage src={user.avatar} />
+                  <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+              </Link>
+            )}
           </div>
         </div>
       </div>

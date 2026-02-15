@@ -3,6 +3,7 @@
 import { Routes } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
+import { Star, StarHalf, CheckCircle, Clock, ShoppingCart, Bookmark } from "lucide-react";
 import { slugify } from "@/lib/utils";
 import { useAppDispatch } from "@/store/hooks";
 import { addItem, openDrawer } from "@/store/cartSlice";
@@ -83,22 +84,16 @@ const ProductCard = ({
             {name}
           </h3>
         </Link>
-        <div className="flex items-center gap-1 mb-2">
+        <div className="mb-2 flex items-center gap-1">
           <div className="flex text-orange-400 text-xs">
             {[...Array(fullStars)].map((_, i) => (
-              <span key={i} className="material-symbols-outlined text-sm">
-                star
-              </span>
+              <Star key={i} className="size-4 fill-current" />
             ))}
             {hasHalfStar && (
-              <span className="material-symbols-outlined text-sm">
-                star_half
-              </span>
+              <StarHalf className="size-4 fill-current" />
             )}
             {[...Array(5 - Math.ceil(rating))].map((_, i) => (
-              <span key={i} className="material-symbols-outlined text-sm">
-                star_outline
-              </span>
+              <Star key={`empty-${i}`} className="size-4 opacity-30" />
             ))}
           </div>
           <span className="text-[10px] text-slate-400">({reviews})</span>
@@ -121,27 +116,31 @@ const ProductCard = ({
           </span>
         </div>
         <div
-          className={`flex items-center gap-1 text-[10px] font-bold mb-3 ${
+          className={`mb-3 flex items-center gap-1 text-[10px] font-bold ${
             inStock ? "text-green-600" : "text-orange-600"
           }`}
         >
-          <span className="material-symbols-outlined text-xs">
-            {inStock ? "check_circle" : "schedule"}
-          </span>
+          {inStock ? (
+            <CheckCircle className="size-4 shrink-0" />
+          ) : (
+            <Clock className="size-4 shrink-0" />
+          )}
           {inStock ? "In Stock" : "Pre-Order"}
         </div>
         <button
           type="button"
           onClick={handleAddToCart}
-          className={`w-full text-white py-2 rounded font-bold text-xs flex items-center justify-center gap-2 transition-colors ${
+          className={`flex w-full items-center justify-center gap-2 rounded py-2 text-xs font-bold text-white transition-colors ${
             inStock
               ? "bg-primary hover:bg-blue-700"
               : "bg-slate-800 hover:bg-slate-900"
           }`}
         >
-          <span className="material-symbols-outlined text-sm">
-            {inStock ? "add_shopping_cart" : "bookmark"}
-          </span>
+          {inStock ? (
+            <ShoppingCart className="size-4 shrink-0" />
+          ) : (
+            <Bookmark className="size-4 shrink-0" />
+          )}
           {inStock ? "Add to Cart" : "Pre-Order"}
         </button>
       </div>

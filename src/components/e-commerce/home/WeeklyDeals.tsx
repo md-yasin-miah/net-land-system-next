@@ -1,5 +1,6 @@
-import Link from 'next/link';
-import ProductCard from '../ProductCard';
+import Link from "next/link";
+import { Flame } from "lucide-react";
+import ProductCard from "../ProductCard";
 
 const products = [
   {
@@ -67,7 +68,7 @@ const WeeklyDeals = () => {
     <section>
       <div className="flex items-center justify-between mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
         <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-          <span className="material-symbols-outlined text-orange-500">local_fire_department</span>
+          <Flame className="size-6 text-orange-500" />
           Weekly Networking Deals
         </h2>
         <Link href="/deals" className="text-primary font-semibold text-sm hover:underline">

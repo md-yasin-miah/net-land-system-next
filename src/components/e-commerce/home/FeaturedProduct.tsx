@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
+import { CheckCircle } from "lucide-react";
 
 const features = [
   '48 x 10/25-Gbps SFP28 ports',
@@ -21,9 +22,7 @@ const FeaturedProduct = () => {
         <ul className="space-y-3 mb-8 text-slate-400">
           {features.map((feature) => (
             <li key={feature} className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary shrink-0">
-                check_circle
-              </span>
+              <CheckCircle className="size-5 shrink-0 text-primary" />
               {feature}
             </li>
           ))}

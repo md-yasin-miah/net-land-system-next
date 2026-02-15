@@ -1,29 +1,31 @@
-import Link from 'next/link';
+import Link from "next/link";
+import { Activity, Cloud, ShieldCheck, HeadphonesIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const services = [
+const services: { icon: LucideIcon; title: string; description: string; href: string }[] = [
   {
-    icon: 'monitoring',
-    title: 'Network Monitoring',
-    description: 'Real-time traffic analysis and uptime monitoring.',
-    href: '/services/network-monitoring',
+    icon: Activity,
+    title: "Network Monitoring",
+    description: "Real-time traffic analysis and uptime monitoring.",
+    href: "/services/network-monitoring",
   },
   {
-    icon: 'cloud',
-    title: 'Cloud Management',
-    description: 'Centralized control for multi-site deployments.',
-    href: '/services/cloud-management',
+    icon: Cloud,
+    title: "Cloud Management",
+    description: "Centralized control for multi-site deployments.",
+    href: "/services/cloud-management",
   },
   {
-    icon: 'security',
-    title: 'Cybersecurity Suite',
-    description: 'Enterprise-grade protection and threat detection.',
-    href: '/services/cybersecurity',
+    icon: ShieldCheck,
+    title: "Cybersecurity Suite",
+    description: "Enterprise-grade protection and threat detection.",
+    href: "/services/cybersecurity",
   },
   {
-    icon: 'support_agent',
-    title: 'Enterprise Support',
-    description: '24/7 dedicated engineering support for firms.',
-    href: '/services/enterprise-support',
+    icon: HeadphonesIcon,
+    title: "Enterprise Support",
+    description: "24/7 dedicated engineering support for firms.",
+    href: "/services/enterprise-support",
   },
 ];
 
@@ -34,19 +36,20 @@ const SoftwareServices = () => {
         Software & Managed Services
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((service) => (
+        {services.map((service) => {
+          const Icon = service.icon;
+          return (
           <Link
             key={service.title}
             href={service.href}
-            className="bg-white dark:bg-slate-800 p-6 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors"
+            className="flex flex-col items-center rounded-lg border border-slate-200 bg-white p-6 text-center transition-colors group hover:border-primary dark:border-slate-700 dark:bg-slate-800"
           >
-            <span className="material-symbols-outlined text-4xl text-primary mb-4">
-              {service.icon}
-            </span>
+            <Icon className="mb-4 size-10 text-primary" />
             <h3 className="font-bold mb-2">{service.title}</h3>
             <p className="text-xs text-slate-500">{service.description}</p>
           </Link>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

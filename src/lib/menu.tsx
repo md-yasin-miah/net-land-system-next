@@ -75,7 +75,7 @@ export const footerSections: FooterSection[] = [
   },
 ];
 
-// Footer social links (icon labels / keys for use with material-symbols or custom icons)
+// Footer social links (icon keys mapped to Lucide icons in Footer.tsx)
 export const footerSocialLinks: { href: string; icon: string }[] = [
   { href: "#", icon: "social_leaderboard" },
   { href: "#", icon: "alternate_email" },

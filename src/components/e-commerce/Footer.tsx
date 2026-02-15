@@ -1,8 +1,16 @@
 "use client";
 
+import type React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { MapPin, Phone, Mail, Share2, Globe } from "lucide-react";
 import { footerSections, footerSocialLinks } from "@/lib/menu";
+
+const socialIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  social_leaderboard: Share2,
+  alternate_email: Mail,
+  public: Globe,
+};
 
 const Footer = () => {
   return (
@@ -10,33 +18,25 @@ const Footer = () => {
       <div className="max-w-[1440px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* Brand Column */}
         <div>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="size-8 bg-white rounded flex items-center justify-center overflow-hidden">
-              <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvyMzi3-AG74sz9bfpdLf2qoeeCLoWZo-Kp9LbktqK48wxodbkGObAwSu9VCuOtpOxboYhfbzBe1qQiRs1DjKn6mZxnwK2YJCPWmaXAXSZIgjDmWvaP1H2ogooHZWLsxf9DI2IHbQaPS6wtuFo1IbnAURmwGgE030AhBxiB5l9PE-2LKI36j0bmXVW2hUYIk2gpQ7lpi1fW40MFjopMcM7F9HcpAmy5a28ZiN-cmaZTSPd0BbuNsb8ENlodrBy1c8JaHbBvGluNbk"
-                alt="Net Land System Logo"
-                width={32}
-                height={32}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <h2 className="text-white text-lg font-bold">Net Land System</h2>
-          </div>
+          <Image src="/logo-white.png" alt="Net Land System Bangladesh" width={200} height={150} className="mb-5"/>
           <p className="text-sm leading-relaxed mb-6">
             Your premier destination for networking excellence in Bangladesh. We
             supply enterprise-grade hardware to IT professionals and corporate
             firms.
           </p>
           <div className="flex gap-4">
-            {footerSocialLinks.map((social) => (
-              <Link
-                key={social.icon}
-                href={social.href}
-                className="hover:text-white transition-colors"
-              >
-                <span className="material-symbols-outlined">{social.icon}</span>
-              </Link>
-            ))}
+            {footerSocialLinks.map((social) => {
+              const Icon = socialIconMap[social.icon] ?? Share2;
+              return (
+                <Link
+                  key={social.icon}
+                  href={social.href}
+                  className="hover:text-white transition-colors"
+                >
+                  <Icon className="size-5" />
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -68,9 +68,7 @@ const Footer = () => {
           </h4>
           <div className="flex flex-col gap-4 text-sm">
             <div className="flex gap-3">
-              <span className="material-symbols-outlined text-primary">
-                location_on
-              </span>
+              <MapPin className="size-5 shrink-0 text-primary" />
               <p>
                 IDB Bhaban, Level 3, Shop 312
                 <br />
@@ -78,9 +76,7 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="material-symbols-outlined text-primary">
-                phone
-              </span>
+              <Phone className="size-5 shrink-0 text-primary" />
               <p>
                 +880 1712-345678
                 <br />
@@ -88,9 +84,7 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="material-symbols-outlined text-primary">
-                mail
-              </span>
+              <Mail className="size-5 shrink-0 text-primary" />
               <p>
                 sales@netland.com.bd
                 <br />
