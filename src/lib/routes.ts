@@ -33,6 +33,7 @@ export const Routes = {
     dashboard: "/me/dashboard",
     orders: "/me/orders",
     orderDetail: (id: string) => `/me/orders/${id}`,
+    orderTracking: (id: string) => `/me/orders/${id}/track`,
     warranty: "/me/warranty",
     tickets: "/me/tickets",
     settings: "/me/settings",

@@ -23,6 +23,8 @@ import {
   ExternalLink,
   MessageSquare,
 } from "lucide-react";
+import type { DataTableColumn } from "@/components/ui/table";
+import { DataTable } from "@/components/ui/table";
 import { Routes } from "@/lib/routes";
 import { cn, extractTitleFromSlug } from "@/lib/utils";
 import { useParams } from "next/navigation";
@@ -181,11 +183,34 @@ const defaultSupportDownloads = [
   { label: "MikroTik Wiki", href: "#", icon: ExternalLink },
 ];
 
-const defaultEthernetTests = [
+type EthernetTestRow = { test: string; result: string; note: string };
+
+const defaultEthernetTests: EthernetTestRow[] = [
   { test: "2.5G port throughput (TCP)", result: "2.37 Gbps", note: "Full line rate" },
   { test: "Gigabit port throughput (TCP)", result: "941 Mbps", note: "Full line rate" },
   { test: "IPsec throughput (AES-256-GCM)", result: "~800 Mbps", note: "Hardware accelerated" },
   { test: "Latency (bridge mode)", result: "< 10 µs", note: "Store-and-forward" },
+];
+
+const ETHERNET_TEST_COLUMNS: DataTableColumn<EthernetTestRow>[] = [
+  {
+    key: "test",
+    header: "Test",
+    headerClassName: "px-5 py-4",
+    cellClassName: "px-5 py-4 font-medium text-slate-900 dark:text-white",
+  },
+  {
+    key: "result",
+    header: "Result",
+    headerClassName: "px-5 py-4",
+    cellClassName: "px-5 py-4 font-semibold text-primary",
+  },
+  {
+    key: "note",
+    header: "Note",
+    headerClassName: "hidden px-5 py-4 sm:table-cell",
+    cellClassName: "hidden px-5 py-4 text-slate-500 dark:text-slate-400 sm:table-cell",
+  },
 ];
 
 const containerVariants = {
@@ -683,41 +708,14 @@ const ProductDetails = ({
                 Laboratory test results. Actual performance may vary by environment.
               </p>
               <div className="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left">
-                    <thead>
-                      <tr className="bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700">
-                        <th className="px-5 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                          Test
-                        </th>
-                        <th className="px-5 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                          Result
-                        </th>
-                        <th className="px-5 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hidden sm:table-cell">
-                          Note
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                      {defaultEthernetTests.map((row) => (
-                        <tr
-                          key={row.test}
-                          className="bg-white dark:bg-slate-800/30 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
-                        >
-                          <td className="px-5 py-4 text-sm font-medium text-slate-900 dark:text-white">
-                            {row.test}
-                          </td>
-                          <td className="px-5 py-4 text-sm font-semibold text-primary">
-                            {row.result}
-                          </td>
-                          <td className="px-5 py-4 text-sm text-slate-500 dark:text-slate-400 hidden sm:table-cell">
-                            {row.note}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                <DataTable<EthernetTestRow>
+                  columns={ETHERNET_TEST_COLUMNS}
+                  data={defaultEthernetTests}
+                  keyExtractor={(row) => row.test}
+                  headerRowClassName="border-b border-slate-200 dark:border-slate-700"
+                  bodyClassName="divide-y divide-slate-100 dark:divide-slate-700"
+                  bodyRowClassName="bg-white dark:bg-slate-800/30"
+                />
               </div>
             </motion.div>
           )}

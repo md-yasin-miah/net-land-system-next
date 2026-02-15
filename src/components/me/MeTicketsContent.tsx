@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Search, Plus, BarChart3, CheckCircle2, Smile } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { DataTableColumn } from "@/components/ui/table";
+import { DataTable } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import SupportTicketForm from "@/components/support/SupportTicketForm";
 import { toast } from "sonner";
@@ -16,7 +18,19 @@ const TABS: { id: Tab; label: string }[] = [
   { id: "resolved", label: "Resolved" },
 ];
 
-const TICKETS = [
+type TicketRow = {
+  id: string;
+  subject: string;
+  category: string;
+  categoryStyle: string;
+  priority: string;
+  priorityStyle: string;
+  status: string;
+  statusStyle: string;
+  updated: string;
+};
+
+const TICKETS: TicketRow[] = [
   {
     id: "TK-1024",
     subject: "Cannot access VPN gateway",
@@ -50,6 +64,44 @@ const TICKETS = [
     statusStyle: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
     updated: "Yesterday",
   },
+];
+
+const TICKET_COLUMNS: DataTableColumn<TicketRow>[] = [
+  {
+    key: "id",
+    header: "Ticket ID",
+    render: (_, row) => <span className="font-medium text-slate-500">#{row.id}</span>,
+  },
+  { key: "subject", header: "Subject", cellClassName: "font-bold text-slate-900 dark:text-white" },
+  {
+    key: "category",
+    header: "Category",
+    render: (_, row) => (
+      <span className={cn("rounded-md px-2.5 py-1 text-xs font-semibold", row.categoryStyle)}>
+        {row.category}
+      </span>
+    ),
+  },
+  {
+    key: "priority",
+    header: "Priority",
+    render: (_, row) => (
+      <div className={cn("flex items-center gap-1.5 text-xs font-bold", row.priorityStyle)}>
+        <span className="size-2 rounded-full bg-current" />
+        {row.priority}
+      </div>
+    ),
+  },
+  {
+    key: "status",
+    header: "Status",
+    render: (_, row) => (
+      <span className={cn("rounded-full px-3 py-1 text-xs font-bold", row.statusStyle)}>
+        {row.status}
+      </span>
+    ),
+  },
+  { key: "updated", header: "Last Updated", cellClassName: "text-slate-500" },
 ];
 
 const STATS = [
@@ -128,74 +180,11 @@ export default function MeTicketsContent() {
 
       {/* Ticket List Table */}
       <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-left">
-            <thead>
-              <tr className="bg-slate-50 dark:bg-slate-800/50">
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Ticket ID
-                </th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Subject
-                </th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Category
-                </th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Priority
-                </th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Status
-                </th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Last Updated
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-              {TICKETS.map((ticket) => (
-                <tr
-                  key={ticket.id}
-                  className="transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/30"
-                >
-                  <td className="px-6 py-4 text-sm font-medium text-slate-500">
-                    #{ticket.id}
-                  </td>
-                  <td className="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">
-                    {ticket.subject}
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={cn(
-                        "rounded-md px-2.5 py-1 text-xs font-semibold",
-                        ticket.categoryStyle
-                      )}
-                    >
-                      {ticket.category}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className={cn("flex items-center gap-1.5 text-xs font-bold", ticket.priorityStyle)}>
-                      <span className="size-2 rounded-full bg-current" />
-                      {ticket.priority}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={cn(
-                        "rounded-full px-3 py-1 text-xs font-bold",
-                        ticket.statusStyle
-                      )}
-                    >
-                      {ticket.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-slate-500">{ticket.updated}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <DataTable<TicketRow>
+          columns={TICKET_COLUMNS}
+          data={TICKETS}
+          keyExtractor={(row) => row.id}
+        />
       </div>
 
       {/* Create New Ticket Section - Reusable Form */}

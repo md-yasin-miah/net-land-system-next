@@ -12,6 +12,8 @@ import {
   MoreVertical,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { DataTableColumn } from "@/components/ui/table";
+import { DataTable } from "@/components/ui/table";
 import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
@@ -57,11 +59,62 @@ const QUICK_ACTIONS = [
   },
 ];
 
-const RECENT_ORDERS = [
+type RecentOrderRow = {
+  id: string;
+  date: string;
+  status: string;
+  statusStyle: string;
+  total: string;
+};
+
+const RECENT_ORDERS: RecentOrderRow[] = [
   { id: "NL-89230", date: "Oct 24, 2023", status: "DELIVERED", statusStyle: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400", total: "$1,429.00" },
   { id: "NL-89215", date: "Oct 21, 2023", status: "SHIPPED", statusStyle: "bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400", total: "$842.50" },
   { id: "NL-89198", date: "Oct 18, 2023", status: "PROCESSING", statusStyle: "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400", total: "$2,104.99" },
   { id: "NL-89102", date: "Oct 12, 2023", status: "DELIVERED", statusStyle: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400", total: "$315.00" },
+];
+
+const RECENT_ORDERS_COLUMNS: DataTableColumn<RecentOrderRow>[] = [
+  {
+    key: "id",
+    header: "Order ID",
+    headerClassName: "text-[10px]",
+    render: (_, row) => <p className="font-bold text-slate-900 dark:text-white">#{row.id}</p>,
+  },
+  {
+    key: "date",
+    header: "Date",
+    headerClassName: "text-[10px]",
+    render: (_, row) => <p className="text-slate-500">{row.date}</p>,
+  },
+  {
+    key: "status",
+    header: "Status",
+    headerClassName: "text-[10px]",
+    render: (_, row) => (
+      <span className={cn("inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold", row.statusStyle)}>
+        {row.status}
+      </span>
+    ),
+  },
+  {
+    key: "total",
+    header: "Total",
+    headerClassName: "text-[10px]",
+    render: (_, row) => <p className="font-bold text-slate-900 dark:text-white">{row.total}</p>,
+  },
+  {
+    key: "actions",
+    header: "",
+    headerClassName: "w-0",
+    cellClassName: "text-right",
+    align: "right",
+    render: () => (
+      <button type="button" className="text-slate-400 transition-colors hover:text-primary" aria-label="More options">
+        <MoreVertical className="size-5" />
+      </button>
+    ),
+  },
 ];
 
 export default function DashboardContent() {
@@ -154,68 +207,11 @@ export default function DashboardContent() {
               View All
             </Link>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left">
-              <thead className="bg-slate-50 dark:bg-slate-800/50">
-                <tr>
-                  <th className="px-6 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Order ID
-                  </th>
-                  <th className="px-6 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Date
-                  </th>
-                  <th className="px-6 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Total
-                  </th>
-                  <th className="px-6 py-3" />
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                {RECENT_ORDERS.map((order) => (
-                  <tr
-                    key={order.id}
-                    className="transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/30"
-                  >
-                    <td className="px-6 py-4">
-                      <p className="text-sm font-bold text-slate-900 dark:text-white">
-                        #{order.id}
-                      </p>
-                    </td>
-                    <td className="px-6 py-4">
-                      <p className="text-sm text-slate-500">{order.date}</p>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span
-                        className={cn(
-                          "inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold",
-                          order.statusStyle
-                        )}
-                      >
-                        {order.status}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <p className="text-sm font-bold text-slate-900 dark:text-white">
-                        {order.total}
-                      </p>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <button
-                        type="button"
-                        className="text-slate-400 transition-colors hover:text-primary"
-                        aria-label="More options"
-                      >
-                        <MoreVertical className="size-5" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <DataTable<RecentOrderRow>
+            columns={RECENT_ORDERS_COLUMNS}
+            data={RECENT_ORDERS}
+            keyExtractor={(row) => row.id}
+          />
         </div>
 
         {/* Right Column */}
