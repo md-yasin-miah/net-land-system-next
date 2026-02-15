@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, ArrowRight, BookOpen } from "lucide-react";
+import { Mail, Phone, ArrowRight, BookOpen, HelpCircleIcon } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import { faqSidebarCategories } from "@/lib/menu";
@@ -89,7 +89,7 @@ export function FaqSupportCard() {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-sm border border-slate-200 dark:border-slate-700">
       <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-        <HelpCircle className="size-6 text-primary" />
+        <HelpCircleIcon className="size-6 text-primary" />
       </div>
       <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Still need help?</h3>
       <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
