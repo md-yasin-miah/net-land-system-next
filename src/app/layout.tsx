@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ReduxProvider, AuthHydrator, CartHydrator } from "@/store/ReduxProvider";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -30,7 +31,11 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100`}>
         <ThemeProvider defaultTheme="system" storageKey="net-land-theme">
-          {children}
+          <ReduxProvider>
+            <AuthHydrator />
+            <CartHydrator />
+            {children}
+          </ReduxProvider>
           <Toaster />
         </ThemeProvider>
       </body>

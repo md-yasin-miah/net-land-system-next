@@ -2,7 +2,7 @@ export const Routes = {
   home: "/",
   auth: {
     login: "/login",
-    signup: "/signup",
+    signup: "/sign-up",
   },
   // E Commerce Routes
   products: {
