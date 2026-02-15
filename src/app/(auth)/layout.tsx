@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Routes } from "@/lib/routes";
+import Image from "next/image";
+import { useTheme } from "@/components/theme-provider";
 
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { theme } = useTheme();
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-slate-50 px-4 py-8 dark:bg-slate-950 sm:px-6 lg:px-8">
       {/* Theme toggle - top right */}
@@ -27,12 +32,12 @@ export default function AuthLayout({
         href={Routes.home}
         className="mb-8 flex items-center gap-3 sm:mb-10"
       >
-        <span className="flex size-12 items-center justify-center rounded-xl bg-primary text-lg font-bold text-white shadow-md sm:size-14 sm:text-xl">
-          NL
-        </span>
-        <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
-          Net Land
-        </span>
+        <Image
+          src={theme === "light" ? "/logo-black.png" : "/logo-white.png"}
+          alt="Net Land System Logo"
+          width={200}
+          height={150}
+        />
       </Link>
 
       {/* Card */}

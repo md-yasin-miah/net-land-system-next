@@ -1,13 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Plus, BarChart3, CheckCircle2, Smile } from "lucide-react";
+import Link from "next/link";
+import {
+  Search,
+  Plus,
+  BarChart3,
+  CheckCircle2,
+  Smile,
+  EyeIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { DataTableColumn } from "@/components/ui/table";
 import { DataTable } from "@/components/ui/table";
+import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import SupportTicketForm from "@/components/support/SupportTicketForm";
 import { toast } from "sonner";
+import { Tooltip } from "@/components/ui/tooltip";
 
 type Tab = "all" | "open" | "pending" | "resolved";
 
@@ -46,22 +56,26 @@ const TICKETS: TicketRow[] = [
     id: "TK-1025",
     subject: "Main monitor flickering in office",
     category: "Hardware",
-    categoryStyle: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    categoryStyle:
+      "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     priority: "Medium",
     priorityStyle: "text-amber-600",
     status: "Pending",
-    statusStyle: "bg-amber-100 text-amber-700 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800/50",
+    statusStyle:
+      "bg-amber-100 text-amber-700 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800/50",
     updated: "5 hours ago",
   },
   {
     id: "TK-1026",
     subject: "Incorrect billing on invoice #442",
     category: "Shipping",
-    categoryStyle: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+    categoryStyle:
+      "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
     priority: "Low",
     priorityStyle: "text-slate-400",
     status: "Resolved",
-    statusStyle: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+    statusStyle:
+      "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
     updated: "Yesterday",
   },
 ];
@@ -70,14 +84,25 @@ const TICKET_COLUMNS: DataTableColumn<TicketRow>[] = [
   {
     key: "id",
     header: "Ticket ID",
-    render: (_, row) => <span className="font-medium text-slate-500">#{row.id}</span>,
+    render: (_, row) => (
+      <span className="font-medium text-slate-500">#{row.id}</span>
+    ),
   },
-  { key: "subject", header: "Subject", cellClassName: "font-bold text-slate-900 dark:text-white" },
+  {
+    key: "subject",
+    header: "Subject",
+    cellClassName: "font-bold text-slate-900 dark:text-white",
+  },
   {
     key: "category",
     header: "Category",
     render: (_, row) => (
-      <span className={cn("rounded-md px-2.5 py-1 text-xs font-semibold", row.categoryStyle)}>
+      <span
+        className={cn(
+          "rounded-md px-2.5 py-1 text-xs font-semibold",
+          row.categoryStyle,
+        )}
+      >
         {row.category}
       </span>
     ),
@@ -86,7 +111,12 @@ const TICKET_COLUMNS: DataTableColumn<TicketRow>[] = [
     key: "priority",
     header: "Priority",
     render: (_, row) => (
-      <div className={cn("flex items-center gap-1.5 text-xs font-bold", row.priorityStyle)}>
+      <div
+        className={cn(
+          "flex items-center gap-1.5 text-xs font-bold",
+          row.priorityStyle,
+        )}
+      >
         <span className="size-2 rounded-full bg-current" />
         {row.priority}
       </div>
@@ -96,26 +126,70 @@ const TICKET_COLUMNS: DataTableColumn<TicketRow>[] = [
     key: "status",
     header: "Status",
     render: (_, row) => (
-      <span className={cn("rounded-full px-3 py-1 text-xs font-bold", row.statusStyle)}>
+      <span
+        className={cn(
+          "rounded-full px-3 py-1 text-xs font-bold",
+          row.statusStyle,
+        )}
+      >
         {row.status}
       </span>
     ),
   },
   { key: "updated", header: "Last Updated", cellClassName: "text-slate-500" },
+  {
+    key: "actions",
+    header: "Actions",
+    cellClassName: "text-slate-500",
+    render: (_, row) => (
+      <Tooltip side="top" title="View ticket">
+        <Button variant="outline" size="icon" asChild aria-label="View ticket">
+          <Link href={Routes.me.ticketDetail(row.id)}>
+            <EyeIcon className="size-5" />
+          </Link>
+        </Button>
+      </Tooltip>
+    ),
+  },
 ];
 
 const STATS = [
-  { label: "Avg Response Time", value: "2.4 Hours", icon: BarChart3, iconBg: "bg-primary/10 text-primary" },
-  { label: "Resolved Rate", value: "94%", icon: CheckCircle2, iconBg: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400" },
-  { label: "Customer Sat", value: "4.8/5.0", icon: Smile, iconBg: "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400" },
+  {
+    label: "Avg Response Time",
+    value: "2.4 Hours",
+    icon: BarChart3,
+    iconBg: "bg-primary/10 text-primary",
+  },
+  {
+    label: "Resolved Rate",
+    value: "94%",
+    icon: CheckCircle2,
+    iconBg:
+      "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400",
+  },
+  {
+    label: "Customer Sat",
+    value: "4.8/5.0",
+    icon: Smile,
+    iconBg:
+      "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400",
+  },
 ];
 
 export default function MeTicketsContent() {
   const [tab, setTab] = useState<Tab>("all");
   const [searchTickets, setSearchTickets] = useState("");
 
-  const handleSubmitTicket = (values: { fullName: string; email: string; description: string }) => {
-    if (!values.fullName.trim() || !values.email.trim() || !values.description.trim()) {
+  const handleSubmitTicket = (values: {
+    fullName: string;
+    email: string;
+    description: string;
+  }) => {
+    if (
+      !values.fullName.trim() ||
+      !values.email.trim() ||
+      !values.description.trim()
+    ) {
       toast.error("Missing fields", {
         description: "Please fill in name, email, and problem description.",
       });
@@ -140,7 +214,11 @@ export default function MeTicketsContent() {
         </div>
         <Button
           className="gap-2 shadow-lg shadow-primary/20"
-          onClick={() => document.getElementById("create-ticket-form")?.scrollIntoView({ behavior: "smooth" })}
+          onClick={() =>
+            document
+              .getElementById("create-ticket-form")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
         >
           <Plus className="size-5" />
           Create New Ticket
@@ -159,7 +237,7 @@ export default function MeTicketsContent() {
                 "border-b-2 pb-4 text-sm font-bold transition-colors cursor-pointer",
                 tab === t.id
                   ? "border-primary text-primary"
-                  : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+                  : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300",
               )}
             >
               {t.label}
@@ -188,7 +266,10 @@ export default function MeTicketsContent() {
       </div>
 
       {/* Create New Ticket Section - Reusable Form */}
-      <div id="create-ticket-form" className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-900">
+      <div
+        id="create-ticket-form"
+        className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-900"
+      >
         <div className="border-b border-slate-200 bg-slate-50/50 p-6 dark:border-slate-800 dark:bg-slate-800/50">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Create New Ticket
@@ -220,14 +301,18 @@ export default function MeTicketsContent() {
               <div
                 className={cn(
                   "flex size-12 shrink-0 items-center justify-center rounded-full",
-                  stat.iconBg
+                  stat.iconBg,
                 )}
               >
                 <Icon className="size-6" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase text-slate-500">{stat.label}</p>
-                <p className="text-xl font-black text-slate-900 dark:text-white">{stat.value}</p>
+                <p className="text-xs font-bold uppercase text-slate-500">
+                  {stat.label}
+                </p>
+                <p className="text-xl font-black text-slate-900 dark:text-white">
+                  {stat.value}
+                </p>
               </div>
             </div>
           );

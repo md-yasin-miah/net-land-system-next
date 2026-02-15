@@ -3,6 +3,9 @@
 @plugin "tailwindcss-animate";
 @import "tw-animate-css";
 
+/* Material Symbols (icon font) - loaded globally so it applies app-wide */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {

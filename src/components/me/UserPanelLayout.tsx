@@ -6,6 +6,10 @@ import { Search, Bell, HelpCircle } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import { userSidebarNav, userSidebarSettings } from "@/lib/menu";
+import Image from "next/image";
+import { useTheme } from "../theme-provider";
+import { ThemeToggle } from "../theme-toggle";
+import { Button } from "../ui/button";
 
 export default function UserPanelLayout({
   children,
@@ -13,26 +17,27 @@ export default function UserPanelLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   return (
     <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Sidebar */}
       <aside className="fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center gap-3 p-6">
-          <Link
-            href={Routes.home}
-            className="flex size-8 items-center justify-center rounded bg-primary text-white"
-          >
-            <span className="text-lg font-bold">NL</span>
+          <Link href={Routes.home}>
+            <Image
+              src={theme === "light" ? "/logo-black.png" : "/logo-white.png"}
+              alt="Net Land System Logo"
+              width={150}
+              height={100}
+            />
           </Link>
-          <h2 className="text-lg font-bold leading-none tracking-tight text-slate-900 dark:text-white">
-            Net Land
-          </h2>
         </div>
         <nav className="flex-1 space-y-1 px-4 py-2">
           {userSidebarNav.map((item) => {
             const Icon = item.icon;
-            const isActive = pathname === item.href;
+            const isActive =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
@@ -41,7 +46,7 @@ export default function UserPanelLayout({
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
                     ? "bg-primary/10 text-primary"
-                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
                 )}
               >
                 <Icon className="size-5 shrink-0" />
@@ -56,7 +61,8 @@ export default function UserPanelLayout({
           </div>
           {userSidebarSettings.map((item) => {
             const Icon = item.icon;
-            const isActive = pathname === item.href;
+            const isActive =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
@@ -65,7 +71,7 @@ export default function UserPanelLayout({
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
                     ? "bg-primary/10 text-primary"
-                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
                 )}
               >
                 <Icon className="size-5 shrink-0" />
@@ -104,21 +110,14 @@ export default function UserPanelLayout({
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <button
-              type="button"
-              className="relative rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-              aria-label="Notifications"
-            >
+            <ThemeToggle />
+            <Button variant="outline" size="icon" className="relative">
               <Bell className="size-5" />
               <span className="absolute right-2 top-2 size-2 rounded-full border-2 border-white bg-red-500 dark:border-slate-900" />
-            </button>
-            <Link
-              href={Routes.support.index}
-              className="rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-              aria-label="Help"
-            >
+            </Button>
+            <Button variant="outline" size="icon">
               <HelpCircle className="size-5" />
-            </Link>
+            </Button>
           </div>
         </header>
 

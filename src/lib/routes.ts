@@ -36,6 +36,7 @@ export const Routes = {
     orderTracking: (id: string) => `/me/orders/${id}/track`,
     warranty: "/me/warranty",
     tickets: "/me/tickets",
+    ticketDetail: (id: string) => `/me/tickets/${id}`,
     settings: "/me/settings",
     addresses: "/me/addresses",
   },

@@ -8,6 +8,7 @@ import { headerSubNav } from "@/lib/menu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { openDrawer } from "@/store/cartSlice";
 import { getCartCount, getCartTotal } from "@/store/cartSlice";
+import { ThemeToggle } from "../theme-toggle";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -56,6 +57,7 @@ const Header = () => {
                 2
               </span>
             </Link>
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => dispatch(openDrawer())}

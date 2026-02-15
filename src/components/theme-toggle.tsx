@@ -1,38 +1,25 @@
 "use client";
 
 import { useTheme } from "@/components/theme-provider";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Moon, Sun } from "lucide-react";
+import { Button } from "./ui/button";
+import { AnimatePresence, motion } from "motion/react";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex items-center gap-3">
-      <ToggleGroup
-        type="single"
-        size="sm"
-        value={theme}
-        onValueChange={(value) => {
-          if (value) setTheme(value as "light" | "dark" | "system");
-        }}
-        className="bg-slate-800 rounded-lg p-1"
-      >
-        <ToggleGroupItem
-          value="light"
-          aria-label="Light mode"
-          className="data-[state=on]:bg-white data-[state=on]:text-slate-900 text-slate-400 hover:text-white size-8"
+    <Button variant="outline" size="icon" className="bg-transparent hover:bg-transparent" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+      {/* rotation animation on change of theme */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          initial={{ rotate: 0 }}
+          animate={{ rotate: theme === "light" ? 180 : 0 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
         >
-          <Sun className="w-4 h-4" />
-        </ToggleGroupItem>
-        <ToggleGroupItem
-          value="dark"
-          aria-label="Dark mode"
-          className="data-[state=on]:bg-white data-[state=on]:text-slate-900 text-slate-400 hover:text-white size-8 group"
-        >
-          <Moon className="w-4 h-4 group-hover:text-slate-900" />
-        </ToggleGroupItem>
-      </ToggleGroup>
-    </div>
+          {theme === "light" ? <Sun className="size-5 text-yellow-500" /> : <Moon className="size-5" />}
+        </motion.div>
+      </AnimatePresence>
+    </Button>
   );
 }
