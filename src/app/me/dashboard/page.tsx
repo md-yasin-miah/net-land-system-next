@@ -1,5 +1,11 @@
-const UserDashboardPage = () => {
-  return <div>UserDashboardPage</div>;
+import DashboardContent from "@/components/me/DashboardContent";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard | My Account | Net Land System",
+  description: "Your account dashboard. View orders, tickets, warranty, and network insights.",
 };
 
-export default UserDashboardPage;
+export default function UserDashboardPage() {
+  return <DashboardContent />;
+}

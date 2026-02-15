@@ -31,5 +31,10 @@ export const Routes = {
   me: {
     root: "/me",
     dashboard: "/me/dashboard",
+    orders: "/me/orders",
+    warranty: "/me/warranty",
+    tickets: "/me/tickets",
+    settings: "/me/settings",
+    addresses: "/me/addresses",
   },
 };

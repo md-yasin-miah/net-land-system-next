@@ -1,7 +1,6 @@
-const UserLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div>{children}</div>
-  )
-}
+import UserPanelLayout from "@/components/me/UserPanelLayout";
+import type { ReactNode } from "react";
 
-export default UserLayout
+export default function UserLayout({ children }: { children: ReactNode }) {
+  return <UserPanelLayout>{children}</UserPanelLayout>;
+}
