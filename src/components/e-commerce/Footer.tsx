@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { Routes } from '@/lib/routes';
 
 const Footer = () => {
   return (
@@ -90,12 +91,12 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/warranty" className="hover:text-primary transition-colors">
-                Warranty Claim
+              <Link href={Routes.support.warrantyReturns} className="hover:text-primary transition-colors">
+                Warranty & Returns
               </Link>
             </li>
             <li>
-              <Link href="/support" className="hover:text-primary transition-colors">
+              <Link href={Routes.support.tickets} className="hover:text-primary transition-colors">
                 Support Ticket
               </Link>
             </li>

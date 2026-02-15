@@ -4,6 +4,7 @@ export const Routes = {
     login: "/login",
     signup: "/signup",
   },
+  // E Commerce Routes
   products: {
     list: "/products",
     detail: (slug: string) => `/products/${slug}`,
@@ -16,5 +17,19 @@ export const Routes = {
     shippingDelivery: "/faq/shipping-delivery",
     productCompatibility: "/faq/product-compatibility",
     search: "/faq/search",
+  },
+  support: {
+    index: "/support",
+    tickets: "/support/tickets",
+    liveChat: "/support/live-chat",
+    tracking: "/support/tracking",
+    warrantyReturns: "/support/warranty-returns",
+    warrantyResults: (serial: string) =>
+      `/support/warranty-results/${serial}`,
+  },
+  // User Routes
+  me: {
+    root: "/me",
+    dashboard: "/me/dashboard",
   },
 };
