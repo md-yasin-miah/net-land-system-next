@@ -18,7 +18,7 @@ const SideAdBanner = () => {
           <h4 className="text-blue-800 font-bold">Free Shipping</h4>
           <p className="text-xs text-blue-700">On all orders above ৳50,000</p>
         </div>
-        <span className="material-symbols-outlined text-blue-300 text-4xl self-end">
+        <span className=" text-blue-300 text-4xl self-end">
           local_shipping
         </span>
       </div>

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Routes } from "@/lib/routes";
-import { MOCK_USERS } from "@/lib/mockData";
+import { MOCK_USERS, Role } from "@/lib/mockData";
 import { toast } from "sonner";
 
 /** Demo accounts for easy login (email + password only, for UI) */
@@ -31,13 +31,23 @@ export default function LoginPage() {
       return;
     }
     try {
-      await login({ email: email.trim(), password }).unwrap();
+      const result = await login({ email: email.trim(), password }).unwrap();
+      console.log({ result });
       toast.success("Welcome back!");
-      router.push(Routes.me.dashboard);
+      const role = result.user.role as Role;
+      if (role === "customer") {
+        router.push(Routes.me.dashboard);
+      } else {
+        router.push(Routes.role(role).dashboard);
+      }
       router.refresh();
     } catch (err: unknown) {
       const message =
-        err && typeof err === "object" && "data" in err && err.data && typeof (err.data as { message?: string }).message === "string"
+        err &&
+        typeof err === "object" &&
+        "data" in err &&
+        err.data &&
+        typeof (err.data as { message?: string }).message === "string"
           ? (err.data as { message: string }).message
           : "Invalid email or password.";
       toast.error(message);

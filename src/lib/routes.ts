@@ -1,4 +1,18 @@
+import { Role } from "./mockData";
+
 export const Routes = {
+  role:(role: Role) => ({
+    root: `/${role}`,
+    dashboard: `/${role}/dashboard`,
+    orders: `/${role}/orders`,
+    orderDetail: (id: string) => `/${role}/orders/${id}`,
+    orderTracking: (id: string) => `/${role}/orders/${id}/track`,
+    warranty: `/${role}/warranty`,
+    tickets: `/${role}/tickets`,
+    ticketDetail: (id: string) => `/${role}/tickets/${id}`,
+    settings: `/${role}/settings`,
+    addresses: `/${role}/addresses`,
+  }),
   home: "/",
   auth: {
     login: "/login",

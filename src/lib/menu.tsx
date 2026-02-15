@@ -3,8 +3,8 @@
  * Header, Footer, User sidebar, E-commerce sidebar, and FAQ menus are managed here.
  */
 
-import type { LucideIcon } from "lucide-react";
 import {
+  LucideIcon,
   LayoutDashboard,
   ShoppingCart,
   ShieldCheck,
@@ -16,6 +16,17 @@ import {
   CreditCard,
   Cpu,
   RotateCcw,
+  Package,
+  FolderTree,
+  Users,
+  BookOpen,
+  BookMarked,
+  Warehouse,
+  Receipt,
+  Ticket,
+  BarChart3,
+  ArrowLeftRight,
+  Wallet,
 } from "lucide-react";
 import { Routes } from "@/lib/routes";
 
@@ -101,7 +112,11 @@ export const ecommerceSidebarCategories: EcommerceSidebarItem[] = [
   { href: "/categories/routers", name: "Routers", icon: "router" },
   { href: "/categories/switches", name: "Switches", icon: "switch" },
   { href: "/categories/access-points", name: "Access Points", icon: "wifi" },
-  { href: "/categories/enterprise", name: "Enterprise Solutions", icon: "business_center" },
+  {
+    href: "/categories/enterprise",
+    name: "Enterprise Solutions",
+    icon: "business_center",
+  },
   { href: "/categories/servers", name: "Servers", icon: "dns" },
   { href: "/categories/cables", name: "Cables & Wiring", icon: "cable" },
   { href: "/categories/racks", name: "Racks & Cabinets", icon: "shelves" },
@@ -116,7 +131,11 @@ export interface FaqNavItem {
 
 export const faqSidebarCategories: FaqNavItem[] = [
   { href: Routes.faq.index, icon: HelpCircle, label: "General" },
-  { href: Routes.faq.shippingDelivery, icon: Truck, label: "Shipping & Delivery" },
+  {
+    href: Routes.faq.shippingDelivery,
+    icon: Truck,
+    label: "Shipping & Delivery",
+  },
   { href: "#", icon: CreditCard, label: "Payments" },
   { href: "#", icon: Cpu, label: "Technical Support" },
   { href: "#", icon: RotateCcw, label: "Returns & Refunds" },
@@ -124,8 +143,66 @@ export const faqSidebarCategories: FaqNavItem[] = [
 
 /** FAQ page category quick-access cards (same structure, used on main FAQ page grid) */
 export const faqCategoryCards: FaqNavItem[] = [
-  { href: Routes.faq.shippingDelivery, icon: Truck, label: "Shipping & Delivery" },
+  {
+    href: Routes.faq.shippingDelivery,
+    icon: Truck,
+    label: "Shipping & Delivery",
+  },
   { href: "#", icon: CreditCard, label: "Payment Methods" },
-  { href: Routes.faq.productCompatibility, icon: Cpu, label: "Product Compatibility" },
+  {
+    href: Routes.faq.productCompatibility,
+    icon: Cpu,
+    label: "Product Compatibility",
+  },
   { href: "#", icon: RotateCcw, label: "Returns & RMA" },
+];
+export interface RoleSidebarNav {
+  label: string;
+  items: RoleSidebarNavItem[];
+}
+export interface RoleSidebarNavItem {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+}
+export const roleSidebarNav:RoleSidebarNav[] = [
+  {
+    label: "Dashboard",
+    items: [{ href: "dashboard", label: "Dashboard", icon: LayoutDashboard }],
+  },
+  {
+    label: "Sales & Ops",
+    items: [
+      { href: "pos", label: "POS System", icon: Package },
+      { href: "orders", label: "Orders", icon: ShoppingCart },
+      { href: "products", label: "Products", icon: Package },
+      { href: "categories", label: "Categories", icon: FolderTree },
+    ],
+  },
+  {
+    label: "Stakeholders",
+    items: [
+      { href: "customers", label: "Customers", icon: Users },
+      { href: "customer-ledger", label: "Customer Ledger", icon: BookOpen },
+      { href: "suppliers", label: "Suppliers", icon: Truck },
+      { href: "supplier-ledger", label: "Supplier Ledger", icon: BookMarked },
+    ],
+  },
+  {
+    label: "Procurement",
+    items: [
+      { href: "inventory", label: "Inventory", icon: Warehouse },
+      { href: "purchase-orders", label: "Purchase Orders", icon: Receipt },
+    ],
+  },
+  {
+    label: "Analytics & Admin",
+    items: [
+      { href: "coupons", label: "Coupons", icon: Ticket },
+      { href: "reports", label: "Reports", icon: BarChart3 },
+      { href: "transactions", label: "Transactions", icon: ArrowLeftRight },
+      { href: "expenses", label: "Expenses", icon: Wallet },
+      { href: "settings", label: "Settings", icon: Settings },
+    ],
+  },
 ];
