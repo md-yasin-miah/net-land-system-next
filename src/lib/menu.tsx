@@ -1,7 +1,4 @@
-/**
- * Central menu configuration for the app.
- * Header, Footer, User sidebar, E-commerce sidebar, and FAQ menus are managed here.
- */
+"use client";
 
 import {
   LucideIcon,
@@ -33,7 +30,7 @@ import {
 import type { Role } from "@/lib/mockData";
 import type { Permission } from "@/lib/mockData";
 import { Routes } from "@/lib/routes";
-
+import { useAuth } from "../../hooks/useAuth";
 // ----- Header (E-commerce) -----
 export const headerSubNav: { href: string; label: string }[] = [
   { href: "/categories", label: "All Categories" },
@@ -169,7 +166,7 @@ export interface RoleSidebarNavItem {
   label: string;
   icon: LucideIcon;
 }
-export const roleSidebarNav:RoleSidebarNav[] = [
+export const roleSidebarNav: RoleSidebarNav[] = [
   {
     label: "Dashboard",
     items: [{ href: "dashboard", label: "Dashboard", icon: LayoutDashboard }],
@@ -249,44 +246,68 @@ export type RoleBaseProfileMenuItem =
   | RoleBaseMenuItemSeparator
   | RoleBaseMenuItemLabel;
 
-export const RoleBaseProfileMenu: RoleBaseProfileMenuItem[] = [
-  { type: "label", label: "My Account" },
-  {
-    type: "link",
-    label: "Profile",
-    href: Routes.me.dashboard,
-    icon: User,
-    shortcut: "⇧⌘P",
-    permissions: ["me:read"],
-  },
-  {
-    type: "link",
-    label: "My Orders",
-    href: Routes.me.orders,
-    icon: ShoppingCart,
-    permissions: ["orders:read"],
-  },
-  {
-    type: "link",
-    label: "Support Tickets",
-    href: Routes.me.tickets,
-    icon: MessageSquare,
-    permissions: ["tickets:read"],
-  },
-  {
-    type: "link",
-    label: "Settings",
-    href: Routes.me.settings,
-    icon: Settings,
-    shortcut: "⌘S",
-    permissions: ["settings:read"],
-  },
-  { type: "separator" },
-  {
-    type: "button",
-    id: "logout",
-    label: "Log out",
-    icon: LogOut,
-    shortcut: "⇧⌘Q",
-  },
-];
+export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
+  const { logout } = useAuth();
+  return role === "customer"
+    ? [
+        { type: "label", label: "My Account" },
+        {
+          type: "link",
+          label: "Profile",
+          href: Routes.me.dashboard,
+          icon: User,
+          shortcut: "⇧⌘P",
+          permissions: ["me:read"],
+        },
+        {
+          type: "link",
+          label: "My Orders",
+          href: Routes.me.orders,
+          icon: ShoppingCart,
+          permissions: ["orders:read"],
+        },
+        {
+          type: "link",
+          label: "Support Tickets",
+          href: Routes.me.tickets,
+          icon: MessageSquare,
+          permissions: ["tickets:read"],
+        },
+        {
+          type: "link",
+          label: "Settings",
+          href: Routes.me.settings,
+          icon: Settings,
+          shortcut: "⌘S",
+          permissions: ["settings:read"],
+        },
+        { type: "separator" },
+        {
+          type: "button",
+          onClick: () => logout(),
+          label: "Log out",
+          icon: LogOut,
+          shortcut: "⇧⌘Q",
+        },
+      ]
+    : [
+        { type: "label", label: "My Account" },
+        {
+          type: "link",
+          label: "Dashboard",
+          href: Routes.role(role).dashboard,
+          icon: LayoutDashboard,
+          shortcut: "⇧⌘P",
+          permissions: ["admin:read"],
+        },
+        { type: "separator" },
+        {
+          type: "button",
+          onClick: () => logout(),
+          id: "logout",
+          label: "Log out",
+          icon: LogOut,
+          shortcut: "⇧⌘Q",
+        },
+      ];
+};

@@ -95,7 +95,7 @@ const Header = () => {
             </button>
             {user && (
               <CustomDropdownMenu
-                menu={RoleBaseProfileMenu}
+                menu={RoleBaseProfileMenu(user.role)}
                 onAction={handleMenuAction}
               >
                 <Avatar className="cursor-pointer border border-white/20">

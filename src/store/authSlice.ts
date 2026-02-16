@@ -81,6 +81,5 @@ const authSlice = createSlice({
     },
   },
 });
-
 export const { setCredentials, logout, hydrateFromStorage } = authSlice.actions;
 export default authSlice.reducer;
