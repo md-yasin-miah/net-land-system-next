@@ -1,5 +1,3 @@
-"use client";
-
 import {
   LucideIcon,
   LayoutDashboard,
@@ -30,7 +28,8 @@ import {
 import type { Role } from "@/lib/mockData";
 import type { Permission } from "@/lib/mockData";
 import { Routes } from "@/lib/routes";
-import { useAuth } from "../../hooks/useAuth";
+import { useAppDispatch } from "@/store/hooks";
+import { logout } from "@/store/authSlice";
 // ----- Header (E-commerce) -----
 export const headerSubNav: { href: string; label: string }[] = [
   { href: "/categories", label: "All Categories" },
@@ -247,7 +246,7 @@ export type RoleBaseProfileMenuItem =
   | RoleBaseMenuItemLabel;
 
 export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
-  const { logout } = useAuth();
+  const dispatch =useAppDispatch()
   return role === "customer"
     ? [
         { type: "label", label: "My Account" },
@@ -284,7 +283,9 @@ export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
         { type: "separator" },
         {
           type: "button",
-          onClick: () => logout(),
+          onClick: () => {
+            dispatch(logout())
+          },
           label: "Log out",
           icon: LogOut,
           shortcut: "⇧⌘Q",
@@ -303,7 +304,9 @@ export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
         { type: "separator" },
         {
           type: "button",
-          onClick: () => logout(),
+          onClick: () => {
+            dispatch(logout())
+          },
           id: "logout",
           label: "Log out",
           icon: LogOut,
