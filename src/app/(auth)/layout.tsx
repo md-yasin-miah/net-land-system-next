@@ -5,6 +5,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Routes } from "@/lib/routes";
 import Image from "next/image";
 import { useTheme } from "@/components/theme-provider";
+import Logo from "@/components/common/Logo";
 
 export default function AuthLayout({
   children,
@@ -28,17 +29,11 @@ export default function AuthLayout({
       </Link>
 
       {/* Logo */}
-      <Link
-        href={Routes.home}
-        className="mb-8 flex items-center gap-3 sm:mb-10"
-      >
-        <Image
-          src={theme === "light" ? "/logo-black.png" : "/logo-white.png"}
-          alt="Net Land System Logo"
-          width={200}
-          height={150}
-        />
-      </Link>
+      <Logo
+        containerClass="mb-8 flex items-center gap-3 sm:mb-10"
+        width={200}
+        height={150}
+      />
 
       {/* Card */}
       <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">

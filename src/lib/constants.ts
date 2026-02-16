@@ -20,7 +20,6 @@ export const COLORS = {
     900: "#0f172a",
   },
 } as const;
-
 // Company Information
 export const COMPANY_INFO = {
   name: "Net Land System Bangladesh",

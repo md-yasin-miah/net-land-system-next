@@ -7,14 +7,13 @@ import { Search, Bell, HelpCircle, LogOut } from "lucide-react";
 import { Routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import { userSidebarNav, userSidebarSettings } from "@/lib/menu";
-import Image from "next/image";
-import { useTheme } from "../theme-provider";
 import { ThemeToggle } from "../theme-toggle";
 import { Button } from "../ui/button";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { logout } from "@/store/authSlice";
 import { toast } from "sonner";
+import Logo from "../common/Logo";
 
 export default function UserPanelLayout({
   children,
@@ -22,7 +21,6 @@ export default function UserPanelLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const { theme } = useTheme();
   const router = useRouter();
   const user = useAppSelector((s) => s.auth.user);
   const dispatch = useAppDispatch();
@@ -44,14 +42,7 @@ export default function UserPanelLayout({
       {/* Sidebar */}
       <aside className="fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center gap-3 p-6">
-          <Link href={Routes.home}>
-            <Image
-              src={theme === "light" ? "/logo-black.png" : "/logo-white.png"}
-              alt="Net Land System Logo"
-              width={150}
-              height={100}
-            />
-          </Link>
+          <Logo width={150} height={100} />
         </div>
         <nav className="flex-1 space-y-1 px-4 py-2">
           {userSidebarNav.map((item) => {

@@ -12,6 +12,8 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { RoleSidebarNav, roleSidebarNav, RoleSidebarNavItem } from "@/lib/menu";
+import Image from "next/image";
+import Logo from "../common/Logo";
 
 
 
@@ -29,18 +31,8 @@ export default function RolePanelLayout({
     <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased">
       {/* Sidebar */}
       <aside className="flex h-full w-64 shrink-0 flex-col overflow-y-auto border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center gap-3 border-b border-slate-100 p-5 dark:border-slate-800">
-          <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-white font-bold text-sm">
-            NL
-          </div>
-          <div>
-            <h1 className="text-sm font-bold uppercase tracking-tight text-slate-900 dark:text-white">
-              NetCorp ERP
-            </h1>
-            <p className="text-[10px] font-medium tracking-widest text-slate-500">
-              PROCUREMENT PRO
-            </p>
-          </div>
+        <div className="flex items-center gap-3 border-b border-slate-100 px-5 py-2 dark:border-slate-800">
+        <Logo width={134} height={100} />
         </div>
         <nav className="flex-1 space-y-0.5 py-4">
           {roleSidebarNav.map((section: RoleSidebarNav) => (
