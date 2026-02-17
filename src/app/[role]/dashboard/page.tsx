@@ -1,7 +1,7 @@
-const RoleDashboard = () => {
-  return (
-    <div>page</div>
-  )
-}
+import AdminDashboardContent from "@/components/role/AdminDashboardContent";
 
-export default RoleDashboard
+const RoleDashboard = () => {
+  return <AdminDashboardContent />;
+};
+
+export default RoleDashboard;

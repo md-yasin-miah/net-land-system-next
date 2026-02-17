@@ -173,7 +173,7 @@ export const roleSidebarNav: RoleSidebarNav[] = [
   {
     label: "Sales & Ops",
     items: [
-      { href: "pos", label: "POS System", icon: Package },
+      { href: "pos-system", label: "POS System", icon: Package },
       { href: "orders", label: "Orders", icon: ShoppingCart },
       { href: "products", label: "Products", icon: Package },
       { href: "categories", label: "Categories", icon: FolderTree },

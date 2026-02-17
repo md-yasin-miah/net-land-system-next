@@ -45,6 +45,7 @@ export const Routes = {
   role: (role: Role) => ({
     root: `/${role}`,
     dashboard: `/${role}/dashboard`,
+    posSystem: `/${role}/pos-system`,
     orders: `/${role}/orders`,
     orderDetail: (id: string) => `/${role}/orders/${id}`,
     orderTracking: (id: string) => `/${role}/orders/${id}/track`,

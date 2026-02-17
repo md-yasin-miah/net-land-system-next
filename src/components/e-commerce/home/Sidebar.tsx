@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { ChevronRight, Wifi, Boxes, Building2, Server, Cable, Package } from "lucide-react";
+import {
+  ChevronRight,
+  Wifi,
+  Boxes,
+  Building2,
+  Server,
+  Cable,
+  Package,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { ecommerceSidebarCategories } from "@/lib/menu";
 
