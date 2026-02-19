@@ -11,8 +11,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { RoleSidebarNav, roleSidebarNav, RoleSidebarNavItem } from "@/lib/menu";
-import Image from "next/image";
+import { getRoleSidebarNav, RoleSidebarNav, RoleSidebarNavItem } from "@/lib/menu";
+import type { Role } from "@/lib/mockData";
 import Logo from "../common/Logo";
 
 
@@ -24,8 +24,8 @@ export default function RolePanelLayout({
 }) {
   const params = useParams();
   const pathname = usePathname();
-  const role = (params?.role as string) ?? "admin";
-  const base = `/${role}`;
+  const role = (params?.role as Role) ?? "admin";
+  const roleSidebarNav = getRoleSidebarNav(role);
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased">
@@ -41,7 +41,7 @@ export default function RolePanelLayout({
                 {section.label}
               </p>
               {section.items.map((item: RoleSidebarNavItem) => {
-                const href = `${base}/${item.href}`;
+                const href = item.href;
                 const isActive =
                   pathname === href || pathname.startsWith(`${href}/`);
                 const Icon = item.icon;

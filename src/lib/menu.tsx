@@ -165,47 +165,52 @@ export interface RoleSidebarNavItem {
   label: string;
   icon: LucideIcon;
 }
-export const roleSidebarNav: RoleSidebarNav[] = [
-  {
-    label: "Dashboard",
-    items: [{ href: "dashboard", label: "Dashboard", icon: LayoutDashboard }],
-  },
-  {
-    label: "Sales & Ops",
-    items: [
-      { href: "pos-system", label: "POS System", icon: Package },
-      { href: "orders", label: "Orders", icon: ShoppingCart },
-      { href: "products", label: "Products", icon: Package },
-      { href: "categories", label: "Categories", icon: FolderTree },
-    ],
-  },
-  {
-    label: "Stakeholders",
-    items: [
-      { href: "customers", label: "Customers", icon: Users },
-      { href: "customer-ledger", label: "Customer Ledger", icon: BookOpen },
-      { href: "suppliers", label: "Suppliers", icon: Truck },
-      { href: "supplier-ledger", label: "Supplier Ledger", icon: BookMarked },
-    ],
-  },
-  {
-    label: "Procurement",
-    items: [
-      { href: "inventory", label: "Inventory", icon: Warehouse },
-      { href: "purchase-orders", label: "Purchase Orders", icon: Receipt },
-    ],
-  },
-  {
-    label: "Analytics & Admin",
-    items: [
-      { href: "coupons", label: "Coupons", icon: Ticket },
-      { href: "reports", label: "Reports", icon: BarChart3 },
-      { href: "transactions", label: "Transactions", icon: ArrowLeftRight },
-      { href: "expenses", label: "Expenses", icon: Wallet },
-      { href: "settings", label: "Settings", icon: Settings },
-    ],
-  },
-];
+
+/** Build role sidebar nav with full hrefs from Routes.role(role). Use in RolePanelLayout. */
+export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
+  const r = Routes.role(role);
+  return [
+    {
+      label: "Dashboard",
+      items: [{ href: r.dashboard, label: "Dashboard", icon: LayoutDashboard }],
+    },
+    {
+      label: "Sales & Ops",
+      items: [
+        { href: r.posSystem, label: "POS System", icon: Package },
+        { href: r.orders, label: "Orders", icon: ShoppingCart },
+        { href: r.products, label: "Products", icon: Package },
+        { href: r.categories, label: "Categories", icon: FolderTree },
+      ],
+    },
+    {
+      label: "Stakeholders",
+      items: [
+        { href: r.customers, label: "Customers", icon: Users },
+        { href: r.customerLedger, label: "Customer Ledger", icon: BookOpen },
+        { href: r.suppliers, label: "Suppliers", icon: Truck },
+        { href: r.supplierLedger, label: "Supplier Ledger", icon: BookMarked },
+      ],
+    },
+    {
+      label: "Procurement",
+      items: [
+        { href: r.inventory, label: "Inventory", icon: Warehouse },
+        { href: r.purchaseOrders, label: "Purchase Orders", icon: Receipt },
+      ],
+    },
+    {
+      label: "Analytics & Admin",
+      items: [
+        { href: r.coupons, label: "Coupons", icon: Ticket },
+        { href: r.reports, label: "Reports", icon: BarChart3 },
+        { href: r.transactions, label: "Transactions", icon: ArrowLeftRight },
+        { href: r.expenses, label: "Expenses", icon: Wallet },
+        { href: r.settings, label: "Settings", icon: Settings },
+      ],
+    },
+  ];
+}
 
 // ----- Role-based profile dropdown menu (Header) -----
 export type RoleBaseMenuItemLink = {

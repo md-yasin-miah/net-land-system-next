@@ -166,7 +166,7 @@ export default function PosSystemContent() {
       setCart([
         ...cart,
         {
-          id: `c${Date.now()}`,
+          id: `c${crypto.randomUUID().substring(2, 15)}`,
           productId: product.id,
           name: product.name,
           image: product.image,
