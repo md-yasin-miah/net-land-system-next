@@ -54,6 +54,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
+import { Routes } from "@/lib/routes";
+import { Role } from "@/lib/mockData";
+import { useParams } from "next/navigation";
 
 ChartJS.register(
   CategoryScale,
@@ -61,14 +65,27 @@ ChartJS.register(
   BarElement,
   BarController,
   Title,
-  Tooltip
+  Tooltip,
 );
 
 const PRIMARY = "#ec5b13";
 
 // Dummy data
 const ORDER_ACTIVITY_24H = {
-  labels: ["12a", "2a", "4a", "6a", "8a", "10a", "12p", "2p", "4p", "6p", "8p", "10p"],
+  labels: [
+    "12a",
+    "2a",
+    "4a",
+    "6a",
+    "8a",
+    "10a",
+    "12p",
+    "2p",
+    "4p",
+    "6p",
+    "8p",
+    "10p",
+  ],
   values: [30, 20, 55, 40, 90, 75, 85, 95, 45, 60, 35, 20],
 };
 
@@ -132,16 +149,23 @@ const ORDERS = [
 
 const PAYMENT_STYLES: Record<string, string> = {
   Paid: "bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 border-green-200 dark:border-green-500/20",
-  Partial: "bg-yellow-100 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-500/20",
-  Unpaid: "bg-slate-100 dark:bg-slate-500/20 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-500/20",
+  Partial:
+    "bg-yellow-100 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-500/20",
+  Unpaid:
+    "bg-slate-100 dark:bg-slate-500/20 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-500/20",
 };
 
 const FULFILLMENT_STYLES: Record<string, string> = {
-  Processing: "bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-500/20",
-  Pending: "bg-slate-100 dark:bg-slate-500/20 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-500/20",
-  Shipped: "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-500/20",
-  Delivered: "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20",
-  "On Hold": "bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 border-red-200 dark:border-red-500/20",
+  Processing:
+    "bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-500/20",
+  Pending:
+    "bg-slate-100 dark:bg-slate-500/20 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-500/20",
+  Shipped:
+    "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-500/20",
+  Delivered:
+    "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20",
+  "On Hold":
+    "bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 border-red-200 dark:border-red-500/20",
 };
 
 const FILTER_TABS = [
@@ -156,7 +180,8 @@ export default function OrdersListContent() {
   const [filter, setFilter] = useState("all");
   const selectedCount = ORDERS.filter((o) => o.selected).length;
   const [showBulkBar, setShowBulkBar] = useState(selectedCount > 0);
-
+  const params = useParams();
+  const role = (params?.role as Role) ?? "admin";
   useEffect(() => {
     if (!chartRef.current) return;
     const chart = new ChartJS(chartRef.current, {
@@ -168,7 +193,7 @@ export default function OrdersListContent() {
             label: "Orders",
             data: ORDER_ACTIVITY_24H.values,
             backgroundColor: ORDER_ACTIVITY_24H.values.map((_, i) =>
-              i === 7 ? PRIMARY : "rgba(236, 91, 19, 0.2)"
+              i === 7 ? PRIMARY : "rgba(236, 91, 19, 0.2)",
             ),
             borderRadius: 4,
           },
@@ -216,19 +241,19 @@ export default function OrdersListContent() {
             <Download className="size-5" />
             Export
           </Button>
-          <Button
-            className="gap-2 bg-[#ec5b13] font-semibold text-white shadow-lg shadow-[#ec5b13]/25 hover:bg-[#ec5b13]/90"
-          >
-            <Plus className="size-5" />
-            Create New Order
-          </Button>
+          <Link href={Routes.role(role).orders.create}>
+            <Button className="gap-2 bg-orange-600 font-semibold text-white shadow-lg shadow-orange-600/25 hover:bg-orange-600/90">
+              <Plus className="size-5" />
+              Create New Order
+            </Button>
+          </Link>
         </div>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-          <div className="flex size-12 items-center justify-center rounded-lg bg-[#ec5b13]/10 text-[#ec5b13]">
+          <div className="flex size-12 items-center justify-center rounded-lg bg-orange-600/10 text-orange-600">
             <Receipt className="size-7" />
           </div>
           <div>
@@ -289,7 +314,7 @@ export default function OrdersListContent() {
           </div>
           <button
             type="button"
-            className="flex items-center gap-1 text-sm font-medium text-slate-500 transition-colors hover:text-[#ec5b13]"
+            className="flex items-center gap-1 text-sm font-medium text-slate-500 transition-colors hover:text-orange-600"
           >
             <Filter className="size-[18px]" />
             Advanced Filters
@@ -298,20 +323,23 @@ export default function OrdersListContent() {
 
         {/* Bulk Action Bar */}
         {showBulkBar && (
-          <div className="flex items-center justify-between border-b border-[#ec5b13]/20 bg-[#ec5b13]/5 px-6 py-3 dark:bg-[#ec5b13]/10">
+          <div className="flex items-center justify-between border-b border-orange-600/20 bg-orange-600/5 px-6 py-3 dark:bg-orange-600/10">
             <div className="flex items-center gap-4">
-              <span className="text-sm font-semibold text-[#ec5b13]">
+              <span className="text-sm font-semibold text-orange-600">
                 {selectedCount} Orders Selected
               </span>
-              <div className="h-4 w-px bg-[#ec5b13]/20" />
+              <div className="h-4 w-px bg-orange-600/20" />
               <div className="flex items-center gap-2">
-                <Button size="sm" className="h-7 rounded bg-[#ec5b13] px-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#ec5b13]/90">
+                <Button
+                  size="sm"
+                  className="h-7 rounded bg-orange-600 px-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-orange-600/90"
+                >
                   Mark as Shipped
                 </Button>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-7 rounded border-[#ec5b13]/20 px-3 text-xs font-bold uppercase tracking-wider text-[#ec5b13] hover:bg-[#ec5b13]/5"
+                  className="h-7 rounded border-orange-600/20 px-3 text-xs font-bold uppercase tracking-wider text-orange-600 hover:bg-orange-600/5"
                 >
                   Print Labels
                 </Button>
@@ -342,7 +370,7 @@ export default function OrdersListContent() {
                 <TableHead className="w-12 px-6 py-4">
                   <input
                     type="checkbox"
-                    className="rounded border-slate-300 text-[#ec5b13] focus:ring-[#ec5b13] dark:border-slate-700"
+                    className="rounded border-slate-300 text-orange-600 focus:ring-orange-600 dark:border-slate-700"
                     aria-label="Select all"
                   />
                 </TableHead>
@@ -379,11 +407,11 @@ export default function OrdersListContent() {
                     <input
                       type="checkbox"
                       defaultChecked={order.selected}
-                      className="rounded border-slate-300 text-[#ec5b13] focus:ring-[#ec5b13] dark:border-slate-700"
+                      className="rounded border-slate-300 text-orange-600 focus:ring-orange-600 dark:border-slate-700"
                       aria-label={`Select ${order.id}`}
                     />
                   </TableCell>
-                  <TableCell className="px-4 py-4 font-bold text-[#ec5b13]">
+                  <TableCell className="px-4 py-4 font-bold text-orange-600">
                     #{order.id}
                   </TableCell>
                   <TableCell className="px-4 py-4 text-sm text-slate-500 dark:text-slate-400">
@@ -425,7 +453,7 @@ export default function OrdersListContent() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="size-8 text-slate-400 hover:text-[#ec5b13]"
+                          className="size-8 text-slate-400 hover:text-orange-600"
                         >
                           <MoreVertical className="size-5" />
                         </Button>
@@ -474,7 +502,7 @@ export default function OrdersListContent() {
             </Button>
             <button
               type="button"
-              className="flex size-8 items-center justify-center rounded bg-[#ec5b13] text-xs font-bold text-white"
+              className="flex size-8 items-center justify-center rounded bg-orange-600 text-xs font-bold text-white"
             >
               1
             </button>
@@ -534,39 +562,39 @@ export default function OrdersListContent() {
           <div className="space-y-3">
             <button
               type="button"
-              className="group flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 transition-all hover:border-[#ec5b13]/50 hover:bg-[#ec5b13]/5 dark:border-white/10"
+              className="group flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 transition-all hover:border-orange-600/50 hover:bg-orange-600/5 dark:border-white/10"
             >
               <div className="flex items-center gap-3">
-                <Printer className="size-5 text-slate-400 group-hover:text-[#ec5b13]" />
+                <Printer className="size-5 text-slate-400 group-hover:text-orange-600" />
                 <span className="text-sm font-medium">
                   Print Daily Picklist
                 </span>
               </div>
-              <ArrowRight className="size-[18px] text-slate-300 group-hover:text-[#ec5b13]" />
+              <ArrowRight className="size-[18px] text-slate-300 group-hover:text-orange-600" />
             </button>
             <button
               type="button"
-              className="group flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 transition-all hover:border-[#ec5b13]/50 hover:bg-[#ec5b13]/5 dark:border-white/10"
+              className="group flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 transition-all hover:border-orange-600/50 hover:bg-orange-600/5 dark:border-white/10"
             >
               <div className="flex items-center gap-3">
-                <Package className="size-5 text-slate-400 group-hover:text-[#ec5b13]" />
+                <Package className="size-5 text-slate-400 group-hover:text-orange-600" />
                 <span className="text-sm font-medium">
                   Restock Low Inventory
                 </span>
               </div>
-              <ArrowRight className="size-[18px] text-slate-300 group-hover:text-[#ec5b13]" />
+              <ArrowRight className="size-[18px] text-slate-300 group-hover:text-orange-600" />
             </button>
             <button
               type="button"
-              className="group flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 transition-all hover:border-[#ec5b13]/50 hover:bg-[#ec5b13]/5 dark:border-white/10"
+              className="group flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 transition-all hover:border-orange-600/50 hover:bg-orange-600/5 dark:border-white/10"
             >
               <div className="flex items-center gap-3">
-                <Headphones className="size-5 text-slate-400 group-hover:text-[#ec5b13]" />
+                <Headphones className="size-5 text-slate-400 group-hover:text-orange-600" />
                 <span className="text-sm font-medium">
                   Open Support Tickets
                 </span>
               </div>
-              <span className="rounded-full bg-[#ec5b13] px-2 py-0.5 text-[10px] font-bold text-white">
+              <span className="rounded-full bg-orange-600 px-2 py-0.5 text-[10px] font-bold text-white">
                 12
               </span>
             </button>

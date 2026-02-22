@@ -48,6 +48,7 @@ export const Routes = {
     posSystem: `/${role}/pos-system`,
     orders: {
       list: `/${role}/orders/list`,
+      create: `/${role}/orders/list/create`,
       detail: (id: string) => `/${role}/orders/${id}`,
       tracking: (id: string) => `/${role}/orders/${id}/track`,
     },
@@ -64,7 +65,10 @@ export const Routes = {
       list: `/${role}/purchase-orders`,
       create: `/${role}/purchase-orders/create`,
     },
-    coupons: `/${role}/coupons`,
+    promotions: {
+      root: `/${role}/promotions/coupons`,
+      coupons: `/${role}/promotions/coupons`,
+    },
     reports: {
       analytics: `/${role}/reports/analytics`,
     },

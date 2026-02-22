@@ -74,12 +74,22 @@ const EXPENSE_DATA_6_MONTHS = {
 
 const EXPENSE_DATA_12_MONTHS = {
   labels: [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ],
   values: [
-    36000, 51000, 27000, 42000, 54000, 33000,
-    48000, 39000, 52000, 44000, 38000, 45280,
+    36000, 51000, 27000, 42000, 54000, 33000, 48000, 39000, 52000, 44000, 38000,
+    45280,
   ],
 };
 
@@ -268,7 +278,7 @@ export default function ExpenseOpexTrackingContent() {
             Track operational costs and manage budgets across departments.
           </p>
         </div>
-        <Button className="flex items-center gap-2 bg-[#ec5b13] font-bold text-white hover:bg-[#ec5b13]/90">
+        <Button className="flex items-center gap-2 bg-orange-600 font-bold text-white hover:bg-orange-600/90">
           <Plus className="size-5" />
           Add Expense
         </Button>
@@ -281,8 +291,8 @@ export default function ExpenseOpexTrackingContent() {
             <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
               Total Spend
             </span>
-            <div className="rounded-lg bg-[#ec5b13]/10 p-1.5">
-              <CreditCard className="size-4 text-[#ec5b13]" />
+            <div className="rounded-lg bg-orange-600/10 p-1.5">
+              <CreditCard className="size-4 text-orange-600" />
             </div>
           </div>
           <p className="text-2xl font-bold text-slate-900 dark:text-white">
@@ -316,8 +326,8 @@ export default function ExpenseOpexTrackingContent() {
             <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
               Budget Remaining
             </span>
-            <div className="rounded-lg bg-[#ec5b13]/10 p-1.5">
-              <Landmark className="size-4 text-[#ec5b13]" />
+            <div className="rounded-lg bg-orange-600/10 p-1.5">
+              <Landmark className="size-4 text-orange-600" />
             </div>
           </div>
           <p className="text-2xl font-bold text-slate-900 dark:text-white">
@@ -325,7 +335,7 @@ export default function ExpenseOpexTrackingContent() {
           </p>
           <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-white/10">
             <div
-              className="h-full rounded-full bg-[#ec5b13]"
+              className="h-full rounded-full bg-orange-600"
               style={{ width: "78%" }}
             />
           </div>
@@ -363,8 +373,11 @@ export default function ExpenseOpexTrackingContent() {
                 Total operational costs across all departments
               </p>
             </div>
-            <Select value={dateRange} onValueChange={(v) => setDateRange(v as "6" | "12")}>
-              <SelectTrigger className="h-9 w-full border-none bg-slate-100 py-1.5 focus:ring-2 focus:ring-[#ec5b13]/30 dark:bg-white/5 sm:w-[160px]">
+            <Select
+              value={dateRange}
+              onValueChange={(v) => setDateRange(v as "6" | "12")}
+            >
+              <SelectTrigger className="h-9 w-full border-none bg-slate-100 py-1.5 focus:ring-2 focus:ring-orange-600/30 dark:bg-white/5 sm:w-[160px]">
                 <SelectValue placeholder="Select range" />
               </SelectTrigger>
               <SelectContent>
@@ -485,7 +498,7 @@ export default function ExpenseOpexTrackingContent() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <span className="rounded-lg bg-[#ec5b13]/10 px-2 py-1 text-xs font-bold uppercase tracking-wider text-[#ec5b13]">
+                    <span className="rounded-lg bg-orange-600/10 px-2 py-1 text-xs font-bold uppercase tracking-wider text-orange-600">
                       {tx.category}
                     </span>
                   </TableCell>
@@ -521,7 +534,7 @@ export default function ExpenseOpexTrackingContent() {
             </Button>
             <button
               type="button"
-              className="flex size-8 items-center justify-center rounded-lg bg-[#ec5b13] text-xs font-bold text-white"
+              className="flex size-8 items-center justify-center rounded-lg bg-orange-600 text-xs font-bold text-white"
             >
               1
             </button>

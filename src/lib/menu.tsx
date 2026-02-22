@@ -25,6 +25,7 @@ import {
   User,
   LogOut,
   File,
+  Percent,
 } from "lucide-react";
 import type { Role } from "@/lib/mockData";
 import type { Permission } from "@/lib/mockData";
@@ -171,6 +172,7 @@ export interface RoleSidebarNavItemLink {
 
 /** Nested group with sub-items */
 export interface RoleSidebarNavItemGroup {
+  href?: string;
   label: string;
   icon: LucideIcon;
   items: RoleSidebarNavItemLink[];
@@ -249,7 +251,14 @@ export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
     {
       label: "Analytics & Admin",
       items: [
-        { href: r.coupons, label: "Coupons", icon: Ticket },
+        {
+          href: r.promotions.root,
+          label: "Promotions",
+          icon: Percent,
+          items: [
+            { href: r.promotions.coupons, label: "Coupons", icon: Ticket },
+          ],
+        },
         {
           label: "Reports",
           icon: BarChart3,
