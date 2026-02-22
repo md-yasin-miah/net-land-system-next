@@ -279,7 +279,7 @@ export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
           icon: Settings,
         },
         {
-          href: r.settings.emailTemplates.ordersConfirmation,
+          href: r.settings.emailTemplates.root,
           label: "Email Templates",
           icon: Mail,
         }

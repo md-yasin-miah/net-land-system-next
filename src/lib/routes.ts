@@ -76,14 +76,12 @@ export const Routes = {
     transactions: `/${role}/transactions`,
     expenseOpexTracking: `/${role}/expense-opex-tracking`,
     settings: {
-      root: `/${role}/settings`,
+      root: `/${role}/settings/role-permissions`,
       rolePermissions: `/${role}/settings/role-permissions`,
-      emailTemplates: {
-        ordersConfirmation: `/${role}/settings/email-templates/orders-confirmation`,
-        shippingUpdate: `/${role}/settings/email-templates/shipping-update`,
-        welcomeEmail: `/${role}/settings/email-templates/welcome-email`,
-        passwordReset: `/${role}/settings/email-templates/password-reset`,
-        abandonedCart: `/${role}/settings/email-templates/abandoned-cart`,
+      emailTemplates:{
+        root: `/${role}/settings/email-templates`,
+        template: (template: string) =>
+        `/${role}/settings/email-templates/${template}`
       },
     },
     addresses: `/${role}/addresses`,

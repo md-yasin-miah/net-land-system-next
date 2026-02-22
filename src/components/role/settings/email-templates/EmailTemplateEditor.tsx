@@ -30,8 +30,7 @@ import {
   ShoppingCartIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import NextLink from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Routes } from "@/lib/routes";
 import type { Role } from "@/lib/mockData";
 
@@ -118,6 +117,7 @@ export default function EmailTemplateEditor({
   children,
 }: EmailTemplateEditorProps) {
   const params = useParams();
+  const router = useRouter();
   const role = (params?.role as Role) ?? "admin";
   const r = Routes.role(role);
 
@@ -139,13 +139,9 @@ export default function EmailTemplateEditor({
     navigator.clipboard.writeText(v).catch(() => {});
   }
 
-  const templateHrefs: Record<string, string> = {
-    "orders-confirmation": r.settings.emailTemplates.ordersConfirmation,
-    "shipping-update": r.settings.emailTemplates.shippingUpdate,
-    "welcome-email": r.settings.emailTemplates.welcomeEmail,
-    "password-reset": r.settings.emailTemplates.passwordReset,
-    "abandoned-cart": r.settings.emailTemplates.abandonedCart,
-  };
+  function navigateTo(key: string) {
+    router.push(`/${role}/settings/email-templates/${key}`);
+  }
 
   return (
     <div className="-m-8 flex h-[calc(100vh-4rem)] flex-col overflow-hidden">
@@ -190,44 +186,44 @@ export default function EmailTemplateEditor({
             {filteredTemplates.map((t) => {
               const Icon = t.icon;
               const isActive = t.key === templateKey;
-              const href = templateHrefs[t.key];
               return (
-                <NextLink key={t.key} href={href}>
+                <button
+                  key={t.key}
+                  type="button"
+                  onClick={() => navigateTo(t.key)}
+                  className={`flex w-full cursor-pointer items-center gap-3 rounded-xl p-3 text-left transition-colors ${
+                    isActive
+                      ? "border border-primary/10 bg-primary/5"
+                      : "hover:bg-slate-50 dark:hover:bg-slate-800"
+                  }`}
+                >
                   <div
-                    className={`flex cursor-pointer items-center gap-3 rounded-xl p-3 transition-colors ${
+                    className={`flex size-10 items-center justify-center rounded-lg ${
                       isActive
-                        ? "border border-primary/10 bg-primary/5"
-                        : "hover:bg-slate-50 dark:hover:bg-slate-800"
+                        ? "bg-primary/10 text-primary"
+                        : "bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-400"
                     }`}
                   >
-                    <div
-                      className={`flex size-10 items-center justify-center rounded-lg ${
+                    <Icon className="size-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p
+                      className={`truncate text-sm ${
                         isActive
-                          ? "bg-primary/10 text-primary"
-                          : "bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-400"
+                          ? "font-semibold text-slate-900 dark:text-white"
+                          : "font-medium text-slate-700 dark:text-slate-300"
                       }`}
                     >
-                      <Icon className="size-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p
-                        className={`truncate text-sm ${
-                          isActive
-                            ? "font-semibold text-slate-900 dark:text-white"
-                            : "font-medium text-slate-700 dark:text-slate-300"
-                        }`}
-                      >
-                        {t.label}
-                      </p>
-                      <p className="truncate text-[11px] text-slate-500">
-                        Last edited {t.lastEdited}
-                      </p>
-                    </div>
-                    {isActive && (
-                      <div className="size-2 shrink-0 rounded-full bg-primary" />
-                    )}
+                      {t.label}
+                    </p>
+                    <p className="truncate text-[11px] text-slate-500">
+                      Last edited {t.lastEdited}
+                    </p>
                   </div>
-                </NextLink>
+                  {isActive && (
+                    <div className="size-2 shrink-0 rounded-full bg-primary" />
+                  )}
+                </button>
               );
             })}
           </div>
