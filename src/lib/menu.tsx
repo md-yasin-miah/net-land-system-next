@@ -24,6 +24,7 @@ import {
   Wallet,
   User,
   LogOut,
+  File,
 } from "lucide-react";
 import type { Role } from "@/lib/mockData";
 import type { Permission } from "@/lib/mockData";
@@ -160,10 +161,31 @@ export interface RoleSidebarNav {
   label: string;
   items: RoleSidebarNavItem[];
 }
-export interface RoleSidebarNavItem {
+
+/** Direct link item */
+export interface RoleSidebarNavItemLink {
   href: string;
   label: string;
   icon: LucideIcon;
+}
+
+/** Nested group with sub-items */
+export interface RoleSidebarNavItemGroup {
+  label: string;
+  icon: LucideIcon;
+  items: RoleSidebarNavItemLink[];
+}
+
+export type RoleSidebarNavItem =
+  | RoleSidebarNavItemLink
+  | RoleSidebarNavItemGroup;
+
+export function isNestedNavItem(
+  item: RoleSidebarNavItem,
+): item is RoleSidebarNavItemGroup {
+  return (
+    "items" in item && Array.isArray((item as RoleSidebarNavItemGroup).items)
+  );
 }
 
 /** Build role sidebar nav with full hrefs from Routes.role(role). Use in RolePanelLayout. */
@@ -178,7 +200,18 @@ export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
       label: "Sales & Ops",
       items: [
         { href: r.posSystem, label: "POS System", icon: Package },
-        { href: r.orders, label: "Orders", icon: ShoppingCart },
+        {
+          label: "Orders",
+          icon: ShoppingCart,
+          items: [
+            { href: r.orders.list, label: "Orders", icon: File },
+            {
+              href: r.orders.tracking("1"),
+              label: "Order Tracking",
+              icon: Truck,
+            },
+          ],
+        },
         { href: r.products, label: "Products", icon: Package },
         { href: r.categories, label: "Categories", icon: FolderTree },
       ],
@@ -196,16 +229,35 @@ export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
       label: "Procurement",
       items: [
         { href: r.inventory, label: "Inventory", icon: Warehouse },
-        { href: r.purchaseOrders, label: "Purchase Orders", icon: Receipt },
+        {
+          href: r.purchaseOrders.list,
+          label: "Purchase Orders",
+          icon: Receipt,
+        },
+      ],
+    },
+    {
+      label: "Finance",
+      items: [
+        {
+          href: r.expenseOpexTracking,
+          label: "Expense & Opex Tracking",
+          icon: Wallet,
+        },
       ],
     },
     {
       label: "Analytics & Admin",
       items: [
         { href: r.coupons, label: "Coupons", icon: Ticket },
-        { href: r.reports, label: "Reports", icon: BarChart3 },
+        {
+          label: "Reports",
+          icon: BarChart3,
+          items: [
+            { href: r.reports.analytics, label: "Analytics", icon: BarChart3 },
+          ],
+        },
         { href: r.transactions, label: "Transactions", icon: ArrowLeftRight },
-        { href: r.expenses, label: "Expenses", icon: Wallet },
         { href: r.settings, label: "Settings", icon: Settings },
       ],
     },
@@ -251,7 +303,7 @@ export type RoleBaseProfileMenuItem =
   | RoleBaseMenuItemLabel;
 
 export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
-  const dispatch =useAppDispatch()
+  const dispatch = useAppDispatch();
   return role === "customer"
     ? [
         { type: "label", label: "My Account" },
@@ -289,7 +341,7 @@ export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
         {
           type: "button",
           onClick: () => {
-            dispatch(logout())
+            dispatch(logout());
           },
           label: "Log out",
           icon: LogOut,
@@ -310,7 +362,7 @@ export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
         {
           type: "button",
           onClick: () => {
-            dispatch(logout())
+            dispatch(logout());
           },
           id: "logout",
           label: "Log out",

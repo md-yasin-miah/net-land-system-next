@@ -2,20 +2,85 @@
 
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { useState } from "react";
 import {
   Search,
   Bell,
   MessageCircle,
   HeadphonesIcon,
   ChevronDown,
+  ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { getRoleSidebarNav, RoleSidebarNav, RoleSidebarNavItem } from "@/lib/menu";
+import {
+  getRoleSidebarNav,
+  RoleSidebarNav,
+  RoleSidebarNavItem,
+  isNestedNavItem,
+} from "@/lib/menu";
 import type { Role } from "@/lib/mockData";
+import type { RoleSidebarNavItemGroup } from "@/lib/menu";
 import Logo from "../common/Logo";
 
+function NestedNavGroup({
+  item,
+  pathname,
+}: {
+  item: RoleSidebarNavItemGroup;
+  pathname: string;
+}) {
+  const [isOpen, setIsOpen] = useState(() =>
+    item.items.some(
+      (sub) =>
+        pathname === sub.href || pathname.startsWith(`${sub.href}/`)
+    )
+  );
+  const Icon = item.icon;
 
+  return (
+    <div className="space-y-0.5">
+      <button
+        type="button"
+        onClick={() => setIsOpen((o) => !o)}
+        className={cn(
+          "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+          "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+        )}
+      >
+        <Icon className="size-5 shrink-0" />
+        <span className="flex-1 text-left">{item.label}</span>
+        <ChevronRight
+          className={cn("size-4 shrink-0 transition-transform", isOpen && "rotate-90")}
+        />
+      </button>
+      {isOpen && (
+        <div className="ml-6 space-y-0.5 border-l border-slate-200 pl-2 dark:border-slate-700">
+          {item.items.map((sub) => {
+            const isActive =
+              pathname === sub.href || pathname.startsWith(`${sub.href}/`);
+            const SubIcon = sub.icon;
+            return (
+              <Link
+                key={sub.href}
+                href={sub.href}
+                className={cn(
+                  "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "bg-primary/10 text-primary border-l-2 border-primary -ml-[2px] pl-[10px]"
+                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                )}
+              >
+                <SubIcon className="size-4 shrink-0" />
+                {sub.label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function RolePanelLayout({
   children,
@@ -30,17 +95,28 @@ export default function RolePanelLayout({
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased">
       {/* Sidebar */}
-      <aside className="flex h-full w-64 shrink-0 flex-col overflow-y-auto border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center gap-3 border-b border-slate-100 px-5 py-2 dark:border-slate-800">
-        <Logo width={134} height={100} />
+      <aside className="flex h-full w-64 shrink-0 flex-col border-r border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+        <div className="shrink-0 border-b border-slate-100 px-5 py-2 dark:border-slate-800">
+          <div className="flex items-center gap-3">
+            <Logo width={134} height={100} />
+          </div>
         </div>
-        <nav className="flex-1 space-y-0.5 py-4">
+        <nav className="min-h-0 flex-1 space-y-0.5 overflow-y-auto py-4">
           {roleSidebarNav.map((section: RoleSidebarNav) => (
             <div key={section.label} className="px-3 pb-2">
               <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                 {section.label}
               </p>
               {section.items.map((item: RoleSidebarNavItem) => {
+                if (isNestedNavItem(item)) {
+                  return (
+                    <NestedNavGroup
+                      key={item.label}
+                      item={item}
+                      pathname={pathname}
+                    />
+                  );
+                }
                 const href = item.href;
                 const isActive =
                   pathname === href || pathname.startsWith(`${href}/`);
@@ -64,7 +140,7 @@ export default function RolePanelLayout({
             </div>
           ))}
         </nav>
-        <div className="border-t border-slate-100 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
+        <div className="shrink-0 border-t border-slate-100 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
           <div className="flex items-center gap-3">
             <div className="flex size-9 items-center justify-center rounded-full bg-primary/20 text-primary">
               <HeadphonesIcon className="size-5" />

@@ -7,7 +7,6 @@ import {
   DollarSign,
   Gauge,
   PlusCircle,
-  Search,
   Calendar,
   Download,
   SlidersHorizontal,
@@ -15,12 +14,16 @@ import {
   Pencil,
   Printer,
   ChevronLeft,
-  ChevronRight,
+  ChevronRight
 } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/table";
 import type { DataTableColumn } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import { Routes } from "@/lib/routes";
+import { Role } from "@/lib/mockData";
+import { useParams } from "next/navigation";
 
 const STATUS_STYLES: Record<string, string> = {
   Draft: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400",
@@ -186,7 +189,8 @@ export default function PurchaseOrdersContent() {
   const totalEntries = 1284;
   const from = (page - 1) * 6 + 1;
   const to = Math.min(page * 6, totalEntries);
-
+  const params = useParams();
+  const role = (params?.role as Role) ?? "admin";
   return (
     <div className="space-y-8">
       {/* Header & Action */}
@@ -199,10 +203,12 @@ export default function PurchaseOrdersContent() {
             Monitor and manage supply chain procurement processes.
           </p>
         </div>
+        <Link href={Routes.role(role).purchaseOrders.create}>
         <Button className="w-fit gap-2 shadow-lg shadow-primary/20">
           <PlusCircle className="size-4" />
           Create Purchase Order
         </Button>
+        </Link>
       </div>
 
       {/* KPI Cards */}
