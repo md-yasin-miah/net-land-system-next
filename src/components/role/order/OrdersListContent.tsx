@@ -1,9 +1,5 @@
 "use client";
 
-/**
- * Order Management - uses page-specific primary color #ec5b13
- */
-
 import { useRef, useEffect, useState } from "react";
 import {
   Chart as ChartJS,
@@ -461,7 +457,11 @@ export default function OrdersListContent() {
                       <DropdownMenuContent align="end" className="w-48">
                         <DropdownMenuItem>View Details</DropdownMenuItem>
                         <DropdownMenuItem>Edit Order</DropdownMenuItem>
-                        <DropdownMenuItem>Print Invoice</DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link href={Routes.role(role).orders.invoice(order.id)}>
+                            Print Invoice
+                          </Link>
+                        </DropdownMenuItem>
                         <DropdownMenuItem className="text-red-600">
                           Cancel Order
                         </DropdownMenuItem>

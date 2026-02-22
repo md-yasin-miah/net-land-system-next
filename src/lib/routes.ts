@@ -49,6 +49,7 @@ export const Routes = {
     orders: {
       list: `/${role}/orders/list`,
       create: `/${role}/orders/list/create`,
+      invoice: (id: string) => `/${role}/orders/list/${id}/invoice`,
       detail: (id: string) => `/${role}/orders/${id}`,
       tracking: (id: string) => `/${role}/orders/${id}/track`,
     },
