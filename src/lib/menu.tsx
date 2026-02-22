@@ -26,6 +26,7 @@ import {
   LogOut,
   File,
   Percent,
+  Mail,
 } from "lucide-react";
 import type { Role } from "@/lib/mockData";
 import type { Permission } from "@/lib/mockData";
@@ -278,11 +279,9 @@ export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
           icon: Settings,
         },
         {
-          label:"EmailTamplates",
-          icon: File,
-          items: [
-            { href: r.settings.emailTemplates.ordersConfirmation, label: "Orders", icon: File },
-          ],
+          href: r.settings.emailTemplates.ordersConfirmation,
+          label: "Email Templates",
+          icon: Mail,
         }
       ],
     },

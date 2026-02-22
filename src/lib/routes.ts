@@ -80,6 +80,10 @@ export const Routes = {
       rolePermissions: `/${role}/settings/role-permissions`,
       emailTemplates: {
         ordersConfirmation: `/${role}/settings/email-templates/orders-confirmation`,
+        shippingUpdate: `/${role}/settings/email-templates/shipping-update`,
+        welcomeEmail: `/${role}/settings/email-templates/welcome-email`,
+        passwordReset: `/${role}/settings/email-templates/password-reset`,
+        abandonedCart: `/${role}/settings/email-templates/abandoned-cart`,
       },
     },
     addresses: `/${role}/addresses`,
