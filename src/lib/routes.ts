@@ -75,7 +75,13 @@ export const Routes = {
     },
     transactions: `/${role}/transactions`,
     expenseOpexTracking: `/${role}/expense-opex-tracking`,
-    settings: `/${role}/settings`,
+    settings: {
+      root: `/${role}/settings`,
+      rolePermissions: `/${role}/settings/role-permissions`,
+      emailTemplates: {
+        ordersConfirmation: `/${role}/settings/email-templates/orders-confirmation`,
+      },
+    },
     addresses: `/${role}/addresses`,
     warranty: `/${role}/warranty`,
     tickets: `/${role}/tickets`,

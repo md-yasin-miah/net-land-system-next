@@ -267,7 +267,23 @@ export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
           ],
         },
         { href: r.transactions, label: "Transactions", icon: ArrowLeftRight },
-        { href: r.settings, label: "Settings", icon: Settings },
+      ],
+    },
+    {
+      label: "Settings",
+      items: [
+        {
+          href: r.settings.rolePermissions,
+          label: "Role & Permissions",
+          icon: Settings,
+        },
+        {
+          label:"EmailTamplates",
+          icon: File,
+          items: [
+            { href: r.settings.emailTemplates.ordersConfirmation, label: "Orders", icon: File },
+          ],
+        }
       ],
     },
   ];
@@ -366,6 +382,13 @@ export const RoleBaseProfileMenu = (role: Role): RoleBaseProfileMenuItem[] => {
           icon: LayoutDashboard,
           shortcut: "⇧⌘P",
           permissions: ["admin:read"],
+        },
+        {
+          type: "link",
+          label: "Orders",
+          href: Routes.role(role).orders.list,
+          icon: ShoppingCart,
+          permissions: ["orders:read"],
         },
         { type: "separator" },
         {
