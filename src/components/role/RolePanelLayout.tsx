@@ -27,6 +27,7 @@ import Logo from "../common/Logo";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggleSidebar } from "@/store/sidebarSlice";
 import { Routes } from "@/lib/routes";
+import { Tooltip } from "../ui/tooltip";
 
 // ─── Nested nav group ─────────────────────────────────────────────────────────
 
@@ -175,8 +176,13 @@ export default function RolePanelLayout({
           )}
         >
           {collapsed ? (
-            <Link href={Routes.home} className="h-[39px] bg-primary/10 rounded-lg flex items-center justify-center">
-              <span className="text-2xl font-bold text-primary p-3 leading-none">N</span>
+            <Link
+              href={Routes.home}
+              className="h-[39px] bg-primary/10 rounded-lg flex items-center justify-center"
+            >
+              <span className="text-2xl font-bold text-primary p-3 leading-none">
+                N
+              </span>
             </Link>
           ) : (
             <div className="flex items-center gap-3 overflow-hidden">
@@ -187,7 +193,7 @@ export default function RolePanelLayout({
 
         {/* Nav */}
         <nav className="min-h-0 flex-1 space-y-0.5 overflow-y-auto py-4">
-          {roleSidebarNav.map((section: RoleSidebarNav) => (
+          {roleSidebarNav.map((section: RoleSidebarNav, index: number) => (
             <div
               key={section.label}
               className={cn("pb-2", collapsed ? "px-1.5" : "px-3")}
@@ -197,8 +203,8 @@ export default function RolePanelLayout({
                   {section.label}
                 </p>
               )}
-              {collapsed && (
-                <div className="mb-1 h-px bg-slate-100 dark:bg-slate-800" />
+              {collapsed && index > 0 && (
+                <div className="mb-2 h-px bg-slate-100 dark:bg-slate-800" />
               )}
               {section.items.map((item: RoleSidebarNavItem) => {
                 if (isNestedNavItem(item)) {
@@ -219,19 +225,21 @@ export default function RolePanelLayout({
 
                 if (collapsed) {
                   return (
-                    <Link
-                      key={href}
-                      href={href}
-                      title={item.label}
-                      className={cn(
-                        "flex items-center justify-center rounded-lg p-2.5 transition-colors",
-                        isActive
-                          ? "bg-primary/10 text-primary"
-                          : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
-                      )}
-                    >
-                      <Icon className="size-5 shrink-0" />
-                    </Link>
+                    <Tooltip arrow side="right" title={item.label} key={index}>
+                      <Link
+                        key={href}
+                        href={href}
+                        title={item.label}
+                        className={cn(
+                          "flex items-center justify-center rounded-lg p-2.5 transition-colors",
+                          isActive
+                            ? "bg-primary/10 text-primary"
+                            : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
+                        )}
+                      >
+                        <Icon className="size-5 shrink-0" />
+                      </Link>
+                    </Tooltip>
                   );
                 }
 
