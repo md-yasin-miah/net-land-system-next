@@ -26,6 +26,7 @@ import type { RoleSidebarNavItemGroup } from "@/lib/menu";
 import Logo from "../common/Logo";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggleSidebar } from "@/store/sidebarSlice";
+import { Routes } from "@/lib/routes";
 
 // ─── Nested nav group ─────────────────────────────────────────────────────────
 
@@ -40,12 +41,12 @@ function NestedNavGroup({
 }) {
   const [isOpen, setIsOpen] = useState(() =>
     item.items.some(
-      (sub) => pathname === sub.href || pathname.startsWith(`${sub.href}/`)
-    )
+      (sub) => pathname === sub.href || pathname.startsWith(`${sub.href}/`),
+    ),
   );
   const Icon = item.icon;
   const isGroupActive = item.items.some(
-    (sub) => pathname === sub.href || pathname.startsWith(`${sub.href}/`)
+    (sub) => pathname === sub.href || pathname.startsWith(`${sub.href}/`),
   );
 
   if (collapsed) {
@@ -58,7 +59,7 @@ function NestedNavGroup({
             "flex w-full items-center justify-center rounded-lg p-2.5 transition-colors",
             isGroupActive
               ? "bg-primary/10 text-primary"
-              : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+              : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
           )}
         >
           <Icon className="size-5 shrink-0" />
@@ -80,7 +81,7 @@ function NestedNavGroup({
                   "flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors",
                   isActive
                     ? "bg-primary/10 text-primary"
-                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
                 )}
               >
                 <SubIcon className="size-4 shrink-0" />
@@ -100,7 +101,7 @@ function NestedNavGroup({
         onClick={() => setIsOpen((o) => !o)}
         className={cn(
           "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-          "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+          "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
         )}
       >
         <Icon className="size-5 shrink-0" />
@@ -108,7 +109,7 @@ function NestedNavGroup({
         <ChevronRight
           className={cn(
             "size-4 shrink-0 transition-transform",
-            isOpen && "rotate-90"
+            isOpen && "rotate-90",
           )}
         />
       </button>
@@ -126,7 +127,7 @@ function NestedNavGroup({
                   "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
                     ? "bg-primary/10 text-primary border-l-2 border-primary -ml-[2px] pl-[10px]"
-                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                    : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
                 )}
               >
                 <SubIcon className="size-4 shrink-0" />
@@ -161,39 +162,36 @@ export default function RolePanelLayout({
       <aside
         className={cn(
           "flex h-full shrink-0 flex-col border-r border-slate-200 bg-white transition-all duration-300 ease-in-out dark:border-slate-800 dark:bg-slate-900",
-          collapsed ? "w-[60px]" : "w-64"
+          collapsed ? "w-[60px]" : "w-64",
         )}
       >
         {/* Logo + toggle */}
         <div
           className={cn(
             "flex shrink-0 items-center border-b border-slate-100 dark:border-slate-800",
-            collapsed ? "justify-center px-0 py-3" : "justify-between px-4 py-2"
+            collapsed
+              ? "justify-center px-0 py-3"
+              : "justify-between px-4 py-2",
           )}
         >
-          {!collapsed && (
+          {collapsed ? (
+            <Link href={Routes.home} className="h-[39px] bg-primary/10 rounded-lg flex items-center justify-center">
+              <span className="text-2xl font-bold text-primary p-3 leading-none">N</span>
+            </Link>
+          ) : (
             <div className="flex items-center gap-3 overflow-hidden">
               <Logo width={134} height={100} />
             </div>
           )}
-          <button
-            type="button"
-            onClick={() => dispatch(toggleSidebar())}
-            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-            className="flex size-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-          >
-            {collapsed ? (
-              <PanelLeftOpen className="size-[18px]" />
-            ) : (
-              <PanelLeftClose className="size-[18px]" />
-            )}
-          </button>
         </div>
 
         {/* Nav */}
         <nav className="min-h-0 flex-1 space-y-0.5 overflow-y-auto py-4">
           {roleSidebarNav.map((section: RoleSidebarNav) => (
-            <div key={section.label} className={cn("pb-2", collapsed ? "px-1.5" : "px-3")}>
+            <div
+              key={section.label}
+              className={cn("pb-2", collapsed ? "px-1.5" : "px-3")}
+            >
               {!collapsed && (
                 <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                   {section.label}
@@ -229,7 +227,7 @@ export default function RolePanelLayout({
                         "flex items-center justify-center rounded-lg p-2.5 transition-colors",
                         isActive
                           ? "bg-primary/10 text-primary"
-                          : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                          : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
                       )}
                     >
                       <Icon className="size-5 shrink-0" />
@@ -245,7 +243,7 @@ export default function RolePanelLayout({
                       "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                       isActive
                         ? "border-r-[3px] border-primary bg-primary/10 text-primary shadow-sm"
-                        : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                        : "text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800",
                     )}
                   >
                     <Icon className="size-5 shrink-0" />
@@ -261,7 +259,7 @@ export default function RolePanelLayout({
         <div
           className={cn(
             "shrink-0 border-t border-slate-100 bg-slate-50 dark:border-slate-800 dark:bg-slate-950",
-            collapsed ? "p-2" : "p-4"
+            collapsed ? "p-2" : "p-4",
           )}
         >
           {collapsed ? (
@@ -293,13 +291,27 @@ export default function RolePanelLayout({
       <main className="flex flex-1 flex-col overflow-hidden">
         <header className="z-10 flex h-16 items-center justify-between border-b border-slate-200 bg-white px-8 dark:border-slate-800 dark:bg-slate-900">
           <div className="w-full max-w-xl">
-            <div className="group relative">
-              <Search className="absolute left-3 top-1/2 size-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
-              <input
-                type="search"
-                placeholder="Search POs, Suppliers, or SKUs..."
-                className="block w-full rounded-lg border border-slate-200 bg-slate-50 py-2 pl-10 pr-3 text-sm transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-400"
-              />
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => dispatch(toggleSidebar())}
+                className="hover:text-primary hover:bg-primary/10"
+              >
+                {collapsed ? (
+                  <PanelLeftOpen className="size-[18px]" />
+                ) : (
+                  <PanelLeftClose className="size-[18px]" />
+                )}
+              </Button>
+              <div className="group relative flex-1">
+                <Search className="absolute left-3 top-1/2 size-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
+                <input
+                  type="search"
+                  placeholder="Search POs, Suppliers, or SKUs..."
+                  className="block w-full rounded-lg border border-slate-200 bg-slate-50 py-2 pl-10 pr-3 text-sm transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-400"
+                />
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-4">
