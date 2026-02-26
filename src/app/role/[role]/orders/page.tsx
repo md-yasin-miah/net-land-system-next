@@ -8,6 +8,6 @@ const OrdersPage = () => {
   const user = useAppSelector((s) => s.auth.user);
   redirect(user ? Routes.role(user.role).orders.list : Routes.home);
   return null;
-}
+};
 
 export default OrdersPage;

@@ -1,8 +1,8 @@
 "use client";
 
-import { Routes } from '@/lib/routes'
-import { useAppSelector } from '@/store/hooks';
-import { redirect } from 'next/navigation'
+import { Routes } from "@/lib/routes";
+import { useAppSelector } from "@/store/hooks";
+import { redirect } from "next/navigation";
 
 const SettingsPage = () => {
   const user = useAppSelector((s) => s.auth.user);

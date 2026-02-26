@@ -121,7 +121,10 @@ export default function SuppliersContent() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="flex items-center gap-2 font-semibold">
+          <Button
+            variant="outline"
+            className="flex items-center gap-2 font-semibold"
+          >
             <Download className="size-5" />
             Export
           </Button>
@@ -193,14 +196,24 @@ export default function SuppliersContent() {
           <Table>
             <TableHeader>
               <TableRow className="border-b border-slate-200 dark:border-slate-800">
-                <TableHead className="uppercase tracking-wider">Company Name</TableHead>
-                <TableHead className="uppercase tracking-wider">Contact Person</TableHead>
-                <TableHead className="uppercase tracking-wider">Phone</TableHead>
-                <TableHead className="uppercase tracking-wider">Email</TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Company Name
+                </TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Contact Person
+                </TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Phone
+                </TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Email
+                </TableHead>
                 <TableHead className="text-right uppercase tracking-wider">
                   Total Payable
                 </TableHead>
-                <TableHead className="uppercase tracking-wider">Status</TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Status
+                </TableHead>
                 <TableHead className="text-center uppercase tracking-wider">
                   Actions
                 </TableHead>
@@ -275,7 +288,11 @@ export default function SuppliersContent() {
             Showing 1 to 5 of 128 suppliers
           </p>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8 text-slate-400">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-8 text-slate-400"
+            >
               <ChevronLeft className="size-5" />
             </Button>
             <Button size="icon" className="size-8">
@@ -291,7 +308,11 @@ export default function SuppliersContent() {
             <Button variant="ghost" size="icon" className="size-8">
               26
             </Button>
-            <Button variant="ghost" size="icon" className="size-8 text-slate-400">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-8 text-slate-400"
+            >
               <ChevronRight className="size-5" />
             </Button>
           </div>

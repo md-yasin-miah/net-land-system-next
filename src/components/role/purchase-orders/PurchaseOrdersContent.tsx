@@ -14,7 +14,7 @@ import {
   Pencil,
   Printer,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -139,14 +139,26 @@ const PO_COLUMNS: DataTableColumn<PORow>[] = [
       </span>
     ),
   },
-  { key: "supplier", header: "Supplier", cellClassName: "font-medium text-slate-700 dark:text-slate-300" },
-  { key: "dateCreated", header: "Date Created", cellClassName: "text-slate-500" },
+  {
+    key: "supplier",
+    header: "Supplier",
+    cellClassName: "font-medium text-slate-700 dark:text-slate-300",
+  },
+  {
+    key: "dateCreated",
+    header: "Date Created",
+    cellClassName: "text-slate-500",
+  },
   {
     key: "totalAmount",
     header: "Total Amount",
     cellClassName: "font-bold text-slate-900 dark:text-white",
   },
-  { key: "expectedDate", header: "Expected Date", cellClassName: "text-slate-500" },
+  {
+    key: "expectedDate",
+    header: "Expected Date",
+    cellClassName: "text-slate-500",
+  },
   {
     key: "status",
     header: "Status",
@@ -154,7 +166,7 @@ const PO_COLUMNS: DataTableColumn<PORow>[] = [
       <span
         className={cn(
           "rounded-full px-2.5 py-1 text-[10px] font-bold uppercase",
-          STATUS_STYLES[row.status] ?? STATUS_STYLES.Draft
+          STATUS_STYLES[row.status] ?? STATUS_STYLES.Draft,
         )}
       >
         {row.status}
@@ -169,13 +181,28 @@ const PO_COLUMNS: DataTableColumn<PORow>[] = [
     align: "right",
     render: (_, row) => (
       <div className="flex justify-end gap-0.5 opacity-0 transition-opacity group-hover:opacity-100">
-        <Button variant="ghost" size="icon" className="size-8" aria-label="View">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-8"
+          aria-label="View"
+        >
           <Eye className="size-4 text-slate-500" />
         </Button>
-        <Button variant="ghost" size="icon" className="size-8" aria-label="Edit">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-8"
+          aria-label="Edit"
+        >
           <Pencil className="size-4 text-slate-500" />
         </Button>
-        <Button variant="ghost" size="icon" className="size-8" aria-label="Print">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-8"
+          aria-label="Print"
+        >
           <Printer className="size-4 text-slate-500" />
         </Button>
       </div>
@@ -204,10 +231,10 @@ export default function PurchaseOrdersContent() {
           </p>
         </div>
         <Link href={Routes.role(role).purchaseOrders.create}>
-        <Button className="w-fit gap-2 shadow-lg shadow-primary/20">
-          <PlusCircle className="size-4" />
-          Create Purchase Order
-        </Button>
+          <Button className="w-fit gap-2 shadow-lg shadow-primary/20">
+            <PlusCircle className="size-4" />
+            Create Purchase Order
+          </Button>
         </Link>
       </div>
 
@@ -221,18 +248,13 @@ export default function PurchaseOrdersContent() {
               className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900"
             >
               <div className="mb-3 flex items-center justify-between">
-                <div
-                  className={cn(
-                    "rounded-lg p-2",
-                    card.iconBg
-                  )}
-                >
+                <div className={cn("rounded-lg p-2", card.iconBg)}>
                   <Icon className="size-5" />
                 </div>
                 <span
                   className={cn(
                     "rounded-full px-2 py-1 text-[10px] font-bold",
-                    card.trendStyle
+                    card.trendStyle,
                   )}
                 >
                   {card.trend}

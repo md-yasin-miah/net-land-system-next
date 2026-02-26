@@ -458,7 +458,9 @@ export default function OrdersListContent() {
                         <DropdownMenuItem>View Details</DropdownMenuItem>
                         <DropdownMenuItem>Edit Order</DropdownMenuItem>
                         <DropdownMenuItem>
-                          <Link href={Routes.role(role).orders.invoice(order.id)}>
+                          <Link
+                            href={Routes.role(role).orders.invoice(order.id)}
+                          >
                             Print Invoice
                           </Link>
                         </DropdownMenuItem>

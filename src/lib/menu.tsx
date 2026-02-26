@@ -282,7 +282,7 @@ export function getRoleSidebarNav(role: Role): RoleSidebarNav[] {
           href: r.settings.emailTemplates.root,
           label: "Email Templates",
           icon: Mail,
-        }
+        },
       ],
     },
   ];

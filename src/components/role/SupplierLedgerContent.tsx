@@ -171,7 +171,9 @@ export default function SupplierLedgerContent() {
                 </p>
                 <p
                   className={`text-2xl font-extrabold ${
-                    stat.highlight ? "text-primary" : "text-slate-900 dark:text-white"
+                    stat.highlight
+                      ? "text-primary"
+                      : "text-slate-900 dark:text-white"
                   }`}
                 >
                   {stat.value}
@@ -205,7 +207,11 @@ export default function SupplierLedgerContent() {
               className="border-none bg-transparent px-3 py-2 text-sm focus:ring-0 dark:text-white"
             />
           </div>
-          <Button variant="outline" size="icon" className="bg-primary/10 text-primary hover:bg-primary/20">
+          <Button
+            variant="outline"
+            size="icon"
+            className="bg-primary/10 text-primary hover:bg-primary/20"
+          >
             <Filter className="size-5" />
           </Button>
         </div>
@@ -233,11 +239,21 @@ export default function SupplierLedgerContent() {
             <TableHeader>
               <TableRow className="border-b border-primary/10 dark:border-slate-800">
                 <TableHead className="uppercase tracking-wider">Date</TableHead>
-                <TableHead className="uppercase tracking-wider">Transaction ID</TableHead>
-                <TableHead className="uppercase tracking-wider">Description</TableHead>
-                <TableHead className="text-right uppercase tracking-wider">Debit (+)</TableHead>
-                <TableHead className="text-right uppercase tracking-wider">Credit (-)</TableHead>
-                <TableHead className="text-right uppercase tracking-wider">Balance</TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Transaction ID
+                </TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Description
+                </TableHead>
+                <TableHead className="text-right uppercase tracking-wider">
+                  Debit (+)
+                </TableHead>
+                <TableHead className="text-right uppercase tracking-wider">
+                  Credit (-)
+                </TableHead>
+                <TableHead className="text-right uppercase tracking-wider">
+                  Balance
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

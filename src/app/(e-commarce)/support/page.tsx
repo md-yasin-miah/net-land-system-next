@@ -1,7 +1,9 @@
-const SupportPage = () => {
-  return (
-    <div>page</div>
-  )
-}
+import { Routes } from "@/lib/routes";
+import { redirect } from "next/navigation";
 
-export default SupportPage
+const SupportPage = () => {
+  redirect(Routes.support.tickets);
+  return null;
+};
+
+export default SupportPage;

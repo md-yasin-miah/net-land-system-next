@@ -249,11 +249,21 @@ export default function CustomerLedgerContent() {
             <TableHeader>
               <TableRow className="border-b border-slate-200 dark:border-slate-800">
                 <TableHead className="uppercase tracking-wider">Date</TableHead>
-                <TableHead className="uppercase tracking-wider">Invoice No</TableHead>
-                <TableHead className="uppercase tracking-wider">Description</TableHead>
-                <TableHead className="text-right uppercase tracking-wider">Debit</TableHead>
-                <TableHead className="text-right uppercase tracking-wider">Credit</TableHead>
-                <TableHead className="text-right uppercase tracking-wider">Balance</TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Invoice No
+                </TableHead>
+                <TableHead className="uppercase tracking-wider">
+                  Description
+                </TableHead>
+                <TableHead className="text-right uppercase tracking-wider">
+                  Debit
+                </TableHead>
+                <TableHead className="text-right uppercase tracking-wider">
+                  Credit
+                </TableHead>
+                <TableHead className="text-right uppercase tracking-wider">
+                  Balance
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -308,8 +318,11 @@ export default function CustomerLedgerContent() {
         <div className="flex items-center justify-between border-t border-slate-200 px-6 py-4 dark:border-slate-800">
           <p className="text-sm text-slate-500">
             Showing{" "}
-            <span className="font-bold text-slate-900 dark:text-white">1-5</span>{" "}
-            of <span className="font-bold text-slate-900 dark:text-white">12</span>{" "}
+            <span className="font-bold text-slate-900 dark:text-white">
+              1-5
+            </span>{" "}
+            of{" "}
+            <span className="font-bold text-slate-900 dark:text-white">12</span>{" "}
             entries
           </p>
           <div className="flex gap-1">

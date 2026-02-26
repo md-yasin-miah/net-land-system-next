@@ -127,7 +127,7 @@ export default function EmailTemplateEditor({
   const [saved, setSaved] = useState(false);
 
   const filteredTemplates = TEMPLATES.filter((t) =>
-    t.label.toLowerCase().includes(search.toLowerCase())
+    t.label.toLowerCase().includes(search.toLowerCase()),
   );
 
   function handleSave() {
@@ -147,11 +147,14 @@ export default function EmailTemplateEditor({
     <div className="-m-8 flex h-[calc(100vh-4rem)] flex-col overflow-hidden">
       {/* Top bar */}
       <header className="flex h-16 shrink-0 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-800 dark:bg-slate-900">
-          <h1 className="text-base font-semibold text-slate-800 dark:text-slate-200">
-            Email Notification Editor
-          </h1>
+        <h1 className="text-base font-semibold text-slate-800 dark:text-slate-200">
+          Email Notification Editor
+        </h1>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" className="gap-2 text-slate-600 dark:text-slate-300">
+          <Button
+            variant="ghost"
+            className="gap-2 text-slate-600 dark:text-slate-300"
+          >
             <Send className="size-[18px]" />
             Send Test Email
           </Button>
