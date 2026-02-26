@@ -225,9 +225,8 @@ export default function RolePanelLayout({
 
                 if (collapsed) {
                   return (
-                    <Tooltip arrow side="right" title={item.label} key={index}>
+                    <Tooltip arrow side="right" title={item.label} key={href}>
                       <Link
-                        key={href}
                         href={href}
                         title={item.label}
                         className={cn(
