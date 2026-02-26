@@ -6,7 +6,7 @@ const EmailTemplatesPage = () => {
   const user = useAppSelector((s) => s.auth.user);
   redirect(
     user
-      ? Routes.me
+      ? Routes
           .role(user.role)
           .settings.emailTemplates.template("orders-confirmation")
       : Routes.home,
